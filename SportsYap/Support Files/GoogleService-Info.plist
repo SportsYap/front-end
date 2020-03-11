@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>809378461706-h4cijrvo8pd4pifqgeujekjjt4qe9ldi.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.809378461706-h4cijrvo8pd4pifqgeujekjjt4qe9ldi</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCpHx47eff9V_YzPtp5Ff9-raqrab4JO-c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>809378461706</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.SportsYap.com</string>
+	<key>PROJECT_ID</key>
+	<string>sportsyap-c1cf6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sportsyap-c1cf6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:809378461706:ios:1680c9d57eb89978</string>
+	<key>DATABASE_URL</key>
+	<string>https://sportsyap-c1cf6.firebaseio.com</string>
+</dict>
+</plist>
