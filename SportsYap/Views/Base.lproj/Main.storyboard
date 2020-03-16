@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oSy-yw-57P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oSy-yw-57P">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,6 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="JPl-rt-xaJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yq2-ik-rWn">
-                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -37,14 +36,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AuthViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field_bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="z3e-Xr-Eu3">
-                                <rect key="frame" x="0.0" y="-50" width="375" height="747"/>
+                                <rect key="frame" x="0.0" y="-50" width="375" height="767"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvU-R7-FYY">
-                                <rect key="frame" x="25" y="263.5" width="325" height="60"/>
+                                <rect key="frame" x="25" y="273.5" width="325" height="60"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdI-Mk-46w">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="46"/>
@@ -141,7 +140,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="159-dV-EKQ">
-                                <rect key="frame" x="48.5" y="373.5" width="278" height="24"/>
+                                <rect key="frame" x="48.5" y="383.5" width="278" height="24"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked_box" translatesAutoresizingMaskIntoConstraints="NO" id="PII-VF-VfT">
                                         <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -248,7 +247,7 @@
             <objects>
                 <viewController id="47e-cv-cz6" customClass="LoginViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ItJ-Wl-neJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0U-Tz-EE0">
@@ -399,7 +398,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alL-r2-RQb">
-                                <rect key="frame" x="0.0" y="584" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="604" width="375" height="63"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trD-Sd-QuQ">
                                         <rect key="frame" x="148.5" y="22" width="78" height="19"/>
@@ -450,7 +449,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7a-s8-kcm">
-                                <rect key="frame" x="0.0" y="647" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5ZK-K2-6NA"/>
@@ -590,7 +589,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zET-vI-mgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="1021"/>
+            <point key="canvasLocation" x="114" y="1021"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="QQo-oo-y8P">
@@ -1000,20 +999,12 @@
                                                                     <fragment content="No Posts ">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="19" name=".AppleSystemUIFont"/>
-                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                        </attributes>
-                                                                    </fragment>
-                                                                    <fragment content="😭">
-                                                                        <attributes>
-                                                                            <color key="NSColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="17" name=".AppleColorEmojiUI"/>
+                                                                            <font key="NSFont" metaFont="system" size="19"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
                                                                     <fragment>
-                                                                        <string key="content" base64-UTF8="YES">
-Cg
+                                                                        <string key="content">😭
 </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1270,8 +1261,8 @@ Cg
                         <outlet property="timelineBttn" destination="KOs-7n-hQp" id="reM-4c-9hN"/>
                         <outlet property="todayGamesBttn" destination="F7x-YK-lr1" id="wiQ-p5-nPz"/>
                         <segue destination="hgT-iY-fUE" kind="show" identifier="showGame" id="Skw-d3-03Y"/>
-                        <segue destination="JPl-rt-xaJ" kind="presentation" identifier="auth" id="d7d-NZ-DDc"/>
-                        <segue destination="sN2-YS-m5L" kind="modal" identifier="showPost" id="jjn-y6-mtq"/>
+                        <segue destination="JPl-rt-xaJ" kind="presentation" identifier="auth" modalPresentationStyle="fullScreen" id="d7d-NZ-DDc"/>
+                        <segue destination="sN2-YS-m5L" kind="modal" identifier="showPost" modalPresentationStyle="fullScreen" id="jjn-y6-mtq"/>
                         <segue destination="H3A-yB-nLq" kind="show" identifier="showProfile" id="pzL-gH-iC1"/>
                         <segue destination="BoI-65-BOb" kind="show" identifier="showComment" id="0mH-EN-sue"/>
                         <segue destination="N0l-e0-Bir" kind="presentation" identifier="showLive" modalPresentationStyle="fullScreen" id="mm1-OC-vPh"/>
@@ -1304,11 +1295,11 @@ Cg
             <objects>
                 <viewController id="Gq8-4F-qGW" customClass="SignupViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZV2-lT-41f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cc9-OI-U8g">
-                                <rect key="frame" x="0.0" y="50" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="539"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSU-pG-Ie9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -1589,7 +1580,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLx-rx-p2y">
-                                <rect key="frame" x="0.0" y="569" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="589" width="375" height="63"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8F-Q8-Cus">
                                         <rect key="frame" x="154.5" y="22" width="66" height="19"/>
@@ -1639,7 +1630,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oo-g1-60V">
-                                <rect key="frame" x="0.0" y="632" width="375" height="15"/>
+                                <rect key="frame" x="0.0" y="652" width="375" height="15"/>
                                 <color key="backgroundColor" red="0.0" green="0.60784313725490191" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -1680,7 +1671,7 @@ Cg
             <objects>
                 <viewController id="IER-6K-WyY" customClass="TeamSelectionViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IbS-Nd-3jw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4H-8E-VFF">
@@ -1722,7 +1713,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eag-xB-JPf">
-                                <rect key="frame" x="0.0" y="584" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="604" width="375" height="63"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMp-el-evh">
                                         <rect key="frame" x="154" y="22" width="67.5" height="19"/>
@@ -2135,7 +2126,7 @@ Cg
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QsB-jl-cPp">
-                                <rect key="frame" x="0.0" y="184" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="91" id="Ilb-dm-8kV">
@@ -2283,7 +2274,7 @@ Cg
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kI-jJ-bIB">
-                                <rect key="frame" x="0.0" y="647" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.60784313725490191" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ymC-BQ-WKD"/>
@@ -5970,18 +5961,18 @@ Cg
             <objects>
                 <viewController id="sN2-YS-m5L" customClass="ShotViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jAf-4z-S3h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lz8-CH-b98" userLabel="Media View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Te-cw-W6u">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RPX-lf-Zix">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5997,7 +5988,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-LP-E06" userLabel="Game Info">
-                                <rect key="frame" x="20" y="517" width="335" height="110"/>
+                                <rect key="frame" x="20" y="537" width="335" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQh-ZM-LDY">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="70"/>
@@ -6229,26 +6220,26 @@ Cg
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challenges" translatesAutoresizingMaskIntoConstraints="NO" id="rGd-yt-H2G">
-                                <rect key="frame" x="177.5" y="487" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="507" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="EeM-5k-Fz5"/>
                                     <constraint firstAttribute="width" constant="20" id="F4H-H9-Tlu"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="AuK-2j-fWr">
-                                <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4f-yG-qY4">
-                                <rect key="frame" x="0.0" y="71" width="375" height="576"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y8-qY-med">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="576"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="596"/>
                                         <connections>
                                             <action selector="nextBttnPressed:" destination="sN2-YS-m5L" eventType="touchUpInside" id="p6y-S5-G8L"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQv-Dm-06L">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="576"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="596"/>
                                         <connections>
                                             <action selector="backBttnPressed:" destination="sN2-YS-m5L" eventType="touchUpInside" id="apJ-g4-gER"/>
                                         </connections>
@@ -7310,11 +7301,11 @@ Cg
             <objects>
                 <viewController id="N6O-NN-vem" customClass="PhoneSignupViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lkV-LE-7zL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4O-Nq-Acs">
-                                <rect key="frame" x="0.0" y="50" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="539"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y06-wj-XsE">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -7450,7 +7441,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Cn-pu-wTw">
-                                <rect key="frame" x="0.0" y="569" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="589" width="375" height="63"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDt-Ys-1Di">
                                         <rect key="frame" x="90" y="22" width="195" height="19"/>
@@ -7500,7 +7491,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPY-ed-I8K">
-                                <rect key="frame" x="0.0" y="632" width="375" height="15"/>
+                                <rect key="frame" x="0.0" y="652" width="375" height="15"/>
                                 <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -7537,11 +7528,11 @@ Cg
             <objects>
                 <viewController id="OJX-Uf-GFi" customClass="PhoneVerificationViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rjW-nb-Ehm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gX-qI-uxS">
-                                <rect key="frame" x="0.0" y="50" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="539"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7f-kG-MHy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -7687,7 +7678,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDU-s0-4KX">
-                                <rect key="frame" x="0.0" y="569" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="589" width="375" height="63"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-fE-kok">
                                         <rect key="frame" x="144" y="22" width="87" height="19"/>
@@ -7737,7 +7728,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18x-BR-X37">
-                                <rect key="frame" x="0.0" y="632" width="375" height="15"/>
+                                <rect key="frame" x="0.0" y="652" width="375" height="15"/>
                                 <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -7774,11 +7765,11 @@ Cg
             <objects>
                 <viewController id="LwB-40-9uK" customClass="SetupAccountViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="laP-g9-Vc9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKI-cq-kbW">
-                                <rect key="frame" x="0.0" y="50" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="539"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXa-Zt-sGx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -7974,7 +7965,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-Ft-CuP">
-                                <rect key="frame" x="0.0" y="569" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="589" width="375" height="63"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSf-NQ-Xai">
                                         <rect key="frame" x="140.5" y="22" width="94" height="19"/>
@@ -8024,7 +8015,7 @@ Cg
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogP-vI-dcn">
-                                <rect key="frame" x="0.0" y="632" width="375" height="15"/>
+                                <rect key="frame" x="0.0" y="652" width="375" height="15"/>
                                 <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -8538,8 +8529,8 @@ Cg
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jjn-y6-mtq"/>
-        <segue reference="1Rg-BH-6vA"/>
-        <segue reference="a1j-Ia-Xnx"/>
+        <segue reference="Skw-d3-03Y"/>
+        <segue reference="pzL-gH-iC1"/>
         <segue reference="0mH-EN-sue"/>
         <segue reference="j2F-pK-h6m"/>
     </inferredMetricsTieBreakers>
