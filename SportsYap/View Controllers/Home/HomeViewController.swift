@@ -700,6 +700,15 @@ extension HomeViewController: iCarouselDataSource, iCarouselDelegate {
         return UIView()
     }
     
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        if let sportIndex = gameSports.firstIndex(of: selectedSport) {
+            let games = groupedGames[sportIndex]
+            let game = games[index]
+            
+            performSegue(withIdentifier: "showGame", sender: game)
+        }
+    }
+    
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         switch option {
         case .spacing:
