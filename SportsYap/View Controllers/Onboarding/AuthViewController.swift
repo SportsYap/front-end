@@ -38,11 +38,11 @@ class AuthViewController: UIViewController {
             return
         }
         
-        let fbManager = FBSDKLoginManager()
-        fbManager.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, err) in
+        let fbManager = LoginManager()
+        fbManager.logIn(permissions: ["public_profile", "email", "user_friends"], from: self) { (result, err) in
             if err == nil && result?.token != nil{
-                let token = result?.token.tokenString ?? "<err>"
-                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+                let token = result?.token?.tokenString ?? "<err>"
+                GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
                     if (error == nil){
                         if let userDict = result as? [String: AnyObject], let email = userDict["email"] as? String,
                             let name = userDict["name"] as? String{

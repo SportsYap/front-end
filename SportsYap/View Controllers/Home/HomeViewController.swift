@@ -8,12 +8,13 @@
 
 import UIKit
 import OneSignal
+import SwiftDate
+import iCarousel
 
 class HomeViewController: UIViewController {
 
     @IBOutlet var postsTableView: UITableView!
     @IBOutlet var gamesTableView: UITableView!
-    @IBOutlet var dateLbl: UILabel!
     
     @IBOutlet var noGamesView: UIView!
     @IBOutlet var noPostsView: UIView!
@@ -28,6 +29,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var leftDateBttn: UIButton!
     @IBOutlet weak var rightDateBttn: UIButton!
     
+    @IBOutlet weak var viewModeButton: UIButton!
+    @IBOutlet weak var typeButtonsScrollView: UIScrollView!
+    @IBOutlet var typeButtons: [UIButton]!
+    
+    @IBOutlet weak var carouselView: iCarousel!
+    
     var firstViewLoad = false
     
     var games = [Game]()
@@ -41,29 +48,36 @@ class HomeViewController: UIViewController {
     var gamesRefreshControl: UIRefreshControl!
     var postsRefreshControl: UIRefreshControl!
     
+    private var selectedSport: Sport = .football
+    private var isListMode: Bool = false
+    
     var date = Date(){
         didSet{
-            let formatter = DateFormatter()
-            formatter.dateFormat = "eeee, MMMM d"
-            dateLbl.text = formatter.string(from: date).capitalized
+            if date.isToday {
+                todayGamesBttn.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                todayGamesBttn.setTitle(formatter.string(from: date), for: .normal)
+            }
             
-//            // Only show one day in the past
-//            if date.timeIntervalSince1970 < Date().timeIntervalSince1970-3600{
-//                leftDateArrowImageView.alpha = 0
-//                leftDateBttn.isEnabled = false
-//            }else{
-//                leftDateArrowImageView.alpha = 1
-//                leftDateBttn.isEnabled = true
-//            }
-//            
-//            // Only show two days in the future
-//            if date.timeIntervalSince1970 > Date().timeIntervalSince1970-3600+86400*2{
-//                rightDateArrowImageView.alpha = 0
-//                rightDateBttn.isEnabled = false
-//            }else{
-//                rightDateArrowImageView.alpha = 1
-//                rightDateBttn.isEnabled = true
-//            }
+            let yesterday = date.addingTimeInterval(-24 * 60 * 60)
+            let tomorrow = date.addingTimeInterval(24 * 60 * 60)
+            
+            if yesterday.isToday {
+                leftDateBttn.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                leftDateBttn.setTitle(formatter.string(from: yesterday), for: .normal)
+            }
+            if tomorrow.isToday {
+                rightDateBttn.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                rightDateBttn.setTitle(formatter.string(from: tomorrow), for: .normal)
+            }
             
             loadGames()
         }
@@ -94,8 +108,6 @@ class HomeViewController: UIViewController {
                                       for: UIControl.Event.valueChanged)
         postsRefreshControl.tintColor = UIColor.gray
         self.postsTableView.addSubview(self.postsRefreshControl)
-        //self.postsTableView.clipsToBounds = false
-        //self.view.clipsToBounds = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.checkPushNotifications()
@@ -104,6 +116,8 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             ApiManager.shared.likes(user: User.me.id)
         }
+        
+        carouselView.type = .linear
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -117,26 +131,6 @@ class HomeViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.loadGames()
-            //self.loadPosts()
-            
-            /*
-            ApiManager.shared.gamesStarting(onSuccess: { (games) in
-                
-                print("////////////")
-                print("current date: \(Date())")
-                for game in games {
-                    print(game.startString)
-                    print(game.startString2)
-                    print("")
-                }
-                print("////////////")
-                
-            }, onError: { (error) in
-                print(error.localizedDescription)
-                print("really an error?")
-            })
-            */
-            
         }
     }
     
@@ -170,7 +164,6 @@ class HomeViewController: UIViewController {
     
     @objc func reload(){
         loadGames()
-        //loadPosts()
     }
     
     func checkPushNotifications() {
@@ -199,7 +192,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func loadGames(){
+    func loadGames() {
         ApiManager.shared.games(for: date, onSuccess: { (games) in
             self.loadingGamesView.alpha = 0
             self.games = games
@@ -257,11 +250,8 @@ class HomeViewController: UIViewController {
                     self.groupedGames.append(gamesForSport)
                 }
             }
-            
-            self.gamesTableView.reloadData()
-            UIView.animate(withDuration: 0.2, animations: {
-                self.noGamesView.alpha = games.count > 0 ? 0 : 1
-            })
+
+            self.didReloadGames()
         }) { (err) in }
     }
     
@@ -348,6 +338,36 @@ class HomeViewController: UIViewController {
         ParentScrollingViewController.shared.scrollToCamera()
     }
     
+    @IBAction func onTypeButtons(_ sender: Any) {
+        guard let sender = sender as? UIButton else {
+            return
+        }
+        
+        for button in typeButtons {
+            if button == sender {
+                button.tintColor = UIColor.white
+                button.setBackgroundImage(UIImage(named: "ic_selected_type_bg"), for: .normal)
+            } else {
+                button.tintColor = UIColor.black
+                button.setBackgroundImage(nil, for: .normal)
+            }
+        }
+        
+        selectedSport = Sport(rawValue: sender.tag) ?? .football
+        
+        didReloadGames()
+    }
+    
+    @IBAction func onChangeViewMode(_ sender: Any) {
+        isListMode = !isListMode
+
+        viewModeButton.setTitle(NSLocalizedString(!isListMode ? "List View" : "Card View", comment: ""), for: .normal)
+        
+        carouselView.isHidden = isListMode
+        gamesTableView.isHidden = !isListMode
+    }
+    
+    
     //MARK: Nav
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? GameDayViewController, let game = sender as? Game{
@@ -387,11 +407,33 @@ class HomeViewController: UIViewController {
         }
         
     }
+    
+    private func didReloadGames() {
+        gamesTableView.reloadData()
+        carouselView.reloadData()
+        
+        let hasGames: Bool
+        if let index = gameSports.firstIndex(of: selectedSport) {
+            let games = groupedGames[index]
+            hasGames = !games.isEmpty
+        } else {
+            hasGames = false
+        }
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.noGamesView.alpha = hasGames ? 0 : 1
+        })
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTableViewCellDelegate, TimelineLiveTableViewCellDelegate{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == typeButtonsScrollView {
+            ParentScrollingViewController.shared.enabled(is: false)
+            return
+        }
+        
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
         
         if translation.y != 0 && translation.x < 50 || translation.x < 1 {
@@ -403,6 +445,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTa
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView == typeButtonsScrollView {
+            ParentScrollingViewController.shared.enabled(is: true)
+            return
+        }
         
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
 
@@ -414,8 +460,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTa
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == postsTableView{
             return 2
-        }else{
-            return gameSports.count
+        } else {
+            if let _ = gameSports.firstIndex(of: selectedSport) {
+                return 1
+            }
+            return 0
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -425,7 +474,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTa
             }
             return posts.count
         }else{
-            return groupedGames[section].count
+            if let index = gameSports.firstIndex(of: selectedSport) {
+                let games = groupedGames[index]
+                return games.count
+            }
+            return 0
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -486,11 +539,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTa
                 }
             }
         }else{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? HomeGameTableViewCell{
-                let game = groupedGames[indexPath.section][indexPath.row]
-                cell.selectionStyle = .none
-                cell.card.load(game: game)
-                return cell
+            if let index = gameSports.firstIndex(of: selectedSport) {
+                let games = groupedGames[index]
+                let game = games[indexPath.row]
+
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? HomeGameTableViewCell{
+                    cell.selectionStyle = .none
+                    cell.card.load(game: game)
+                    return cell
+                }
             }
         }
         return UITableViewCell()
@@ -499,9 +556,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTa
         tableView.deselectRow(at: indexPath, animated: true)
         if tableView == postsTableView{
             self.performSegue(withIdentifier: "showPost", sender: posts[indexPath.row])
-        }else{
-            let game = groupedGames[indexPath.section][indexPath.row]
-            self.performSegue(withIdentifier: "showGame", sender: game)
+        } else {
+            if let index = gameSports.firstIndex(of: selectedSport) {
+                let games = groupedGames[index]
+                let game = games[indexPath.row]
+                self.performSegue(withIdentifier: "showGame", sender: game)
+            }
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -608,7 +668,52 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, PostTa
     }
     
     //MARK: TimelineLiveTableViewCellDelegate
-    func liveStreamPressed(user: User){
+    func liveStreamPressed(user: User) {
         self.performSegue(withIdentifier: "showLive", sender: user)
+    }
+}
+
+extension HomeViewController: iCarouselDataSource, iCarouselDelegate {
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        if let index = gameSports.firstIndex(of: selectedSport) {
+            let games = groupedGames[index]
+            return games.count
+        }
+        return 0
+    }
+    
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        if let sportIndex = gameSports.firstIndex(of: selectedSport) {
+            let games = groupedGames[sportIndex]
+            let game = games[index]
+            
+            if let gameView = view as? GameListItemView {
+                gameView.game = game
+                gameView.frame = CGRect(x: 0, y: 0, width: carousel.bounds.size.width - 100, height: carousel.bounds.size.height)
+                return gameView
+            } else if let gameView = Bundle.main.loadNibNamed("GameListItemView", owner: nil, options: nil)?.first as? GameListItemView {
+                gameView.game = game
+                gameView.frame = CGRect(x: 0, y: 0, width: carousel.bounds.size.width - 100, height: carousel.bounds.size.height)
+                return gameView
+            }
+        }
+        return UIView()
+    }
+    
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        switch option {
+        case .spacing:
+            return 1.1
+        default:
+            return value
+        }
+    }
+    
+    func carouselWillBeginDragging(_ carousel: iCarousel) {
+        ParentScrollingViewController.shared.enabled(is: false)
+    }
+    
+    func carouselDidEndDragging(_ carousel: iCarousel, willDecelerate decelerate: Bool) {
+        ParentScrollingViewController.shared.enabled(is: true)
     }
 }

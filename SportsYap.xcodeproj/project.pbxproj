@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2ED769C2B8D0E0F37DC40A09 /* Pods_SportsYap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */; };
 		6131278EB795A58DC821379A /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE7C7B679F4422737A716A0 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C08BB24204A05001F63EF /* GameListItemView.swift */; };
+		AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3C08BD24204A14001F63EF /* GameListItemView.xib */; };
+		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */; };
 		CD04100420B7E6C5000E1D66 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */; };
 		CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100520B7EC6D000E1D66 /* Comment.swift */; };
@@ -175,6 +178,9 @@
 		5148735234EABCE76474FF85 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsYap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EA6F3487E1A226170BE79 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AF3C08BB24204A05001F63EF /* GameListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemView.swift; sourceTree = "<group>"; };
+		AF3C08BD24204A14001F63EF /* GameListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListItemView.xib; sourceTree = "<group>"; };
+		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		CD04100520B7EC6D000E1D66 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -399,6 +405,7 @@
 				D71E122F224276AD00B20E70 /* SinglePostViewController.swift */,
 				D7A19992231DF302007E7D86 /* GifsViewController.swift */,
 				D7A19996231F0A47007E7D86 /* MoreGifsViewController.swift */,
+				AF3FC82A241F31AB00DB85B2 /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -438,6 +445,8 @@
 			children = (
 				CD47EC2B2053120C00FC3A5F /* GameCard.swift */,
 				CD47EC2D2053121700FC3A5F /* GameCard.xib */,
+				AF3C08BB24204A05001F63EF /* GameListItemView.swift */,
+				AF3C08BD24204A14001F63EF /* GameListItemView.xib */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -519,6 +528,7 @@
 		CDDA0C9F201FAA3400BA0568 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CD91080F201FA9B200A00EBC /* Main.storyboard */,
 				CD39CA0B2031545E0079D033 /* TabBarViewController.swift */,
 				CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */,
 				CD39CA0D203154720079D033 /* Onboarding */,
@@ -533,7 +543,6 @@
 		CDDA0CA0201FAA4200BA0568 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CD91080F201FA9B200A00EBC /* Main.storyboard */,
 				CDBB32DF20480C7E002B6F8E /* UITableViewCell */,
 				CD00B4D62058EE8A00EA0509 /* UICollectionViewCell */,
 				CD47EC29205311F300FC3A5F /* UIViews */,
@@ -819,7 +828,9 @@
 				D79134A823203E69007D9411 /* IssaTD_1.gif in Resources */,
 				D79134B423203E69007D9411 /* Homer.gif in Resources */,
 				D79134A623203E69007D9411 /* youreOut.gif in Resources */,
+				AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */,
 				D79134AF23203E69007D9411 /* hockey_goal.gif in Resources */,
+				AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */,
 				CDE936B52182E68A00BA20D2 /* GoogleService-Info.plist in Resources */,
 				CD910813201FA9B200A00EBC /* Assets.xcassets in Resources */,
 				D79134A723203E69007D9411 /* goal.gif in Resources */,
@@ -888,24 +899,25 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ColorSlider/ColorSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/DeepDiff/DeepDiff.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
-				"${PODS_ROOT}/Giphy/GiphySDK/GiphyUISDK.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/NextLevel/NextLevel.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SVWebViewController/SVWebViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
 				"${BUILT_PRODUCTS_DIR}/UIView+draggable/UIView_draggable.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -914,24 +926,25 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepDiff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GiphyUISDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NextLevel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVWebViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_draggable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -1010,6 +1023,7 @@
 				CD47EC342054AC9200FC3A5F /* GameDayGameTableViewCell.swift in Sources */,
 				D71F972A22508B330051E715 /* MediaFilter.swift in Sources */,
 				CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */,
+				AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */,
 				CD0A655920B5184500E17FC7 /* News.swift in Sources */,
 				CDDA0CAF201FAAA000BA0568 /* NSData.swift in Sources */,
 				CD4F952520C8DE0F00159D5D /* LiveUserCollectionViewCell.swift in Sources */,

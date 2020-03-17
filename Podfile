@@ -26,6 +26,8 @@ target 'SportsYap' do
   pod 'AlamofireImage'
   pod 'Gifu'
   pod 'Nuke'
+  pod 'SwiftDate'
+  pod 'iCarousel'
 end
 
 
