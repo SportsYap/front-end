@@ -1249,7 +1249,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.08;
+				MARKETING_VERSION = 1.5.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1278,7 +1278,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.08;
+				MARKETING_VERSION = 1.5.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1302,7 +1302,7 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.08;
+				MARKETING_VERSION = 1.5.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
@@ -1326,7 +1326,7 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.08;
+				MARKETING_VERSION = 1.5.9;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
