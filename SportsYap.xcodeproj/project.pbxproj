@@ -12,6 +12,7 @@
 		AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C08BB24204A05001F63EF /* GameListItemView.swift */; };
 		AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3C08BD24204A14001F63EF /* GameListItemView.xib */; };
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
+		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
 		CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */; };
 		CD04100420B7E6C5000E1D66 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */; };
 		CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100520B7EC6D000E1D66 /* Comment.swift */; };
@@ -31,9 +32,7 @@
 		CD3F0BEA20CCE7C100BDC68A /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F0BE920CCE7C100BDC68A /* Venue.swift */; };
 		CD47EC2C2053120C00FC3A5F /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47EC2B2053120C00FC3A5F /* GameCard.swift */; };
 		CD47EC2E2053121700FC3A5F /* GameCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD47EC2D2053121700FC3A5F /* GameCard.xib */; };
-		CD47EC302053148C00FC3A5F /* HomeGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47EC2F2053148C00FC3A5F /* HomeGameTableViewCell.swift */; };
 		CD47EC322054860C00FC3A5F /* OnboardingTeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */; };
-		CD47EC342054AC9200FC3A5F /* GameDayGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47EC332054AC9200FC3A5F /* GameDayGameTableViewCell.swift */; };
 		CD47F187214D88E20037CB79 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47F186214D88E20037CB79 /* ImageFileManager.swift */; };
 		CD4A2EE9208DC7BE00DCA56C /* ParentScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */; };
 		CD4A2EEB208DCF7D00DCA56C /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A2EEA208DCF7D00DCA56C /* UserMedia.swift */; };
@@ -62,7 +61,6 @@
 		CDB5301C204DF50C0074341E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5301B204DF50C0074341E /* RecordViewController.swift */; };
 		CDB5301F204DF6440074341E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB5301D204DF6440074341E /* AVKit.framework */; };
 		CDB53020204DF6440074341E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB5301E204DF6440074341E /* AVFoundation.framework */; };
-		CDBB32E120480C95002B6F8E /* GameDayFilterMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB32E020480C95002B6F8E /* GameDayFilterMenuTableViewCell.swift */; };
 		CDBBC30820A3A72200309ADE /* ProfilePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */; };
 		CDCE558C2048134E0023AD48 /* ProfileHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */; };
 		CDDA0CAF201FAAA000BA0568 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA0CA5201FAA9E00BA0568 /* NSData.swift */; };
@@ -181,6 +179,7 @@
 		AF3C08BB24204A05001F63EF /* GameListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemView.swift; sourceTree = "<group>"; };
 		AF3C08BD24204A14001F63EF /* GameListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListItemView.xib; sourceTree = "<group>"; };
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
 		CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		CD04100520B7EC6D000E1D66 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -201,9 +200,7 @@
 		CD3F0BE920CCE7C100BDC68A /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		CD47EC2B2053120C00FC3A5F /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
 		CD47EC2D2053121700FC3A5F /* GameCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCard.xib; sourceTree = "<group>"; };
-		CD47EC2F2053148C00FC3A5F /* HomeGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGameTableViewCell.swift; sourceTree = "<group>"; };
 		CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTeamTableViewCell.swift; sourceTree = "<group>"; };
-		CD47EC332054AC9200FC3A5F /* GameDayGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayGameTableViewCell.swift; sourceTree = "<group>"; };
 		CD47F186214D88E20037CB79 /* ImageFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScrollingViewController.swift; sourceTree = "<group>"; };
 		CD4A2EEA208DCF7D00DCA56C /* UserMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
@@ -232,7 +229,6 @@
 		CDB5301B204DF50C0074341E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		CDB5301D204DF6440074341E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		CDB5301E204DF6440074341E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CDBB32E020480C95002B6F8E /* GameDayFilterMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayFilterMenuTableViewCell.swift; sourceTree = "<group>"; };
 		CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTableViewCell.swift; sourceTree = "<group>"; };
 		CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CDDA0CA5201FAA9E00BA0568 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
@@ -367,6 +363,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AF3FD3B32424FBBE00795DB0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CD39CA0E203154780079D033 /* Home */,
+				CD39CA0F203154890079D033 /* Discover */,
+				CD39CA102031549A0079D033 /* Profile */,
+				CD39CA11203154A60079D033 /* Add */,
+				AF3FD3B42424FC3100795DB0 /* GameDay */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AF3FD3B42424FC3100795DB0 /* GameDay */ = {
+			isa = PBXGroup;
+			children = (
+				CDE83A58203155950056C77D /* GameDayViewController.swift */,
+				AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */,
+			);
+			path = GameDay;
+			sourceTree = "<group>";
+		};
+		AF3FD3B72425297A00795DB0 /* GameDay */ = {
+			isa = PBXGroup;
+			children = (
+				CD0A655420B5105F00E17FC7 /* GameDayFanTableViewCell.swift */,
+				CD0A655620B5106900E17FC7 /* GameDayNewsTableViewCell.swift */,
+			);
+			path = GameDay;
+			sourceTree = "<group>";
+		};
 		CD00B4D62058EE8A00EA0509 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,7 +423,6 @@
 			isa = PBXGroup;
 			children = (
 				CDE83A562031558B0056C77D /* HomeViewController.swift */,
-				CDE83A58203155950056C77D /* GameDayViewController.swift */,
 				CDE83A5E203224100056C77D /* ShotViewController.swift */,
 				CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */,
 				CDF92B2A20BC11770068A50C /* ChallengeViewController.swift */,
@@ -489,11 +514,9 @@
 		CDBB32DF20480C7E002B6F8E /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				CDBB32E020480C95002B6F8E /* GameDayFilterMenuTableViewCell.swift */,
+				AF3FD3B72425297A00795DB0 /* GameDay */,
 				CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */,
-				CD47EC2F2053148C00FC3A5F /* HomeGameTableViewCell.swift */,
 				CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */,
-				CD47EC332054AC9200FC3A5F /* GameDayGameTableViewCell.swift */,
 				CDA8EB472060B68C00ED3EBC /* DiscoverTeamTableViewCell.swift */,
 				CDA8EB492060B69500ED3EBC /* DiscoverUserTableViewCell.swift */,
 				CD4A2EF2208DE0F900DCA56C /* TagGameTableViewCell.swift */,
@@ -501,8 +524,6 @@
 				CD63D5A620A1883B008B8D5E /* SettingsHeaderTableViewCell.swift */,
 				CD63D5A820A1885A008B8D5E /* SettingsGameTableViewCell.swift */,
 				CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */,
-				CD0A655420B5105F00E17FC7 /* GameDayFanTableViewCell.swift */,
-				CD0A655620B5106900E17FC7 /* GameDayNewsTableViewCell.swift */,
 				CD0A655C20B51A9400E17FC7 /* UserTableViewCell.swift */,
 				CD04100920B7EF70000E1D66 /* CommentTableViewCell.swift */,
 				CD21658B20C7D0060009E908 /* TimelineLiveTableViewCell.swift */,
@@ -532,10 +553,7 @@
 				CD39CA0B2031545E0079D033 /* TabBarViewController.swift */,
 				CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */,
 				CD39CA0D203154720079D033 /* Onboarding */,
-				CD39CA0E203154780079D033 /* Home */,
-				CD39CA0F203154890079D033 /* Discover */,
-				CD39CA102031549A0079D033 /* Profile */,
-				CD39CA11203154A60079D033 /* Add */,
+				AF3FD3B32424FBBE00795DB0 /* Main */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -814,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79134B123203E69007D9411 /* Flag.gif in Resources */,
+				AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */,
 				D79134AD23203E69007D9411 /* RallyMonkey.gif in Resources */,
 				D79134B323203E69007D9411 /* BigCatch.gif in Resources */,
 				D79134AA23203E69007D9411 /* LIT.gif in Resources */,
@@ -1020,7 +1039,6 @@
 				CDE83A5B2031559E0056C77D /* DiscoverViewController.swift in Sources */,
 				D71F9708224DF9370051E715 /* YGCAddTextOnVideo.swift in Sources */,
 				CDDA0CB1201FAAA000BA0568 /* UILabel.swift in Sources */,
-				CD47EC342054AC9200FC3A5F /* GameDayGameTableViewCell.swift in Sources */,
 				D71F972A22508B330051E715 /* MediaFilter.swift in Sources */,
 				CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */,
 				AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */,
@@ -1035,7 +1053,6 @@
 				D7A1999C231F6444007E7D86 /* CommentGifCell.swift in Sources */,
 				CD0A655D20B51A9400E17FC7 /* UserTableViewCell.swift in Sources */,
 				CD63D5A720A1883B008B8D5E /* SettingsHeaderTableViewCell.swift in Sources */,
-				CDBB32E120480C95002B6F8E /* GameDayFilterMenuTableViewCell.swift in Sources */,
 				D71F972E22508B330051E715 /* BlurFilter.swift in Sources */,
 				D71F973522508B330051E715 /* MediaElement.swift in Sources */,
 				D71F973822508B330051E715 /* Images.swift in Sources */,
@@ -1075,7 +1092,6 @@
 				CDCE558C2048134E0023AD48 /* ProfileHeaderTableViewCell.swift in Sources */,
 				D71F972F22508B330051E715 /* SobelFilter.swift in Sources */,
 				CD4A2EF3208DE0F900DCA56C /* TagGameTableViewCell.swift in Sources */,
-				CD47EC302053148C00FC3A5F /* HomeGameTableViewCell.swift in Sources */,
 				CD0A655B20B5197500E17FC7 /* ViewUsersViewController.swift in Sources */,
 				CDE83A59203155950056C77D /* GameDayViewController.swift in Sources */,
 				CD204655202C45410086C9B5 /* DBObject.swift in Sources */,

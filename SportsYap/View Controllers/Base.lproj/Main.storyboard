@@ -584,12 +584,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="9ec-TY-C1P" kind="relationship" relationship="rootViewController" id="Y7H-iA-Zlc"/>
+                        <segue destination="LbS-3i-7Nt" kind="relationship" relationship="rootViewController" id="FK6-p8-6Ax"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zET-vI-mgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="114" y="1021"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Sqt-L1-gYM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="LbS-3i-7Nt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rcL-zu-Ogl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Db-KI-1Eg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="1020"/>
         </scene>
         <!--Data Source-->
         <scene sceneID="QQo-oo-y8P">
@@ -611,7 +621,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="rightDateBttnPressed:" destination="9ec-TY-C1P" eventType="touchUpInside" id="FWD-EM-eTf"/>
+                                            <action selector="onNextDay:" destination="9ec-TY-C1P" eventType="touchUpInside" id="FWD-EM-eTf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZS-SU-FiY">
@@ -623,7 +633,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="leftDateBttnPressed:" destination="9ec-TY-C1P" eventType="touchUpInside" id="ZUR-aw-SUN"/>
+                                            <action selector="onPreviousDay:" destination="9ec-TY-C1P" eventType="touchUpInside" id="ZUR-aw-SUN"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="uZA-YQ-3Um">
@@ -659,7 +669,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhj-99-YZP">
-                                <rect key="frame" x="132.5" y="0.0" width="110" height="50"/>
+                                <rect key="frame" x="124" y="0.0" width="127" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOs-7n-hQp">
                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
@@ -675,7 +685,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7x-YK-lr1">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="20" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -711,16 +721,16 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-Cn-cB0">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="474.5"/>
+                                <rect key="frame" x="0.0" y="143.5" width="375" height="523.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4c-jD-FNK">
-                                        <rect key="frame" x="0.0" y="0.0" width="750" height="474.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="750" height="523.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Oc-nP-tJI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="477" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="juI-Gu-oVw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="liveCell" rowHeight="86" id="eAd-fK-pSa" customClass="TimelineLiveTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -1051,10 +1061,10 @@
                                                         </connections>
                                                     </tableView>
                                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zv9-9K-yZz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a57-i6-OaX">
-                                                                <rect key="frame" x="48" y="176" width="279.5" height="43"/>
+                                                                <rect key="frame" x="48" y="200.5" width="279.5" height="43"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="No Posts ">
                                                                         <attributes>
@@ -1103,10 +1113,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pK-tv-5cI">
-                                                <rect key="frame" x="375" y="0.0" width="375" height="474.5"/>
+                                                <rect key="frame" x="375" y="0.0" width="375" height="523.5"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="165" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="00W-33-Jo4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameCard" rowHeight="160" id="5XZ-a5-HRK" customClass="HomeGameTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -1143,7 +1153,7 @@
                                                         </connections>
                                                     </tableView>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-4e-Y0c" customClass="iCarousel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <connections>
                                                             <outlet property="dataSource" destination="9ec-TY-C1P" id="deU-dx-YgR"/>
@@ -1151,10 +1161,10 @@
                                                         </connections>
                                                     </view>
                                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-nG-1rb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your favorite teams don’t have any games today. Follow more teams!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKY-wf-GXe">
-                                                                <rect key="frame" x="50" y="177" width="275" height="41"/>
+                                                                <rect key="frame" x="50" y="201.5" width="275" height="41"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1168,14 +1178,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z01-g8-wu4">
-                                                        <rect key="frame" x="0.0" y="30" width="375" height="444.5"/>
+                                                        <rect key="frame" x="0.0" y="30" width="375" height="493.5"/>
                                                         <subviews>
                                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RBz-Kn-7OS">
-                                                                <rect key="frame" x="169" y="129" width="37" height="37"/>
+                                                                <rect key="frame" x="169" y="153.5" width="37" height="37"/>
                                                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </activityIndicatorView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoZ-j8-dhJ">
-                                                                <rect key="frame" x="128" y="172" width="119" height="20.5"/>
+                                                                <rect key="frame" x="128" y="196.5" width="119" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -2451,7 +2461,7 @@
             <objects>
                 <viewController id="BoI-65-BOb" customClass="CommentsViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ocu-bB-Mbh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptg-Z4-O4e">
@@ -2468,7 +2478,7 @@
                                         <state key="normal" image="left_arrow_black"/>
                                         <connections>
                                             <action selector="backBttnPressed:" destination="BoI-65-BOb" eventType="touchUpInside" id="LXN-qs-UTN"/>
-                                            <action selector="backBttnPressed:" destination="hgT-iY-fUE" eventType="touchUpInside" id="xPN-dW-g7e"/>
+                                            <action selector="onBack:" destination="hgT-iY-fUE" eventType="touchUpInside" id="xPN-dW-g7e"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2482,7 +2492,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yql-mx-zm1">
-                                <rect key="frame" x="0.0" y="50" width="375" height="508"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="537"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="65" id="lxC-kG-B87" customClass="CommentTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -2597,7 +2607,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c07-WH-Lij">
-                                <rect key="frame" x="0.0" y="558" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="587" width="375" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="IxT-Kk-4DD">
                                         <rect key="frame" x="10" y="5" width="50" height="50"/>
@@ -2706,7 +2716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psN-dj-21w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2965.217391304348" y="1019.8369565217392"/>
+            <point key="canvasLocation" x="2999" y="1021"/>
         </scene>
         <!--View Live Stream View Controller-->
         <scene sceneID="Tbw-4i-mhP">
@@ -3088,7 +3098,7 @@
             <objects>
                 <viewController id="H3A-yB-nLq" customClass="ProfileViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lZO-Pa-I1q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ae-oW-ZqV">
@@ -3141,7 +3151,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Czu-Oh-HGi">
-                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="295" id="hgh-ki-ts0" customClass="ProfileHeaderTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -3526,11 +3536,11 @@
             <objects>
                 <viewController id="IhX-tu-cQU" customClass="SettingsViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZPQ-lV-O5E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-BI-jAR">
-                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="411" id="zSC-Bc-vHf" customClass="SettingsHeaderTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -3992,7 +4002,7 @@
             <objects>
                 <viewController id="utR-Ho-KIQ" customClass="ViewUsersViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RO6-Ow-TrJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TVX-Nn-vVp">
@@ -4033,7 +4043,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ug9-fk-uKY">
-                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" rowHeight="66" id="7C6-YW-mvF" customClass="UserTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -5383,7 +5393,7 @@
             <objects>
                 <viewController id="hgT-iY-fUE" customClass="GameDayViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFw-cZ-mqg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-yJ-y4I">
@@ -5399,7 +5409,7 @@
                                         <rect key="frame" x="15" y="6" width="44" height="38"/>
                                         <state key="normal" image="left_arrow_black"/>
                                         <connections>
-                                            <action selector="backBttnPressed:" destination="hgT-iY-fUE" eventType="touchUpInside" id="8Ax-Ft-rgz"/>
+                                            <action selector="onBack:" destination="hgT-iY-fUE" eventType="touchUpInside" id="8Ax-Ft-rgz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -5413,7 +5423,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yoB-LM-vNn">
-                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="597"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="challengeCell" rowHeight="80" id="FYK-8K-yD3">
@@ -5988,10 +5998,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isVerifiedImageView" destination="2Hp-fp-I3x" id="jOc-u6-Mky"/>
-                                            <outlet property="nameLbl" destination="tc9-ux-BVZ" id="cWY-BM-wpU"/>
+                                            <outlet property="nameLabel" destination="tc9-ux-BVZ" id="cWY-BM-wpU"/>
                                             <outlet property="profileImageView" destination="T7l-8I-QeW" id="7Yp-Zd-Qgg"/>
-                                            <outlet property="teamNameLbl" destination="NAM-jD-rEs" id="c3b-A8-nYO"/>
-                                            <outlet property="timeLbl" destination="Usd-DJ-iqZ" id="QeD-B8-REN"/>
+                                            <outlet property="teamNameLabel" destination="NAM-jD-rEs" id="c3b-A8-nYO"/>
+                                            <outlet property="timeLabel" destination="Usd-DJ-iqZ" id="QeD-B8-REN"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" rowHeight="135" id="lgT-Yc-BEG" customClass="GameDayNewsTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -6048,9 +6058,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="activityIndicator" destination="Jn3-3O-Cke" id="0cR-qO-qxL"/>
-                                            <outlet property="coverPhoto" destination="dVB-ra-Cb6" id="AOh-0o-IJe"/>
-                                            <outlet property="detailLbl" destination="1hb-hT-vGh" id="kfZ-fz-Flu"/>
-                                            <outlet property="titleLbl" destination="5rd-bn-ZG4" id="FUL-2L-77x"/>
+                                            <outlet property="coverPhotoImageView" destination="dVB-ra-Cb6" id="AOh-0o-IJe"/>
+                                            <outlet property="detailLabel" destination="1hb-hT-vGh" id="kfZ-fz-Flu"/>
+                                            <outlet property="titleLabel" destination="5rd-bn-ZG4" id="FUL-2L-77x"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -8183,7 +8193,7 @@
             <objects>
                 <viewController storyboardIdentifier="SinglePostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aM4-hG-PHa" customClass="SinglePostViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5fh-Ud-1bw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IX-Te-06l">
@@ -8206,10 +8216,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Q2-tP-PAD">
-                                <rect key="frame" x="0.0" y="34.5" width="375" height="583.5"/>
+                                <rect key="frame" x="0.0" y="34.5" width="375" height="563.5"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="477" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gfc-VW-Xmt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="583.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="563.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postCellSingle" rowHeight="700" id="cnB-XX-w7K" customClass="PostTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -8660,9 +8670,9 @@
         <image name="sport_bg" width="710" height="270"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jjn-y6-mtq"/>
+        <segue reference="eIF-w0-6l7"/>
         <segue reference="Skw-d3-03Y"/>
-        <segue reference="pzL-gH-iC1"/>
+        <segue reference="UP6-kD-Z72"/>
         <segue reference="0mH-EN-sue"/>
         <segue reference="j2F-pK-h6m"/>
     </inferredMetricsTieBreakers>
