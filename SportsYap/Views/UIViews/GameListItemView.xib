@@ -23,7 +23,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ynf-t4-Y1D">
                             <rect key="frame" x="30" y="16" width="354" height="677"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="w1z-0a-otC">
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="w1z-0a-otC">
                                     <rect key="frame" x="152" y="0.0" width="50" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="28" id="7Zr-mO-Mcn"/>
@@ -91,7 +91,7 @@
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sAL-zF-bHP">
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sAL-zF-bHP">
                                     <rect key="frame" x="152" y="649" width="50" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="28" id="svc-Em-Wth"/>

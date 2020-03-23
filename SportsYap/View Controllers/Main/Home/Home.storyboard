@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sbk-JZ-7SB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,14 +13,14 @@
             <objects>
                 <viewController id="Sbk-JZ-7SB" customClass="HomeViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bD0-9q-ncC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzR-WW-OoJ">
-                                <rect key="frame" x="0.0" y="4" width="600" height="54"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBO-RJ-J2z">
-                                        <rect key="frame" x="527" y="10" width="70" height="34"/>
+                                        <rect key="frame" x="341" y="10" width="70" height="34"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="25" maxY="0.0"/>
@@ -42,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="dD5-eM-WMC">
-                                        <rect key="frame" x="577" y="20" width="10" height="14"/>
+                                        <rect key="frame" x="391" y="20" width="10" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="8ga-Yf-8DT"/>
@@ -58,7 +60,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yj-FO-7Tk">
-                                        <rect key="frame" x="236.5" y="0.0" width="127" height="54"/>
+                                        <rect key="frame" x="152" y="0.0" width="110" height="54"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="20" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -87,10 +89,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYc-3f-HDY">
-                                <rect key="frame" x="0.0" y="132" width="600" height="456"/>
+                                <rect key="frame" x="0.0" y="176" width="414" height="674"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFf-cU-0lH" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="456"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="674"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Sbk-JZ-7SB" id="8HW-bU-77A"/>
@@ -98,10 +100,10 @@
                                         </connections>
                                     </view>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="liS-Cn-ZHL">
-                                        <rect key="frame" x="30" y="0.0" width="540" height="456"/>
+                                        <rect key="frame" x="30" y="0.0" width="354" height="674"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your favorite teams don’t have any games today. Follow more teams!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GS1-zI-DZj">
-                                                <rect key="frame" x="0.0" y="218" width="540" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="316.5" width="354" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -115,14 +117,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYZ-9D-qTh">
-                                        <rect key="frame" x="0.0" y="30" width="600" height="426"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="644"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="b0E-jL-Lmc">
-                                                <rect key="frame" x="281.5" y="119.5" width="37" height="37"/>
+                                                <rect key="frame" x="188.5" y="228.5" width="37" height="37"/>
                                                 <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-1G-iTj">
-                                                <rect key="frame" x="240.5" y="163" width="119" height="20.5"/>
+                                                <rect key="frame" x="147.5" y="272" width="119" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -154,7 +156,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msW-sh-ZSF">
-                                <rect key="frame" x="0.0" y="64" width="600" height="62"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="62"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="iHs-sW-Ibq">
                                         <rect key="frame" x="24" y="6" width="512" height="50"/>
@@ -273,11 +275,25 @@
                         <outletCollection property="typeButtons" destination="D66-os-41d" collectionClass="NSMutableArray" id="RsJ-Rm-kkL"/>
                         <outletCollection property="typeButtons" destination="nGw-05-auB" collectionClass="NSMutableArray" id="Ehh-D2-ire"/>
                         <segue destination="Oj1-q8-eGA" kind="show" identifier="showGame" id="jQx-3v-Vur"/>
+                        <segue destination="KCV-pz-QWP" kind="presentation" identifier="auth" modalPresentationStyle="fullScreen" id="yNx-pW-bsQ"/>
+                        <segue destination="F3l-cb-wvj" kind="presentation" identifier="showPost" modalPresentationStyle="fullScreen" id="OeT-Kw-F3K"/>
+                        <segue destination="6IM-qo-VB1" kind="show" identifier="showComment" id="uEB-iV-JdY"/>
+                        <segue destination="9dQ-3v-f3E" kind="presentation" identifier="showLive" modalPresentationStyle="fullScreen" id="mqY-i5-Ga2"/>
+                        <segue destination="yl3-XX-sOB" kind="show" identifier="showProfile" id="3dH-zq-8nw"/>
+                        <segue destination="xRO-F2-q3X" kind="show" identifier="showSinglePost" id="Pe4-YZ-EVb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfp-0T-n9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="1020.5397301349326"/>
+        </scene>
+        <!--Onboarding-->
+        <scene sceneID="oNi-ex-glD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="KCV-pz-QWP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7UJ-pb-plY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="814"/>
         </scene>
         <!--GameDay-->
         <scene sceneID="Kgn-Ie-qM2">
@@ -288,6 +304,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8w-BP-jTV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834" y="1021"/>
+        </scene>
+        <!--ShotViewController-->
+        <scene sceneID="b22-o5-ybO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ShotViewController" id="F3l-cb-wvj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hPA-IF-aGX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rY-0l-1o0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878" y="1137"/>
+        </scene>
+        <!--CommentsViewController-->
+        <scene sceneID="Ojy-KK-Wfv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CommentsViewController" id="6IM-qo-VB1" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Gpe-HG-0eF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XDD-ao-OCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="1202"/>
+        </scene>
+        <!--ViewLiveStreamViewController-->
+        <scene sceneID="HFP-Pi-0RO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ViewLiveStreamViewController" id="9dQ-3v-f3E" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Rce-HF-gOv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rd3-Dm-ivP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1927" y="1266"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="b9L-ry-MOO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ProfileViewController" id="yl3-XX-sOB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KqE-CL-lLm"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iBz-Z0-kjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886" y="1330"/>
+        </scene>
+        <!--SinglePostViewController-->
+        <scene sceneID="kYN-v2-4Iu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SinglePostViewController" id="xRO-F2-q3X" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XGJ-fT-Zgy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1UL-7y-s1N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="1434"/>
         </scene>
     </scenes>
     <resources>

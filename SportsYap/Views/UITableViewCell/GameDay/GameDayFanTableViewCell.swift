@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class GameDayFanTableViewCell: UITableViewCell {
 
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var teamNameLabel: UILabel!
-    @IBOutlet var timeLabel: UILabel!
-    @IBOutlet var isVerifiedImageView: UIImageView!
-    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var isVerifiedImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var teamImageView: UIImageView!
 
     var game: Game?
     var fan: User? {
@@ -22,18 +23,14 @@ class GameDayFanTableViewCell: UITableViewCell {
             if let user = fan {
                 nameLabel.text = user.name
                 isVerifiedImageView.alpha = user.verified ? 1 : 0
-                if let url = user.profileImage {
-                    profileImageView.imageFromUrl(url: url)
-                } else {
-                    profileImageView.image = #imageLiteral(resourceName: "default-profile")
-                }
+                profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 
                 if user.pivot?.itemAId == game?.awayTeam.id {
-                    teamNameLabel.text = game?.awayTeam.name
+                    teamImageView.image = UIImage(named: "team_color_away")
                 } else if user.pivot?.itemAId == game?.homeTeam.id {
-                    teamNameLabel.text = game?.homeTeam.name
+                    teamImageView.image = UIImage(named: "team_color_home")
                 } else {
-                    teamNameLabel.text = ""
+                    teamImageView.image = nil
                 }
                 
                 if let date = user.pivot?.createdAt {
@@ -43,5 +40,12 @@ class GameDayFanTableViewCell: UITableViewCell {
                 }
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        profileImageView.sd_cancelCurrentImageLoad()
+        profileImageView.image = nil
     }
 }

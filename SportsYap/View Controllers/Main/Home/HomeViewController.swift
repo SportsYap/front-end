@@ -122,7 +122,6 @@ class HomeViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             UserDefaults.standard.removeObject(forKey: "reportedPost")
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -191,7 +190,6 @@ extension HomeViewController {
                     // most likely a duplicate game since no winningTeamId is 0
                     //self.games.remove(at: index)
                     index += 1
-                    
                 } else if game.awayScore == 0 && game.homeScore == 0 {
                     if self.games.contains(where: {$0.homeTeam.id == game.homeTeam.id
                         && $0.awayTeam.id == game.awayTeam.id
@@ -200,10 +198,8 @@ extension HomeViewController {
                         if game.start < Date() {
                             self.games.remove(at: index)
                         }
-                                                
                     }
-                }
-                else {
+                } else {
                     index += 1
                 }
             }
@@ -238,7 +234,9 @@ extension HomeViewController {
             }
 
             self.didReloadGames()
-        }) { (err) in }
+        }) { (err) in
+            print(err)
+        }
     }
 }
 

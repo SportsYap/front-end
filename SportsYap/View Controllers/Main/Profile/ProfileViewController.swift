@@ -106,11 +106,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pro
                 cell.isVerifiedImageView.alpha = user.verified ? 1 : 0
                 cell.followBttn.alpha = User.me.id == user.id ? 0 : 1
                 cell.followBttn.setTitle(user.followed ? "Following" : "Follow", for: .normal)
-                if let url = user.profileImage{
-                    cell.profileImageView.imageFromUrl(url: url)
-                }else{
-                    cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-                }
+                cell.profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 cell.delegate = self
                 cell.selectionStyle = .none
                 return cell

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Segmentio
+import SDWebImage
 
 protocol DiscoverTableViewCellDelegate {
     func followBttnPressed(team: Team)
@@ -228,11 +229,7 @@ extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource, Di
                     cell.isVerifiedImageView.alpha = user.verified ? 1 : 0
                     cell.user = user
                     cell.delegate = self
-                    if let url = user.profileImage{
-                        cell.profileImageView.imageFromUrl(url: url)
-                    }else{
-                        cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-                    }
+                    cell.profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                     cell.selectionStyle = .none
                     return cell
                 }

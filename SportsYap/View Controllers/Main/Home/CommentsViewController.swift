@@ -50,9 +50,7 @@ class CommentsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        if let url = User.me.profileImage{
-            profileImageView.imageFromUrl(url: url)
-        }
+        profileImageView.sd_setImage(with: User.me.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
         
         sportsyapGifNames.append("ko.gif")
         sportsyapGifNames.append("And1.gif")
@@ -199,11 +197,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.isVerifiedImageView.alpha = comment.user.verified ? 1 : 0
             cell.timeAgoLbl.text = comment.createdAt.timeAgoSince()
-            if let url = comment.user.profileImage{
-                cell.profileImageView.imageFromUrl(url: url)
-            }else{
-                cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-            }
+            cell.profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
             
             cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(deletePressed(sender:)), for: .touchUpInside)
@@ -219,11 +213,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.isVerifiedImageView.alpha = comment.user.verified ? 1 : 0
             cell.timeAgoLbl.text = comment.createdAt.timeAgoSince()
-            if let url = comment.user.profileImage{
-                cell.profileImageView.imageFromUrl(url: url)
-            }else{
-                cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-            }
+            cell.profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
             
             cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(deletePressed(sender:)), for: .touchUpInside)
@@ -232,39 +222,6 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         }
-        
-        
-        
-        /*
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as? CommentTableViewCell{
-            let comment = post.comments[indexPath.row]
-            cell.isVerifiedImageView.alpha = comment.user.verified ? 1 : 0
-            cell.timeAgoLbl.text = comment.createdAt.timeAgoSince()
-            if let url = comment.user.profileImage{
-                cell.profileImageView.imageFromUrl(url: url)
-            }else{
-                cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-            }
-            
-            cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.addTarget(self, action: #selector(deletePressed(sender:)), for: .touchUpInside)
-            
-            if comment.text.contains("media.tenor.com/images/") {
-                // gif
-                cell.textLbl.attributedText = NSMutableAttributedString().bold(comment.user.name)
-                cell.addGifImageView(gifUrl: comment.text)
-
-            } else {
-                // regular comment
-                cell.textLbl.attributedText = NSMutableAttributedString().bold(comment.user.name).normal(" \(comment.text)")
-            }
-
-            return cell
-        }
-        
-        return UITableViewCell()
-        */
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

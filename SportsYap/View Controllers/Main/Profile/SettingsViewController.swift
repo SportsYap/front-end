@@ -100,11 +100,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate, Se
                 cell.emailTextField.text = User.me.email
                 cell.locationTextField.text = User.me.location
                 cell.delegate = self
-                if let url = User.me.profileImage{
-                    cell.profileImageView.imageFromUrl(url: url)
-                }else{
-                    cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-                }
+                cell.profileImageView.sd_setImage(with: User.me.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 return cell
             }
         }else if indexPath.section == 1{

@@ -24,8 +24,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             usernameTextField.textContentType = UITextContentType(rawValue: "")
             passwordTextField.textContentType = UITextContentType(rawValue: "")
         }
-        
-        
     }
 
     //MARK: IBActions
@@ -44,6 +42,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.alert(message: "Internal Server Error Signing Up")
         }
     }
+    
     @IBAction func passwordShowBttnPressed(_ sender: Any) {
         guard let bttn = sender as? UIButton else{ return }
         if passwordTextField.isSecureTextEntry{
@@ -54,9 +53,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             bttn.setTitle("Show", for: .normal)
         }
     }
+    
     @IBAction func backBttnPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func cancelBttnPressed(_ sender: Any) {
     }
     

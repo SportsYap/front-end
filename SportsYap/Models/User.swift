@@ -28,6 +28,8 @@ class User: DBObject {
     var followingCnt = 0
     var shotsCnt = 0
     
+    var teamId: Int = 0
+    
     var teams = [Team]()
     var posts = [Post]()
     var games = [Game]()
@@ -141,6 +143,10 @@ class User: DBObject {
             profileImage = URL(string: "\(ApiManager.shared.BASE_IMAGE_URL)\(pf)")!
         }
         
+        if let _teamId = dict["team_id"] as? Int {
+            teamId = _teamId
+        }
+
         if let sus = dict["stream_url"] as? String, let su = URL(string: sus){
             streamingUrl = su
         }

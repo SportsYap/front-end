@@ -86,11 +86,7 @@ extension ViewUsersViewController: UITableViewDataSource, UITableViewDelegate, U
             cell.user = user
             cell.delegate = self
             cell.selectionStyle = .none
-            if let url = user.profileImage{
-                cell.profileImageView.imageFromUrl(url: url)
-            }else{
-                cell.profileImageView.image = #imageLiteral(resourceName: "default-profile")
-            }
+            cell.profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
             return cell
         }
         return UITableViewCell()

@@ -28,6 +28,9 @@ target 'SportsYap' do
   pod 'Nuke'
   pod 'SwiftDate'
   pod 'iCarousel'
+  pod 'SDWebImage'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end
 
 

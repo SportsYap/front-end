@@ -7,26 +7,28 @@
 //
 
 import UIKit
+import SDWebImage
 
 class GameDayNewsTableViewCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var coverPhotoImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var news: News? {
         didSet {
             if let news = news {
                 titleLabel.text = news.title
                 detailLabel.text = "\(news.author)" + (news.author == "" ? "" : " ∙ ") + news.createdAt.timeAgoSince()
-                activityIndicator.startAnimating()
-                if let url = news.thumbnail{
-                    coverPhotoImageView.imageFromUrl(url: url)
-                } else {
-                    coverPhotoImageView.image = nil
-                }
+                coverPhotoImageView.sd_setImage(with: news.thumbnail)
             }
         }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        coverPhotoImageView.sd_cancelCurrentImageLoad()
+        coverPhotoImageView.image = nil
     }
 }

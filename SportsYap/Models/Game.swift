@@ -26,7 +26,9 @@ class Game: DBObject {
     var fans = [User]()
     var news = [News]()
     var posts = [Post]()
-    var hasFrontRow: Bool{
+    var events = [Event]()
+    
+    var hasFrontRow: Bool {
         get{ return fans.verified.count > 0 }
     }
     
@@ -106,6 +108,19 @@ class Game: DBObject {
             venue = Venue(dict: venueDict)
         } else {
             venue = Venue()
+        }
+        
+        fans = [User]()
+        if let usersJson = dict["fans"] as? [[String: AnyObject]] {
+            for userJson in usersJson {
+                let u = User(dict: userJson)
+                if let p = userJson["pivot"] as? [String: AnyObject] {
+                    u.pivot = UserFollowablePivot(dict: p)
+                } else if let tId = userJson["team_id"] as? Int {
+                    u.pivot = UserFollowablePivot(itemA: tId, itemB: u.id, type: "Following")
+                }
+                fans.append(u)
+            }
         }
     }
 }

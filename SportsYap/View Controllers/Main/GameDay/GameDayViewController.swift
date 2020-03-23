@@ -75,18 +75,11 @@ class GameDayViewController: UIViewController {
         super.viewWillAppear(animated)
         
         displayGameInfo()
-        
-        DispatchQueue.global(qos: .background).async {
-            ApiManager.shared.fans(for: self.game, onSuccess: { (users) in
-                self.game.fans = users
-                self.tableView.reloadData()
-            }) { (err) in }
-        }
     }
     
     //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ShotViewController{
+        if let vc = segue.destination as? EnterFieldViewController {
             vc.game = game
         }else if let vc = segue.destination as? ProfileViewController, let user = sender as? User{
             vc.user = user
@@ -145,11 +138,19 @@ extension GameDayViewController {
 
 extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (selectedTabItem == .Fans) ? 3 : 1
+        switch selectedTabItem {
+        case .Fans:
+            return 3
+        case .Events:
+            return 1
+        case .News:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedTabItem == .Fans {
+        switch selectedTabItem {
+        case .Fans:
             if section == 0 {
                 return game.fans.verified.count
             } else if section == 1 {
@@ -157,19 +158,22 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 return game.fans.watchingGame.count
             }
-        } else {
+        case .Events:
+            return game.events.count
+        case .News:
             return game.news.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if selectedTabItem == .News {
+        switch selectedTabItem {
+        case .News:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? GameDayNewsTableViewCell {
                 let news = game.news[indexPath.row]
                 cell.news = news
                 return cell
             }
-        } else if selectedTabItem == .Fans {
+        case .Fans:
             let user: User
             if indexPath.section == 0 {
                 user = game.fans.verified[indexPath.row]
@@ -183,13 +187,26 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.fan = user
                 return cell
             }
+        case .Events:
+            let event = game.events[indexPath.row]
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as? GameDayEventTableViewCell {
+                cell.event = event
+                return cell
+            }
         }
     
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return selectedTabItem == .Fans ? 52 : 135
+        switch selectedTabItem {
+        case .Fans:
+            return 62
+        case .Events:
+            return 227
+        case .News:
+            return 79
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -214,26 +231,47 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if selectedTabItem == .Fans {
-            if section == 0 && game.hasFrontRow {
-                return 60
-            } else if section == 1 || section == 2 {
-                return 60
+        switch selectedTabItem {
+        case .Fans:
+            if section == 0 {
+                return game.hasFrontRow ? 42 : 0
+            } else if section == 1 {
+                return game.fans.atGame.isEmpty ? 0 : 42
+            } else {
+                return game.fans.watchingGame.isEmpty ? 0 : 42
             }
+        case .Events:
+            return game.events.isEmpty ? 0 : 42
+        case .News:
+            return 0
         }
-        
-        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let lbl = UILabel(frame: CGRect(x: 25, y: 20, width: 200, height: 20))
-        lbl.text = ["FRONT ROW", "FRIENDS AT THE GAME", "WATCHING THE GAME"][section]
-        lbl.textColor = UIColor(hex: "7F7F7F")
+        var title: String? = nil
+        switch selectedTabItem {
+        case .Fans:
+            title = [NSLocalizedString("FRONT ROW", comment: ""),
+                NSLocalizedString("FRIENDS AT THE GAME", comment: ""),
+                NSLocalizedString("WATCHING THE GAME", comment: "")][section]
+        case .Events:
+            title = NSLocalizedString("PRE-GAME", comment: "")
+        case .News:
+            break
+        }
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 60))
-        headerView.addSubview(lbl)
-        
-        return headerView
+        if let title = title {
+            let titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 42))
+            titleLabel.text = title
+            titleLabel.textColor = UIColor(hex: "1F263A")
+            titleLabel.font = UIFont.systemFont(ofSize: 12)
+            
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 42))
+            headerView.addSubview(titleLabel)
+            
+            return headerView
+        }
+        return nil
     }
 }
 

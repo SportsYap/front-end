@@ -101,12 +101,6 @@ class ShotViewController: UIViewController {
             return
         }
         
-        for post in posts{
-            if let url = post.media.photoUrl{
-                UIImageView.preloadImageFromUrl(url: url)
-            }
-        }
-        
         ApiManager.shared.fanMeter(for: game, onSuccess: { (val) in
             self.game.fanMeter = val
             self.setFanMeter()
@@ -171,7 +165,7 @@ class ShotViewController: UIViewController {
         let media = post.media!
         if let url = media.photoUrl{
             imageBackgroundView.alpha = 1
-            imageBackgroundView.imageFromUrl(url: url) { (succ) in
+            imageBackgroundView.sd_setImage(with: url) { (_, _, _, _) in
                 self.photoTimer = Timer.scheduledTimer(withTimeInterval: 6, repeats: false, block: { (t) in
                     self.nextPost()
                 })

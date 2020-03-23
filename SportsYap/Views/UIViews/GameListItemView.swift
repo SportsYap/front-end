@@ -58,7 +58,20 @@ class GameListItemView: UIView {
             watchOnLabel.text = game.sport.abv
             
             for fan in game.fans {
-
+                let userView = UIImageView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+                userView.contentMode = .scaleAspectFill
+                userView.clipsToBounds = true
+                userView.widthAnchor.constraint(equalTo: userView.heightAnchor).isActive = true
+                userView.sd_setImage(with: fan.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+                userView.clipsToBounds = true
+                userView.layer.borderWidth = 2
+                userView.layer.borderColor = UIColor.white.cgColor
+                userView.layer.cornerRadius = 14
+                if fan.teamId == game.homeTeam.id {
+                    homeFansStackView.addArrangedSubview(userView)
+                } else {
+                    awayFansStackView.addArrangedSubview(userView)
+                }
             }
         }
     }

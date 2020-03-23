@@ -74,11 +74,7 @@ extension SinglePostViewController: UITableViewDataSource, UITableViewDelegate, 
         cell.nameLbl.text = post.user.name
         cell.userProfileImageView.image = nil
         cell.userProfileImageView.backgroundColor = UIColor.black
-        if let url = post.user.profileImage{
-            cell.userProfileImageView.imageFromUrl(url: url)
-        }else{
-            cell.userProfileImageView.image = #imageLiteral(resourceName: "default-profile")
-        }
+        cell.userProfileImageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
         cell.timeAgoLbl.text = post.createdAt.timeAgoSince()
         cell.teamLbl.text = post.team?.name ?? ""
         cell.verificiedIcon.alpha = post.user.verified ? 1 : 0
@@ -87,16 +83,19 @@ extension SinglePostViewController: UITableViewDataSource, UITableViewDelegate, 
         //cell.likeBttn.setImage(!post.liked ? #imageLiteral(resourceName: "like_bttn_empty") : #imageLiteral(resourceName: "like_bttn_selected"), for: .normal)
         cell.likeBttn.setImage(!User.me.likedPosts.contains(post.id) ? #imageLiteral(resourceName: "like_bttn_empty") : #imageLiteral(resourceName: "like_bttn_selected"), for: .normal)
         cell.setLikeCnt(cnt: post.likeCnt ?? 0)
-        if let url = post.media.photoUrl{ // Render Photo
-            cell.mediaImageView.imageFromUrl(url: url)
+        if let url = post.media.photoUrl { // Render Photo
+            cell.mediaImageView.sd_setImage(with: url)
             cell.playBttnImageView.alpha = 0
             
             cell.mediaImageView.isPinchable = true
             
-        }else if let url = post.media.thumbnailUrl{ // Render Video Thumbnail
-            cell.mediaImageView.imageFromUrl(url: url)
+        } else if let url = post.media.thumbnailUrl { // Render Video Thumbnail
+            cell.mediaImageView.sd_setImage(with: url)
             cell.mediaImageView.isPinchable = true
             cell.playBttnImageView.alpha = 1
+        } else {
+            cell.mediaImageView.sd_cancelCurrentImageLoad()
+            cell.mediaImageView.image = nil
         }
         cell.delegate = self
         cell.selectionStyle = .none

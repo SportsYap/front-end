@@ -8,9 +8,9 @@
 
 import UIKit
 import Alamofire
+import SDWebImage
 
 extension UIImage {
-    
     class func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage {
         let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
@@ -21,33 +21,4 @@ extension UIImage {
         return image
     }
     
-}
-
-extension UIImageView {
-    public func imageFromUrl(url: URL) {
-        self.imageFromUrl(url: url) { (_) in }
-    }
-    
-    public func imageFromUrl(url: URL, callback: @escaping (_ success: Bool) -> Void){
-        self.image = nil
-        let key = url.path.replacingOccurrences(of: "/", with: "_")
-        if let img = ImageFileManager.shared.getImage(key: key){
-            self.image = img
-            callback(true)
-        }else{
-            Alamofire.request(url).responseData { (data) in
-                if let imgData = data.data, let image = UIImage(data: imgData){
-                    self.image = image
-                    callback(true)
-                    ImageFileManager.shared.saveImage(image: image, key: key)
-                }else{
-                    callback(false)
-                }
-            }
-        }
-    }
-    
-    static func preloadImageFromUrl(url: URL){
-        UIImageView().imageFromUrl(url: url) { (_) in }
-    }
 }

@@ -13,6 +13,12 @@
 		AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3C08BD24204A14001F63EF /* GameListItemView.xib */; };
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
+		AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */; };
+		AF6CF85D242610B60035CC6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85C242610B60035CC6F /* Event.swift */; };
+		AF6CF85F242619550035CC6F /* GameDayEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */; };
+		AF6CF861242623110035CC6F /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF860242623110035CC6F /* Double.swift */; };
+		AF6CF86424287ADF0035CC6F /* EnterFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */; };
+		AF6CF867242918BC0035CC6F /* FieldPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */; };
 		CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */; };
 		CD04100420B7E6C5000E1D66 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */; };
 		CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100520B7EC6D000E1D66 /* Comment.swift */; };
@@ -180,6 +186,12 @@
 		AF3C08BD24204A14001F63EF /* GameListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListItemView.xib; sourceTree = "<group>"; };
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
+		AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		AF6CF85C242610B60035CC6F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayEventTableViewCell.swift; sourceTree = "<group>"; };
+		AF6CF860242623110035CC6F /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFieldViewController.swift; sourceTree = "<group>"; };
+		AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		CD04100520B7EC6D000E1D66 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -380,6 +392,7 @@
 			children = (
 				CDE83A58203155950056C77D /* GameDayViewController.swift */,
 				AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */,
+				AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */,
 			);
 			path = GameDay;
 			sourceTree = "<group>";
@@ -389,6 +402,15 @@
 			children = (
 				CD0A655420B5105F00E17FC7 /* GameDayFanTableViewCell.swift */,
 				CD0A655620B5106900E17FC7 /* GameDayNewsTableViewCell.swift */,
+				AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */,
+			);
+			path = GameDay;
+			sourceTree = "<group>";
+		};
+		AF6CF865242916FD0035CC6F /* GameDay */ = {
+			isa = PBXGroup;
+			children = (
+				AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */,
 			);
 			path = GameDay;
 			sourceTree = "<group>";
@@ -401,6 +423,7 @@
 				CD21658420C7C1BC0009E908 /* DiscoverGameCollectionViewCell.swift */,
 				CD4F952420C8DE0F00159D5D /* LiveUserCollectionViewCell.swift */,
 				D7A19994231DFDFE007E7D86 /* AnimatedImageCell.swift */,
+				AF6CF865242916FD0035CC6F /* GameDay */,
 			);
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
@@ -415,6 +438,7 @@
 				CDF52DD32183B5170013EC6E /* PhoneSignupViewController.swift */,
 				CDF52DD52183B5260013EC6E /* PhoneVerificationViewController.swift */,
 				CD3469482189282F00AE0BA9 /* SetupAccountViewController.swift */,
+				AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -591,6 +615,7 @@
 				CDDA0CB9201FBBAB00BA0568 /* User.swift */,
 				CD5BD917203EBBB500709FAE /* Team.swift */,
 				CD69D0B92051F797007937EE /* Game.swift */,
+				AF6CF85C242610B60035CC6F /* Event.swift */,
 				CD4BDE10209A38B500DE6558 /* Post.swift */,
 				CD4A2EEA208DCF7D00DCA56C /* UserMedia.swift */,
 				CD0A655820B5184500E17FC7 /* News.swift */,
@@ -605,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				CDDA0CAC201FAAA000BA0568 /* CALayer.swift */,
+				AF6CF860242623110035CC6F /* Double.swift */,
 				CDDA0CA5201FAA9E00BA0568 /* NSData.swift */,
 				CDDA0CA8201FAA9E00BA0568 /* Nums.swift */,
 				CDDA0CAB201FAAA000BA0568 /* String.swift */,
@@ -749,6 +775,7 @@
 				8CD8CE47F1A2A4AF470C40F6 /* [CP] Embed Pods Frameworks */,
 				CDCE558D204816FA0023AD48 /* ShellScript */,
 				D79C337F220975D800989B57 /* Embed App Extensions */,
+				8E0E5C5048087823AB06821B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -836,6 +863,7 @@
 				D79134AD23203E69007D9411 /* RallyMonkey.gif in Resources */,
 				D79134B323203E69007D9411 /* BigCatch.gif in Resources */,
 				D79134AA23203E69007D9411 /* LIT.gif in Resources */,
+				AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */,
 				D79134A523203E69007D9411 /* Shh.gif in Resources */,
 				CD910816201FA9B200A00EBC /* LaunchScreen.storyboard in Resources */,
 				D79134B223203E69007D9411 /* IssaThree.gif in Resources */,
@@ -931,6 +959,7 @@
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVWebViewController/SVWebViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -958,6 +987,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVWebViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -970,6 +1000,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportsYap/Pods-SportsYap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E0E5C5048087823AB06821B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SportsYap/Pods-SportsYap-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportsYap/Pods-SportsYap-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CDCE558D204816FA0023AD48 /* ShellScript */ = {
@@ -1043,6 +1093,7 @@
 				CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */,
 				AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */,
 				CD0A655920B5184500E17FC7 /* News.swift in Sources */,
+				AF6CF86424287ADF0035CC6F /* EnterFieldViewController.swift in Sources */,
 				CDDA0CAF201FAAA000BA0568 /* NSData.swift in Sources */,
 				CD4F952520C8DE0F00159D5D /* LiveUserCollectionViewCell.swift in Sources */,
 				CD04100820B7EEF4000E1D66 /* Date.swift in Sources */,
@@ -1057,6 +1108,7 @@
 				D71F973522508B330051E715 /* MediaElement.swift in Sources */,
 				D71F973822508B330051E715 /* Images.swift in Sources */,
 				CDBBC30820A3A72200309ADE /* ProfilePostTableViewCell.swift in Sources */,
+				AF6CF85D242610B60035CC6F /* Event.swift in Sources */,
 				CDF52DD62183B5260013EC6E /* PhoneVerificationViewController.swift in Sources */,
 				CD63D5A520A18351008B8D5E /* SettingsViewController.swift in Sources */,
 				D71F9709224DF9370051E715 /* YGCRepeatSegment.swift in Sources */,
@@ -1064,7 +1116,9 @@
 				CDDA0CB8201FAAA000BA0568 /* UIImage.swift in Sources */,
 				CD04100A20B7EF70000E1D66 /* CommentTableViewCell.swift in Sources */,
 				CDF92B2920BB7A630068A50C /* Challenge.swift in Sources */,
+				AF6CF85F242619550035CC6F /* GameDayEventTableViewCell.swift in Sources */,
 				CD21658C20C7D0070009E908 /* TimelineLiveTableViewCell.swift in Sources */,
+				AF6CF867242918BC0035CC6F /* FieldPostCollectionViewCell.swift in Sources */,
 				D71F970D224DF9370051E715 /* YGCCutVideoTime.swift in Sources */,
 				CD63D5A920A1885A008B8D5E /* SettingsGameTableViewCell.swift in Sources */,
 				CD0A655520B5105F00E17FC7 /* GameDayFanTableViewCell.swift in Sources */,
@@ -1073,6 +1127,7 @@
 				CDF52DD42183B5170013EC6E /* PhoneSignupViewController.swift in Sources */,
 				CDF92B2B20BC11770068A50C /* ChallengeViewController.swift in Sources */,
 				D71F970E224DF9370051E715 /* YGCSlowMotion.swift in Sources */,
+				AF6CF861242623110035CC6F /* Double.swift in Sources */,
 				CD5BD918203EBBB500709FAE /* Team.swift in Sources */,
 				CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */,
 				D71F970A224DF9370051E715 /* YGCVideoHelper.swift in Sources */,
@@ -1312,7 +1367,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
@@ -1323,6 +1378,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1336,7 +1392,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
@@ -1346,6 +1402,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

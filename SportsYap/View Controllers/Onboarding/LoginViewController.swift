@@ -39,6 +39,7 @@ class LoginViewController: UIViewController{
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
     }
+    
     @IBAction func signinBttnPressed(_ sender: Any) {
         ApiManager.shared.login(email: usernameTextField.text!, password: passwordTextField.text!, {
             ApiManager.shared.me(onSuccess: { (user) in
@@ -48,6 +49,7 @@ class LoginViewController: UIViewController{
             self.alert(message: "Invalid username of password")
         }
     }
+    
     @IBAction func passwordShowBttnPressed(_ sender: Any) {
         guard let bttn = sender as? UIButton else{ return }
         if passwordTextField.isSecureTextEntry{
@@ -58,11 +60,10 @@ class LoginViewController: UIViewController{
             bttn.setTitle("Show", for: .normal)
         }
     }
+    
     @IBAction func backBttnPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }
 
 extension LoginViewController: MFMailComposeViewControllerDelegate{
