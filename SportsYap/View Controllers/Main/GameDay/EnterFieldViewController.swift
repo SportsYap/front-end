@@ -22,11 +22,13 @@ class EnterFieldViewController: UIViewController {
     var game: Game? {
         didSet {
             if let game = game {
-                placesClient.autocompleteQuery(game.venue.state + " " + game.venue.city + " " + game.venue.name, bounds: nil, boundsMode: .bias, filter: nil) { (list, error) in
+                placesClient.autocompleteQuery(game.venue.name + ", " + game.venue.city + ", " + game.venue.state, bounds: nil, boundsMode: .bias, filter: nil) { (list, error) in
                     if let place = list?.first {
                         self.placesClient.fetchPlace(fromPlaceID: place.placeID, placeFields: .coordinate, sessionToken: nil) { (place, error) in
                             if let place = place {
-                                self.panoView.moveNearCoordinate(place.coordinate)
+                                print(place.coordinate)
+//                                self.panoView.moveNearCoordinate(place.coordinate)
+                                self.panoView.move(toPanoramaID: "jwNssyRePk-bsLfpGWD49g")
                             }
                         }
                     }
@@ -43,13 +45,14 @@ class EnterFieldViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let panoView = GMSPanoramaView(frame: viewFieldView.bounds)
+        panoView = GMSPanoramaView(frame: viewFieldView.bounds)
         viewFieldView.addSubview(panoView)
+  
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if let game = game,
             posts.count == 0 {
             ApiManager.shared.story(for: game, page: 1, onSuccess: { (posts) in

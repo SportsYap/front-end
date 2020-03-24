@@ -14,6 +14,8 @@ import IQKeyboardManagerSwift
 import Firebase
 import OneSignal
 import AVFoundation
+import GooglePlaces
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
+        GMSServices.provideAPIKey("AIzaSyCpHx47eff9V_YzPtp5Ff9-raqrab4JO-c")
+        GMSPlacesClient.provideAPIKey("AIzaSyCpHx47eff9V_YzPtp5Ff9-raqrab4JO-c")
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.disabledDistanceHandlingClasses = [SignupViewController.self]
