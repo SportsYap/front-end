@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVKit
 import GoogleMaps
 import GooglePlaces
 
@@ -26,9 +25,9 @@ class EnterFieldViewController: UIViewController {
                     if let place = list?.first {
                         self.placesClient.fetchPlace(fromPlaceID: place.placeID, placeFields: .coordinate, sessionToken: nil) { (place, error) in
                             if let place = place {
-                                print(place.coordinate)
-//                                self.panoView.moveNearCoordinate(place.coordinate)
-                                self.panoView.move(toPanoramaID: "jwNssyRePk-bsLfpGWD49g")
+                                self.coordinate = place.coordinate
+                                self.radius = 10
+                                self.panoView.moveNearCoordinate(self.coordinate, radius: self.radius)
                             }
                         }
                     }
@@ -40,12 +39,16 @@ class EnterFieldViewController: UIViewController {
     
     private var placesClient: GMSPlacesClient = GMSPlacesClient()
     private var panoView: GMSPanoramaView!
+    
+    private var radius: UInt = 0
+    private var coordinate: CLLocationCoordinate2D = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         panoView = GMSPanoramaView(frame: viewFieldView.bounds)
+        panoView.delegate = self
         viewFieldView.addSubview(panoView)
   
     }
@@ -65,11 +68,21 @@ class EnterFieldViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let width = (view.bounds.width - 2) / 3
+        let width = CGFloat(Int((view.bounds.width - 2) / 3))
         collectionViewLayout.itemSize = CGSize(width: width, height: width)
-        collectionView.reloadData()
+        collectionViewLayout.estimatedItemSize = CGSize(width: width, height: width)
+        collectionViewLayout.prepare()
+        collectionViewLayout.invalidateLayout()
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let vc = segue.destination as? ShotViewController, let post = sender as? Post {
+            vc.posts = [post]
+            vc.game = game
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -112,23 +125,17 @@ extension EnterFieldViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item < posts.count {
             let post = posts[indexPath.item]
-            if let url = post.media.videoUrl {
-                let player = AVPlayer(url: url)
-                let vc = AVPlayerViewController()
-                vc.player = player
-
-                present(vc, animated: true) {
-                    vc.player?.play()
-                }
-            }
+            performSegue(withIdentifier: "showPost", sender: post)
             return
         }
         
         onAddPost(collectionView)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.bounds.width - 2) / 3
-        return CGSize(width: width, height: width)
+}
+
+extension EnterFieldViewController: GMSPanoramaViewDelegate {
+    func panoramaView(_ view: GMSPanoramaView, error: Error, onMoveNearCoordinate coordinate: CLLocationCoordinate2D) {
+        radius += 10
+        panoView.moveNearCoordinate(coordinate, radius: radius)
     }
 }

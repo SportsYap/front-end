@@ -951,8 +951,9 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZdI-ep-vjO">
                                         <rect key="frame" x="0.0" y="198" width="414" height="560"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="eZL-gn-mHH">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="eZL-gn-mHH">
                                             <size key="itemSize" width="100" height="100"/>
+                                            <size key="estimatedItemSize" width="100" height="100"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1088,9 +1089,10 @@
                     <navigationItem key="navigationItem" id="u1b-Cc-jyX"/>
                     <connections>
                         <outlet property="collectionView" destination="ZdI-ep-vjO" id="rhX-gf-3Ah"/>
-                        <outlet property="collectionViewLayout" destination="eZL-gn-mHH" id="udi-OB-3zw"/>
+                        <outlet property="collectionViewLayout" destination="eZL-gn-mHH" id="rJW-Bo-iNT"/>
                         <outlet property="filterStackView" destination="WGe-fO-DU0" id="hfu-LP-JnP"/>
                         <outlet property="viewFieldView" destination="nqU-Q6-VOW" id="Lls-b1-7Qu"/>
+                        <segue destination="mfY-6I-zgh" kind="presentation" identifier="showPost" modalPresentationStyle="fullScreen" id="jTe-rA-CfN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iT5-ke-Kyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1104,6 +1106,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPD-l1-tWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2725" y="1961"/>
+        </scene>
+        <!--ShotViewController-->
+        <scene sceneID="eXW-Vg-Eiu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ShotViewController" id="mfY-6I-zgh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SUM-PQ-Eeh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tW1-WL-ywu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3989" y="1906"/>
         </scene>
     </scenes>
     <resources>

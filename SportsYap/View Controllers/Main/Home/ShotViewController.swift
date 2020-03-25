@@ -37,12 +37,12 @@ class ShotViewController: UIViewController {
     
     var game: Game!
     var posts = [Post]()
-    var activePost = 0
     
-    var media: UserMedia!
-    var player: AVPlayer?
-    var photoTimer: Timer?
-    var viewLaidOut = false
+    private var activePost = 0
+    private var media: UserMedia!
+    private var player: AVPlayer?
+    private var photoTimer: Timer?
+    private var viewLaidOut = false
     private var isAnimatingProgressBar = false
     
     override func viewDidLoad() {

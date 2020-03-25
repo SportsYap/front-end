@@ -293,6 +293,7 @@ extension HomeViewController {
     }
     
     private func didReloadGames() {
+        carouselView.currentItemIndex = 0
         carouselView.reloadData()
         
         let hasGames: Bool

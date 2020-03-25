@@ -20,10 +20,10 @@ var singlePost = false
 class ApiManager: NSObject {
     static var shared = ApiManager()
     
-//    let BASE_URL = "https://api.sportsyap.com/api"
-    let BASE_URL = "http://192.168.0.180/api"
-//    let BASE_IMAGE_URL = "https://api.sportsyap.com"
-    let BASE_IMAGE_URL = "http://192.168.0.180"
+    let BASE_URL = "https://api.sportsyap.com/api"
+//    let BASE_URL = "http://192.168.0.180/api"
+    let BASE_IMAGE_URL = "https://api.sportsyap.com"
+//    let BASE_IMAGE_URL = "http://192.168.0.180"
     var accessToken = ""{
         didSet{
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "api-token-changed"), object: nil)
