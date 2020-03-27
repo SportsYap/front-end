@@ -442,7 +442,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QV-D1-wZY">
-                                        <rect key="frame" x="15" y="6" width="44" height="38"/>
+                                        <rect key="frame" x="15" y="14" width="22" height="22"/>
                                         <state key="normal" image="left_arrow_black"/>
                                         <connections>
                                             <action selector="backBttnPressed:" destination="N0l-e0-Bir" eventType="touchUpInside" id="hbt-z4-hec"/>
@@ -2588,7 +2588,7 @@
         <image name="challenge_icon" width="182" height="94"/>
         <image name="circle_check_green" width="18" height="18"/>
         <image name="comment_bttn_empty" width="24" height="24"/>
-        <image name="default-profile" width="188" height="188"/>
+        <image name="default-profile" width="60" height="60"/>
         <image name="discover_icon" width="22" height="22"/>
         <image name="gif_button" width="32" height="32"/>
         <image name="home_icon" width="23" height="25"/>
@@ -2603,6 +2603,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GpR-8e-WJ8"/>
-        <segue reference="oMH-BV-y6M"/>
+        <segue reference="oLf-5s-Gab"/>
     </inferredMetricsTieBreakers>
 </document>

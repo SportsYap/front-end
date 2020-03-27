@@ -252,14 +252,14 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="gameCell" id="dwH-7o-v27" customClass="DiscoverGameCollectionViewCell" customModule="SportsYap" customModuleProvider="target">
-                                                <rect key="frame" x="135" y="252" width="144" height="132"/>
+                                                <rect key="frame" x="135" y="252" width="144" height="142"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="132"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="142"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sport_bg" translatesAutoresizingMaskIntoConstraints="NO" id="otb-2r-0k1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="144" height="132"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="144" height="142"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Georgia Dome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-gL-npp">
                                                             <rect key="frame" x="12" y="10" width="92.5" height="17"/>
@@ -274,7 +274,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Arx-Ym-Nrw">
-                                                            <rect key="frame" x="12" y="92" width="120" height="21"/>
+                                                            <rect key="frame" x="12" y="102" width="120" height="21"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardinals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHc-qd-JmB">
                                                                     <rect key="frame" x="0.0" y="0.0" width="82" height="21"/>
@@ -305,7 +305,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEQ-vq-oIz">
-                                                            <rect key="frame" x="12" y="62" width="120" height="21"/>
+                                                            <rect key="frame" x="12" y="72" width="120" height="21"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardinals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOE-O1-aHJ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="82" height="21"/>
@@ -354,7 +354,7 @@
                                                     <constraint firstItem="aOw-gL-npp" firstAttribute="top" secondItem="dwH-7o-v27" secondAttribute="top" constant="10" id="vkV-F1-227"/>
                                                     <constraint firstAttribute="bottom" secondItem="otb-2r-0k1" secondAttribute="bottom" id="y3V-oY-Jp5"/>
                                                 </constraints>
-                                                <size key="customSize" width="144" height="132"/>
+                                                <size key="customSize" width="144" height="142"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="8"/>
@@ -371,7 +371,7 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noGamesCell" id="a0H-un-G3G">
-                                                <rect key="frame" x="23" y="392" width="368" height="180"/>
+                                                <rect key="frame" x="23" y="402" width="368" height="180"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="368" height="180"/>

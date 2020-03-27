@@ -9,29 +9,53 @@
 import UIKit
 
 protocol TagGameTableViewCellDelegate {
-    func teamPressed(game: Game, team: Team)
+    func didSelectTeam(game: Game, team: Team)
 }
 
 class TagGameTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet var sportBg: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var sportBgImageView: UIImageView!
     
-    @IBOutlet var awayHomeTown: UILabel!
-    @IBOutlet var awayTeamName: UILabel!
-    @IBOutlet var awayScore: UILabel!
-    @IBOutlet var awayTeamPrimaryColorView: UIView!
-    @IBOutlet var awayTeamSecondaryColorView: UIView!
-    @IBOutlet var awayTeamSelectedView: UIView!
+    @IBOutlet weak var awayHomeTownLabel: UILabel!
+    @IBOutlet weak var awayTeamNameLabel: UILabel!
+    @IBOutlet weak var awayScoreLabel: UILabel!
+    @IBOutlet weak var awayTeamPrimaryColorView: UIView!
+    @IBOutlet weak var awayTeamSecondaryColorView: UIView!
+    @IBOutlet weak var awayTeamSelectedView: UIView!
     
-    @IBOutlet var homeHomeTown: UILabel!
-    @IBOutlet var homeTeamName: UILabel!
-    @IBOutlet var homeScore: UILabel!
-    @IBOutlet var homeTeamPrimaryColorView: UIView!
-    @IBOutlet var homeTeamSecondaryColorView: UIView!
-    @IBOutlet var homeTeamSelectedView: UIView!
+    @IBOutlet weak var homeHomeTownLabel: UILabel!
+    @IBOutlet weak var homeTeamNameLabel: UILabel!
+    @IBOutlet weak var homeScoreLabel: UILabel!
+    @IBOutlet weak var homeTeamPrimaryColorView: UIView!
+    @IBOutlet weak var homeTeamSecondaryColorView: UIView!
+    @IBOutlet weak var homeTeamSelectedView: UIView!
     
-    var game: Game!
+    var game: Game! {
+        didSet {
+            if game.awayTeam != nil {
+                awayHomeTownLabel.text = game.awayTeam.homeTown
+                awayTeamNameLabel.text = game.awayTeam.name
+                awayScoreLabel.text = "\(game.awayScore)"
+                awayTeamPrimaryColorView.backgroundColor = game.awayTeam.primaryColor
+                awayTeamSecondaryColorView.backgroundColor = game.awayTeam.secondaryColor
+            }
+            
+            if game.homeTeam != nil {
+                homeHomeTownLabel.text = game.homeTeam.homeTown
+                homeTeamNameLabel.text = game.homeTeam.name
+                homeScoreLabel.text = "\(game.homeScore)"
+                homeTeamPrimaryColorView.backgroundColor = game.homeTeam.primaryColor
+                homeTeamSecondaryColorView.backgroundColor = game.homeTeam.secondaryColor
+            }
+            
+            sportBgImageView.image = game.sport.image
+            if game.venue != nil {
+                titleLabel.text = "\(game.venue.name) \(game.startTime)"
+            }
+        }
+    }
+    
     var delegate: TagGameTableViewCellDelegate!
     
     override func awakeFromNib() {
@@ -47,7 +71,7 @@ class TagGameTableViewCell: UITableViewCell {
     
     @IBAction func teamBttnPressed(_ sender: UIButton) {
         let team = sender.tag == 0 ? game.awayTeam : game.homeTeam
-        delegate.teamPressed(game: game, team: team!)
+        delegate.didSelectTeam(game: game, team: team!)
     }
     
 }

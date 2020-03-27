@@ -9,58 +9,49 @@
 import UIKit
 import Alamofire
 
-class TagGameViewController: UIViewController, TagGameTableViewCellDelegate {
+class TagGameViewController: UIViewController {
     
-    static var preselectedGame: Game?
-    
-    @IBOutlet var addShotView: UIView!
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var addShotView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var uploadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var stateIndicatorImageView: UIImageView!
-    @IBOutlet var addedSuccessLbl: UILabel!
-    @IBOutlet var successTopSpace: NSLayoutConstraint!
-    @IBOutlet weak var cancelBttn: UIButton!
-    @IBOutlet weak var closeBttn: UIButton!
+    @IBOutlet weak var addedSuccessLabel: UILabel!
+    @IBOutlet weak var successTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var previewImageView: UIImageView!
     
-    @IBOutlet var atGameButton: UIButton!
-    @IBOutlet var watchGameButton: UIButton!
-    
+    static var preselectedGame: Game?
     var media: UserMedia!
-    var games = [Game]()
-    var uploadCanceled = false
+
+    private var games = [Game]()
+    private var uploadCanceled = false
     
-    var selectedGame: Game?
-    var selectedTeam: Team?
-    
-    var atGame: Bool?
+    private var selectedGame: Game?
+    private var selectedTeam: Team?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        atGameButton.layer.cornerRadius = 10
-        atGameButton.layer.masksToBounds = false
-        
-        watchGameButton.layer.cornerRadius = 10
-        watchGameButton.layer.masksToBounds = false
-        
-        if let g = TagGameViewController.preselectedGame{
+        if let g = TagGameViewController.preselectedGame {
             games = [g]
-        }else{
+        } else {
             ApiManager.shared.searchGames(for: Date(), onSuccess: { (games) in
                 self.games = games
                 self.tableView.reloadData()
             }) { (err) in }
         }
         
-        if media.photo != nil{
+        if media.photo != nil {
             previewImageView.image = media.photo
         }
     }
+}
 
-    func transitionToClose(){
+extension TagGameViewController {
+    private func transitionToClose() {
         ParentScrollingViewController.shared.scrollToTabs()
         DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
             self.navigationController?.popToRootViewController(animated: true)
@@ -71,63 +62,80 @@ class TagGameViewController: UIViewController, TagGameTableViewCellDelegate {
             TagGameViewController.preselectedGame = nil
         }
     }
-    func uploadSuccess(){
-        if let team = selectedTeam{
-            self.addedSuccessLbl.text = "Added to \(team.name)'s Game Day"
+    
+    private func uploadSuccess() {
+        if let team = selectedTeam {
+            addedSuccessLabel.text = "Added to \(team.name)'s Game Day"
         }
-        self.stateIndicatorImageView.alpha = 1
-        self.uploadingIndicator.alpha = 0
+        stateIndicatorImageView.alpha = 1
+        uploadingIndicator.alpha = 0
+        
         DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
             self.transitionToClose()
         })
-        self.cancelBttn.alpha = 0
+        cancelButton.alpha = 0
     }
-    func uploadError(){
-        self.stateIndicatorImageView.alpha = 1
-        self.uploadingIndicator.alpha = 0
-        self.stateIndicatorImageView.image = #imageLiteral(resourceName: "UploadFailed")
-        self.addedSuccessLbl.text = "Uploaded Failed"
-        self.cancelBttn.alpha = 0
-        self.closeBttn.alpha = 1
+    
+    private func uploadError() {
+        stateIndicatorImageView.alpha = 1
+        uploadingIndicator.alpha = 0
+        stateIndicatorImageView.image = #imageLiteral(resourceName: "UploadFailed")
+        addedSuccessLabel.text = "Uploaded Failed"
+        cancelButton.alpha = 0
+        closeButton.alpha = 1
+        
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
             self.uploadStopped()
         })
     }
-    func uploadStopped(){
+    
+    private func uploadStopped() {
         uploadCanceled = true
+        
         Alamofire.SessionManager.default.session.getAllTasks { (tasks) in
             tasks.forEach{ $0.cancel() }
         }
         
-        self.successTopSpace.constant = 1000
-        self.cancelBttn.alpha = 1
-        self.closeBttn.alpha = 0
-        self.stateIndicatorImageView.image = #imageLiteral(resourceName: "shot_added_icon")
-        self.uploadingIndicator.alpha = 1
-        self.stateIndicatorImageView.alpha = 0
-        self.addShotView.isUserInteractionEnabled = true
+        successTopConstraint.constant = 1000
+        cancelButton.alpha = 1
+        closeButton.alpha = 0
+        stateIndicatorImageView.image = #imageLiteral(resourceName: "shot_added_icon")
+        uploadingIndicator.alpha = 1
+        stateIndicatorImageView.alpha = 0
+        addShotView.isUserInteractionEnabled = true
+    }
+
+    private func toggleGameButton() {
+        if selectedGame != nil {
+            addShotView.backgroundColor = UIColor(hex: "009BFF")
+        } else {
+            addShotView.backgroundColor = UIColor.lightGray
+        }
+    }
+}
+
+extension TagGameViewController {
+    //MARK IBAction
+    @IBAction func onBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
-    //MARK IBAction
-    @IBAction func backBttnPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    @IBAction func addShotBttnPressed(_ sender: Any) {
-        if let game = selectedGame, let team = selectedTeam, let atGame = atGame {
+    @IBAction func onAddShot(_ sender: Any) {
+        if let game = selectedGame, let team = selectedTeam {
             addShotView.isUserInteractionEnabled = false
             uploadCanceled = false
             
-            if let photo = media.photo{
-                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, atGame: atGame, photo: photo, onSuccess: {
+            if let photo = media.photo {
+                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, photo: photo, onSuccess: {
                     self.uploadSuccess()
                 }) { (err) in
                     if !self.uploadCanceled{
                         self.uploadError()
                     }
                 }
-            }else if let url = media.videoUrl{
+            } else if let url = media.videoUrl {
                 let thumb = MediaMerger.thumbnail(for: media)
-                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, atGame: atGame, video: url, thumbnail: thumb, onSuccess: {
+                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, video: url, thumbnail: thumb, onSuccess: {
                     self.uploadSuccess()
                 }) { (err) in
                     if !self.uploadCanceled{
@@ -136,116 +144,62 @@ class TagGameViewController: UIViewController, TagGameTableViewCellDelegate {
                 }
             }
             
-            self.successTopSpace.constant = 0
-            self.addedSuccessLbl.text = "Uploading..."
+            successTopConstraint.constant = 0
+            addedSuccessLabel.text = "Uploading..."
         }
     }
-    @IBAction func cancelBttnPressed(_ sender: Any) {
+    
+    @IBAction func onCancel(_ sender: Any) {
         uploadStopped()
     }
-    
-    
-    @IBAction func atGamePressed(_ sender: Any) {
-        if let atGame = atGame, atGame {
-            self.atGame = nil
-        } else {
-            self.atGame = true
-        }
-        toggleGameButton()
-    }
-    
-    @IBAction func watchingGamePressed(_ sender: Any) {
-        if let atGame = atGame, !atGame {
-            self.atGame = nil
-        } else {
-            self.atGame = false
-        }
-        toggleGameButton()
-    }
-    
-    private func toggleGameButton() {
-        if let atGame = atGame {
-            atGameButton.backgroundColor = atGame ? UIColor(hex: "009BFF") : UIColor.lightGray
-            watchGameButton.backgroundColor = atGame ? UIColor.lightGray : UIColor(hex: "009BFF")
-            
-        } else {
-            atGameButton.backgroundColor = UIColor.lightGray
-            watchGameButton.backgroundColor = UIColor.lightGray
-        }
-        
-        if selectedGame != nil && atGame != nil {
-            addShotView.backgroundColor = UIColor(hex: "009BFF")
-        } else {
-            addShotView.backgroundColor = UIColor.lightGray
-        }
-    }
-    
-    //MARK: TagGameTableViewCellDelegate
-    func teamPressed(game: Game, team: Team){
-        if team.id == selectedTeam?.id{
+}
+
+extension TagGameViewController: TagGameTableViewCellDelegate {
+    func didSelectTeam(game: Game, team: Team) {
+        if team.id == selectedTeam?.id {
             selectedGame = nil
             selectedTeam = nil
-        }else{
+        } else {
             selectedGame = game
             selectedTeam = team
         }
         tableView.reloadData()
         
-        if selectedGame != nil && atGame != nil {
+        if selectedGame != nil {
             addShotView.backgroundColor = UIColor(hex: "009BFF")
         } else {
             addShotView.backgroundColor = UIColor.lightGray
         }
-        //addShotView.backgroundColor = selectedGame != nil ? UIColor(hex: "009BFF") : UIColor.lightGray
     }
 }
 
-extension TagGameViewController: UITableViewDelegate, UITableViewDataSource{
+extension TagGameViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return games.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell") as? TagGameTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell") as? TagGameTableViewCell {
             let game = games[indexPath.row]
-            
-            if game.awayTeam != nil{
-                cell.awayHomeTown.text = game.awayTeam.homeTown
-                cell.awayTeamName.text = game.awayTeam.name
-                cell.awayScore.text = "\(game.awayScore)"
-                cell.awayTeamPrimaryColorView.backgroundColor = game.awayTeam.primaryColor
-                cell.awayTeamSecondaryColorView.backgroundColor = game.awayTeam.secondaryColor
-            }
-            
-            if game.homeTeam != nil{
-                cell.homeHomeTown.text = game.homeTeam.homeTown
-                cell.homeTeamName.text = game.homeTeam.name
-                cell.homeScore.text = "\(game.homeScore)"
-                cell.homeTeamPrimaryColorView.backgroundColor = game.homeTeam.primaryColor
-                cell.homeTeamSecondaryColorView.backgroundColor = game.homeTeam.secondaryColor
-            }
-            
-            cell.sportBg.image = game.sport.image
-            if game.venue != nil{
-                cell.titleLbl.text = "\(game.venue.name) \(game.startTime)"
-            }
-            
             cell.game = game
             cell.delegate = self
             
-            if selectedGame?.id == game.id{
-                if selectedTeam?.id == game.awayTeam.id{
+            if selectedGame?.id == game.id {
+                if selectedTeam?.id == game.awayTeam.id {
                     cell.awayTeamSelectedView.borderWidth = 6
                     cell.homeTeamSelectedView.borderWidth = 0
-                }else{
+                } else {
                     cell.awayTeamSelectedView.borderWidth = 0
                     cell.homeTeamSelectedView.borderWidth = 6
                 }
-            }else{
+            } else {
                 cell.awayTeamSelectedView.borderWidth = 0
                 cell.homeTeamSelectedView.borderWidth = 0
             }
+
             return cell
         }
+        
         return UITableViewCell()
     }
 }
