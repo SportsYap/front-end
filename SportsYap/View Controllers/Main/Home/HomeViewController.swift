@@ -17,13 +17,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var noGamesView: UIView!
     @IBOutlet weak var loadingGamesView: UIView!
     
-    @IBOutlet weak var todayGamesBttn: UIButton!
-    @IBOutlet weak var leftDateArrowImageView: UIImageView!
-    @IBOutlet weak var rightDateArrowImageView: UIImageView!
-    @IBOutlet weak var leftDateBttn: UIButton!
-    @IBOutlet weak var rightDateBttn: UIButton!
+    @IBOutlet weak var todayGamesButton: UIButton!
+    @IBOutlet weak var leftDateButton: UIButton!
+    @IBOutlet weak var rightDateButton: UIButton!
     
-    @IBOutlet weak var viewModeButton: UIButton!
     @IBOutlet weak var typeButtonsScrollView: UIScrollView!
     @IBOutlet var typeButtons: [UIButton]!
     
@@ -48,24 +45,24 @@ class HomeViewController: UIViewController {
                 dateText = formatter.string(from: date)
                 placeholder = NSLocalizedString("at", comment: "") + " " + dateText
             }
-            todayGamesBttn.setTitle(dateText, for: .normal)
+            todayGamesButton.setTitle(dateText, for: .normal)
 
             let yesterday = date.addingTimeInterval(-24 * 60 * 60)
             let tomorrow = date.addingTimeInterval(24 * 60 * 60)
             
             if yesterday.isToday {
-                leftDateBttn.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+                leftDateButton.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
             } else {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "MM/dd"
-                leftDateBttn.setTitle(formatter.string(from: yesterday), for: .normal)
+                leftDateButton.setTitle(formatter.string(from: yesterday), for: .normal)
             }
             if tomorrow.isToday {
-                rightDateBttn.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+                rightDateButton.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
             } else {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "MM/dd"
-                rightDateBttn.setTitle(formatter.string(from: tomorrow), for: .normal)
+                rightDateButton.setTitle(formatter.string(from: tomorrow), for: .normal)
             }
             
             noGamesLabel.text = String(format: NSLocalizedString("Your favorite teams don’t have any games %@. Follow more teams!", comment: ""), placeholder)
@@ -238,39 +235,6 @@ extension HomeViewController {
             print(err)
         }
     }
-}
-
-//MARK: IBActions
-extension HomeViewController {
-    @IBAction func onNextDay(_ sender: Any) {
-        date = date.addingTimeInterval(86400)
-    }
-
-    @IBAction func onPreviousDay(_ sender: Any) {
-        date = date.addingTimeInterval(-86400)
-    }
-    
-    @IBAction func onTypeButtons(_ sender: Any) {
-        guard let sender = sender as? UIButton else {
-            return
-        }
-        
-        for button in typeButtons {
-            if button == sender {
-                button.tintColor = UIColor.white
-                button.setBackgroundImage(UIImage(named: "ic_selected_type_bg"), for: .normal)
-            } else {
-                button.tintColor = UIColor.black
-                button.setBackgroundImage(nil, for: .normal)
-            }
-        }
-        
-        selectedSport = Sport(rawValue: sender.tag) ?? .football
-        
-        didReloadGames()
-    }
-    
-    
     
     // need this to resize the cell to match / closely match the height of the content
     // if the content was resized
@@ -310,26 +274,34 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == typeButtonsScrollView {
-            ParentScrollingViewController.shared.enabled(is: false)
-            return
-        }
-        
-        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-        if translation.y != 0 && translation.x < 50 || translation.x < 1 {
-            ParentScrollingViewController.shared.enabled(is: false)
-        }
+//MARK: IBActions
+extension HomeViewController {
+    @IBAction func onNextDay(_ sender: Any) {
+        date = date.addingTimeInterval(86400)
+    }
+
+    @IBAction func onPreviousDay(_ sender: Any) {
+        date = date.addingTimeInterval(-86400)
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if scrollView == typeButtonsScrollView {
-            ParentScrollingViewController.shared.enabled(is: true)
+    @IBAction func onTypeButtons(_ sender: Any) {
+        guard let sender = sender as? UIButton else {
             return
         }
         
-        ParentScrollingViewController.shared.enabled(is: true)
+        for button in typeButtons {
+            if button == sender {
+                button.tintColor = UIColor.white
+                button.setBackgroundImage(UIImage(named: "ic_selected_type_bg"), for: .normal)
+            } else {
+                button.tintColor = UIColor.black
+                button.setBackgroundImage(nil, for: .normal)
+            }
+        }
+        
+        selectedSport = Sport(rawValue: sender.tag) ?? .football
+        
+        didReloadGames()
     }
 }
 

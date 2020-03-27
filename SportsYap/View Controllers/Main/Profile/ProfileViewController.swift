@@ -114,7 +114,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pro
         }else if indexPath.section == 1{
             if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? ProfilePostTableViewCell{
                 let game = user.games[indexPath.row]
-                cell.card.load(game: game)
+                cell.card.game = game
                 cell.selectionStyle = .none
                 return cell
             }

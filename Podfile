@@ -21,7 +21,6 @@ target 'SportsYap' do
   pod 'Firebase/Auth', :modular_headers => true
   pod 'OneSignal', '>= 2.6.2', '< 3.0'  
   pod 'ColorSlider', '~> 4.3'
-  pod 'Segmentio', '~> 3.3'
   pod 'Giphy'
   pod 'AlamofireImage'
   pod 'Gifu'
@@ -31,6 +30,7 @@ target 'SportsYap' do
   pod 'SDWebImage'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'TPKeyboardAvoiding'
 end
 
 

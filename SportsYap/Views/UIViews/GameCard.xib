@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,19 +9,19 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameCard" customModule="SportsYap" customModuleProvider="target">
             <connections>
                 <outlet property="activeChallengeImageView" destination="iGI-fd-kVy" id="BqI-80-2Lh"/>
-                <outlet property="awayHomeTown" destination="GLE-py-vGn" id="PTw-uI-hw0"/>
-                <outlet property="awayScore" destination="14z-g4-L6h" id="SSx-4t-O3a"/>
-                <outlet property="awayTeamName" destination="Wg8-Zk-thu" id="7Ih-RV-blp"/>
+                <outlet property="awayHomeTownLabel" destination="GLE-py-vGn" id="PTw-uI-hw0"/>
+                <outlet property="awayScoreLabel" destination="14z-g4-L6h" id="SSx-4t-O3a"/>
+                <outlet property="awayTeamNameLabel" destination="Wg8-Zk-thu" id="7Ih-RV-blp"/>
                 <outlet property="awayTeamPrimaryColorView" destination="6cf-fT-35O" id="f9Q-U6-yHk"/>
                 <outlet property="awayTeamSecondaryColorView" destination="EXD-Kj-yfN" id="wST-BK-Fg1"/>
-                <outlet property="homeHomeTown" destination="RgF-BG-J0q" id="aHI-v7-TqY"/>
-                <outlet property="homeScore" destination="jYh-We-gtc" id="D4I-4H-BC7"/>
-                <outlet property="homeTeamName" destination="3t9-ru-AIk" id="cGW-9M-F5X"/>
+                <outlet property="homeHomeTownLabel" destination="RgF-BG-J0q" id="aHI-v7-TqY"/>
+                <outlet property="homeScoreLabel" destination="jYh-We-gtc" id="D4I-4H-BC7"/>
+                <outlet property="homeTeamNameLabel" destination="3t9-ru-AIk" id="cGW-9M-F5X"/>
                 <outlet property="homeTeamPrimaryColorView" destination="hhe-ZI-MxS" id="dd7-K6-lGm"/>
                 <outlet property="homeTeamSecondaryColorView" destination="piF-Vr-qyq" id="f6K-Wg-Zh6"/>
-                <outlet property="sportBg" destination="chR-GE-2go" id="wdk-hJ-u4b"/>
-                <outlet property="timeLbl" destination="cvv-zu-cJE" id="2zv-Ua-cwM"/>
-                <outlet property="titleLbl" destination="5T5-sg-ngE" id="5sU-To-Lor"/>
+                <outlet property="sportBgImageView" destination="chR-GE-2go" id="wdk-hJ-u4b"/>
+                <outlet property="timeLabel" destination="cvv-zu-cJE" id="2zv-Ua-cwM"/>
+                <outlet property="titleLabel" destination="5T5-sg-ngE" id="5sU-To-Lor"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -153,7 +149,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L.A. Memorial Coliseum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5T5-sg-ngE">
-                            <rect key="frame" x="103.5" y="15" width="152" height="17"/>
+                            <rect key="frame" x="103" y="15" width="152" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

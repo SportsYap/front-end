@@ -65,23 +65,22 @@ class CameraContainerViewViewController: UIViewController, UIScrollViewDelegate 
         
         // Allow time for previous view to release camera
         DispatchQueue.main.asyncAfter(deadline: .now()+delay) {
-            if let childVC = self.storyboard?.instantiateViewController(withIdentifier: identifier) as? UIViewController{
-                childVC.willMove(toParent: self)
-                
-                // Add to containerview
-                childVC.view.translatesAutoresizingMaskIntoConstraints = false
-                self.containerViewController.addSubview(childVC.view)
-                self.addChild(childVC)
-                
-                NSLayoutConstraint.activate([
-                    childVC.view.leadingAnchor.constraint(equalTo: self.containerViewController.leadingAnchor, constant: 0),
-                    childVC.view.trailingAnchor.constraint(equalTo: self.containerViewController.trailingAnchor, constant: 0),
-                    childVC.view.topAnchor.constraint(equalTo: self.containerViewController.topAnchor, constant: 0),
-                    childVC.view.bottomAnchor.constraint(equalTo: self.containerViewController.bottomAnchor, constant: 0)
-                ])
-                
-                childVC.didMove(toParent: self)
-            }
+            let childVC = UIStoryboard(name: "GameDay", bundle: nil).instantiateViewController(withIdentifier: identifier)
+            childVC.willMove(toParent: self)
+            
+            // Add to containerview
+            childVC.view.translatesAutoresizingMaskIntoConstraints = false
+            self.containerViewController.addSubview(childVC.view)
+            self.addChild(childVC)
+            
+            NSLayoutConstraint.activate([
+                childVC.view.leadingAnchor.constraint(equalTo: self.containerViewController.leadingAnchor, constant: 0),
+                childVC.view.trailingAnchor.constraint(equalTo: self.containerViewController.trailingAnchor, constant: 0),
+                childVC.view.topAnchor.constraint(equalTo: self.containerViewController.topAnchor, constant: 0),
+                childVC.view.bottomAnchor.constraint(equalTo: self.containerViewController.bottomAnchor, constant: 0)
+            ])
+            
+            childVC.didMove(toParent: self)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now()+3) { // Prevent Rapid back and forth

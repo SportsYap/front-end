@@ -99,7 +99,8 @@ class EnterFieldViewController: UIViewController {
     }
 
     @IBAction func onAddPost(_ sender: Any) {
-        
+        TagGameViewController.preselectedGame = game
+        ParentScrollingViewController.shared.scrollToCamera()
     }
     
     @IBAction func onFilter(_ sender: UIButton) {

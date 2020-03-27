@@ -208,7 +208,7 @@
                                                 <rect key="frame" x="385" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="11" minY="11" maxX="11" maxY="11"/>
-                                                <state key="normal" image="NCAAM"/>
+                                                <state key="normal" image="college_basketball_icon"/>
                                                 <connections>
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="vwj-eb-woi"/>
                                                 </connections>
@@ -217,7 +217,7 @@
                                                 <rect key="frame" x="462" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="11" minY="11" maxX="11" maxY="11"/>
-                                                <state key="normal" image="NCAAF"/>
+                                                <state key="normal" image="college_football_icon"/>
                                                 <connections>
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="TW3-bC-kU7"/>
                                                 </connections>
@@ -258,14 +258,12 @@
                     <navigationItem key="navigationItem" id="eWx-Bh-O35"/>
                     <connections>
                         <outlet property="carouselView" destination="FFf-cU-0lH" id="3Er-HU-E7G"/>
-                        <outlet property="leftDateArrowImageView" destination="swq-6v-wNR" id="OPK-Zu-uXa"/>
-                        <outlet property="leftDateBttn" destination="cRe-OA-o1Z" id="MHT-xE-cTI"/>
+                        <outlet property="leftDateButton" destination="cRe-OA-o1Z" id="MHT-xE-cTI"/>
                         <outlet property="loadingGamesView" destination="vYZ-9D-qTh" id="0D4-dI-2Nl"/>
                         <outlet property="noGamesLabel" destination="GS1-zI-DZj" id="0Wf-dN-9ca"/>
                         <outlet property="noGamesView" destination="liS-Cn-ZHL" id="YiB-KU-lEm"/>
-                        <outlet property="rightDateArrowImageView" destination="dD5-eM-WMC" id="hD9-aI-zoa"/>
-                        <outlet property="rightDateBttn" destination="sBO-RJ-J2z" id="DWz-g6-qQ4"/>
-                        <outlet property="todayGamesBttn" destination="4yj-FO-7Tk" id="AQ8-Jl-y6b"/>
+                        <outlet property="rightDateButton" destination="sBO-RJ-J2z" id="DWz-g6-qQ4"/>
+                        <outlet property="todayGamesButton" destination="4yj-FO-7Tk" id="AQ8-Jl-y6b"/>
                         <outlet property="typeButtonsScrollView" destination="msW-sh-ZSF" id="chq-je-pup"/>
                         <outletCollection property="typeButtons" destination="dXB-gg-jtI" collectionClass="NSMutableArray" id="RKd-C6-plf"/>
                         <outletCollection property="typeButtons" destination="ZC9-qv-EDZ" collectionClass="NSMutableArray" id="5hl-mM-gDE"/>
@@ -308,7 +306,7 @@
         <!--ShotViewController-->
         <scene sceneID="b22-o5-ybO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ShotViewController" id="F3l-cb-wvj" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="GameDay" referencedIdentifier="ShotViewController" id="F3l-cb-wvj" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hPA-IF-aGX"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rY-0l-1o0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -357,10 +355,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NCAAF" width="200" height="200"/>
-        <image name="NCAAM" width="190" height="190"/>
         <image name="baseball_icon" width="20" height="20"/>
         <image name="basketball_icon" width="19" height="19"/>
+        <image name="college_basketball_icon" width="20" height="20"/>
+        <image name="college_football_icon" width="20" height="20"/>
         <image name="football_icon" width="20" height="20"/>
         <image name="hockey_icom" width="20" height="14"/>
         <image name="ic_calendar" width="17" height="18"/>

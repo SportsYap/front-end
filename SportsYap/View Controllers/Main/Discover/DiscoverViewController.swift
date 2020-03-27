@@ -8,115 +8,389 @@
 
 import UIKit
 import Alamofire
-import Segmentio
 import SDWebImage
 
-protocol DiscoverTableViewCellDelegate {
-    func followBttnPressed(team: Team)
-    func followBttnPressed(user: User)
-}
-
-enum SearchType {
-    case users
-    case teams
+protocol DiscoverSearchTableViewCellDelegate {
+    func onFollowUser(user: User, cell: UITableViewCell)
+    func onFollowTeam(team: Team, cell: UITableViewCell)
 }
 
 class DiscoverViewController: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var dateLbl: UILabel!
-    @IBOutlet var sportTypeBgViews: [UIView]!
-    @IBOutlet var cancelBttn: UIButton!
-    @IBOutlet weak var leftDateArrowImageView: UIImageView!
-    @IBOutlet weak var rightDateArrowImageView: UIImageView!
-    @IBOutlet weak var leftDateBttn: UIButton!
-    @IBOutlet weak var rightDateBttn: UIButton!
     
-    @IBOutlet var noGamesView: UIView!
-    @IBOutlet var searchTableView: UITableView!
-    @IBOutlet var gamesCollectionView: UICollectionView!
+    @IBOutlet weak var typeButtonsScrollView: UIScrollView!
+    @IBOutlet var typeButtons: [UIButton]!
+
+    @IBOutlet weak var todayGamesButton: UIButton!
+    @IBOutlet weak var leftDateButton: UIButton!
+    @IBOutlet weak var rightDateButton: UIButton!
+
+    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var gamesCollectionView: UICollectionView!
     
-    @IBOutlet weak var segmentio: Segmentio!
-        
-    var selectedSport = Sport.football
+    private var selectedSport = Sport.football
     
-    var searchObjs = [DBObject]()
-    var userObjs = [DBObject]()
-    var teamObjs = [DBObject]()
-    var games = [Game]()
+    private var searchResult = [DBObject]()
+    private var nearbyObjects = [DBObject]()
+    private var trendingObjects = [DBObject]()
     
-    var date = Date(){
-        didSet{
-            let formatter = DateFormatter()
-            formatter.dateFormat = "eeee, MMMM d"
-            dateLbl.text = formatter.string(from: date).capitalized
+    private var games = [Game]()
+
+    private var date = Date() {
+        didSet {
+            let dateText: String
+            if date.isToday {
+                dateText = NSLocalizedString("Today", comment: "")
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                dateText = formatter.string(from: date)
+            }
+            todayGamesButton.setTitle(dateText, for: .normal)
+
+            let yesterday = date.addingTimeInterval(-24 * 60 * 60)
+            let tomorrow = date.addingTimeInterval(24 * 60 * 60)
             
+            if yesterday.isToday {
+                leftDateButton.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                leftDateButton.setTitle(formatter.string(from: yesterday), for: .normal)
+            }
+            if tomorrow.isToday {
+                rightDateButton.setTitle(NSLocalizedString("Today", comment: ""), for: .normal)
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                rightDateButton.setTitle(formatter.string(from: tomorrow), for: .normal)
+            }
+ 
             loadGames()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSegmentio()
 
         selectedSport = .football
         date = Date()
     }
     
-    func setupSegmentio() {
-        segmentio.selectedSegmentioIndex = 0
+    //MARK: Nav
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? GameDayViewController, let game = sender as? Game {
+            vc.game = game
+        } else if let vc = segue.destination as? ProfileViewController {
+            if let user = sender as? User {
+                vc.user = user
+            }
+        }
+    }
+}
+
+extension DiscoverViewController {
+    @IBAction func onNextDay(_ sender: Any) {
+        date = date.addingTimeInterval(86400)
+    }
+
+    @IBAction func onPreviousDay(_ sender: Any) {
+        date = date.addingTimeInterval(-86400)
+    }
+    
+    @IBAction func onTypeButtons(_ sender: Any) {
+        guard let sender = sender as? UIButton else {
+            return
+        }
+        
+        for button in typeButtons {
+            if button == sender {
+                button.tintColor = UIColor.white
+                button.backgroundColor = UIColor(hex: "009BFF")
+            } else {
+                button.tintColor = UIColor.black
+                button.backgroundColor = UIColor.clear
+            }
+        }
+        
+        selectedSport = Sport(rawValue: sender.tag) ?? .football
+        
+        loadGames()
+    }
+}
+
+extension DiscoverViewController: DiscoverSearchTableViewCellDelegate {
+    
+    func onFollowUser(user: User, cell: UITableViewCell) {
+        if user.followed {
+            
+            ApiManager.shared.unfollow(user: user.id, onSuccess: {
                 
-        view.addSubview(segmentio)
-        view.sendSubviewToBack(segmentio)
-        
-        var content = [SegmentioItem]()
-        
-        let usersItem = SegmentioItem(title: "Users", image: nil)
-        let teamsItem = SegmentioItem(title: "Teams", image: nil)
-        content.append(usersItem)
-        content.append(teamsItem)
-        
-        let indicatorOptions = SegmentioIndicatorOptions(
-            type: .bottom,
-            ratio: 1,
-            height: 1.5,
-            color: .black
-        )
-        
-        let horizontalOptions = SegmentioHorizontalSeparatorOptions(
-            type: SegmentioHorizontalSeparatorType.topAndBottom,
-            height: 1,
-            color: .lightGray
-        )
-        
-        let verticalOptions = SegmentioVerticalSeparatorOptions(
-            ratio: 0.1, // from 0.1 to 1
-            color: .clear
-        )
+                user.followed = false
                 
-        let options = SegmentioOptions(
-            backgroundColor: .white,
-            segmentPosition: SegmentioPosition.dynamic,
-            scrollEnabled: false,
-            indicatorOptions: indicatorOptions,
-            horizontalSeparatorOptions: horizontalOptions,
-            verticalSeparatorOptions: verticalOptions,
-            imageContentMode: .center,
-            labelTextAlignment: .center
-        )
+                if let indexPath = self.searchTableView.indexPath(for: cell) {
+                    self.searchTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }) { (err) in
                 
-        segmentio.setup(
-            content: content,
-            style: SegmentioStyle.onlyLabel,
-            options: options
-        )
-        
-        segmentio.valueDidChange = { segmentio, segmentIndex in
-            self.searchTableView.reloadData()
+            }
+            
+        } else {
+            
+            ApiManager.shared.follow(user: user.id, onSuccess: {
+                
+                user.followed = true
+                
+                if let indexPath = self.searchTableView.indexPath(for: cell) {
+                    self.searchTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }) { (err) in
+                
+            }
         }
     }
     
-    func loadGames(){
+    func onFollowTeam(team: Team, cell: UITableViewCell) {
+        if team.followed {
+            
+            ApiManager.shared.unfollow(team: team.id, onSuccess: {
+
+                team.followed = false
+
+                if let i = User.me.teams.firstIndex(of: team) {
+                    User.me.teams.remove(at: i)
+                }
+
+                if let indexPath = self.searchTableView.indexPath(for: cell) {
+                    self.searchTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }) { (err) in
+                
+            }
+            
+        } else {
+            
+            ApiManager.shared.follow(team: team.id, onSuccess: {
+                
+                team.followed = true
+                User.me.teams.append(team)
+
+                if let indexPath = self.searchTableView.indexPath(for: cell) {
+                    self.searchTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }) { (err) in
+                
+            }
+        }
+    }
+}
+
+extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return ((searchBar.text ?? "").isEmpty && !trendingObjects.isEmpty) ? 42 : 0
+        } else if section == 2 {
+            return ((searchBar.text ?? "").isEmpty && !nearbyObjects.isEmpty) ? 42 : 0
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var title: String? = nil
+        
+        if section == 1 {
+            if (searchBar.text ?? "").isEmpty && !trendingObjects.isEmpty {
+                title = NSLocalizedString("TRENDING", comment: "")
+            }
+        } else if section == 2 {
+            if (searchBar.text ?? "").isEmpty && !nearbyObjects.isEmpty {
+                title = NSLocalizedString("NEARBY", comment: "")
+            }
+        }
+        
+        if let title = title {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 42))
+            let label = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width - 32, height: 42))
+            label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            label.textColor = UIColor(hex: "1F263A")
+            label.font = UIFont.systemFont(ofSize: 12)
+            label.text = title
+            view.addSubview(label)
+            return view
+        }
+        
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return (searchBar.text ?? "").isEmpty ? 0 : searchResult.count
+        } else if section == 1 {
+            return (searchBar.text ?? "").isEmpty ? trendingObjects.count : 0
+        } else if section == 2 {
+            return (searchBar.text ?? "").isEmpty ? nearbyObjects.count : 0
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 62
+        }
+        return 40
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            
+            if let user = searchResult[indexPath.row] as? User {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? DiscoverUserTableViewCell {
+                    cell.user = user
+                    cell.delegate = self
+                    cell.selectionStyle = .none
+                    return cell
+                }
+            } else if let team = searchResult[indexPath.row] as? Team {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell") as? DiscoverTeamTableViewCell {
+                    cell.team = team
+                    cell.delegate = self
+                    cell.selectionStyle = .none
+                    return cell
+                }
+            }
+        } else {
+            let object = (indexPath.section == 1) ? trendingObjects[indexPath.row] : nearbyObjects[indexPath.row]
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "suggestionCell") as? DiscoverSuggestionTableViewCell {
+                cell.object = object
+                cell.delegate = self
+                cell.selectionStyle = .none
+                return cell
+            }
+        }
+
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if indexPath.section == 0 {
+            if let user = searchResult[indexPath.row] as? User {
+                performSegue(withIdentifier: "showProfile", sender: user)
+            }
+        } else {
+            let object = (indexPath.section == 1) ? trendingObjects[indexPath.row] : nearbyObjects[indexPath.row]
+            if let user = object as? User {
+                performSegue(withIdentifier: "showProfile", sender: user)
+            }
+        }
+    }
+}
+
+extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var header: DiscoverCollectionHeaderView?
+        
+        if (kind == UICollectionView.elementKindSectionHeader) {
+            header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as? DiscoverCollectionHeaderView
+            header?.textLabel.text = (indexPath.section == 0) ? (NSLocalizedString("Games in", comment: "") + " \(User.me.location)") : NSLocalizedString("Your Friends are Following", comment: "")
+        }
+        
+        return header!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return max(games.count, 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if games.isEmpty {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "noGamesCell", for: indexPath)
+        }
+        
+        let game = games[indexPath.row]
+        if indexPath.row == 0 {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameBanner", for: indexPath) as? DiscoverGameBannerCollectionViewCell {
+                cell.card.game = game
+                return cell
+            }
+        } else {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? DiscoverGameCollectionViewCell {
+                cell.game = game
+                return cell
+            }
+        }
+        
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if games.isEmpty {
+            return CGSize(width: collectionView.frame.width - 16, height: 80)
+        }
+        
+        if indexPath.row == 0 {
+            return CGSize(width: collectionView.frame.width - 16, height: 160)
+        }
+        return CGSize(width: (collectionView.frame.width - 25) / 2, height: 142)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "showGame", sender: games[indexPath.row])
+    }
+}
+
+extension DiscoverViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+
+        self.searchTableView.isHidden = false
+        UIView.animate(withDuration: 0.2) {
+            self.searchTableView.alpha = 1
+        }
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+
+        UIView.animate(withDuration: 0.2, animations: {
+            self.searchTableView.alpha = 0
+        }) { (_) in
+            self.searchTableView.isHidden = true
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Alamofire.SessionManager.default.session.getAllTasks { (tasks) in
+            tasks.forEach{ $0.cancel() }
+        }
+        
+        ApiManager.shared.search(with: searchBar.text!, onSuccess: { (objs) in
+            self.searchResult = objs
+            self.searchTableView.reloadData()
+        }) { (err) in }
+    }
+}
+
+extension DiscoverViewController {
+    private func loadGames() {
         ApiManager.shared.searchGames(for: date, sport: selectedSport, onSuccess: { (games) in
             self.games = games
             
@@ -137,10 +411,8 @@ class DiscoverViewController: UIViewController {
                         if game.start < Date() {
                             self.games.remove(at: index)
                         }
-                                                
                     }
-                }
-                else {
+                } else {
                     index += 1
                 }
             }
@@ -164,220 +436,12 @@ class DiscoverViewController: UIViewController {
                 }
             }
             
-            self.gamesCollectionView.reloadData()
-            self.noGamesView.alpha = games.count == 0 ? 1 : 0
+            self.didReloadGames()
         }) { (err) in }
     }
-    
-    //MARK: IBAction
-    @IBAction func cancelBttnPressed(_ sender: Any) {
-        searchBar.resignFirstResponder()
-        cancelBttn.alpha = 0
-        searchObjs = [DBObject]()
-        userObjs = [DBObject]()
-        teamObjs = [DBObject]()
-        searchTableView.reloadData()
-        searchBar.text = ""
-        UIView.animate(withDuration: 0.5) {
-            self.searchTableView.alpha = 0
-            self.sportTypeBgViews.forEach({$0.alpha = 1})
-            self.view.sendSubviewToBack(self.segmentio)
-        }
-    }
-    @IBAction func sportBttnPressed(_ sender: UIButton) {
-        if let s = Sport(rawValue: sender.tag){
-            selectedSport = s
-            
-            for view in sportTypeBgViews{
-                view.backgroundColor = view.tag == s.rawValue ? UIColor(hex: "479BF7") : UIColor(hex: "202638")
-            }
-            
-            date = Date()
-        }
-    }
-    @IBAction func rightDateBttnPressed(_ sender: Any) {
-         date = date.addingTimeInterval(86400)
-    }
-    @IBAction func leftDateBttnPressed(_ sender: Any) {
-        date = date.addingTimeInterval(-86400)
-    }
-    
-    //MARK: Nav
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? GameDayViewController, let game = sender as? Game{
-            vc.game = game
-        }else if let vc = segue.destination as? ProfileViewController{
-            if let user = sender as? User{
-                vc.user = user
-            }
-        }
-    }
-}
 
-extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource, DiscoverTableViewCellDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return segmentio.selectedSegmentioIndex == 0 ? userObjs.count : teamObjs.count //searchObjs.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if segmentio.selectedSegmentioIndex == 0 {
-            
-            if let user = userObjs[indexPath.row] as? User{
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? DiscoverUserTableViewCell{
-                    cell.nameLbl.text = user.name
-                    cell.hometownLbl.text = user.location
-                    cell.isVerifiedImageView.alpha = user.verified ? 1 : 0
-                    cell.user = user
-                    cell.delegate = self
-                    cell.profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            }
-            
-        } else if segmentio.selectedSegmentioIndex == 1 {
-            
-            if let team = teamObjs[indexPath.row] as? Team{
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell") as? DiscoverTeamTableViewCell{
-                    cell.nameLbl.text = team.name
-                    cell.hometownLbl.text = "\(team.homeTown) | \(team.sport.abv)"
-                    cell.primaryColor.backgroundColor = team.primaryColor
-                    cell.secondaryColor.backgroundColor = team.secondaryColor
-                    cell.team = team
-                    cell.delegate = self
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            }
-        }
-        
-        return UITableViewCell()
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 52
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if segmentio.selectedSegmentioIndex == 0 {
-            if let user = userObjs[indexPath.row] as? User{
-                self.performSegue(withIdentifier: "showProfile", sender: user)
-            }
-        } else {
-            if let team = teamObjs[indexPath.row] as? Team{
-            }
-        }
-    }
-    
-    //MARK: DiscoverTableViewCellDelegate
-    func followBttnPressed(team: Team){
-        if team.followed{
-            ApiManager.shared.unfollow(team: team.id, onSuccess: {
-            }) { (err) in }
-            if let i = User.me.teams.firstIndex(of: team){
-                User.me.teams.remove(at: i)
-            }
-        }else{
-            ApiManager.shared.follow(team: team.id, onSuccess: {
-            }) { (err) in }
-            User.me.teams.append(team)
-        }
-    }
-    func followBttnPressed(user: User){
-        if user.followed{
-            ApiManager.shared.unfollow(user: user.id, onSuccess: {
-            }) { (err) in }
-        }else{
-            ApiManager.shared.follow(user: user.id, onSuccess: {
-            }) { (err) in }
-        }
-    }
-}
-
-extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return games.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let game = games[indexPath.row]
-        if indexPath.row == 0{
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameBanner", for: indexPath) as? DiscoverGameBannerCollectionViewCell{
-                cell.card.load(game: game)
-                return cell
-            }
-        }else{
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? DiscoverGameCollectionViewCell{
-                if game.awayTeam != nil{
-                    cell.awayTeamNameLbl.text = game.awayTeam.name
-                    cell.awayScore.text = "\(game.awayScore)"
-                }
-                if game.homeTeam != nil{
-                    cell.homeTeamNameLbl.text = game.homeTeam.name
-                    cell.homeScore.text = "\(game.homeScore)"
-                }
-                cell.sportBg.image = game.sport.image
-                cell.fieldNameLbl.text = game.venue.name
-                
-                cell.timeLbl.text = game.startTime
-                
-                // if start time is past 5 hours the current date add 'final' instead of start time
-                if let startFiveHours = Calendar.current.date(byAdding: .hour, value: 5, to: game.start) {
-                    cell.timeLbl.text = startFiveHours < Date() ? "Final" : game.startTime
-                }
-                
-                
-                return cell
-            }
-        }
-        return UICollectionViewCell()
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0{
-            return CGSize(width: collectionView.frame.width, height: 140)
-        }
-        return CGSize(width: collectionView.frame.width / 2 - 5, height: 140)
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "showGame", sender: games[indexPath.row])
-    }
-}
-
-extension DiscoverViewController: UISearchBarDelegate{
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        cancelBttn.alpha = 1
-        UIView.animate(withDuration: 0.5) {
-            self.searchTableView.alpha = 1
-            self.sportTypeBgViews.forEach({$0.alpha = 0})
-            self.view.bringSubviewToFront(self.segmentio)
-        }
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        return true
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        Alamofire.SessionManager.default.session.getAllTasks { (tasks) in
-            tasks.forEach{ $0.cancel() }
-        }
-        
-        ApiManager.shared.search(with: searchBar.text!, onSuccess: { (objs) in
-            self.searchObjs = objs
-            
-            self.userObjs = []
-            self.teamObjs = []
-            
-            self.searchObjs.forEach({
-                if $0 is User {
-                    self.userObjs.append($0)
-                } else if $0 is Team {
-                    self.teamObjs.append($0)
-                }
-            })
-
-            self.searchTableView.reloadData()
-        }) { (err) in }
+    private func didReloadGames() {
+        gamesCollectionView.setContentOffset(CGPoint.zero, animated: false)
+        gamesCollectionView.reloadData()
     }
 }

@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		2ED769C2B8D0E0F37DC40A09 /* Pods_SportsYap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */; };
 		6131278EB795A58DC821379A /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE7C7B679F4422737A716A0 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		AF374820242C4514003D6933 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF37481F242C4514003D6933 /* Discover.storyboard */; };
+		AF3B8DBE242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B8DBD242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift */; };
 		AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C08BB24204A05001F63EF /* GameListItemView.swift */; };
 		AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3C08BD24204A14001F63EF /* GameListItemView.xib */; };
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
+		AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */; };
 		AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */; };
 		AF6CF85D242610B60035CC6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85C242610B60035CC6F /* Event.swift */; };
 		AF6CF85F242619550035CC6F /* GameDayEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */; };
@@ -182,10 +185,13 @@
 		5148735234EABCE76474FF85 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsYap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EA6F3487E1A226170BE79 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AF37481F242C4514003D6933 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		AF3B8DBD242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		AF3C08BB24204A05001F63EF /* GameListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemView.swift; sourceTree = "<group>"; };
 		AF3C08BD24204A14001F63EF /* GameListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListItemView.xib; sourceTree = "<group>"; };
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
+		AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AF6CF85C242610B60035CC6F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayEventTableViewCell.swift; sourceTree = "<group>"; };
@@ -375,6 +381,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AF3B8DBC242D38820010856A /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				CDA8EB472060B68C00ED3EBC /* DiscoverTeamTableViewCell.swift */,
+				CDA8EB492060B69500ED3EBC /* DiscoverUserTableViewCell.swift */,
+				AF3B8DBD242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift */,
+				AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		AF3FD3B32424FBBE00795DB0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,8 +407,9 @@
 		AF3FD3B42424FC3100795DB0 /* GameDay */ = {
 			isa = PBXGroup;
 			children = (
-				AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */,
 				CDE83A58203155950056C77D /* GameDayViewController.swift */,
+				AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */,
+				CDE83A5E203224100056C77D /* ShotViewController.swift */,
 				AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */,
 			);
 			path = GameDay;
@@ -447,7 +465,6 @@
 			isa = PBXGroup;
 			children = (
 				CDE83A562031558B0056C77D /* HomeViewController.swift */,
-				CDE83A5E203224100056C77D /* ShotViewController.swift */,
 				CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */,
 				CDF92B2A20BC11770068A50C /* ChallengeViewController.swift */,
 				CD4F952620C8E4AF00159D5D /* ViewLiveStreamViewController.swift */,
@@ -463,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				CDE83A5A2031559E0056C77D /* DiscoverViewController.swift */,
+				AF37481F242C4514003D6933 /* Discover.storyboard */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -538,11 +556,10 @@
 		CDBB32DF20480C7E002B6F8E /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				AF3B8DBC242D38820010856A /* Discover */,
 				AF3FD3B72425297A00795DB0 /* GameDay */,
 				CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */,
 				CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */,
-				CDA8EB472060B68C00ED3EBC /* DiscoverTeamTableViewCell.swift */,
-				CDA8EB492060B69500ED3EBC /* DiscoverUserTableViewCell.swift */,
 				CD4A2EF2208DE0F900DCA56C /* TagGameTableViewCell.swift */,
 				CD4EEC60209B04B800C31469 /* PostTableViewCell.swift */,
 				CD63D5A620A1883B008B8D5E /* SettingsHeaderTableViewCell.swift */,
@@ -875,6 +892,7 @@
 				D79134A823203E69007D9411 /* IssaTD_1.gif in Resources */,
 				D79134B423203E69007D9411 /* Homer.gif in Resources */,
 				D79134A623203E69007D9411 /* youreOut.gif in Resources */,
+				AF374820242C4514003D6933 /* Discover.storyboard in Resources */,
 				AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */,
 				D79134AF23203E69007D9411 /* hockey_goal.gif in Resources */,
 				AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */,
@@ -961,9 +979,9 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVWebViewController/SVWebViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/UIView+draggable/UIView_draggable.framework",
 				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -989,9 +1007,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVWebViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_draggable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -1045,6 +1063,7 @@
 			files = (
 				D71F973222508B330051E715 /* MediaImageProcessor.swift in Sources */,
 				D71F973422508B330051E715 /* MediaProcessor.swift in Sources */,
+				AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */,
 				CD5BD915203EAFAC00709FAE /* ApiManager.swift in Sources */,
 				D71F972822508B330051E715 /* GraphicContext.swift in Sources */,
 				CD3F0BEA20CCE7C100BDC68A /* Venue.swift in Sources */,
@@ -1151,6 +1170,7 @@
 				CDE83A59203155950056C77D /* GameDayViewController.swift in Sources */,
 				CD204655202C45410086C9B5 /* DBObject.swift in Sources */,
 				CDDA0CB6201FAAA000BA0568 /* CALayer.swift in Sources */,
+				AF3B8DBE242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
