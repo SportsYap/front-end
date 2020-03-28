@@ -15,7 +15,7 @@ class GameDayFanTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var isVerifiedImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var teamImageView: UIImageView!
+    @IBOutlet var teamColorViews: [UIView]!
 
     var game: Game?
     var fan: User? {
@@ -26,11 +26,14 @@ class GameDayFanTableViewCell: UITableViewCell {
                 profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 
                 if user.pivot?.itemAId == game?.awayTeam.id {
-                    teamImageView.image = UIImage(named: "team_color_away")
+                    teamColorViews.first?.backgroundColor = game?.awayTeam.primaryColor
+                    teamColorViews.last?.backgroundColor = game?.awayTeam.secondaryColor
                 } else if user.pivot?.itemAId == game?.homeTeam.id {
-                    teamImageView.image = UIImage(named: "team_color_home")
+                    teamColorViews.first?.backgroundColor = game?.homeTeam.primaryColor
+                    teamColorViews.last?.backgroundColor = game?.homeTeam.secondaryColor
                 } else {
-                    teamImageView.image = nil
+                    teamColorViews.first?.backgroundColor = UIColor.clear
+                    teamColorViews.last?.backgroundColor = UIColor.clear
                 }
                 
                 if let date = user.pivot?.createdAt {

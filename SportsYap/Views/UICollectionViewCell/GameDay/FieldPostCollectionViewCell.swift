@@ -14,8 +14,8 @@ class FieldPostCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playIconView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var teamImageView: UIImageView!
-    
+    @IBOutlet var teamColorViews: [UIView]!
+
     var post: Post? {
         didSet {
             if let post = post {
@@ -29,9 +29,11 @@ class FieldPostCollectionViewCell: UICollectionViewCell {
                 
                 userImageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 if post.teamId == post.game?.homeTeam.id {
-                    teamImageView.image = UIImage(named: "team_color_home")
+                    teamColorViews.first?.backgroundColor = post.game?.homeTeam.primaryColor
+                    teamColorViews.last?.backgroundColor = post.game?.homeTeam.secondaryColor
                 } else {
-                    teamImageView.image = UIImage(named: "team_color_away")
+                    teamColorViews.first?.backgroundColor = post.game?.awayTeam.primaryColor
+                    teamColorViews.last?.backgroundColor = post.game?.awayTeam.secondaryColor
                 }
             }
         }

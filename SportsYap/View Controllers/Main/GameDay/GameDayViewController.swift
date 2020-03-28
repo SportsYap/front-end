@@ -27,6 +27,11 @@ class GameDayViewController: UIViewController {
     @IBOutlet weak var homeTeamNameLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
     
+    @IBOutlet weak var homePrimaryColorView: UIView!
+    @IBOutlet weak var homeSecondaryColorView: UIView!
+    @IBOutlet weak var awayPrimaryColorView: UIView!
+    @IBOutlet weak var awaySecondaryColorView: UIView!
+
     @IBOutlet weak var sportBackgroundImageView: UIImageView!
     
     @IBOutlet weak var fanMeterContainerView: UIView!
@@ -118,11 +123,15 @@ extension GameDayViewController {
         awayTownLabel.text = game.awayTeam.homeTown
         awayTeamNameLabel.text = game.awayTeam.name
         awayScoreLabel.text = "\(game.awayScore)"
+        awayPrimaryColorView.backgroundColor = game.awayTeam.primaryColor
+        awaySecondaryColorView.backgroundColor = game.awayTeam.secondaryColor
         
         homeTownLabel.text = game.homeTeam.homeTown
         homeTeamNameLabel.text = game.homeTeam.name
         homeScoreLabel.text = "\(game.homeScore)"
-        
+        homePrimaryColorView.backgroundColor = game.homeTeam.primaryColor
+        homeSecondaryColorView.backgroundColor = game.homeTeam.secondaryColor
+
         sportBackgroundImageView.image = game.sport.image
         
         let val = game.fanMeter ?? 0.5
