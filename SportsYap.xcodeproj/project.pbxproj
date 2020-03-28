@@ -22,6 +22,8 @@
 		AF6CF861242623110035CC6F /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF860242623110035CC6F /* Double.swift */; };
 		AF6CF86424287ADF0035CC6F /* EnterFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */; };
 		AF6CF867242918BC0035CC6F /* FieldPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */; };
+		AF91EECC242F4EBA0025FCE5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */; };
+		AF91EECF242F8BCD0025FCE5 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */; };
 		CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */; };
 		CD04100420B7E6C5000E1D66 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */; };
 		CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100520B7EC6D000E1D66 /* Comment.swift */; };
@@ -198,6 +200,8 @@
 		AF6CF860242623110035CC6F /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		AF6CF86324287ADF0035CC6F /* EnterFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFieldViewController.swift; sourceTree = "<group>"; };
 		AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		CD04100520B7EC6D000E1D66 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -433,14 +437,23 @@
 			path = GameDay;
 			sourceTree = "<group>";
 		};
+		AF91EECD242F8BAA0025FCE5 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */,
+				CD9125582060F6BA0026613B /* DiscoverGameBannerCollectionViewCell.swift */,
+				CD21658420C7C1BC0009E908 /* DiscoverGameCollectionViewCell.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		CD00B4D62058EE8A00EA0509 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */,
-				CD9125582060F6BA0026613B /* DiscoverGameBannerCollectionViewCell.swift */,
-				CD21658420C7C1BC0009E908 /* DiscoverGameCollectionViewCell.swift */,
 				CD4F952420C8DE0F00159D5D /* LiveUserCollectionViewCell.swift */,
 				D7A19994231DFDFE007E7D86 /* AnimatedImageCell.swift */,
+				AF91EECD242F8BAA0025FCE5 /* Discover */,
 				AF6CF865242916FD0035CC6F /* GameDay */,
 			);
 			path = UICollectionViewCell;
@@ -480,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				CDE83A5A2031559E0056C77D /* DiscoverViewController.swift */,
+				AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */,
 				AF37481F242C4514003D6933 /* Discover.storyboard */,
 			);
 			path = Discover;
@@ -972,6 +986,7 @@
 				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/NextLevel/NextLevel.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
@@ -1000,6 +1015,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NextLevel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
@@ -1117,10 +1133,12 @@
 				CD4F952520C8DE0F00159D5D /* LiveUserCollectionViewCell.swift in Sources */,
 				CD04100820B7EEF4000E1D66 /* Date.swift in Sources */,
 				CD4F952720C8E4AF00159D5D /* ViewLiveStreamViewController.swift in Sources */,
+				AF91EECF242F8BCD0025FCE5 /* CalendarDayCell.swift in Sources */,
 				CD4A2EEB208DCF7D00DCA56C /* UserMedia.swift in Sources */,
 				D709EEC9232C71560044D723 /* CustomTextField.swift in Sources */,
 				D71F970B224DF9370051E715 /* YGCAddImageForVideo.swift in Sources */,
 				D7A1999C231F6444007E7D86 /* CommentGifCell.swift in Sources */,
+				AF91EECC242F4EBA0025FCE5 /* CalendarViewController.swift in Sources */,
 				CD0A655D20B51A9400E17FC7 /* UserTableViewCell.swift in Sources */,
 				CD63D5A720A1883B008B8D5E /* SettingsHeaderTableViewCell.swift in Sources */,
 				D71F972E22508B330051E715 /* BlurFilter.swift in Sources */,

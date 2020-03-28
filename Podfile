@@ -31,6 +31,7 @@ target 'SportsYap' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'TPKeyboardAvoiding'
+  pod 'JTAppleCalendar'
 end
 
 

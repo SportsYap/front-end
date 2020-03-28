@@ -86,6 +86,9 @@ class DiscoverViewController: UIViewController {
             if let user = sender as? User {
                 vc.user = user
             }
+        } else if let vc = segue.destination as? CalendarViewController {
+            vc.delegate = self
+            vc.selectedDate = date
         }
     }
 }
@@ -443,5 +446,12 @@ extension DiscoverViewController {
     private func didReloadGames() {
         gamesCollectionView.setContentOffset(CGPoint.zero, animated: false)
         gamesCollectionView.reloadData()
+    }
+}
+
+extension DiscoverViewController: CalendarViewControllerDelegate {
+    func didSelectDate(date: Date) {
+        self.date = date
+        dismiss(animated: true, completion: nil)
     }
 }
