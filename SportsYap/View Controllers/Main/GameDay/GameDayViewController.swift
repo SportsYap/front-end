@@ -63,6 +63,7 @@ class GameDayViewController: UIViewController {
             self.tableView.reloadData()
         }, onError: voidErr)
         
+        
         ApiManager.shared.games(for: self.game.id, onSuccess: { (game) in
             self.game.challenge = game.challenge
             self.tableView.reloadData()
@@ -86,7 +87,7 @@ class GameDayViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EnterFieldViewController {
             vc.game = game
-        }else if let vc = segue.destination as? ProfileViewController, let user = sender as? User{
+        }else if let vc = segue.destination as? OtherProfileViewController, let user = sender as? User{
             vc.user = user
         }else if let vc = segue.destination as? ChallengeViewController, let challenge = game.challenge{
             vc.challenge = challenge
@@ -230,8 +231,12 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 user = game.fans.watchingGame[indexPath.row]
             }
-            
-            performSegue(withIdentifier: "showProfile", sender: user)
+
+            if user.id == User.me.id {
+                performSegue(withIdentifier: "showProfile", sender: user)
+            } else {
+                performSegue(withIdentifier: "showOtherProfile", sender: user)
+            }
         } else if selectedTabItem == .News {
             if let url = game.news[indexPath.row].url {
                 UIApplication.shared.open(url)

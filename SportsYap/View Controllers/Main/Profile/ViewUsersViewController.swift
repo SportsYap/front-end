@@ -65,8 +65,8 @@ class ViewUsersViewController: UIViewController {
     
     //MARK: Nav
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ProfileViewController{
-            if let user = sender as? User{
+        if let vc = segue.destination as? OtherProfileViewController{
+            if let user = sender as? User {
                 vc.user = user
             }
         }

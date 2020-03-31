@@ -19,11 +19,12 @@ class Post: DBObject {
     var game: Game?
     
     var liked = false
-    var likeCnt: Int?
+    var likeCnt: Int = 0
     var comments = [Comment]()
+    var commentsCount: Int = 0
     var contentHeight = 0
     
-    override init(dict: [String: AnyObject]){
+    override init(dict: [String: AnyObject]) {
         super.init(dict: dict)
         
         if let ti = dict["team_id"] as? Int{
@@ -46,8 +47,12 @@ class Post: DBObject {
             game = Game(dict: gJson)
         }
         
-        if let lc = dict["likes"] as? Int{
+        if let lc = dict["likes"] as? Int {
             likeCnt = lc
+        }
+        
+        if let cc = dict["comments_count"] as? Int {
+            commentsCount = cc
         }
         
         if let ch = dict["content_height"] as? Int {

@@ -82,7 +82,7 @@ class DiscoverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? GameDayViewController, let game = sender as? Game {
             vc.game = game
-        } else if let vc = segue.destination as? ProfileViewController {
+        } else if let vc = segue.destination as? OtherProfileViewController {
             if let user = sender as? User {
                 vc.user = user
             }
@@ -286,12 +286,20 @@ extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.section == 0 {
             if let user = searchResult[indexPath.row] as? User {
-                performSegue(withIdentifier: "showProfile", sender: user)
+                if user.id == User.me.id {
+                    performSegue(withIdentifier: "showProfile", sender: user)
+                } else {
+                    performSegue(withIdentifier: "showOtherProfile", sender: user)
+                }
             }
         } else {
             let object = (indexPath.section == 1) ? trendingObjects[indexPath.row] : nearbyObjects[indexPath.row]
             if let user = object as? User {
-                performSegue(withIdentifier: "showProfile", sender: user)
+                if user.id == User.me.id {
+                    performSegue(withIdentifier: "showProfile", sender: user)
+                } else {
+                    performSegue(withIdentifier: "showOtherProfile", sender: user)
+                }
             }
         }
     }

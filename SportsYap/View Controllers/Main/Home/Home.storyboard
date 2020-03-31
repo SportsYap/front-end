@@ -277,7 +277,6 @@
                         <segue destination="F3l-cb-wvj" kind="presentation" identifier="showPost" modalPresentationStyle="fullScreen" id="OeT-Kw-F3K"/>
                         <segue destination="6IM-qo-VB1" kind="show" identifier="showComment" id="uEB-iV-JdY"/>
                         <segue destination="9dQ-3v-f3E" kind="presentation" identifier="showLive" modalPresentationStyle="fullScreen" id="mqY-i5-Ga2"/>
-                        <segue destination="yl3-XX-sOB" kind="show" identifier="showProfile" id="3dH-zq-8nw"/>
                         <segue destination="xRO-F2-q3X" kind="show" identifier="showSinglePost" id="Pe4-YZ-EVb"/>
                     </connections>
                 </viewController>
@@ -311,7 +310,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rY-0l-1o0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="1137"/>
+            <point key="canvasLocation" x="1878" y="1075"/>
         </scene>
         <!--CommentsViewController-->
         <scene sceneID="Ojy-KK-Wfv">
@@ -321,7 +320,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDD-ao-OCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904" y="1202"/>
+            <point key="canvasLocation" x="1904" y="1128"/>
         </scene>
         <!--ViewLiveStreamViewController-->
         <scene sceneID="HFP-Pi-0RO">
@@ -331,17 +330,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rd3-Dm-ivP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1927" y="1266"/>
-        </scene>
-        <!--ProfileViewController-->
-        <scene sceneID="b9L-ry-MOO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ProfileViewController" id="yl3-XX-sOB" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="KqE-CL-lLm"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iBz-Z0-kjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1886" y="1330"/>
+            <point key="canvasLocation" x="1927" y="1182"/>
         </scene>
         <!--SinglePostViewController-->
         <scene sceneID="kYN-v2-4Iu">

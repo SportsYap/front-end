@@ -40,7 +40,7 @@ class SinglePostViewController: UIViewController {
         if let vc = segue.destination as? ShotViewController, let post = sender as? Post{
             vc.posts = [post]
             vc.game = post.game
-        }else if let vc = segue.destination as? ProfileViewController, let user = sender as? User{
+        }else if let vc = segue.destination as? OtherProfileViewController, let user = sender as? User{
             vc.user = user
         }else if let vc = segue.destination as? CommentsViewController, let post = sender as? Post{
             vc.post = post
@@ -138,8 +138,12 @@ extension SinglePostViewController: UITableViewDataSource, UITableViewDelegate, 
     func commentBttnPressed(post: Post){
         self.performSegue(withIdentifier: "showCommentSingle", sender: post)
     }
-    func userBttnPressed(user: User){
-        self.performSegue(withIdentifier: "showProfileSingle", sender: user)
+    func userBttnPressed(user: User) {
+        if User.me.id == user.id {
+            performSegue(withIdentifier: "showProfileSingle", sender: user)
+        } else {
+            performSegue(withIdentifier: "showOtherProfileSingle", sender: user)
+        }
     }
     func optionsBttnPressed(post: Post){
         let alertController = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)

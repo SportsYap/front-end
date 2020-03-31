@@ -122,7 +122,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate, Se
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 411 : 50
+        return indexPath.section == 0 ? 432 : 66
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

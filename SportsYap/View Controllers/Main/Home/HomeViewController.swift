@@ -129,18 +129,18 @@ class HomeViewController: UIViewController {
     
     //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? GameDayViewController, let game = sender as? Game{
+        if let vc = segue.destination as? GameDayViewController, let game = sender as? Game {
             vc.game = game
-        } else if let vc = segue.destination as? ShotViewController, let post = sender as? Post{
+        } else if let vc = segue.destination as? ShotViewController, let post = sender as? Post {
             vc.posts = [post]
             vc.game = post.game
-        } else if let vc = segue.destination as? ProfileViewController, let user = sender as? User{
+        } else if let vc = segue.destination as? OtherProfileViewController, let user = sender as? User {
             vc.user = user
-        } else if let vc = segue.destination as? CommentsViewController, let post = sender as? Post{
+        } else if let vc = segue.destination as? CommentsViewController, let post = sender as? Post {
             vc.post = post
-        } else if let vc = segue.destination as? ViewLiveStreamViewController, let user = sender as? User{
+        } else if let vc = segue.destination as? ViewLiveStreamViewController, let user = sender as? User {
             vc.user = user
-        } else if let vc = segue.destination as? SinglePostViewController, let postId = sender as? Int{
+        } else if let vc = segue.destination as? SinglePostViewController, let postId = sender as? Int {
             vc.postId = postId
             vc.hidesBottomBarWhenPushed = true
         }

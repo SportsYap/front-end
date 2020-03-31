@@ -709,17 +709,10 @@
                         <outletCollection property="typeButtons" destination="dlN-fA-u7P" collectionClass="NSMutableArray" id="Chb-zi-lnO"/>
                         <segue destination="NC2-hA-7XU" kind="show" identifier="showGame" id="aIK-G4-gqn"/>
                         <segue destination="z7B-59-vq9" kind="show" identifier="showProfile" id="bS0-Xd-E7X"/>
+                        <segue destination="Xil-66-1Gx" kind="show" identifier="showOtherProfile" id="227-DM-4bg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hV-ot-xGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJB-xA-doV" customClass="Segmentio" customModule="Segmentio">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="GET-b9-YfS"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="fw4-qQ-G29"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="1117.3913043478262" y="1906.4732142857142"/>
         </scene>
@@ -731,17 +724,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57M-2E-wWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2030" y="2018"/>
+            <point key="canvasLocation" x="2029" y="2044"/>
         </scene>
-        <!--ProfileViewController-->
+        <!--Profile-->
         <scene sceneID="7zw-Ao-g0w">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ProfileViewController" id="z7B-59-vq9" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Profile" id="z7B-59-vq9" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="END-qH-YmC"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iU-Pd-WMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2083" y="1957"/>
+            <point key="canvasLocation" x="2016" y="1958"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="MRd-0A-Qhb">
@@ -934,6 +927,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mht-Zx-aTV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2594.202898550725" y="1906.4732142857142"/>
+        </scene>
+        <!--OtherProfileViewController-->
+        <scene sceneID="B0U-iA-RgF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="OtherProfileViewController" id="Xil-66-1Gx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LrC-Dq-tXN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayr-a8-3vc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="1999"/>
         </scene>
     </scenes>
     <resources>

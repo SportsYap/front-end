@@ -29,6 +29,7 @@ class DiscoverTeamTableViewCell: UITableViewCell {
             }
         }
     }
+    
     var delegate: DiscoverSearchTableViewCellDelegate?
     
     @IBAction func onFollow(_ sender: Any) {

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gga-f4-l2f" customClass="TeamBadgeView" customModule="SportsYap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="102" height="25"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-0p-d6r">
+                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mN-Ku-aVR">
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNl-sM-uLJ">
+                                    <rect key="frame" x="-6" y="-6" width="20" height="20"/>
+                                    <color key="backgroundColor" red="0.0" green="0.1843137255" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="XE1-jI-z4A"/>
+                                        <constraint firstAttribute="height" constant="20" id="pXf-wQ-tag"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="rotation">
+                                            <real key="value" value="45"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="jNl-sM-uLJ" firstAttribute="top" secondItem="3mN-Ku-aVR" secondAttribute="top" constant="-6" id="AG3-0B-SXA"/>
+                                <constraint firstItem="jNl-sM-uLJ" firstAttribute="leading" secondItem="3mN-Ku-aVR" secondAttribute="leading" constant="-6" id="Beo-Ms-lW1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Zzh-0p-d6r" secondAttribute="height" multiplier="1:1" id="2j9-7g-EV9"/>
+                        <constraint firstItem="3mN-Ku-aVR" firstAttribute="top" secondItem="Zzh-0p-d6r" secondAttribute="top" id="IBK-cR-ecg"/>
+                        <constraint firstItem="3mN-Ku-aVR" firstAttribute="leading" secondItem="Zzh-0p-d6r" secondAttribute="leading" id="YIh-iq-KFv"/>
+                        <constraint firstItem="3mN-Ku-aVR" firstAttribute="centerX" secondItem="Zzh-0p-d6r" secondAttribute="centerX" id="gK4-4I-8Mf"/>
+                        <constraint firstItem="3mN-Ku-aVR" firstAttribute="centerY" secondItem="Zzh-0p-d6r" secondAttribute="centerY" id="ksl-vl-hdo"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Dodgers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq9-t9-Sf7">
+                    <rect key="frame" x="32" y="0.0" width="59" height="25"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Zzh-0p-d6r" secondAttribute="bottom" id="3cr-Tl-gtZ"/>
+                <constraint firstItem="Xq9-t9-Sf7" firstAttribute="leading" secondItem="Zzh-0p-d6r" secondAttribute="trailing" constant="7" id="7aH-Ki-EQv"/>
+                <constraint firstItem="Zzh-0p-d6r" firstAttribute="leading" secondItem="gga-f4-l2f" secondAttribute="leading" id="Ff2-sd-vL6"/>
+                <constraint firstItem="Xq9-t9-Sf7" firstAttribute="top" secondItem="gga-f4-l2f" secondAttribute="top" id="gKU-CV-31f"/>
+                <constraint firstItem="Zzh-0p-d6r" firstAttribute="top" secondItem="gga-f4-l2f" secondAttribute="top" id="mol-Rx-dmi"/>
+                <constraint firstAttribute="bottom" secondItem="Xq9-t9-Sf7" secondAttribute="bottom" id="wpx-du-rsH"/>
+                <constraint firstAttribute="trailing" secondItem="Xq9-t9-Sf7" secondAttribute="trailing" constant="11" id="zhb-y2-G7D"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="12.5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="teamNameLabel" destination="Xq9-t9-Sf7" id="Y7t-1S-VkE"/>
+                <outlet property="teamPrimaryColorView" destination="jNl-sM-uLJ" id="plk-cW-Sbv"/>
+                <outlet property="teamSecondaryColorView" destination="3mN-Ku-aVR" id="C4I-Y9-MBl"/>
+            </connections>
+            <point key="canvasLocation" x="127.53623188405798" y="169.75446428571428"/>
+        </view>
+    </objects>
+</document>

@@ -807,16 +807,17 @@
                         <segue destination="naT-e9-GJH" kind="show" identifier="showProfile" id="tNo-2l-smw"/>
                         <segue destination="hCM-Ie-s8b" kind="presentation" identifier="showChallenge" modalPresentationStyle="fullScreen" id="nqp-Ks-np2"/>
                         <segue destination="W9n-1K-c6e" kind="show" identifier="showField" id="QLc-1T-74L"/>
+                        <segue destination="vNR-ze-sdY" kind="show" identifier="showOtherProfile" id="0hp-DT-YeF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIF-y5-bgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2069.5652173913045" y="1906.4732142857142"/>
         </scene>
-        <!--ProfileViewController-->
+        <!--Profile-->
         <scene sceneID="5oT-fL-j1W">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ProfileViewController" id="naT-e9-GJH" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Profile" id="naT-e9-GJH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="0Ii-ww-B8M"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNv-ru-esJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2436,6 +2437,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Of8-Su-W4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4464" y="2605"/>
+        </scene>
+        <!--OtherProfileViewController-->
+        <scene sceneID="Jcf-aO-IYF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="OtherProfileViewController" id="vNR-ze-sdY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Fus-EJ-dpi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jaR-Sj-skP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2709" y="1767"/>
         </scene>
     </scenes>
     <resources>

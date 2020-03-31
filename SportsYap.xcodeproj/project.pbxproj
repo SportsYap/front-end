@@ -15,6 +15,8 @@
 		AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3C08BD24204A14001F63EF /* GameListItemView.xib */; };
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
+		AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */; };
+		AF47F0A62430EC9A00E48E50 /* TeamBadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */; };
 		AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */; };
 		AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */; };
 		AF6CF85D242610B60035CC6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85C242610B60035CC6F /* Event.swift */; };
@@ -24,7 +26,8 @@
 		AF6CF867242918BC0035CC6F /* FieldPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */; };
 		AF91EECC242F4EBA0025FCE5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */; };
 		AF91EECF242F8BCD0025FCE5 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */; };
-		CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */; };
+		AFDAFF69242FC4B0008DFF3E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */; };
+		AFE9B81A2432F2E0006AA5D6 /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */; };
 		CD04100420B7E6C5000E1D66 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */; };
 		CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100520B7EC6D000E1D66 /* Comment.swift */; };
 		CD04100820B7EEF4000E1D66 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100720B7EEF4000E1D66 /* Date.swift */; };
@@ -73,7 +76,6 @@
 		CDB5301F204DF6440074341E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB5301D204DF6440074341E /* AVKit.framework */; };
 		CDB53020204DF6440074341E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB5301E204DF6440074341E /* AVFoundation.framework */; };
 		CDBBC30820A3A72200309ADE /* ProfilePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */; };
-		CDCE558C2048134E0023AD48 /* ProfileHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */; };
 		CDDA0CAF201FAAA000BA0568 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA0CA5201FAA9E00BA0568 /* NSData.swift */; };
 		CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA0CA6201FAA9E00BA0568 /* UIImageView.swift */; };
 		CDDA0CB1201FAAA000BA0568 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA0CA7201FAA9E00BA0568 /* UILabel.swift */; };
@@ -193,6 +195,8 @@
 		AF3C08BD24204A14001F63EF /* GameListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListItemView.xib; sourceTree = "<group>"; };
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
+		AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBadgeView.swift; sourceTree = "<group>"; };
+		AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamBadgeView.xib; sourceTree = "<group>"; };
 		AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AF6CF85C242610B60035CC6F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -202,7 +206,8 @@
 		AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
-		CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		CD04100520B7EC6D000E1D66 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CD04100720B7EEF4000E1D66 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -252,7 +257,6 @@
 		CDB5301D204DF6440074341E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		CDB5301E204DF6440074341E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTableViewCell.swift; sourceTree = "<group>"; };
-		CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CDDA0CA5201FAA9E00BA0568 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 		CDDA0CA6201FAA9E00BA0568 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		CDDA0CA7201FAA9E00BA0568 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -391,7 +395,6 @@
 				CDA8EB472060B68C00ED3EBC /* DiscoverTeamTableViewCell.swift */,
 				CDA8EB492060B69500ED3EBC /* DiscoverUserTableViewCell.swift */,
 				AF3B8DBD242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift */,
-				AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -429,6 +432,15 @@
 			path = GameDay;
 			sourceTree = "<group>";
 		};
+		AF47F0A22430EAB300E48E50 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */,
+				AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		AF6CF865242916FD0035CC6F /* GameDay */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */,
+				AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */,
 				CD9125582060F6BA0026613B /* DiscoverGameBannerCollectionViewCell.swift */,
 				CD21658420C7C1BC0009E908 /* DiscoverGameCollectionViewCell.swift */,
 			);
@@ -450,7 +463,6 @@
 		CD00B4D62058EE8A00EA0509 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				CD00B4D72058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift */,
 				CD4F952420C8DE0F00159D5D /* LiveUserCollectionViewCell.swift */,
 				D7A19994231DFDFE007E7D86 /* AnimatedImageCell.swift */,
 				AF91EECD242F8BAA0025FCE5 /* Discover */,
@@ -503,8 +515,10 @@
 			isa = PBXGroup;
 			children = (
 				CDE83A5C203155A80056C77D /* ProfileViewController.swift */,
+				AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */,
 				CD63D5A420A18351008B8D5E /* SettingsViewController.swift */,
 				CD0A655A20B5197500E17FC7 /* ViewUsersViewController.swift */,
+				AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -528,6 +542,7 @@
 				CD47EC2D2053121700FC3A5F /* GameCard.xib */,
 				AF3C08BB24204A05001F63EF /* GameListItemView.swift */,
 				AF3C08BD24204A14001F63EF /* GameListItemView.xib */,
+				AF47F0A22430EAB300E48E50 /* Profile */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -572,7 +587,6 @@
 			children = (
 				AF3B8DBC242D38820010856A /* Discover */,
 				AF3FD3B72425297A00795DB0 /* GameDay */,
-				CDCE558B2048134E0023AD48 /* ProfileHeaderTableViewCell.swift */,
 				CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */,
 				CD4A2EF2208DE0F900DCA56C /* TagGameTableViewCell.swift */,
 				CD4EEC60209B04B800C31469 /* PostTableViewCell.swift */,
@@ -892,6 +906,7 @@
 				D79134B123203E69007D9411 /* Flag.gif in Resources */,
 				AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */,
 				D79134AD23203E69007D9411 /* RallyMonkey.gif in Resources */,
+				AFDAFF69242FC4B0008DFF3E /* Profile.storyboard in Resources */,
 				D79134B323203E69007D9411 /* BigCatch.gif in Resources */,
 				D79134AA23203E69007D9411 /* LIT.gif in Resources */,
 				AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */,
@@ -911,6 +926,7 @@
 				D79134AF23203E69007D9411 /* hockey_goal.gif in Resources */,
 				AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */,
 				CDE936B52182E68A00BA20D2 /* GoogleService-Info.plist in Resources */,
+				AF47F0A62430EC9A00E48E50 /* TeamBadgeView.xib in Resources */,
 				CD910813201FA9B200A00EBC /* Assets.xcassets in Resources */,
 				D79134A723203E69007D9411 /* goal.gif in Resources */,
 				D79134A923203E69007D9411 /* ko.gif in Resources */,
@@ -1108,6 +1124,7 @@
 				CDE83A5F203224100056C77D /* ShotViewController.swift in Sources */,
 				CDB5301C204DF50C0074341E /* RecordViewController.swift in Sources */,
 				CDA8EB482060B68C00ED3EBC /* DiscoverTeamTableViewCell.swift in Sources */,
+				AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */,
 				D71F972C22508B330051E715 /* ColorFilter.swift in Sources */,
 				D7A19995231DFDFE007E7D86 /* AnimatedImageCell.swift in Sources */,
 				CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */,
@@ -1116,6 +1133,7 @@
 				CDA8EB4A2060B69500ED3EBC /* DiscoverUserTableViewCell.swift in Sources */,
 				CD47EC2C2053120C00FC3A5F /* GameCard.swift in Sources */,
 				D71F970C224DF9370051E715 /* YGCResizeVideo.swift in Sources */,
+				AFE9B81A2432F2E0006AA5D6 /* OtherProfileViewController.swift in Sources */,
 				CDDA0CB5201FAAA000BA0568 /* String.swift in Sources */,
 				D71F973722508B330051E715 /* Assets.swift in Sources */,
 				CD27BE2A20915C7700E093FC /* LiveStreamingViewController.swift in Sources */,
@@ -1166,7 +1184,6 @@
 				D71F970E224DF9370051E715 /* YGCSlowMotion.swift in Sources */,
 				AF6CF861242623110035CC6F /* Double.swift in Sources */,
 				CD5BD918203EBBB500709FAE /* Team.swift in Sources */,
-				CD00B4D82058EECD00EA0509 /* ProfileTeamCollectionViewCell.swift in Sources */,
 				D71F970A224DF9370051E715 /* YGCVideoHelper.swift in Sources */,
 				D7A19993231DF302007E7D86 /* GifsViewController.swift in Sources */,
 				D71F972D22508B330051E715 /* FilterShaderProvider.swift in Sources */,
@@ -1181,7 +1198,6 @@
 				CD47EC322054860C00FC3A5F /* OnboardingTeamTableViewCell.swift in Sources */,
 				CD4A2EF1208DDF7900DCA56C /* TagGameViewController.swift in Sources */,
 				D71F972B22508B330051E715 /* FilterShaderParamManager.swift in Sources */,
-				CDCE558C2048134E0023AD48 /* ProfileHeaderTableViewCell.swift in Sources */,
 				D71F972F22508B330051E715 /* SobelFilter.swift in Sources */,
 				CD4A2EF3208DE0F900DCA56C /* TagGameTableViewCell.swift in Sources */,
 				CD0A655B20B5197500E17FC7 /* ViewUsersViewController.swift in Sources */,

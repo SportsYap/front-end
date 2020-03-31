@@ -8,8 +8,71 @@
 
 import UIKit
 
+protocol ProfilePostTableViewCellDelegate {
+    func didTapOption(post: Post)
+}
+
 class ProfilePostTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var optionButton: UIButton!
+    @IBOutlet weak var optionButtonWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var postLabel: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var videoIconView: UIImageView!
+    
+    @IBOutlet weak var fistsLabel: UILabel!
+    @IBOutlet weak var commentsLabel: UILabel!
+    
+    var post: Post? {
+        didSet {
+            if let post = post {
+                profileImageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+                usernameLabel.text = post.user.name
+                timeLabel.text = post.createdAt.timeAgoSince() + " @ " + (post.game?.venue.name ?? "")
+                
+                optionButton.isHidden = (post.user.id != User.me.id)
+                optionButtonWidth.constant = (post.user.id != User.me.id) ? 0 : 50
+                
+                postLabel.text = post.media.comment
+                if let url = post.media.photoUrl { // Render Photo
+                    postImageView.sd_setImage(with: url)
+                    videoIconView.isHidden = true
+                } else if let url = post.media.thumbnailUrl { // Render Video Thumbnail
+                    postImageView.sd_setImage(with: url)
+                    postImageView.isPinchable = true
+                    videoIconView.isHidden = false
+                } else {
+                    postImageView.sd_cancelCurrentImageLoad()
+                    postImageView.image = nil
+                    videoIconView.isHidden = true
+                }
 
-    @IBOutlet var card: GameCard!
-
+                fistsLabel.text = "\(post.likeCnt)"
+                commentsLabel.text = "\(post.commentsCount)"
+            }
+        }
+    }
+    var delegate: ProfilePostTableViewCellDelegate?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        profileImageView.sd_cancelCurrentImageLoad()
+        profileImageView.image = nil
+        
+        postImageView.sd_cancelCurrentImageLoad()
+        postImageView.image = nil
+    }
+    
+    @IBAction func onOption(_ sender: Any) {
+        if let delegate = delegate,
+            let post = post {
+            delegate.didTapOption(post: post)
+        }
+    }
 }
