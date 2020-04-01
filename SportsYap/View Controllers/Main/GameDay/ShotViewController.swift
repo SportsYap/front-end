@@ -184,8 +184,16 @@ extension ShotViewController {
         titleLabel.text = post.user.name
         teamNameLabel.text = post.team?.name ?? ""
         timeAgoLabel.text = post.createdAt.timeAgoSince()
-//        likeCountLabel.text = "\(post.likeCnt ?? 0)"
-//        likeButton.setImage(User.me.likedPosts.contains(post.id) ? #imageLiteral(resourceName: "happy_face_icon_selected") : #imageLiteral(resourceName: "happy_face_icon"), for: .normal)
+        
+        commentButton.setImage(UIImage(named: (post.myComments == 0) ? "comment_bubble" : "comment bubble"), for: .normal)
+        fistbumpButton.setImage(UIImage(named: (post.myLikes == 0) ? "fist_bubble" : "fist bubble"), for: .normal)
+        if post.myLikes > 0 {
+            fistbumpLabel.text = "+\(post.myLikes)"
+            fistbumpLabel.textColor = UIColor(hex: "009BFF")
+        } else {
+            fistbumpLabel.text = "\(post.likeCnt)"
+            fistbumpLabel.textColor = UIColor.white
+        }
         
         loadingActivityIndicator.alpha = 1
         
@@ -265,59 +273,6 @@ extension ShotViewController {
 
 extension ShotViewController {
     //MARK: IBActions
-//    @IBAction func onLike(_ sender: Any) {
-//        UIApplication.shared.beginIgnoringInteractionEvents()
-//
-//        let post = posts[activePost]
-//        /*
-//        if post.liked{
-//            ApiManager.shared.unlike(post: post.id, onSuccess: {
-//            }) { (err) in }
-//        }else{
-//            ApiManager.shared.like(post: post.id, onSuccess: {
-//            }) { (err) in }
-//        }
-//        post.liked = !post.liked
-//        likeBttn.setImage(post.liked ? #imageLiteral(resourceName: "happy_face_icon_selected") : #imageLiteral(resourceName: "happy_face_icon"), for: .normal)
-//        */
-//
-//        if User.me.likedPosts.contains(post.id) {
-//            // already liked
-//            ApiManager.shared.unlike(post: post.id, onSuccess: {
-//                self.likeButton.setImage(#imageLiteral(resourceName: "happy_face_icon"), for: .normal)
-//                User.me.likedPosts.removeAll(where: {$0 == post.id})
-//
-//                let cnt = (post.likeCnt ?? 0) - 1
-//                let normalized = cnt >= 0 ? cnt : 0
-//                post.likeCnt = normalized
-//
-//                self.likeCountLabel.text = "\(normalized)"
-//
-//                UIApplication.shared.endIgnoringInteractionEvents()
-//            }, onError: {_ in
-//                UIApplication.shared.endIgnoringInteractionEvents()
-//            })
-//
-//        } else {
-//            // didn't like yet
-//            ApiManager.shared.like(post: post.id, onSuccess: {
-//                self.likeButton.setImage(#imageLiteral(resourceName: "happy_face_icon_selected"), for: .normal)
-//                User.me.likedPosts.append(post.id)
-//
-//                let cnt = (post.likeCnt ?? 0) + 1
-//                let normalized = cnt >= 0 ? cnt : 0
-//                post.likeCnt = normalized
-//
-//                self.likeCountLabel.text = "\(normalized)"
-//
-//                UIApplication.shared.endIgnoringInteractionEvents()
-//            }, onError: {_ in
-//                UIApplication.shared.endIgnoringInteractionEvents()
-//            })
-//        }
-//
-//    }
-    	
     @IBAction func onOptions(_ sender: Any) {
         player?.pause()
         progressBar.layer.removeAllAnimations()
@@ -391,7 +346,24 @@ extension ShotViewController {
     }
     
     @IBAction func onFistBump(_ sender: Any) {
-        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        let post = posts[activePost]
+
+        ApiManager.shared.like(post: post.id, onSuccess: {
+            post.liked = true
+            post.myLikes += 1
+
+            User.me.likedPosts.append(post.id)
+
+            self.fistbumpButton.setImage(UIImage(named: "fist bubble"), for: .normal)
+            self.fistbumpLabel.text = "+\(post.myLikes)"
+            self.fistbumpLabel.textColor = UIColor(hex: "009BFF")
+
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }, onError: {_ in
+            UIApplication.shared.endIgnoringInteractionEvents()
+        })
     }
     
     @IBAction func onAdd(_ sender: Any) {

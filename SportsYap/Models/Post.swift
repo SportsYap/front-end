@@ -24,6 +24,9 @@ class Post: DBObject {
     var commentsCount: Int = 0
     var contentHeight = 0
     
+    var myLikes: Int = 0
+    var myComments: Int = 0
+    
     override init(dict: [String: AnyObject]) {
         super.init(dict: dict)
         
@@ -71,5 +74,7 @@ class Post: DBObject {
         
         liked = (dict["liked"] as? Bool) ?? false
         
+        myLikes = dict["my_likes"] as? Int ?? 0
+        myComments = dict["my_comments"] as? Int ?? 0
     }
 }
