@@ -18,6 +18,7 @@
 		AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */; };
 		AF47F0A62430EC9A00E48E50 /* TeamBadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */; };
 		AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */; };
+		AF612BBC2434FA8F008232B6 /* AutoresizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF612BBB2434FA8F008232B6 /* AutoresizeView.swift */; };
 		AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */; };
 		AF6CF85D242610B60035CC6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85C242610B60035CC6F /* Event.swift */; };
 		AF6CF85F242619550035CC6F /* GameDayEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */; };
@@ -199,6 +200,7 @@
 		AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBadgeView.swift; sourceTree = "<group>"; };
 		AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamBadgeView.xib; sourceTree = "<group>"; };
 		AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
+		AF612BBB2434FA8F008232B6 /* AutoresizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoresizeView.swift; sourceTree = "<group>"; };
 		AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AF6CF85C242610B60035CC6F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayEventTableViewCell.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			children = (
 				AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */,
 				AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */,
+				AF612BBB2434FA8F008232B6 /* AutoresizeView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1191,6 +1194,7 @@
 				CD0A655520B5105F00E17FC7 /* GameDayFanTableViewCell.swift in Sources */,
 				CDE83A512031555B0056C77D /* LoginViewController.swift in Sources */,
 				CD4A2EE9208DC7BE00DCA56C /* ParentScrollingViewController.swift in Sources */,
+				AF612BBC2434FA8F008232B6 /* AutoresizeView.swift in Sources */,
 				CDF52DD42183B5170013EC6E /* PhoneSignupViewController.swift in Sources */,
 				CDF92B2B20BC11770068A50C /* ChallengeViewController.swift in Sources */,
 				D71F970E224DF9370051E715 /* YGCSlowMotion.swift in Sources */,

@@ -47,9 +47,8 @@ class OtherProfileViewController: UIViewController {
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ShotViewController, let game = sender as? Game{
-            vc.game = game
-            vc.posts = game.posts.reversed()
+        if let vc = segue.destination as? CommentsViewController, let post = sender as? Post {
+            vc.post = post
         } else if let vc = segue.destination as? ViewUsersViewController, let m = sender as? ViewUsersMode {
             vc.mode = m
             vc.rootUser = user
@@ -152,10 +151,21 @@ extension OtherProfileViewController {
 
 extension OtherProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user.posts.count
+        return max(user.posts.count, 1)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if user.posts.isEmpty {
+            return 180
+        }
+        return UITableView.automaticDimension
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if user.posts.isEmpty {
+            return tableView.dequeueReusableCell(withIdentifier: "noCell")!
+        }
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? ProfilePostTableViewCell {
             let post = user.posts[indexPath.row]
             cell.post = post
@@ -169,6 +179,6 @@ extension OtherProfileViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        performSegue(withIdentifier: "showPost", sender: user.games[indexPath.row])
+        performSegue(withIdentifier: "showComments", sender: user.games[indexPath.row])
     }
 }

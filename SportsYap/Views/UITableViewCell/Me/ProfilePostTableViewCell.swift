@@ -24,6 +24,7 @@ class ProfilePostTableViewCell: UITableViewCell {
     @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var videoIconView: UIImageView!
+    @IBOutlet weak var postImageViewHeight: NSLayoutConstraint?
 
     @IBOutlet weak var fistsLabel: UILabel?
     @IBOutlet weak var commentsLabel: UILabel!
@@ -40,13 +41,23 @@ class ProfilePostTableViewCell: UITableViewCell {
                 
                 postLabel.text = post.media.comment
                 if let url = post.media.photoUrl { // Render Photo
-                    postImageView.sd_setImage(with: url)
+                    postImageView.sd_setImage(with: url) { (image, _, _, _) in
+                        if let image = image {
+                            self.postImageViewHeight?.constant = self.postImageView.bounds.size.width / image.size.width * image.size.height
+                        }
+                    }
                     videoIconView.isHidden = true
                 } else if let url = post.media.thumbnailUrl { // Render Video Thumbnail
-                    postImageView.sd_setImage(with: url)
+                    postImageView.sd_setImage(with: url) { (image, _, _, _) in
+                        if let image = image {
+                            self.postImageViewHeight?.constant = self.postImageView.bounds.size.width / image.size.width * image.size.height
+                        }
+                    }
                     postImageView.isPinchable = true
                     videoIconView.isHidden = false
                 } else {
+                    postImageViewHeight?.constant = 0
+
                     postImageView.sd_cancelCurrentImageLoad()
                     postImageView.image = nil
                     videoIconView.isHidden = true
@@ -67,6 +78,8 @@ class ProfilePostTableViewCell: UITableViewCell {
         
         postImageView.sd_cancelCurrentImageLoad()
         postImageView.image = nil
+        
+        postImageViewHeight?.constant = postImageView.bounds.size.width / 317 * 238
     }
     
     @IBAction func onOption(_ sender: Any) {

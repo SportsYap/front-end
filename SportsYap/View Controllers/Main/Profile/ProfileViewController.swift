@@ -28,6 +28,9 @@ class ProfileViewController: UIViewController {
 
     private var refreshControl: UIRefreshControl!
     
+    private var friendsActivities: [Post] = []
+    private var showingMyPosts: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,9 +50,8 @@ class ProfileViewController: UIViewController {
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ShotViewController, let game = sender as? Game{
-            vc.game = game
-            vc.posts = game.posts.reversed()
+        if let vc = segue.destination as? CommentsViewController, let post = sender as? Post {
+            vc.post = post
         } else if let vc = segue.destination as? ViewUsersViewController, let m = sender as? ViewUsersMode {
             vc.mode = m
             vc.rootUser = User.me
@@ -76,8 +78,19 @@ extension ProfileViewController {
         ApiManager.shared.user(for: User.me.id, onSuccess: { (user) in
             User.me = user
             self.displayUser()
-            self.tableView.reloadData()
+            if self.showingMyPosts {
+                self.tableView.reloadData()
+            }
         }) { (err) in }
+        
+        ApiManager.shared.friendsPosts(onSuccess: { (posts) in
+            self.friendsActivities = posts
+            if !self.showingMyPosts {
+                self.tableView.reloadData()
+            }
+        }, onError: { (_) in
+            
+        })
     }
     
     @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -125,6 +138,7 @@ extension ProfileViewController {
             self.myTabIndicatorLeading.constant = 0
             self.tabView.layoutIfNeeded()
         }) { (_) in
+            self.showingMyPosts = true
             self.tableView.contentOffset = .zero
             self.tableView.reloadData()
         }
@@ -138,6 +152,7 @@ extension ProfileViewController {
             self.myTabIndicatorLeading.constant = self.myActivityButton.bounds.size.width
             self.tabView.layoutIfNeeded()
         }) { (_) in
+            self.showingMyPosts = false
             self.tableView.contentOffset = .zero
             self.tableView.reloadData()
         }
@@ -146,13 +161,26 @@ extension ProfileViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.me.posts.count
+        return max(showingMyPosts ? User.me.posts.count : friendsActivities.count, 1)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let posts = showingMyPosts ? User.me.posts : friendsActivities
+        if posts.isEmpty {
+            return 180
+        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let posts = showingMyPosts ? User.me.posts : friendsActivities
+
+        if posts.isEmpty {
+            return tableView.dequeueReusableCell(withIdentifier: "noCell")!
+        }
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? ProfilePostTableViewCell {
-            let post = User.me.posts[indexPath.row]
-            cell.post = post
+            cell.post = posts[indexPath.row]
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
@@ -164,7 +192,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        performSegue(withIdentifier: "showPost", sender: User.me.games[indexPath.row])
+        let posts = showingMyPosts ? User.me.posts : friendsActivities
+        if posts.isEmpty {
+            return
+        }
+
+        performSegue(withIdentifier: "showComments", sender: posts[indexPath.row])
     }
 }
 

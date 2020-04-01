@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import AVKit
 
 class CommentsViewController: UIViewController {
 
@@ -23,6 +24,9 @@ class CommentsViewController: UIViewController {
     
     private var sportsyapGifNames = [String]()
     
+    private var player: AVPlayer?
+    private var playerLayer: AVPlayerLayer?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
@@ -33,6 +37,12 @@ class CommentsViewController: UIViewController {
         if commentBottomSpacing.constant != 0 {
             commentBottomSpacing.constant = 0
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerItemDidReachEnd(notification:)),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: player?.currentItem)
+        player?.play()
     }
     
     override func viewDidLoad() {
@@ -88,6 +98,9 @@ class CommentsViewController: UIViewController {
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
+        
+        player?.pause()
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -127,6 +140,33 @@ extension CommentsViewController {
             }
         }
     }
+    
+    private func playVideo(url: URL, containerView: UIView) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+        } catch {
+            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+        }
+        
+        player = AVPlayer(url: url)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer?.frame = containerView.bounds
+        playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        containerView.layer.addSublayer(playerLayer!)
+        player?.play()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerItemDidReachEnd(notification:)),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: player?.currentItem)
+    }
+    
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        if let playerItem: AVPlayerItem = player?.currentItem {
+            playerItem.seek(to: CMTime.zero, completionHandler: nil)
+            player?.play()
+        }
+    }
 }
 
 extension CommentsViewController {
@@ -153,11 +193,21 @@ extension CommentsViewController {
 extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return post.comments.count
+        return post.comments.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let comment = post.comments[indexPath.row]
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as! ProfilePostTableViewCell
+            cell.post = post
+            if let videoUrl = post.media.videoUrl,
+                player == nil {
+                playVideo(url: videoUrl, containerView: cell.postImageView.superview!)
+            }
+            return cell
+        }
+        
+        let comment = post.comments[indexPath.row - 1]
     
         if comment.text.contains("media.tenor.com/images/") || comment.text.contains(".gif") {
             // gif

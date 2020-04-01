@@ -81,8 +81,6 @@ class PostTableViewCell: UITableViewCell {
         player?.volume = 0
         player?.play()
         
-//        player?.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: Notification.Name.AVPlayerItemDidPlayToEndTime,

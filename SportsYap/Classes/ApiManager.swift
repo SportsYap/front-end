@@ -48,7 +48,6 @@ class ApiManager: NSObject {
         }
         
         if accessToken != ""{
-            print("ACCESS TOKEN: \(accessToken)")
             loggedIn = true
             self.me(onSuccess: { (user) in
                 self.games(for: Date(), onSuccess: { (games) in
@@ -84,7 +83,7 @@ class ApiManager: NSObject {
                     self.accessToken = at
                     self.refreshToken = ""
                     self.loggedIn = true
-                    print(at)
+
                     UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
                     onSuccess()
                 }else{
@@ -114,7 +113,7 @@ class ApiManager: NSObject {
                     self.accessToken = at
                     self.refreshToken = ""
                     self.loggedIn = true
-                    print(at)
+
                     UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
                     let code = json["status_code"]  as? String ?? "200"
                     onSuccess(code != "200")
@@ -145,7 +144,7 @@ class ApiManager: NSObject {
                 self.accessToken = at
                 self.refreshToken = ""
                 self.loggedIn = true
-                print(at)
+
                 UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
                 let code = json["status_code"]  as? String ?? "200"
                 onSuccess(code != "200")
@@ -170,7 +169,6 @@ class ApiManager: NSObject {
         processRequestTo(path: path, httpMethod: "POST", parameters: param, onSuccess: { (json) in
             if let at = json["data"]?["access_token"] as? String, let rt = json["data"]?["refresh_token"] as? String{
                 self.accessToken = at
-                print(at)
                 self.refreshToken = rt
                 self.loggedIn = true
                 UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
@@ -198,6 +196,7 @@ class ApiManager: NSObject {
             onError(err)
         })
     }
+    
     func user(for userId: Int, onSuccess: @escaping (_ user: User)->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/user/\(userId)"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
@@ -211,6 +210,7 @@ class ApiManager: NSObject {
             onError(err)
         })
     }
+    
     func logout(){
         accessToken = ""
         refreshToken = ""
@@ -218,6 +218,7 @@ class ApiManager: NSObject {
         UserDefaults.standard.removeObject(forKey: "USER_ACCESS_TOKEN")
         UserDefaults.standard.removeObject(forKey: "USER_REFRESH_TOKEN")
     }
+    
     func uploadProfilePhoto(photo: UIImage, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
         //let imgData = UIImageJPEGRepresentation(photo, 0.2)!
         let imgData = photo.jpegData(compressionQuality: 0.2)!
@@ -264,8 +265,7 @@ class ApiManager: NSObject {
     
     func updatePushToken(token: String, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/user/pushtoken"
-        
-        var params = ["push_token": token]
+        let params = ["push_token": token]
         
         processRequestTo(path: path, httpMethod: "PUT", parameters: params, onSuccess: { (json) in
             onSuccess()
@@ -328,11 +328,7 @@ class ApiManager: NSObject {
         let path = "/user/\(id)/likes"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
             if let likesJson = json["data"] as? [[String: AnyObject]]{
-                print("this is it")
-                print(likesJson)
-                
                 var postIds = [Int]()
-                
                 for like in likesJson {
                     guard let postId = like["followable_id"] as? Int else { continue }
                     postIds.append(postId)
@@ -625,21 +621,11 @@ class ApiManager: NSObject {
     
     func singlePost(postId: Int, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/post/\(postId)"
-        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
-            
-            guard let data = json as? [String: AnyObject] else {
-                return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))
-            }
-            
-            print(data)
-            print(json)
-            
-            
+        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (data) in
             guard let postData = data["data"] as? [String: AnyObject] else {
                 return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))
             }
             
-            print(postData)
             let post = Post(dict: postData)
             onSuccess(post)
 
@@ -648,6 +634,26 @@ class ApiManager: NSObject {
         })
     }
     
+    func friendsPosts(onSuccess: @escaping (_ posts: [Post])->Void, onError: @escaping (_ error: NSError)->Void){
+        let path = "/post/friends/"
+        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (data) in
+            guard let postsData = data["data"] as? [[String: AnyObject]] else {
+                return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))
+            }
+
+            var posts: [Post] = []
+            for postData in postsData {
+                let post = Post(dict: postData)
+                posts.append(post)
+            }
+
+            onSuccess(posts)
+
+        }, onError: { (err) in
+            onError(err)
+        })
+    }
+
     //MARK: Search
     func search(with query: String, onSuccess: @escaping (_ objects: [DBObject])->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/discover/search?q=\(query)"
