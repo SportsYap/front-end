@@ -25,7 +25,7 @@ class DiscoverTeamTableViewCell: UITableViewCell {
                 hometownLabel.text = "\(team.homeTown) | \(team.sport.abv)"
                 primaryColorView.backgroundColor = team.primaryColor
                 secondaryColorView.backgroundColor = team.secondaryColor
-                followButton.setTitle(NSLocalizedString(team.followed ? "Follow" : "Unfollow", comment: ""), for: .normal)
+                followButton.setTitle(NSLocalizedString(team.followed ? "Unfollow" : "Follow", comment: ""), for: .normal)
             }
         }
     }

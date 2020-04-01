@@ -19,7 +19,7 @@ class DiscoverSuggestionTableViewCell: UITableViewCell {
             if let user = object as? User {
                 iconView.image = UIImage(named: "trending_user")
                 nameLabel.text = user.name
-                followButton.setTitle(NSLocalizedString(user.followed ? "Follow" : "Unfollow", comment: ""), for: .normal)
+                followButton.setTitle(NSLocalizedString(user.followed ? "Unfollow" : "Follow", comment: ""), for: .normal)
             } else if let team = object as? Team {
                 switch team.sport {
                 case .baseball:
@@ -38,7 +38,7 @@ class DiscoverSuggestionTableViewCell: UITableViewCell {
                     iconView.image = UIImage(named: "trending_soccer")
                 }
                 nameLabel.text = team.name
-                followButton.setTitle(NSLocalizedString(team.followed ? "Follow" : "Unfollow", comment: ""), for: .normal)
+                followButton.setTitle(NSLocalizedString(team.followed ? "Unfollow" : "Follow", comment: ""), for: .normal)
             }
         }
     }

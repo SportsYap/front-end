@@ -377,6 +377,20 @@ extension DiscoverViewController: UISearchBarDelegate {
         UIView.animate(withDuration: 0.2) {
             self.searchTableView.alpha = 1
         }
+        
+        ApiManager.shared.trending(onSuccess: { (result) in
+            self.trendingObjects = result
+            self.searchTableView.reloadData()
+        }) { (_) in
+            
+        }
+        
+        ApiManager.shared.nearby(onSuccess: { (result) in
+            self.nearbyObjects = result
+            self.searchTableView.reloadData()
+        }) { (_) in
+            
+        }
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

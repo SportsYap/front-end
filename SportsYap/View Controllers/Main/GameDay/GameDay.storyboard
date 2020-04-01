@@ -591,12 +591,15 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ram’s Head Coach Jeff Fisher not uncomfortable about keeping job beyond 2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T98-En-D6X">
                                                             <rect key="frame" x="113" y="1" width="285" height="33.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="33.5" id="DPu-ty-Vkq"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 26, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYM-ZN-arj">
-                                                            <rect key="frame" x="113" y="38.5" width="75.5" height="14.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 26, 2019" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYM-ZN-arj">
+                                                            <rect key="frame" x="113" y="48.5" width="285" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -608,8 +611,9 @@
                                                         <constraint firstItem="Ql2-ng-KT5" firstAttribute="leading" secondItem="5lu-GY-94d" secondAttribute="leading" id="CuY-bE-vQV"/>
                                                         <constraint firstItem="Ql2-ng-KT5" firstAttribute="top" secondItem="5lu-GY-94d" secondAttribute="top" id="K8J-66-OkG"/>
                                                         <constraint firstItem="hYM-ZN-arj" firstAttribute="leading" secondItem="T98-En-D6X" secondAttribute="leading" id="PXW-Xv-kOg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="hYM-ZN-arj" secondAttribute="trailing" id="Rj9-Hz-Wnr"/>
                                                         <constraint firstItem="T98-En-D6X" firstAttribute="leading" secondItem="Ql2-ng-KT5" secondAttribute="trailing" constant="9" id="e5g-1w-8oJ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="hYM-ZN-arj" secondAttribute="bottom" constant="10" id="hju-vj-a72"/>
+                                                        <constraint firstAttribute="bottom" secondItem="hYM-ZN-arj" secondAttribute="bottom" id="hju-vj-a72"/>
                                                         <constraint firstAttribute="trailing" secondItem="T98-En-D6X" secondAttribute="trailing" id="mYO-f6-hqd"/>
                                                         <constraint firstItem="T98-En-D6X" firstAttribute="top" secondItem="5lu-GY-94d" secondAttribute="top" constant="1" id="whz-eP-oTP"/>
                                                     </constraints>
@@ -758,6 +762,23 @@
                                             <outlet property="thumbImageView" destination="uA1-Gl-veP" id="GIu-0Y-mlA"/>
                                             <outlet property="timeLabel" destination="Oge-km-zlZ" id="OKu-HT-08q"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="noCell" textLabel="sv4-yk-uUF" rowHeight="180" style="IBUITableViewCellStyleDefault" id="Bee-9A-DMi">
+                                        <rect key="frame" x="0.0" y="778" width="414" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bee-9A-DMi" id="EMQ-QY-f5n">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sv4-yk-uUF">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

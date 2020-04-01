@@ -24,7 +24,7 @@ class DiscoverUserTableViewCell: UITableViewCell {
                 hometownLabel.text = user.location
                 isVerifiedImageView.alpha = user.verified ? 1 : 0
                 profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
-                followButton.setTitle(NSLocalizedString(user.followed ? "Follow" : "Unfollow", comment: ""), for: .normal)
+                followButton.setTitle(NSLocalizedString(user.followed ? "Unfollow" : "Follow", comment: ""), for: .normal)
             }
         }
     }

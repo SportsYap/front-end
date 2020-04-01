@@ -680,6 +680,7 @@ class ApiManager: NSObject {
             onError(err)
         })
     }
+    
     func searchGames(for date: Date, sport: Sport, onSuccess: @escaping (_ games: [Game])->Void, onError: @escaping (_ error: NSError)->Void){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMddyyyy"
@@ -723,6 +724,72 @@ class ApiManager: NSObject {
         })
     }
     
+    //MARK: Trending
+    func trending(onSuccess: @escaping (_ objects: [DBObject])->Void, onError: @escaping (_ error: NSError)->Void){
+        let path = "/discover/trending"
+        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
+            if let dataJson = json["data"] as? [String: AnyObject]{
+                var objects = [DBObject]()
+                
+                if let usersJson = dataJson["users"] as? [[String: AnyObject]]{
+                    for userJson in usersJson{
+                        objects.append(User(dict: userJson))
+                    }
+                }
+                
+                if let teamsJson = dataJson["teams"] as? [[String: AnyObject]]{
+                    for (i, teamJson) in teamsJson.enumerated(){
+                        let j = (i+1)*2-1
+                        if j < objects.count{
+                            objects.insert(Team(dict: teamJson), at: j)
+                        }else{
+                            objects.append(Team(dict: teamJson))
+                        }
+                    }
+                }
+
+                onSuccess(objects)
+            }else{
+                onSuccess([DBObject]())
+            }
+        }, onError: { (err) in
+            onError(err)
+        })
+    }
+
+    //MARK: Nearby
+    func nearby(onSuccess: @escaping (_ objects: [DBObject])->Void, onError: @escaping (_ error: NSError)->Void){
+        let path = "/discover/nearby"
+        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
+            if let dataJson = json["data"] as? [String: AnyObject]{
+                var objects = [DBObject]()
+                
+                if let usersJson = dataJson["users"] as? [[String: AnyObject]]{
+                    for userJson in usersJson{
+                        objects.append(User(dict: userJson))
+                    }
+                }
+                
+                if let teamsJson = dataJson["teams"] as? [[String: AnyObject]]{
+                    for (i, teamJson) in teamsJson.enumerated(){
+                        let j = (i+1)*2-1
+                        if j < objects.count{
+                            objects.insert(Team(dict: teamJson), at: j)
+                        }else{
+                            objects.append(Team(dict: teamJson))
+                        }
+                    }
+                }
+
+                onSuccess(objects)
+            }else{
+                onSuccess([DBObject]())
+            }
+        }, onError: { (err) in
+            onError(err)
+        })
+    }
+
     //MARK: Upload
     func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, photo: UIImage, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
         

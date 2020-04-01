@@ -60,18 +60,28 @@ class GameDayViewController: UIViewController {
         
         ApiManager.shared.news(for: self.game, onSuccess: { (news) in
             self.game.news = news
-            self.tableView.reloadData()
+            if self.selectedTabItem == .News {
+                self.tableView.reloadData()
+            }
         }, onError: voidErr)
         
+        ApiManager.shared.events(for: self.game, onSuccess: { (events) in
+            self.game.events = events
+            if self.selectedTabItem == .Events {
+                self.tableView.reloadData()
+            }
+        }, onError: voidErr)
         
         ApiManager.shared.games(for: self.game.id, onSuccess: { (game) in
             self.game.challenge = game.challenge
-            self.tableView.reloadData()
+            if self.selectedTabItem == .Fans {
+                self.tableView.reloadData()
+            }
         }, onError: voidErr)
         
         ApiManager.shared.fanMeter(for: self.game, onSuccess: { (val) in
             self.game.fanMeter = val
-            self.tableView.reloadData()
+            self.displayGameInfo()
         }) { (err) in }
         
         singlePost = false
@@ -87,9 +97,9 @@ class GameDayViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EnterFieldViewController {
             vc.game = game
-        }else if let vc = segue.destination as? OtherProfileViewController, let user = sender as? User{
+        } else if let vc = segue.destination as? OtherProfileViewController, let user = sender as? User {
             vc.user = user
-        }else if let vc = segue.destination as? ChallengeViewController, let challenge = game.challenge{
+        } else if let vc = segue.destination as? ChallengeViewController, let challenge = game.challenge {
             vc.challenge = challenge
             vc.game = game
         }
@@ -150,7 +160,7 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         switch selectedTabItem {
         case .Fans:
-            return 3
+            return 4
         case .Events:
             return 1
         case .News:
@@ -165,19 +175,27 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 return game.fans.verified.count
             } else if section == 1 {
                 return game.fans.atGame.count
-            } else {
+            } else if section == 2 {
                 return game.fans.watchingGame.count
+            } else {
+                return game.fans.isEmpty ? 1 : 0
             }
         case .Events:
-            return game.events.count
+            return max(game.events.count, 1)
         case .News:
-            return game.news.count
+            return max(game.news.count, 1)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch selectedTabItem {
         case .News:
+            if game.news.isEmpty {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "noCell")!
+                cell.textLabel?.text = NSLocalizedString("No News", comment: "")
+                return cell
+            }
+            
             if let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? GameDayNewsTableViewCell {
                 let news = game.news[indexPath.row]
                 cell.news = news
@@ -189,8 +207,12 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 user = game.fans.verified[indexPath.row]
             } else if indexPath.section == 1 {
                 user = game.fans.atGame[indexPath.row]
-            } else {
+            } else if indexPath.section == 2 {
                 user = game.fans.watchingGame[indexPath.row]
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "noCell")!
+                cell.textLabel?.text = NSLocalizedString("No Fans", comment: "")
+                return cell
             }
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "fanCell") as? GameDayFanTableViewCell {
@@ -198,6 +220,12 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
         case .Events:
+            if game.events.isEmpty {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "noCell")!
+                cell.textLabel?.text = NSLocalizedString("No Events", comment: "")
+                return cell
+            }
+            
             let event = game.events[indexPath.row]
             if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as? GameDayEventTableViewCell {
                 cell.event = event
@@ -211,11 +239,11 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedTabItem {
         case .Fans:
-            return 62
+            return game.fans.isEmpty ? 180 : 62
         case .Events:
-            return 227
+            return game.events.isEmpty ? 180 : 227
         case .News:
-            return 79
+            return game.news.isEmpty ? 180 : 79
         }
     }
     
@@ -228,8 +256,10 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 user = game.fans.verified[indexPath.row]
             } else if indexPath.section == 1 {
                 user = game.fans.atGame[indexPath.row]
-            } else {
+            } else if indexPath.section == 2 {
                 user = game.fans.watchingGame[indexPath.row]
+            } else {
+                return
             }
 
             if user.id == User.me.id {
@@ -238,6 +268,10 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 performSegue(withIdentifier: "showOtherProfile", sender: user)
             }
         } else if selectedTabItem == .News {
+            if game.news.isEmpty {
+                return
+            }
+            
             if let url = game.news[indexPath.row].url {
                 UIApplication.shared.open(url)
             }
@@ -251,8 +285,10 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 return game.hasFrontRow ? 42 : 0
             } else if section == 1 {
                 return game.fans.atGame.isEmpty ? 0 : 42
-            } else {
+            } else if section == 2 {
                 return game.fans.watchingGame.isEmpty ? 0 : 42
+            } else {
+                return 0
             }
         case .Events:
             return game.events.isEmpty ? 0 : 42
@@ -352,7 +388,7 @@ extension GameDayViewController {
         if selectedTabItem == .News {
             return
         }
-        
+
         UIView.animate(withDuration: 0.1, animations: {
             self.indicatorViewLeading.constant = self.newsButton.frame.origin.x
             self.tabView.layoutIfNeeded()

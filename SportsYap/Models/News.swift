@@ -25,8 +25,8 @@ class News: DBObject {
             url = u
         }
         
-        if let a = dict["author"] as? String{
-            author = a
+        if let a = dict["author"] as? String {
+            author = a.components(separatedBy: ",").first ?? ""
         }
         
         if let ts = dict["thumbail_url"] as? String, let u = URL(string: ts){
