@@ -50,7 +50,6 @@ class EnterFieldViewController: UIViewController {
         panoView = GMSPanoramaView(frame: viewFieldView.bounds)
         panoView.delegate = self
         viewFieldView.addSubview(panoView)
-  
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +69,6 @@ class EnterFieldViewController: UIViewController {
         
         let width = CGFloat(Int((view.bounds.width - 2) / 3))
         collectionViewLayout.itemSize = CGSize(width: width, height: width)
-        collectionViewLayout.estimatedItemSize = CGSize(width: width, height: width)
         collectionViewLayout.prepare()
         collectionViewLayout.invalidateLayout()
     }
@@ -121,6 +119,11 @@ extension EnterFieldViewController: UICollectionViewDataSource, UICollectionView
         }
         
         return collectionView.dequeueReusableCell(withReuseIdentifier: "AddShotCollectionViewCell", for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = CGFloat(Int((view.bounds.width - 2) / 3))
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
