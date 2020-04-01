@@ -16,7 +16,7 @@ class TeamSelectionViewController: UIViewController, UISearchBarDelegate {
     
     var selectedSport = Sport.football
     var teams = [Team]()
-    var selectedTeams = [Int]()
+    var selectedTeams = [Team]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,12 @@ class TeamSelectionViewController: UIViewController, UISearchBarDelegate {
     
     //MARK: IBAction
     @IBAction func continueBttnPressed(_ sender: Any) {
-        for teamId in selectedTeams{
-            ApiManager.shared.follow(team: teamId, onSuccess: {
+        for team in selectedTeams {
+            ApiManager.shared.follow(team: team.id, onSuccess: {
+                team.followed = true
+                if !User.me.teams.contains(team) {
+                    User.me.teams.append(team)
+                }
             }, onError: { (err) in })
         }
         self.dismiss(animated: true, completion: nil)
@@ -85,14 +89,14 @@ extension TeamSelectionViewController: UITableViewDelegate, UITableViewDataSourc
         }else if indexPath.section == 1{
             if let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell") as? OnboardingTeamTableViewCell{
                 let team = teams[indexPath.row]
-                cell.titleLbl.text = team.name
-                cell.homeTownLbl.text = "\(team.homeTown) | \(team.sport.abv)"
+                cell.titleLabel.text = team.name
+                cell.homeTownLabel.text = "\(team.homeTown) | \(team.sport.abv)"
                 cell.primaryColorView.backgroundColor = team.primaryColor
                 cell.secondaryColorView.backgroundColor = team.secondaryColor
-                if selectedTeams.contains(team.id){
-                    cell.followBttn.setTitle("Unfollow", for: .normal)
+                if selectedTeams.contains(team){
+                    cell.followButton.setTitle("Unfollow", for: .normal)
                 }else{
-                    cell.followBttn.setTitle("Follow", for: .normal)
+                    cell.followButton.setTitle("Follow", for: .normal)
                 }
                 return cell
             }
@@ -106,10 +110,10 @@ extension TeamSelectionViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         
         let team = teams[indexPath.row]
-        if selectedTeams.contains(team.id){
-            selectedTeams.remove(at: selectedTeams.index(of: team.id)!)
+        if selectedTeams.contains(team){
+            selectedTeams.remove(at: selectedTeams.index(of: team)!)
         }else{
-            selectedTeams.append(team.id)
+            selectedTeams.append(team)
         }
         tableView.reloadData()
     }

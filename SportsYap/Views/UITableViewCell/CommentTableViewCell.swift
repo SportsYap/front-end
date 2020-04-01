@@ -10,14 +10,23 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
 
-    @IBOutlet var profileImageView: UIImageView!
-    @IBOutlet var isVerifiedImageView: UIImageView!
-    @IBOutlet var textLbl: UILabel!
-    @IBOutlet var timeAgoLbl: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var timeAgoLabel: UILabel!
+    
+    var comment: Comment? {
+        didSet {
+            if let comment = comment {
+                timeAgoLabel.text = comment.createdAt.timeAgoSince()
+                profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+                
+                commentLabel.attributedText = NSMutableAttributedString().bold(comment.user.name).normal(" \(comment.text)")
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
-
 }

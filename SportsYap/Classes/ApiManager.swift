@@ -366,6 +366,25 @@ class ApiManager: NSObject {
             onError(err)
         })
     }
+    func teams(for search: String, onSuccess: @escaping (_ teams: [Team])->Void, onError: @escaping (_ error: NSError)->Void){
+        let path = "/discover/search?q=\(search)"
+        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
+            if let dataJson = json["data"] as? [String: AnyObject]{
+                var teams = [Team]()
+                if let teamsJson = dataJson["teams"] as? [[String: AnyObject]]{
+                    for (_, teamJson) in teamsJson.enumerated(){
+                        teams.append(Team(dict: teamJson))
+                    }
+                }
+                
+                onSuccess(teams)
+            }else{
+                onSuccess([Team]())
+            }
+        }, onError: { (err) in
+            onError(err)
+        })
+    }
     func teams(for sport: Sport, search: String, onSuccess: @escaping (_ teams: [Team])->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/discover/search?sport_id=\(sport.rawValue)&q=\(search)"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
@@ -534,6 +553,22 @@ class ApiManager: NSObject {
         })
     }
     
+    func events(for game: Game, onSuccess: @escaping (_ events: [Event])->Void, onError: @escaping (_ error: NSError)->Void){
+        let path = "/games/\(game.id)/events"
+        processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
+            var events = [Event]()
+            if let eventsJsonArray = json["data"] as? [[String: AnyObject]]{
+                for eventsJson in eventsJsonArray {
+                    let n = Event(dict: eventsJson)
+                    events.append(n)
+                }
+            }
+            onSuccess(events)
+        }, onError: { (err) in
+            onError(err)
+        })
+    }
+
     //MARK: Posts
     func story(for game: Game, page: Int, onSuccess: @escaping (_ posts: [Post])->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/games/\(game.id)/story?sort=created_at"

@@ -26,6 +26,7 @@
 		AF6CF867242918BC0035CC6F /* FieldPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */; };
 		AF91EECC242F4EBA0025FCE5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */; };
 		AF91EECF242F8BCD0025FCE5 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */; };
+		AF96D5482433D8C300EB08AB /* FollowTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF96D5472433D8C300EB08AB /* FollowTeamsViewController.swift */; };
 		AFDAFF69242FC4B0008DFF3E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */; };
 		AFE9B81A2432F2E0006AA5D6 /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */; };
 		CD04100420B7E6C5000E1D66 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */; };
@@ -206,6 +207,7 @@
 		AF6CF866242918BC0035CC6F /* FieldPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF91EECB242F4EBA0025FCE5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		AF91EECE242F8BCD0025FCE5 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
+		AF96D5472433D8C300EB08AB /* FollowTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTeamsViewController.swift; sourceTree = "<group>"; };
 		AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		CD04100320B7E6C5000E1D66 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -460,6 +462,16 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
+		AFE9B81B2433A73C006AA5D6 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */,
+				CD63D5A620A1883B008B8D5E /* SettingsHeaderTableViewCell.swift */,
+				CD63D5A820A1885A008B8D5E /* SettingsGameTableViewCell.swift */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		CD00B4D62058EE8A00EA0509 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +530,7 @@
 				AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */,
 				CD63D5A420A18351008B8D5E /* SettingsViewController.swift */,
 				CD0A655A20B5197500E17FC7 /* ViewUsersViewController.swift */,
+				AF96D5472433D8C300EB08AB /* FollowTeamsViewController.swift */,
 				AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */,
 			);
 			path = Profile;
@@ -587,12 +600,10 @@
 			children = (
 				AF3B8DBC242D38820010856A /* Discover */,
 				AF3FD3B72425297A00795DB0 /* GameDay */,
+				AFE9B81B2433A73C006AA5D6 /* Me */,
 				CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */,
 				CD4A2EF2208DE0F900DCA56C /* TagGameTableViewCell.swift */,
 				CD4EEC60209B04B800C31469 /* PostTableViewCell.swift */,
-				CD63D5A620A1883B008B8D5E /* SettingsHeaderTableViewCell.swift */,
-				CD63D5A820A1885A008B8D5E /* SettingsGameTableViewCell.swift */,
-				CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */,
 				CD0A655C20B51A9400E17FC7 /* UserTableViewCell.swift */,
 				CD04100920B7EF70000E1D66 /* CommentTableViewCell.swift */,
 				CD21658B20C7D0060009E908 /* TimelineLiveTableViewCell.swift */,
@@ -1153,6 +1164,7 @@
 				CD4F952720C8E4AF00159D5D /* ViewLiveStreamViewController.swift in Sources */,
 				AF91EECF242F8BCD0025FCE5 /* CalendarDayCell.swift in Sources */,
 				CD4A2EEB208DCF7D00DCA56C /* UserMedia.swift in Sources */,
+				AF96D5482433D8C300EB08AB /* FollowTeamsViewController.swift in Sources */,
 				D709EEC9232C71560044D723 /* CustomTextField.swift in Sources */,
 				D71F970B224DF9370051E715 /* YGCAddImageForVideo.swift in Sources */,
 				D7A1999C231F6444007E7D86 /* CommentGifCell.swift in Sources */,

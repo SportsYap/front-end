@@ -11,19 +11,29 @@ import Gifu
 import Nuke
 
 class CommentGifCell: UITableViewCell {
-    @IBOutlet var profileImageView: UIImageView!
-    @IBOutlet var isVerifiedImageView: UIImageView!
-    @IBOutlet var textLbl: UILabel!
-    @IBOutlet var timeAgoLbl: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var timeAgoLabel: UILabel!
     
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var gifImageView: GIFImageView!
+    
+    var comment: Comment? {
+        didSet {
+            if let comment = comment {
+                timeAgoLabel.text = comment.createdAt.timeAgoSince()
+                profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+                
+                addGifImageView(gifUrl: comment.text)
+                usernameLabel.attributedText = NSMutableAttributedString().bold(comment.user.name)
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func addGifImageView(gifUrl: String) {
+    private func addGifImageView(gifUrl: String) {
         if gifUrl.contains("media.tenor.com/images/") {
             if let url = URL(string: gifUrl) {
                 

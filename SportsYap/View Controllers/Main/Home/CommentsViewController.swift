@@ -11,16 +11,17 @@ import IQKeyboardManagerSwift
 
 class CommentsViewController: UIViewController {
 
-    @IBOutlet var commentBottomSpacing: NSLayoutConstraint!
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var commentTextField: UITextField!
-    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet weak var commentBottomSpacing: NSLayoutConstraint!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     var post: Post!
-    var initialLoad = true
-    var secondLoad = false
     
-    var sportsyapGifNames = [String]()
+    private var initialLoad = true
+    private var secondLoad = false
+    
+    private var sportsyapGifNames = [String]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,8 +89,10 @@ class CommentsViewController: UIViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
-    
-    func loadComments(){
+}
+
+extension CommentsViewController {
+    private func loadComments() {
         ApiManager.shared.comments(for: post, page: 1, onSuccess: { (comments) in
             self.post.comments = comments
             self.tableView.reloadData()
@@ -101,53 +104,42 @@ class CommentsViewController: UIViewController {
         }, onError: voidErr)
     }
     
-    func scrollToBottom()  {
+    private func scrollToBottom()  {
         guard !initialLoad else {
             initialLoad = false
             return
         }
         
         let point = CGPoint(x: 0, y: self.tableView.contentSize.height + self.tableView.contentInset.bottom - self.tableView.frame.height)
-        if point.y >= 0{
+        if point.y >= 0 {
             self.tableView.setContentOffset(point, animated: true)
         }
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
+    @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let tabBarHeight = UIScreen.main.bounds.height - TabBarViewController.sharedInstance.tabBar.frame.origin.y
+            
             commentBottomSpacing.constant = keyboardRectangle.height - tabBarHeight
-            if self.navigationController == nil || singlePost {
+            if navigationController == nil || singlePost {
                 commentBottomSpacing.constant += 50
             }
         }
     }
-    
-    @objc func deletePressed(sender: UIButton) {
-        let comment = post.comments[sender.tag]
-        deleteComment(comment: comment, row: sender.tag)
-    }
-    
-    private func deleteComment(comment: Comment, row: Int) {
-        ApiManager.shared.deleteComment(for: post, comment: comment, onSuccess: {
-            self.post.comments.remove(at: row)
-            self.tableView.reloadData()
-        }) { (error) in
-            self.alert(message: "Error deleting your comment. Please try again.")
-            self.loadComments()
-        }
-    }
-    
+}
+
+extension CommentsViewController {
     //MARK: IBAction
-    @IBAction func backBttnPressed(_ sender: Any) {
-        if self.navigationController != nil{
-            self.navigationController?.popViewController(animated: true)
-        }else{
-            self.dismiss(animated: true, completion: nil)
+    @IBAction func onBack(_ sender: Any) {
+        if navigationController != nil{
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
-    @IBAction func commentBttnPressed(_ sender: Any) {
+    
+    @IBAction func onComment(_ sender: Any) {
         let text = commentTextField.text ?? ""
         ApiManager.shared.postComment(for: post, text: text, onSuccess: {
             self.commentTextField.text = ""
@@ -156,33 +148,9 @@ class CommentsViewController: UIViewController {
             self.loadComments()
         }, onError: voidErr)
     }
-    
 }
 
 extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-        if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-            deleteComment(comment: post.comments[indexPath.row], row: indexPath.row)
-            /*
-            ApiManager.shared.deleteComment(for: post, comment: post.comments[indexPath.row], onSuccess: {
-                self.post.comments.remove(at: indexPath.row)
-                self.tableView.reloadData()
-            }) { (error) in
-                self.alert(message: "Error deleting your comment. Please try again.")
-                self.loadComments()
-            }
-            */
-        }
-    }
-    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return post.comments.count
@@ -194,38 +162,13 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
         if comment.text.contains("media.tenor.com/images/") || comment.text.contains(".gif") {
             // gif
             let cell = tableView.dequeueReusableCell(withIdentifier: "commentGifCell") as! CommentGifCell
-            
-            cell.isVerifiedImageView.alpha = comment.user.verified ? 1 : 0
-            cell.timeAgoLbl.text = comment.createdAt.timeAgoSince()
-            cell.profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
-            
-            cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.addTarget(self, action: #selector(deletePressed(sender:)), for: .touchUpInside)
-            cell.addGifImageView(gifUrl: comment.text)
-            
-            cell.textLbl.attributedText = NSMutableAttributedString().bold(comment.user.name)
-            
+            cell.comment = comment
             return cell
-            
         } else {
             // regular comment
             let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! CommentTableViewCell
-            
-            cell.isVerifiedImageView.alpha = comment.user.verified ? 1 : 0
-            cell.timeAgoLbl.text = comment.createdAt.timeAgoSince()
-            cell.profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
-            
-            cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.addTarget(self, action: #selector(deletePressed(sender:)), for: .touchUpInside)
-            
-            cell.textLbl.attributedText = NSMutableAttributedString().bold(comment.user.name).normal(" \(comment.text)")
-            
+            cell.comment = comment
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
 }

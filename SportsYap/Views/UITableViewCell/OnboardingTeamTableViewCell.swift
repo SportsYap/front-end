@@ -10,12 +10,12 @@ import UIKit
 
 class OnboardingTeamTableViewCell: UITableViewCell {
 
-    @IBOutlet var titleLbl: UILabel!
-    @IBOutlet var homeTownLbl: UILabel!
-    @IBOutlet weak var followBttn: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var homeTownLabel: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
-    @IBOutlet var primaryColorView: UIView!
-    @IBOutlet var secondaryColorView: UIView!
+    @IBOutlet weak var primaryColorView: UIView!
+    @IBOutlet weak var secondaryColorView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

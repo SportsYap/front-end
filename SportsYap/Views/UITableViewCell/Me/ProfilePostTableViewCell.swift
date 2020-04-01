@@ -18,14 +18,14 @@ class ProfilePostTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    @IBOutlet weak var optionButton: UIButton!
-    @IBOutlet weak var optionButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var optionButton: UIButton?
+    @IBOutlet weak var optionButtonWidth: NSLayoutConstraint?
     
     @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var videoIconView: UIImageView!
-    
-    @IBOutlet weak var fistsLabel: UILabel!
+
+    @IBOutlet weak var fistsLabel: UILabel?
     @IBOutlet weak var commentsLabel: UILabel!
     
     var post: Post? {
@@ -35,8 +35,8 @@ class ProfilePostTableViewCell: UITableViewCell {
                 usernameLabel.text = post.user.name
                 timeLabel.text = post.createdAt.timeAgoSince() + " @ " + (post.game?.venue.name ?? "")
                 
-                optionButton.isHidden = (post.user.id != User.me.id)
-                optionButtonWidth.constant = (post.user.id != User.me.id) ? 0 : 50
+                optionButton?.isHidden = (post.user.id != User.me.id)
+                optionButtonWidth?.constant = (post.user.id != User.me.id) ? 0 : 50
                 
                 postLabel.text = post.media.comment
                 if let url = post.media.photoUrl { // Render Photo
@@ -52,7 +52,7 @@ class ProfilePostTableViewCell: UITableViewCell {
                     videoIconView.isHidden = true
                 }
 
-                fistsLabel.text = "\(post.likeCnt)"
+                fistsLabel?.text = "\(post.likeCnt)"
                 commentsLabel.text = "\(post.commentsCount)"
             }
         }

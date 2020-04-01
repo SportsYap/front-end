@@ -8,50 +8,102 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, SettingsGameTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class SettingsViewController: UIViewController {
 
-    @IBOutlet var titleLbl: UILabel!
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var successView: UIView!
+
+    private var profileImage: UIImage?
+    private var username: String?
+    private var firstname: String?
+    private var lastname: String?
+    private var email: String?
+    private var location: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+}
 
+extension SettingsViewController {
     //MARK: IBAction
-    @IBAction func backBttnPressed(_ sender: Any) {
-        
-        
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func onCancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onSave(_ sender: Any) {
+        User.me.name = username ?? User.me.name
+        User.me.firstName = firstname ?? User.me.firstName
+        User.me.lastName = lastname ?? User.me.lastName
+        User.me.email = email ?? User.me.email
+        User.me.location = location ?? User.me.location
+
+        ApiManager.shared.updateSelf(onSuccess: {
+            if let image = self.profileImage {
+                ApiManager.shared.uploadProfilePhoto(photo: image, onSuccess: {
+                    self.profileImage = nil
+                    
+                    URLCache.shared.removeAllCachedResponses()
+                    ImageFileManager.shared.clearAll()
+                    
+                    ApiManager.shared.me(onSuccess: { (user) in
+                        self.username = nil
+                        self.firstname = nil
+                        self.lastname = nil
+                        self.email = nil
+                        self.location = nil
+
+                        self.tableView.reloadData()
+                    }, onError: voidErr)
+                }, onError: voidErr)
+            } else {
+                self.showSuccessView()
+            }
+        }, onError: voidErr)
+    }
+    
+    @IBAction func onFollowNewTeams(_ sender: Any) {
+        performSegue(withIdentifier: "followNewTeams", sender: nil)
+    }
+}
+
+extension SettingsViewController: SettingsGameTableViewCellDelegate {
     //MARK: SettingsGameTableViewCellDelegate
-    func unfollowBttnPressed(for team: Team){
+    func didUnfollowTeam(for team: Team) {
         ApiManager.shared.unfollow(team: team.id, onSuccess: {
-        }) { (err) in }
-    }
-    func followBttnPressed(for team: Team){
-        ApiManager.shared.follow(team: team.id, onSuccess: {
+            team.followed = false
+            if let index = User.me.teams.index(of: team) {
+                User.me.teams.remove(at: index)
+            }
         }) { (err) in }
     }
     
+    func didFollowTeam(for team: Team) {
+        ApiManager.shared.follow(team: team.id, onSuccess: {
+            team.followed = true
+            if !User.me.teams.contains(team) {
+                User.me.teams.append(team)
+            }
+        }) { (err) in }
+    }
+}
+
+extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let width = Double(self.view.frame.width)
         let coppedImage = cropToBounds(image: image.fixOrientation(), width: width, height: width)
-        ApiManager.shared.uploadProfilePhoto(photo: coppedImage, onSuccess: {
-            URLCache.shared.removeAllCachedResponses()
-            ImageFileManager.shared.clearAll()
-            ApiManager.shared.me(onSuccess: { (user) in
-                self.tableView.reloadData()
-            }, onError: voidErr)
-        }, onError: voidErr)
+        
+        profileImage = coppedImage
+
         dismiss(animated:true, completion: nil)
     }
+}
 
-    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
-        
+extension SettingsViewController {
+    private func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         let cgimage = image.cgImage!
         let contextImage: UIImage = UIImage(cgImage: cgimage)
         let contextSize: CGSize = contextImage.size
@@ -83,17 +135,32 @@ class SettingsViewController: UIViewController, SettingsGameTableViewCellDelegat
         
         return image
     }
+    
+    private func showSuccessView() {
+        successView.isHidden = false
+        UIView.animate(withDuration: 0.2, animations: {
+            self.successView.alpha = 1
+        }) { (_) in
+            UIView.animate(withDuration: 0.2, delay: 3, options: [], animations: {
+                self.successView.alpha = 0
+            }) { (_) in
+                self.successView.isHidden = true
+            }
+        }
+    }
 }
 
-extension SettingsViewController: UITableViewDataSource, UITableViewDelegate, SettingsHeaderTableViewCellDelegate{
+extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 1 ? User.me.teams.count : 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? SettingsHeaderTableViewCell{
                 cell.nameTextField.text = "\(User.me.firstName) \(User.me.lastName)"
                 cell.usernameTextField.text = User.me.name
@@ -103,67 +170,59 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate, Se
                 cell.profileImageView.sd_setImage(with: User.me.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 return cell
             }
-        }else if indexPath.section == 1{
+        } else if indexPath.section == 1 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell") as? SettingsGameTableViewCell{
                 let team = User.me.teams[indexPath.row]
-                cell.teamNameLbl.text = team.name
-                cell.hometownLbl.text = "\(team.homeTown) | \(team.sport.abv)"
+                cell.teamNameLabel.text = team.name
+                cell.hometownLabel.text = "\(team.homeTown) | \(team.sport.abv)"
                 cell.primaryColorView.backgroundColor = team.primaryColor
                 cell.secondaryColorView.backgroundColor = team.secondaryColor
                 cell.delegate = self
                 cell.team = team
                 return cell
             }
-        }else if indexPath.section == 2{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "logoutCell"){
-                return cell
-            }
         }
+        
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 432 : 66
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 2{
-            ApiManager.shared.logout()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-                self.navigationController?.popViewController(animated: false)
-            }
-            TabBarViewController.sharedInstance.selectedIndex = 0
-        }
-    }
-    
+}
+
+extension SettingsViewController: SettingsHeaderTableViewCellDelegate {
     //MARK: SettingsHeaderTableViewCellDelegate
-    func editProfilePhoto() {
+    func didTapEditPhoto() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
+            
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary;
             imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
+            
+            present(imagePicker, animated: true, completion: nil)
         }
     }
-    func userDataUpdated(value: String, key: String){
-        if key == "username"{
-            User.me.name = value
-        }else if key == "name"{
+    
+    func didUpdateUserData(value: String, key: String) {
+        if key == "username" {
+            username = value
+        } else if key == "name" {
             let parts = value.split(maxSplits: 2, omittingEmptySubsequences: true) { (char) -> Bool in
                 return char == " "
             }
-            if parts.count == 1{
-                User.me.firstName = String(parts[0])
-                User.me.lastName = ""
-            }else if parts.count == 2{
-                User.me.firstName = String(parts[0])
-                User.me.lastName = String(parts[1])
+            if parts.count == 1 {
+                firstname = String(parts[0])
+                lastname = ""
+            } else if parts.count == 2 {
+                firstname = String(parts[0])
+                lastname = String(parts[1])
             }
-        }else if key == "email"{
-            User.me.email = value
-        }else if key == "hometown"{
-            User.me.location = value
+        } else if key == "email" {
+            email = value
+        } else if key == "hometown" {
+            location = value
         }
-        ApiManager.shared.updateSelf(onSuccess: { }, onError: voidErr)
     }
 }

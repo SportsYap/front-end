@@ -9,16 +9,16 @@
 import UIKit
 
 protocol SettingsHeaderTableViewCellDelegate {
-    func editProfilePhoto()
-    func userDataUpdated(value: String, key: String)
+    func didTapEditPhoto()
+    func didUpdateUserData(value: String, key: String)
 }
 
-class SettingsHeaderTableViewCell: UITableViewCell, UITextFieldDelegate {
+class SettingsHeaderTableViewCell: UITableViewCell {
 
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var locationTextField: UITextField!
-    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     
     var delegate: SettingsHeaderTableViewCellDelegate!
@@ -32,21 +32,17 @@ class SettingsHeaderTableViewCell: UITableViewCell, UITextFieldDelegate {
         locationTextField.delegate = self
     }
     
-    @IBAction func editPhotoBttnPressed(_ sender: Any) {
-        delegate.editProfilePhoto()
+    @IBAction func onEditPhoto(_ sender: Any) {
+        delegate.didTapEditPhoto()
     }
-    
+}
+
+extension SettingsHeaderTableViewCell: UITextFieldDelegate {
     //MARK: UITextFieldDelegate
     func textFieldDidEndEditing(_ textField: UITextField) {
         let text = textField.text!
         let key = textField.restorationIdentifier ?? ""
-        delegate.userDataUpdated(value: text, key: key)
+        
+        delegate.didUpdateUserData(value: text, key: key)
     }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
-    }
-    
 }

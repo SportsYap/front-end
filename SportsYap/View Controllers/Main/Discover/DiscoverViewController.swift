@@ -91,6 +91,12 @@ class DiscoverViewController: UIViewController {
             vc.selectedDate = date
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.white
+    }
 }
 
 extension DiscoverViewController {

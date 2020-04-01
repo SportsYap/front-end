@@ -1449,11 +1449,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="followBttn" destination="1AE-wj-Ob0" id="iec-1R-mdK"/>
-                                            <outlet property="homeTownLbl" destination="BPH-lh-1YH" id="4IG-jl-ofW"/>
+                                            <outlet property="followButton" destination="1AE-wj-Ob0" id="iec-1R-mdK"/>
+                                            <outlet property="homeTownLabel" destination="BPH-lh-1YH" id="4IG-jl-ofW"/>
                                             <outlet property="primaryColorView" destination="qS8-5E-uv8" id="XnG-vm-Lqu"/>
                                             <outlet property="secondaryColorView" destination="L4C-V6-0Qg" id="naN-RV-b0p"/>
-                                            <outlet property="titleLbl" destination="QJM-wo-Ik0" id="GgK-lg-Det"/>
+                                            <outlet property="titleLabel" destination="QJM-wo-Ik0" id="GgK-lg-Det"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2273,7 +2273,7 @@
         <image name="checked_box" width="172.5" height="172.5"/>
         <image name="circle_check_green" width="18" height="18"/>
         <image name="close_x_grey" width="13" height="13"/>
-        <image name="default-profile" width="188" height="188"/>
+        <image name="default-profile" width="60" height="60"/>
         <image name="field_bg_image" width="750" height="1334"/>
         <image name="football_icon" width="20" height="20"/>
         <image name="hockey_icom" width="20" height="14"/>

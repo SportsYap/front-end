@@ -315,7 +315,7 @@
         <!--CommentsViewController-->
         <scene sceneID="Ojy-KK-Wfv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CommentsViewController" id="6IM-qo-VB1" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="CommentsViewController" id="6IM-qo-VB1" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Gpe-HG-0eF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDD-ao-OCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

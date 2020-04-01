@@ -1565,7 +1565,7 @@
         <!--CommentsViewController-->
         <scene sceneID="rLF-wb-psc">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CommentsViewController" id="2KG-iJ-TfD" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="CommentsViewController" id="2KG-iJ-TfD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSH-l0-DJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5344" y="1906"/>
