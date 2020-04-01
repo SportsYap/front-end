@@ -216,6 +216,7 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "fanCell") as? GameDayFanTableViewCell {
+                cell.game = game
                 cell.fan = user
                 return cell
             }

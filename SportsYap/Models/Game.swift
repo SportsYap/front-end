@@ -125,8 +125,8 @@ class Game: DBObject {
     }
 }
 
-extension Array where Element == Game{
-    var removeDuds: [Element]{
+extension Array where Element == Game {
+    var removeDuds: [Element] {
         return self.filter({
             ($0.awayTeam != nil && $0.awayTeam.hasColors && $0.homeTeam != nil && $0.homeTeam.hasColors)
         })
