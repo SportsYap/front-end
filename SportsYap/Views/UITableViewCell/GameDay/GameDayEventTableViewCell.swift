@@ -11,8 +11,6 @@ import SDWebImage
 
 class GameDayEventTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var fansGoingLabel: UILabel!
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
@@ -22,17 +20,14 @@ class GameDayEventTableViewCell: UITableViewCell {
     var event: Event? {
         didSet {
             if let event = event {
-                nameLabel.text = event.name
-                fansGoingLabel.text = "\(event.fansGoing) " + NSLocalizedString("Fans Going", comment: "")
                 thumbImageView.sd_setImage(with: event.thumbnail)
-                descriptionLabel.text = event.content
-                costLabel.text = event.cost.formattedString()
+                descriptionLabel.text = event.name
+                costLabel.text = (event.minCost == event.maxCost) ? event.minCost.formattedString() : "\(event.minCost.formattedString()) - \(event.maxCost.formattedString())"
 
-                if let from = event.from,
-                    let to = event.to {
+                if let date = event.date {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HHaa"
-                    timeLabel.text = dateFormatter.string(from: from) + " - " + dateFormatter.string(from: to)
+                    dateFormatter.dateFormat = "HH aa"
+                    timeLabel.text = dateFormatter.string(from: date)
                 } else {
                     timeLabel.text = "None"
                 }

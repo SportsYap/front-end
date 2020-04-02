@@ -20,10 +20,10 @@ var singlePost = false
 class ApiManager: NSObject {
     static var shared = ApiManager()
     
-//    let BASE_URL = "https://api.sportsyap.com/api"
-    let BASE_URL = "http://192.168.0.180/api"
-//    let BASE_IMAGE_URL = "https://api.sportsyap.com"
-    let BASE_IMAGE_URL = "http://192.168.0.180"
+    let BASE_URL = "https://api.sportsyap.com/api"
+//    let BASE_URL = "http://192.168.0.180/api"
+    let BASE_IMAGE_URL = "https://api.sportsyap.com"
+//    let BASE_IMAGE_URL = "http://192.168.0.180"
     var accessToken = ""{
         didSet{
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "api-token-changed"), object: nil)
@@ -549,17 +549,25 @@ class ApiManager: NSObject {
         })
     }
     
-    func events(for game: Game, onSuccess: @escaping (_ events: [Event])->Void, onError: @escaping (_ error: NSError)->Void){
+    func events(for game: Game, onSuccess: @escaping (_ events: [Event], [Event])->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/games/\(game.id)/events"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
-            var events = [Event]()
-            if let eventsJsonArray = json["data"] as? [[String: AnyObject]]{
-                for eventsJson in eventsJsonArray {
-                    let n = Event(dict: eventsJson)
-                    events.append(n)
+            var eventsOne = [Event]()
+            var eventsTwo = [Event]()
+            if let data = json["data"] as? [String: AnyObject] {
+                if let events1Array = data["eventsOne"] as? [[String: AnyObject]],
+                    let events2Array = data["eventsTwo"] as? [[String: AnyObject]] {
+                    for eventsJson in events1Array {
+                        let n = Event(dict: eventsJson)
+                        eventsOne.append(n)
+                    }
+                    for eventsJson in events2Array {
+                        let n = Event(dict: eventsJson)
+                        eventsTwo.append(n)
+                    }
                 }
             }
-            onSuccess(events)
+            onSuccess(eventsOne, eventsTwo)
         }, onError: { (err) in
             onError(err)
         })

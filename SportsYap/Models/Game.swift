@@ -26,8 +26,9 @@ class Game: DBObject {
     var fans = [User]()
     var news = [News]()
     var posts = [Post]()
-    var events = [Event]()
-    
+    var events1 = [Event]()
+    var events2 = [Event]()
+
     var hasFrontRow: Bool {
         get{ return fans.verified.count > 0 }
     }

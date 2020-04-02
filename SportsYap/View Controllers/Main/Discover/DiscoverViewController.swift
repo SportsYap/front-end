@@ -224,6 +224,7 @@ extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let title = title {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 42))
+            view.backgroundColor = UIColor.white
             let label = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width - 32, height: 42))
             label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             label.textColor = UIColor(hex: "1F263A")

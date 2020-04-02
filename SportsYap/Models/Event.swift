@@ -10,73 +10,47 @@ import UIKit
 
 class Event: DBObject {
     
-    var gameId = 0
-    var teamId = 0
-    var team: Team?
-    var game: Game?
-
     var thumbnail: URL?
 
     var name: String = ""
-    var content: String = ""
-    var fansGoing: Int = 0
-    var cost: Double = 0
-    var from: Date?
-    var to: Date?
+
+    var minCost: Double = 0
+    var maxCost: Double = 0
+    var currency: String = ""
+
+    var date: Date?
+
     var location: String = ""
+    
+    var url: URL?
     
     override init(dict: [String: AnyObject]) {
         super.init(dict: dict)
         
-        if let ti = dict["team_id"] as? Int{
-            teamId = ti
-        }
-        
-        if let tJson = dict["team"] as? [String: AnyObject]{
-            team = Team(dict: tJson)
-        }
-        
-        if let gi = dict["game_id"] as? Int {
-            gameId = gi
-        }
-        
-        if let gJson = dict["game"] as? [String: AnyObject] {
-            game = Game(dict: gJson)
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'.000'XXXXX"
-
-        if let c = dict["published"] as? String{
-            if let cAt = formatter.date(from: c){
-                createdAt = cAt
-            }
-        }
-
-        if let ts = dict["thumbail_url"] as? String, let u = URL(string: ts){
+        if let ts = dict["image"] as? String, let u = URL(string: ts) {
             thumbnail = u
         }
 
         name = dict["name"] as? String ?? ""
-        content = dict["content"] as? String ?? ""
-        fansGoing = dict["fans_going"] as? Int ?? 0
-        cost = dict["cost"] as? Double ?? 0
+        
+        minCost = dict["minPrice"] as? Double ?? 0
+        maxCost = dict["maxPrice"] as? Double ?? 0
+        currency = dict["currency"] as? String ?? ""
 
-        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         
-        if let from = dict["from"] as? String {
+        if let from = dict["date"] as? String {
             if let date = formatter.date(from: from) {
-                self.from = date
-            }
-        }
-
-        if let to = dict["to"] as? String {
-            if let date = formatter.date(from: to) {
-                self.to = date
+                self.date = date
             }
         }
         
-        location = dict["location"] as? String ?? ""
+        location = dict["venues"] as? String ?? ""
+        
+        if let ts = dict["url"] as? String, let u = URL(string: ts){
+            url = u
+        }
     }
 }

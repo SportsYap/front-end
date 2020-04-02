@@ -265,8 +265,8 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sport_bg" translatesAutoresizingMaskIntoConstraints="NO" id="otb-2r-0k1">
                                                             <rect key="frame" x="0.0" y="0.0" width="144" height="142"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Georgia Dome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-gL-npp">
-                                                            <rect key="frame" x="26" y="10" width="92.5" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Georgia Dome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-gL-npp">
+                                                            <rect key="frame" x="10" y="10" width="124" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -317,7 +317,9 @@
                                                 <constraints>
                                                     <constraint firstItem="LAz-aA-69j" firstAttribute="leading" secondItem="dwH-7o-v27" secondAttribute="leading" constant="10" id="2ql-Ht-fDt"/>
                                                     <constraint firstItem="aOw-gL-npp" firstAttribute="centerX" secondItem="dwH-7o-v27" secondAttribute="centerX" id="IFZ-5o-Yyy"/>
+                                                    <constraint firstItem="aOw-gL-npp" firstAttribute="leading" secondItem="dwH-7o-v27" secondAttribute="leading" constant="10" id="KVd-j9-iP6"/>
                                                     <constraint firstItem="fvA-Hh-lcR" firstAttribute="top" secondItem="aOw-gL-npp" secondAttribute="bottom" id="Ocs-Bk-SDN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="aOw-gL-npp" secondAttribute="trailing" constant="10" id="UJl-5B-fXP"/>
                                                     <constraint firstAttribute="trailing" secondItem="bOq-T3-xD6" secondAttribute="trailing" constant="10" id="XcS-2Q-yDy"/>
                                                     <constraint firstItem="bOq-T3-xD6" firstAttribute="top" secondItem="LAz-aA-69j" secondAttribute="top" id="ZQa-p9-rjy"/>
                                                     <constraint firstItem="otb-2r-0k1" firstAttribute="top" secondItem="dwH-7o-v27" secondAttribute="top" id="ajs-Pp-0QQ"/>

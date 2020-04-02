@@ -65,8 +65,9 @@ class GameDayViewController: UIViewController {
             }
         }, onError: voidErr)
         
-        ApiManager.shared.events(for: self.game, onSuccess: { (events) in
-            self.game.events = events
+        ApiManager.shared.events(for: self.game, onSuccess: { (events1, events2) in
+            self.game.events1 = events1
+            self.game.events2 = events2
             if self.selectedTabItem == .Events {
                 self.tableView.reloadData()
             }
@@ -181,7 +182,14 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 return game.fans.isEmpty ? 1 : 0
             }
         case .Events:
-            return max(game.events.count, 1)
+            var count = 0
+            if !game.events1.isEmpty {
+                count += game.events1.count + 1
+            }
+            if !game.events2.isEmpty {
+                count += game.events2.count + 1
+            }
+            return max(count, 1)
         case .News:
             return max(game.news.count, 1)
         }
@@ -221,16 +229,47 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
         case .Events:
-            if game.events.isEmpty {
+            if game.events1.isEmpty && game.events2.isEmpty {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "noCell")!
                 cell.textLabel?.text = NSLocalizedString("No Events", comment: "")
                 return cell
             }
-            
-            let event = game.events[indexPath.row]
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as? GameDayEventTableViewCell {
-                cell.event = event
-                return cell
+
+            var row = indexPath.row
+            if !game.events1.isEmpty {
+                if row == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "eventHeaderCell") as! GameDayEventHeaderTableViewCell
+                    cell.team = game.homeTeam
+                    return cell
+                }
+
+                row -= 1
+                if row < game.events1.count {
+                    let event = game.events1[row]
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as? GameDayEventTableViewCell {
+                        cell.event = event
+                        return cell
+                    }
+                }
+                
+                row -= game.events1.count
+            }
+
+            if !game.events2.isEmpty {
+                if row == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "eventHeaderCell") as! GameDayEventHeaderTableViewCell
+                    cell.team = game.awayTeam
+                    return cell
+                }
+
+                row -= 1
+                if row < game.events2.count {
+                    let event = game.events2[row]
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as? GameDayEventTableViewCell {
+                        cell.event = event
+                        return cell
+                    }
+                }
             }
         }
     
@@ -242,7 +281,35 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
         case .Fans:
             return game.fans.isEmpty ? 180 : 62
         case .Events:
-            return game.events.isEmpty ? 180 : 227
+            if game.events1.isEmpty && game.events2.isEmpty {
+                return 180
+            }
+            
+            var row = indexPath.row
+            if !game.events1.isEmpty {
+                if row == 0 {
+                    return 44
+                }
+
+                row -= 1
+                if row < game.events1.count {
+                    return 166
+                }
+                
+                row -= game.events1.count
+            }
+
+            if !game.events2.isEmpty {
+                if row == 0 {
+                    return 44
+                }
+
+                row -= 1
+                if row < game.events2.count {
+                    return 166
+                }
+            }
+            return 0
         case .News:
             return game.news.isEmpty ? 180 : 79
         }
@@ -252,6 +319,10 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if selectedTabItem == .Fans {
+            if game.fans.isEmpty {
+                return
+            }
+            
             let user: User
             if indexPath.section == 0 {
                 user = game.fans.verified[indexPath.row]
@@ -276,6 +347,41 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             if let url = game.news[indexPath.row].url {
                 UIApplication.shared.open(url)
             }
+        } else if selectedTabItem == .Events {
+            if game.events1.isEmpty && game.events2.isEmpty {
+                return
+            }
+            
+            var row = indexPath.row
+            if !game.events1.isEmpty {
+                if row == 0 {
+                    return
+                }
+
+                row -= 1
+                if row < game.events1.count {
+                    let event = game.events1[row]
+                    if let url = event.url {
+                        UIApplication.shared.open(url)
+                    }
+                }
+                
+                row -= game.events1.count
+            }
+
+            if !game.events2.isEmpty {
+                if row == 0 {
+                    return
+                }
+
+                row -= 1
+                if row < game.events2.count {
+                    let event = game.events2[row]
+                    if let url = event.url {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
         }
     }
     
@@ -292,7 +398,7 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 return 0
             }
         case .Events:
-            return game.events.isEmpty ? 0 : 42
+            return (game.events1.isEmpty && game.events2.isEmpty) ? 0 : 42
         case .News:
             return 0
         }
