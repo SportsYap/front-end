@@ -102,7 +102,6 @@
 		CDF52DD62183B5260013EC6E /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF52DD52183B5260013EC6E /* PhoneVerificationViewController.swift */; };
 		CDF92B2920BB7A630068A50C /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF92B2820BB7A630068A50C /* Challenge.swift */; };
 		CDF92B2B20BC11770068A50C /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF92B2A20BC11770068A50C /* ChallengeViewController.swift */; };
-		CDF92B2D20BD32BF0068A50C /* CameraContainerViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF92B2C20BD32BF0068A50C /* CameraContainerViewViewController.swift */; };
 		D709EEC9232C71560044D723 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709EEC8232C71560044D723 /* CustomTextField.swift */; };
 		D71E122E2241D92F00B20E70 /* InstaZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E122D2241D92F00B20E70 /* InstaZoom.swift */; };
 		D71E1230224276AD00B20E70 /* SinglePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E122F224276AD00B20E70 /* SinglePostViewController.swift */; };
@@ -286,7 +285,6 @@
 		CDF52DD52183B5260013EC6E /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		CDF92B2820BB7A630068A50C /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		CDF92B2A20BC11770068A50C /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
-		CDF92B2C20BD32BF0068A50C /* CameraContainerViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraContainerViewViewController.swift; sourceTree = "<group>"; };
 		D709EEC8232C71560044D723 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D71E122D2241D92F00B20E70 /* InstaZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaZoom.swift; sourceTree = "<group>"; };
 		D71E122F224276AD00B20E70 /* SinglePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostViewController.swift; sourceTree = "<group>"; };
@@ -542,7 +540,6 @@
 		CD39CA11203154A60079D033 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				CDF92B2C20BD32BF0068A50C /* CameraContainerViewViewController.swift */,
 				CDB5301B204DF50C0074341E /* RecordViewController.swift */,
 				CD4A2EEC208DD11700DCA56C /* EditMediaViewController.swift */,
 				CD4A2EF0208DDF7900DCA56C /* TagGameViewController.swift */,
@@ -1121,7 +1118,6 @@
 				D7A19999231F222D007E7D86 /* GifHelper.swift in Sources */,
 				D71E122E2241D92F00B20E70 /* InstaZoom.swift in Sources */,
 				CDDA0CB4201FAAA000BA0568 /* UIView.swift in Sources */,
-				CDF92B2D20BD32BF0068A50C /* CameraContainerViewViewController.swift in Sources */,
 				D71F973322508B330051E715 /* MediaItem.swift in Sources */,
 				D71F973122508B330051E715 /* SepiaFilter.swift in Sources */,
 				CDE83A572031558B0056C77D /* HomeViewController.swift in Sources */,
