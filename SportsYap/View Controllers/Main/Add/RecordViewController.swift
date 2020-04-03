@@ -49,6 +49,15 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
         self.audioEnabled = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let index = navigationController?.viewControllers.index(of: self) {
+            let newVC = UIStoryboard(name: "GameDay", bundle: nil).instantiateViewController(withIdentifier: "cameraVC")
+            navigationController?.viewControllers.replaceSubrange(index...index, with: [newVC])
+        }
+    }
+    
     //MARK: IBAction
     @IBAction func backBttnPressed(_ sender: Any) {
         navigationController?.dismiss(animated: true, completion: nil)
