@@ -366,7 +366,12 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "showGame", sender: games[indexPath.row])
+
+        if games.isEmpty {
+            return
+        }
+        
+        performSegue(withIdentifier: "showGame", sender: games[indexPath.row])
     }
 }
 

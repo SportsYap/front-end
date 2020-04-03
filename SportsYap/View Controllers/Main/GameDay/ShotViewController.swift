@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import QuartzCore
+import SideMenu
 
 class ShotViewController: UIViewController {
 
@@ -368,7 +369,7 @@ extension ShotViewController {
     
     @IBAction func onAdd(_ sender: Any) {
         TagGameViewController.preselectedGame = game
-        ParentScrollingViewController.shared.scrollToCamera()
+        present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     
     @IBAction func onExpandFanMeter(_ sender: Any) {

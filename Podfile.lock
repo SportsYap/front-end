@@ -22,26 +22,26 @@ PODS:
     - Fabric (~> 1.10.2)
   - DeepDiff (2.3.1)
   - Fabric (1.10.2)
-  - FacebookSDK (6.0.0):
-    - FacebookSDK/CoreKit (= 6.0.0)
-    - FacebookSDK/MarketingKit (= 6.0.0)
-  - FacebookSDK/CoreKit (6.0.0):
-    - FBSDKCoreKit (~> 6.0.0)
-  - FacebookSDK/MarketingKit (6.0.0):
+  - FacebookSDK (6.3.0):
+    - FacebookSDK/CoreKit (= 6.3.0)
+    - FacebookSDK/MarketingKit (= 6.3.0)
+  - FacebookSDK/CoreKit (6.3.0):
+    - FBSDKCoreKit (~> 6.3.0)
+  - FacebookSDK/MarketingKit (6.3.0):
     - FacebookSDK/CoreKit
-    - FBSDKMarketingKit (~> 6.0.0)
-  - FBSDKCoreKit (6.0.0):
-    - FBSDKCoreKit/Basics (= 6.0.0)
-    - FBSDKCoreKit/Core (= 6.0.0)
-  - FBSDKCoreKit/Basics (6.0.0)
-  - FBSDKCoreKit/Core (6.0.0):
+    - FBSDKMarketingKit (~> 6.3.0)
+  - FBSDKCoreKit (6.3.0):
+    - FBSDKCoreKit/Basics (= 6.3.0)
+    - FBSDKCoreKit/Core (= 6.3.0)
+  - FBSDKCoreKit/Basics (6.3.0)
+  - FBSDKCoreKit/Core (6.3.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (6.0.0):
-    - FBSDKLoginKit/Login (= 6.0.0)
-  - FBSDKLoginKit/Login (6.0.0):
-    - FBSDKCoreKit (~> 6.0.0)
-  - FBSDKMarketingKit (6.0.0):
-    - FBSDKCoreKit (~> 6.0.0)
+  - FBSDKLoginKit (6.3.0):
+    - FBSDKLoginKit/Login (= 6.3.0)
+  - FBSDKLoginKit/Login (6.3.0):
+    - FBSDKCoreKit (~> 6.3.0)
+  - FBSDKMarketingKit (6.3.0):
+    - FBSDKCoreKit (~> 6.3.0)
   - Firebase/Auth (6.21.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.5.1)
@@ -83,7 +83,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
   - Gifu (3.2.0)
-  - Giphy (1.2.4):
+  - Giphy (1.2.5):
     - DeepDiff
     - libwebp
     - PINCache
@@ -143,12 +143,13 @@ PODS:
   - nanopb/encode (0.3.9011)
   - NextLevel (0.9.8)
   - Nuke (8.4.1)
-  - OneSignal (2.13.0)
+  - OneSignal (2.13.1)
   - PINCache (2.3)
   - PromisesObjC (1.2.8)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
+  - SideMenu (6.4.8)
   - SVWebViewController (1.0)
   - SwiftDate (6.1.0)
   - SwiftyCam (4.0.0)
@@ -178,6 +179,7 @@ DEPENDENCIES:
   - Nuke
   - OneSignal (< 3.0, >= 2.6.2)
   - SDWebImage
+  - SideMenu
   - SVWebViewController
   - SwiftDate
   - SwiftyCam
@@ -226,6 +228,7 @@ SPEC REPOS:
     - PINCache
     - PromisesObjC
     - SDWebImage
+    - SideMenu
     - SVWebViewController
     - SwiftDate
     - SwiftyCam
@@ -240,10 +243,10 @@ SPEC CHECKSUMS:
   Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
   DeepDiff: e5ae6c50d0321568e4508cec5930b9f10bb293fc
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
-  FacebookSDK: c9c27c7d3c0fc189fab6b2f735b3a97b83fbe6e3
-  FBSDKCoreKit: fe738b172590e622c86735b45e20d196848b54df
-  FBSDKLoginKit: fa57df1b967fe0e147b25bede6ea4e9cdf4d64be
-  FBSDKMarketingKit: 23dc92210340019f88e9fc1edbbc8c1ec43914b3
+  FacebookSDK: 80a39152434ce9e58a6769a5704fbdfe78c49d02
+  FBSDKCoreKit: 5d55c8f3007c9c49b793617b9102e46355fc7e17
+  FBSDKLoginKit: d46aa04d9bb9990a4deb6441736fae24a8c94496
+  FBSDKMarketingKit: 314395af261fb66828215f771c8447b00f01727b
   Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
   FirebaseAnalytics: a1a0b3327ceb5cd5b4bacffdb293f6c909aa087d
   FirebaseAuth: a6da11d78dfd956b7f7af3222a0f0b1c93ef8fc9
@@ -253,7 +256,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
   Gifu: 7bcb6427457d85e0b4dff5a84ec5947ac19a93ea
-  Giphy: 36945d112701c49d29502d5fbb672f266114f09a
+  Giphy: 76a033587d9291d5e6d2001897bd8fb11840c7df
   GoogleAppMeasurement: 6e68a94d0eaeb1d73ef6b0ed4f7334e29d63ae29
   GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
   GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
@@ -269,16 +272,17 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NextLevel: 14d10b1e6e85ba01f8660a39fb78adedd37bfec0
   Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
-  OneSignal: 09c9fe1e7a097af5fda94e00c1598c3c945552b9
+  OneSignal: fa98eaa90372bb367b6a4a1c1622ffb9832c7600
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
+  SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftyCam: 6e57914771d972fbe508e759dc9d0150a44a93fd
   TPKeyboardAvoiding: 6dd3fe3268b8f2627beb7ff3d82a3cacbdf66a36
   "UIView+draggable": ddfbeb6bdfdeba63d9ccf32dc9be2b66cc589717
 
-PODFILE CHECKSUM: 70585a86bb80c5b76c5c10c3d7f86be8f288edda
+PODFILE CHECKSUM: 7ed6d6a4374f3d618a9a6fcea24985a8d5a0d3de
 
 COCOAPODS: 1.8.4

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class ChallengeViewController: UIViewController {
     
@@ -23,14 +24,13 @@ class ChallengeViewController: UIViewController {
     
     //MARK: IBAction
     @IBAction func notNowBttnPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func addShotBttnPressed(_ sender: Any) {
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+        dismiss(animated: true) {
             TagGameViewController.preselectedGame = self.game
-            ParentScrollingViewController.shared.scrollToCamera()
+            self.present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
         }
-        self.dismiss(animated: true, completion: nil)
     }
-
 }

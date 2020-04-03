@@ -32,6 +32,7 @@ target 'SportsYap' do
   pod 'GooglePlaces'
   pod 'TPKeyboardAvoiding'
   pod 'JTAppleCalendar'
+  pod 'SideMenu'
 end
 
 

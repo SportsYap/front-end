@@ -43,7 +43,6 @@
 		CD204655202C45410086C9B5 /* DBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD204654202C45410086C9B5 /* DBObject.swift */; };
 		CD21658520C7C1BD0009E908 /* DiscoverGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21658420C7C1BC0009E908 /* DiscoverGameCollectionViewCell.swift */; };
 		CD21658C20C7D0070009E908 /* TimelineLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21658B20C7D0060009E908 /* TimelineLiveTableViewCell.swift */; };
-		CD27BE2A20915C7700E093FC /* LiveStreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27BE2920915C7700E093FC /* LiveStreamingViewController.swift */; };
 		CD3469492189282F00AE0BA9 /* SetupAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3469482189282F00AE0BA9 /* SetupAccountViewController.swift */; };
 		CD39CA0C2031545E0079D033 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39CA0B2031545E0079D033 /* TabBarViewController.swift */; };
 		CD3F0BEA20CCE7C100BDC68A /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F0BE920CCE7C100BDC68A /* Venue.swift */; };
@@ -51,7 +50,6 @@
 		CD47EC2E2053121700FC3A5F /* GameCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD47EC2D2053121700FC3A5F /* GameCard.xib */; };
 		CD47EC322054860C00FC3A5F /* OnboardingTeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */; };
 		CD47F187214D88E20037CB79 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47F186214D88E20037CB79 /* ImageFileManager.swift */; };
-		CD4A2EE9208DC7BE00DCA56C /* ParentScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */; };
 		CD4A2EEB208DCF7D00DCA56C /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A2EEA208DCF7D00DCA56C /* UserMedia.swift */; };
 		CD4A2EED208DD11700DCA56C /* EditMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A2EEC208DD11700DCA56C /* EditMediaViewController.swift */; };
 		CD4A2EEF208DD6E200DCA56C /* MediaMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A2EEE208DD6E200DCA56C /* MediaMerger.swift */; };
@@ -227,7 +225,6 @@
 		CD204654202C45410086C9B5 /* DBObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBObject.swift; sourceTree = "<group>"; };
 		CD21658420C7C1BC0009E908 /* DiscoverGameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverGameCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD21658B20C7D0060009E908 /* TimelineLiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineLiveTableViewCell.swift; sourceTree = "<group>"; };
-		CD27BE2920915C7700E093FC /* LiveStreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamingViewController.swift; sourceTree = "<group>"; };
 		CD3469482189282F00AE0BA9 /* SetupAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAccountViewController.swift; sourceTree = "<group>"; };
 		CD39CA0B2031545E0079D033 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CD3F0BE920CCE7C100BDC68A /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
@@ -235,7 +232,6 @@
 		CD47EC2D2053121700FC3A5F /* GameCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCard.xib; sourceTree = "<group>"; };
 		CD47EC312054860C00FC3A5F /* OnboardingTeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTeamTableViewCell.swift; sourceTree = "<group>"; };
 		CD47F186214D88E20037CB79 /* ImageFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
-		CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScrollingViewController.swift; sourceTree = "<group>"; };
 		CD4A2EEA208DCF7D00DCA56C /* UserMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
 		CD4A2EEC208DD11700DCA56C /* EditMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMediaViewController.swift; sourceTree = "<group>"; };
 		CD4A2EEE208DD6E200DCA56C /* MediaMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaMerger.swift; sourceTree = "<group>"; };
@@ -549,7 +545,6 @@
 				CDB5301B204DF50C0074341E /* RecordViewController.swift */,
 				CD4A2EEC208DD11700DCA56C /* EditMediaViewController.swift */,
 				CD4A2EF0208DDF7900DCA56C /* TagGameViewController.swift */,
-				CD27BE2920915C7700E093FC /* LiveStreamingViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -637,7 +632,6 @@
 			children = (
 				CD91080F201FA9B200A00EBC /* Main.storyboard */,
 				CD39CA0B2031545E0079D033 /* TabBarViewController.swift */,
-				CD4A2EE8208DC7BE00DCA56C /* ParentScrollingViewController.swift */,
 				CD39CA0D203154720079D033 /* Onboarding */,
 				AF3FD3B32424FBBE00795DB0 /* Main */,
 			);
@@ -1027,6 +1021,7 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVWebViewController/SVWebViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
@@ -1056,6 +1051,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVWebViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
@@ -1153,7 +1149,6 @@
 				AFE9B81A2432F2E0006AA5D6 /* OtherProfileViewController.swift in Sources */,
 				CDDA0CB5201FAAA000BA0568 /* String.swift in Sources */,
 				D71F973722508B330051E715 /* Assets.swift in Sources */,
-				CD27BE2A20915C7700E093FC /* LiveStreamingViewController.swift in Sources */,
 				D71F973622508B330051E715 /* MediaVideoProcessor.swift in Sources */,
 				CDE83A4F203155420056C77D /* AuthViewController.swift in Sources */,
 				CDE83A5B2031559E0056C77D /* DiscoverViewController.swift in Sources */,
@@ -1197,7 +1192,6 @@
 				CD63D5A920A1885A008B8D5E /* SettingsGameTableViewCell.swift in Sources */,
 				CD0A655520B5105F00E17FC7 /* GameDayFanTableViewCell.swift in Sources */,
 				CDE83A512031555B0056C77D /* LoginViewController.swift in Sources */,
-				CD4A2EE9208DC7BE00DCA56C /* ParentScrollingViewController.swift in Sources */,
 				AF612BBC2434FA8F008232B6 /* AutoresizeView.swift in Sources */,
 				CDF52DD42183B5170013EC6E /* PhoneSignupViewController.swift in Sources */,
 				CDF92B2B20BC11770068A50C /* ChallengeViewController.swift in Sources */,
@@ -1394,7 +1388,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.13;
+				MARKETING_VERSION = 1.5.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1423,7 +1417,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.13;
+				MARKETING_VERSION = 1.5.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1447,7 +1441,7 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.13;
+				MARKETING_VERSION = 1.5.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
@@ -1472,7 +1466,7 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.13;
+				MARKETING_VERSION = 1.5.14;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

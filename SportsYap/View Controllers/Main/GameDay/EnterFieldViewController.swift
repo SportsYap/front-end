@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SideMenu
 
 class EnterFieldViewController: UIViewController {
     
@@ -98,7 +99,7 @@ class EnterFieldViewController: UIViewController {
 
     @IBAction func onAddPost(_ sender: Any) {
         TagGameViewController.preselectedGame = game
-        ParentScrollingViewController.shared.scrollToCamera()
+        present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     
     @IBAction func onFilter(_ sender: UIButton) {

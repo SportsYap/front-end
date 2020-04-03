@@ -349,7 +349,6 @@ class EditMediaViewController: UIViewController {
     }
     @IBAction func backBttnPressed(_ sender: Any) {
         player?.pause()
-        ParentScrollingViewController.shared.enabled(is: true)
         self.navigationController?.popViewController(animated: false)
     }
     @IBAction func nextBttnPressed(_ sender: Any) {

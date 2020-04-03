@@ -26,29 +26,10 @@ class CameraContainerViewViewController: UIViewController, UIScrollViewDelegate 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let isOnCamera = ParentScrollingViewController.shared.scrollView.contentOffset.x == 0
-        if isOnCamera{
-            setChildVC()
-        }
-        
+        setChildVC()
         scrollView.alpha = TagGameViewController.preselectedGame == nil ? 1 : 0
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if ParentScrollingViewController.shared != nil{
-            if ParentScrollingViewController.shared.scrollView.contentOffset.x != 0{
-                self.currentIdentifier = ""
-                self.isSwitching = false
-                for vc in self.children{
-                    vc.viewWillDisappear(false)
-                    vc.view.removeFromSuperview()
-                    vc.removeFromParent()
-                }
-            }
-        }
-    }
-    
+
     func setChildVC(){
         let identifier = scrollView.contentOffset.x == 0 ? "cameraVC" : "liveVC"
         guard identifier != currentIdentifier && !isSwitching else { return }

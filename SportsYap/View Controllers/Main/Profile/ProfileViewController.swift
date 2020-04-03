@@ -34,8 +34,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backButton.alpha = navigationController?.viewControllers.count == 1 ? 0 : 1
-        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.gray
@@ -45,6 +43,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        backButton.isHidden = navigationController?.viewControllers.count == 1 ? true : false
         loadContent()
     }
     

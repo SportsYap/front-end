@@ -17,7 +17,7 @@
         <!--Game Day View Controller-->
         <scene sceneID="dK0-B9-cb9">
             <objects>
-                <viewController id="pBa-MS-aTg" customClass="GameDayViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="pBa-MS-aTg" customClass="GameDayViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7n6-4V-xyv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -513,13 +513,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="b7e-JZ-pJ3">
                                                             <rect key="frame" x="62" y="5" width="65" height="36.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="snoopdog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-kK-ydY">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="snoopdog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-kK-ydY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="5min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-7f-a7O">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="5min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-7f-a7O">
                                                                     <rect key="frame" x="0.0" y="22" width="65" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
@@ -2041,6 +2041,9 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-JR-5Na">
                                                     <rect key="frame" x="10" y="90.5" width="394" height="120"/>
                                                     <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EQW-8X-tYd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="120"/>
+                                                        </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex5-yY-eSp">
                                                             <rect key="frame" x="0.0" y="0.0" width="192" height="120"/>
                                                             <subviews>
@@ -2245,7 +2248,9 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="EZ2-hp-a8C" secondAttribute="bottom" id="4H8-7O-R6q"/>
+                                                        <constraint firstAttribute="trailing" secondItem="EQW-8X-tYd" secondAttribute="trailing" id="9SX-2i-OOf"/>
                                                         <constraint firstAttribute="trailing" secondItem="QNX-Nz-ptZ" secondAttribute="trailing" id="GLy-oJ-bDO"/>
+                                                        <constraint firstItem="EQW-8X-tYd" firstAttribute="top" secondItem="wXa-JR-5Na" secondAttribute="top" id="HCN-Kf-cMf"/>
                                                         <constraint firstAttribute="trailing" secondItem="EZ2-hp-a8C" secondAttribute="trailing" id="JFR-R8-2mP"/>
                                                         <constraint firstItem="QNX-Nz-ptZ" firstAttribute="top" secondItem="wXa-JR-5Na" secondAttribute="top" id="KXC-Ug-Nyb"/>
                                                         <constraint firstItem="ORm-oy-tes" firstAttribute="leading" secondItem="ex5-yY-eSp" secondAttribute="trailing" constant="10" id="LaH-mf-A8L"/>
@@ -2254,9 +2259,11 @@
                                                         <constraint firstItem="QNX-Nz-ptZ" firstAttribute="leading" secondItem="wXa-JR-5Na" secondAttribute="leading" id="Nd1-ku-VCf"/>
                                                         <constraint firstItem="ORm-oy-tes" firstAttribute="top" secondItem="wXa-JR-5Na" secondAttribute="top" id="OA1-bG-Puz"/>
                                                         <constraint firstItem="ex5-yY-eSp" firstAttribute="leading" secondItem="wXa-JR-5Na" secondAttribute="leading" id="WRs-da-bzd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="EQW-8X-tYd" secondAttribute="bottom" id="YOy-sh-ppS"/>
                                                         <constraint firstAttribute="bottom" secondItem="QNX-Nz-ptZ" secondAttribute="bottom" id="bZU-aU-WU1"/>
                                                         <constraint firstAttribute="bottom" secondItem="ex5-yY-eSp" secondAttribute="bottom" id="bcM-nt-g9R"/>
                                                         <constraint firstAttribute="bottom" secondItem="ORm-oy-tes" secondAttribute="bottom" id="dRm-lI-KDQ"/>
+                                                        <constraint firstItem="EQW-8X-tYd" firstAttribute="leading" secondItem="wXa-JR-5Na" secondAttribute="leading" id="f4i-4U-AOG"/>
                                                         <constraint firstAttribute="trailing" secondItem="ORm-oy-tes" secondAttribute="trailing" id="hJP-LF-K2Q"/>
                                                         <constraint firstItem="EZ2-hp-a8C" firstAttribute="leading" secondItem="wXa-JR-5Na" secondAttribute="leading" id="oc4-RN-h1S"/>
                                                         <constraint firstItem="ex5-yY-eSp" firstAttribute="top" secondItem="wXa-JR-5Na" secondAttribute="top" id="ofm-ij-ZOX"/>
@@ -2292,6 +2299,7 @@
                                             <outlet property="homeTeamPrimaryColorView" destination="jKS-wC-kht" id="3CI-A6-X4W"/>
                                             <outlet property="homeTeamSecondaryColorView" destination="QNQ-jC-zpx" id="kKT-nA-MR1"/>
                                             <outlet property="homeTeamSelectedView" destination="zw8-NX-ea6" id="T7n-0t-q1u"/>
+                                            <outlet property="sportBgImageView" destination="EQW-8X-tYd" id="NF3-tb-5PR"/>
                                             <outlet property="titleLabel" destination="48w-RC-sjg" id="ovb-la-T49"/>
                                         </connections>
                                     </tableViewCell>
@@ -2465,7 +2473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Of8-Su-W4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4464" y="2605"/>
+            <point key="canvasLocation" x="4462.3188405797109" y="2604.9107142857142"/>
         </scene>
         <!--OtherProfileViewController-->
         <scene sceneID="Jcf-aO-IYF">

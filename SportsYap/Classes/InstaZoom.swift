@@ -84,8 +84,6 @@ public extension UIView {
     /// - Parameter sender: UIPinvhGestureRecognizer
     @objc private func viewPinched(_ pinch: UIPinchGestureRecognizer) {
         if pinch.scale >= 1.0 {
-            ParentScrollingViewController.shared.enabled(is: false)
-
             scale = pinch.scale
             transform(withTranslation: .zero)
         }
@@ -100,8 +98,6 @@ public extension UIView {
     /// - Parameter sender: UIPanGestureRecognizer
     @objc private func viewPanned(_ pan: UIPanGestureRecognizer) {
         if scale > 1.0 {
-            ParentScrollingViewController.shared.enabled(is: false)
-            
             transform(withTranslation: pan.translation(in: self))
         }
         
@@ -112,8 +108,6 @@ public extension UIView {
     
     /// Set the image back to it's initial state.
     private func reset() {
-        ParentScrollingViewController.shared.enabled(is: true)
-
         scale = 1.0
         UIView.animate(withDuration: 0.3) {
             self.transform = .identity

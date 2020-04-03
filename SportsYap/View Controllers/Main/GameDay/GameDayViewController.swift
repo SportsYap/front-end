@@ -9,6 +9,7 @@
 import UIKit
 import SVWebViewController
 import SafariServices
+import SideMenu
 
 class GameDayViewController: UIViewController {
     
@@ -452,7 +453,7 @@ extension GameDayViewController {
     
     @IBAction func onAddShot(_ sender: UIButton) {
         TagGameViewController.preselectedGame = game
-        ParentScrollingViewController.shared.scrollToCamera()
+        present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     
     @IBAction func onFans(_ sender: Any) {

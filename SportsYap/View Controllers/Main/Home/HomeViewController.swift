@@ -95,8 +95,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        ParentScrollingViewController.shared.enabled(is: true)
-        
         guard !(!ApiManager.shared.loggedIn && self.presentedViewController == nil) else{
             return self.performSegue(withIdentifier: "auth", sender: nil)
         }
@@ -109,8 +107,6 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParentScrollingViewController.shared.enabled(is: true)
-        
         if let reportedPost = UserDefaults.standard.value(forKey: "reportedPost") as? String {
             let alert = UIAlertController(title: "Reported", message: "Your post from \(reportedPost) has been deleted due to it being reported 3 times", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in }
@@ -119,12 +115,6 @@ class HomeViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             UserDefaults.standard.removeObject(forKey: "reportedPost")
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        ParentScrollingViewController.shared.enabled(is: false)
     }
     
     //MARK: Segue
@@ -348,13 +338,5 @@ extension HomeViewController: iCarouselDataSource, iCarouselDelegate {
         default:
             return value
         }
-    }
-    
-    func carouselWillBeginDragging(_ carousel: iCarousel) {
-        ParentScrollingViewController.shared.enabled(is: false)
-    }
-    
-    func carouselDidEndDragging(_ carousel: iCarousel, willDecelerate decelerate: Bool) {
-        ParentScrollingViewController.shared.enabled(is: true)
     }
 }

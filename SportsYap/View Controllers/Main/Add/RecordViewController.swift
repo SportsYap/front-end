@@ -41,16 +41,10 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
      
         self.audioEnabled = false
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     //MARK: IBAction
     @IBAction func backBttnPressed(_ sender: Any) {
-        ParentScrollingViewController.shared.scrollToTabs()
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func flashBttnPressed(_ sender: UIButton) {
         flashEnabled = !flashEnabled
@@ -145,7 +139,6 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
         if let vc = segue.destination as? EditMediaViewController, let media = sender as? UserMedia{
             vc.media = media
         }
-        ParentScrollingViewController.shared.enabled(is: false)
     }
     
     //MARK: UTIL

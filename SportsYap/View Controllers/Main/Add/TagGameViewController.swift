@@ -52,15 +52,7 @@ class TagGameViewController: UIViewController {
 
 extension TagGameViewController {
     private func transitionToClose() {
-        ParentScrollingViewController.shared.scrollToTabs()
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-        
-        if TagGameViewController.preselectedGame == nil{
-            ParentScrollingViewController.shared.enabled(is: true)
-            TagGameViewController.preselectedGame = nil
-        }
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     private func uploadSuccess() {

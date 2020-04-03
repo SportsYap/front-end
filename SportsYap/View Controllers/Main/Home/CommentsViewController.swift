@@ -30,8 +30,6 @@ class CommentsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        ParentScrollingViewController.shared.enabled(is: false)
-        
         User.me.currentPost = post
         
         if commentBottomSpacing.constant != 0 {
