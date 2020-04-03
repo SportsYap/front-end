@@ -25,6 +25,7 @@ class ProfilePostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var videoIconView: UIImageView!
     @IBOutlet weak var postImageViewHeight: NSLayoutConstraint?
+    @IBOutlet weak var videoPlayView: UIView?
 
     @IBOutlet weak var fistsLabel: UILabel?
     @IBOutlet weak var commentsLabel: UILabel!

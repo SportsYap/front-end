@@ -11,6 +11,7 @@ import UIKit
 class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     
@@ -19,6 +20,7 @@ class CommentTableViewCell: UITableViewCell {
             if let comment = comment {
                 timeAgoLabel.text = comment.createdAt.timeAgoSince()
                 profileImageView.sd_setImage(with: comment.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+                usernameLabel.text = comment.user.name
                 
                 commentLabel.attributedText = NSMutableAttributedString().bold(comment.user.name).normal(" \(comment.text)")
             }

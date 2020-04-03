@@ -1778,7 +1778,7 @@
         <!--Edit Media View Controller-->
         <scene sceneID="46g-Zi-ou0">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="wwJ-6f-sxh" customClass="EditMediaViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="wwJ-6f-sxh" customClass="EditMediaViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hkg-wP-jgj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1869,11 +1869,6 @@
                                                 <state key="normal" image="ic_post">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotation">
-                                                        <real key="value" value="180"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="nextBttnPressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="MCw-vK-xT1"/>
                                                     <action selector="recordBttnPressedDown:" destination="aLH-dl-NGs" eventType="touchDragInside" id="QW6-Sd-uJi"/>
@@ -1905,7 +1900,7 @@
                                             <action selector="backBttnPressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="cjB-XL-Lyf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcr-Wi-Ofo">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcr-Wi-Ofo">
                                         <rect key="frame" x="309" y="20.5" width="35" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2004,7 +1999,7 @@
         <!--Tag Game View Controller-->
         <scene sceneID="XR1-EE-u7Y">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Amd-YK-bdk" customClass="TagGameViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Amd-YK-bdk" customClass="TagGameViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Upo-5r-cqc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2020,7 +2015,7 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TLl-bh-fVG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="220" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TLl-bh-fVG">
                                 <rect key="frame" x="0.0" y="94" width="414" height="705"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2414,7 +2409,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvN-5W-LxZ">
-                                        <rect key="frame" x="15" y="14" width="20" height="22"/>
+                                        <rect key="frame" x="5" y="4" width="40" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="1NZ-Ph-EvT"/>
+                                            <constraint firstAttribute="height" constant="42" id="GYj-zR-xdd"/>
+                                        </constraints>
                                         <state key="normal" image="left_arrow_white"/>
                                         <connections>
                                             <action selector="onBack:" destination="Amd-YK-bdk" eventType="touchUpInside" id="9cR-ZC-3Qm"/>
@@ -2426,7 +2425,7 @@
                                     <constraint firstItem="dvN-5W-LxZ" firstAttribute="centerY" secondItem="ssK-Mh-eQV" secondAttribute="centerY" id="8nC-Ds-tSu"/>
                                     <constraint firstAttribute="height" constant="50" id="VY0-eg-EAF"/>
                                     <constraint firstItem="KAP-Hx-kZv" firstAttribute="centerY" secondItem="ssK-Mh-eQV" secondAttribute="centerY" id="We7-Ut-KiP"/>
-                                    <constraint firstItem="dvN-5W-LxZ" firstAttribute="leading" secondItem="ssK-Mh-eQV" secondAttribute="leading" constant="15" id="ZuA-1h-Bh7"/>
+                                    <constraint firstItem="dvN-5W-LxZ" firstAttribute="leading" secondItem="ssK-Mh-eQV" secondAttribute="leading" constant="5" id="ZuA-1h-Bh7"/>
                                     <constraint firstItem="KAP-Hx-kZv" firstAttribute="centerX" secondItem="ssK-Mh-eQV" secondAttribute="centerX" id="yiV-o5-e73"/>
                                 </constraints>
                             </view>

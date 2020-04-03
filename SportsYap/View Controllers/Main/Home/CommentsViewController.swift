@@ -130,9 +130,8 @@ extension CommentsViewController {
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
-            let tabBarHeight = UIScreen.main.bounds.height - TabBarViewController.sharedInstance.tabBar.frame.origin.y
             
-            commentBottomSpacing.constant = keyboardRectangle.height - tabBarHeight
+            commentBottomSpacing.constant = keyboardRectangle.height
             if navigationController == nil || singlePost {
                 commentBottomSpacing.constant += 50
             }
@@ -179,7 +178,10 @@ extension CommentsViewController {
     
     @IBAction func onComment(_ sender: Any) {
         let text = commentTextField.text ?? ""
+        
         ApiManager.shared.postComment(for: post, text: text, onSuccess: {
+            self.post.commentsCount += 1
+            
             self.commentTextField.text = ""
             self.commentTextField.resignFirstResponder()
             self.commentBottomSpacing.constant = 0
@@ -199,8 +201,9 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as! ProfilePostTableViewCell
             cell.post = post
             if let videoUrl = post.media.videoUrl,
-                player == nil {
-                playVideo(url: videoUrl, containerView: cell.postImageView.superview!)
+                player == nil,
+                let view = cell.videoPlayView {
+                playVideo(url: videoUrl, containerView: view)
             }
             return cell
         }

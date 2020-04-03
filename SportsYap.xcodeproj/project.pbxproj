@@ -470,6 +470,7 @@
 				CDBBC30720A3A72200309ADE /* ProfilePostTableViewCell.swift */,
 				CD63D5A620A1883B008B8D5E /* SettingsHeaderTableViewCell.swift */,
 				CD63D5A820A1885A008B8D5E /* SettingsGameTableViewCell.swift */,
+				CD04100920B7EF70000E1D66 /* CommentTableViewCell.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -606,7 +607,6 @@
 				CD4A2EF2208DE0F900DCA56C /* TagGameTableViewCell.swift */,
 				CD4EEC60209B04B800C31469 /* PostTableViewCell.swift */,
 				CD0A655C20B51A9400E17FC7 /* UserTableViewCell.swift */,
-				CD04100920B7EF70000E1D66 /* CommentTableViewCell.swift */,
 				CD21658B20C7D0060009E908 /* TimelineLiveTableViewCell.swift */,
 				D7A1999A231F6444007E7D86 /* CommentGifCell.swift */,
 				D7A1999B231F6444007E7D86 /* CommentGifCell.xib */,

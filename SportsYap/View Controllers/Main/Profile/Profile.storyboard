@@ -2198,6 +2198,7 @@
                                             <outlet property="commentLabel" destination="j6h-lw-CM8" id="FQc-St-whR"/>
                                             <outlet property="profileImageView" destination="qOJ-it-kDt" id="49Z-m0-Lgg"/>
                                             <outlet property="timeAgoLabel" destination="v0Z-RY-h8m" id="IpV-Ua-KxQ"/>
+                                            <outlet property="usernameLabel" destination="mA9-sg-Yfq" id="9z3-E9-Cuf"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameCard" id="hAf-wk-U4d" customClass="ProfilePostTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -2277,7 +2278,7 @@
                                                                         <constraint firstAttribute="trailing" secondItem="Bjv-1f-PBD" secondAttribute="trailing" id="c8B-sG-572"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNb-ZX-Sge" customClass="AutoresizeView" customModule="SportsYap" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNb-ZX-Sge">
                                                                     <rect key="frame" x="0.0" y="103.5" width="374" height="281"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T3H-9m-XNV">
@@ -2289,12 +2290,20 @@
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_play" translatesAutoresizingMaskIntoConstraints="NO" id="IBH-G5-Juc">
                                                                             <rect key="frame" x="166" y="119.5" width="42" height="42"/>
                                                                         </imageView>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbA-cr-CXq" customClass="AutoresizeView" customModule="SportsYap" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="281"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </view>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
                                                                         <constraint firstItem="IBH-G5-Juc" firstAttribute="centerY" secondItem="wNb-ZX-Sge" secondAttribute="centerY" id="863-ST-cGp"/>
                                                                         <constraint firstItem="IBH-G5-Juc" firstAttribute="centerX" secondItem="wNb-ZX-Sge" secondAttribute="centerX" id="Gqk-kz-n4W"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="vbA-cr-CXq" secondAttribute="trailing" id="OxF-C7-TPK"/>
+                                                                        <constraint firstItem="vbA-cr-CXq" firstAttribute="leading" secondItem="wNb-ZX-Sge" secondAttribute="leading" id="RvL-Im-wKb"/>
                                                                         <constraint firstItem="T3H-9m-XNV" firstAttribute="leading" secondItem="wNb-ZX-Sge" secondAttribute="leading" id="hLW-eZ-3NN"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="vbA-cr-CXq" secondAttribute="bottom" id="hpA-sJ-jEc"/>
+                                                                        <constraint firstItem="vbA-cr-CXq" firstAttribute="top" secondItem="wNb-ZX-Sge" secondAttribute="top" id="lnH-bp-RLT"/>
                                                                         <constraint firstItem="T3H-9m-XNV" firstAttribute="top" secondItem="wNb-ZX-Sge" secondAttribute="top" id="nBu-Tw-e0O"/>
                                                                         <constraint firstAttribute="trailing" secondItem="T3H-9m-XNV" secondAttribute="trailing" id="oGI-cE-MMr"/>
                                                                         <constraint firstAttribute="bottom" secondItem="T3H-9m-XNV" secondAttribute="bottom" id="pWw-sI-TVy"/>
@@ -2393,6 +2402,7 @@
                                             <outlet property="timeLabel" destination="5xs-Qr-bFR" id="Op2-gx-yZp"/>
                                             <outlet property="usernameLabel" destination="Kmg-tc-LA7" id="Idp-Ck-Yoa"/>
                                             <outlet property="videoIconView" destination="IBH-G5-Juc" id="Pho-dR-02S"/>
+                                            <outlet property="videoPlayView" destination="vbA-cr-CXq" id="7du-nf-irg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
