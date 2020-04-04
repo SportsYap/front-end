@@ -80,18 +80,7 @@ extension FollowTeamsViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell") as? OnboardingTeamTableViewCell {
             let team = teams[indexPath.row]
-            
-            cell.titleLabel.text = team.name
-            cell.homeTownLabel.text = "\(team.homeTown) | \(team.sport.abv)"
-            cell.primaryColorView.backgroundColor = team.primaryColor
-            cell.secondaryColorView.backgroundColor = team.secondaryColor
-            
-            if team.followed {
-                cell.followButton.setTitle("Unfollow", for: .normal)
-            } else {
-                cell.followButton.setTitle("+ Follow", for: .normal)
-            }
-            
+            cell.team = team
             return cell
         }
         

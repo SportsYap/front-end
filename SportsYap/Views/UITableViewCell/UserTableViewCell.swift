@@ -15,31 +15,33 @@ protocol UserTableViewCellDelegate {
 class UserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet var isVerifiedImageView: UIImageView!
-    @IBOutlet var nameLbl: UILabel!
-    @IBOutlet var hometownLbl: UILabel!
+    @IBOutlet weak var isVerifiedImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var hometownLabel: UILabel!
     
-    @IBOutlet var followBttn: UIButton!
+    @IBOutlet weak var followButton: UIButton!
     
-    var user: User!{
-        didSet{
-            setFollowBttnTitle(following: user.followed)
+    var user: User! {
+        didSet {
+            nameLabel.text = user.name
+            hometownLabel.text = user.location
+            isVerifiedImageView.alpha = user.verified ? 1 : 0
+            profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+
+            if user.id == User.me.id {
+                followButton.isHidden = true
+            } else {
+                followButton.isHidden = false
+                followButton.setTitle(user.followed ? "Unfollow" : "+ Follow", for: .normal)
+            }
         }
     }
     var delegate: UserTableViewCellDelegate!
-    
-    func setFollowBttnTitle(following: Bool){
-        if following{
-            followBttn.setTitle("Unfollow", for: .normal)
-        }else{
-            followBttn.setTitle("Follow", for: .normal)
-        }
-    }
-    
+}
+
+extension UserTableViewCell {
     //MARK: IBAction
-    @IBAction func followBttnPressed(_ sender: Any) {
+    @IBAction func onFollow(_ sender: Any) {
         delegate.didFollowUser(user: user)
-        user.followed = !user.followed
-        setFollowBttnTitle(following: user.followed)
     }
 }

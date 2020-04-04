@@ -81,17 +81,15 @@ extension ViewUsersViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell {
             let user = users[indexPath.row]
-            cell.nameLbl.text = user.name
-            cell.hometownLbl.text = user.location
-            cell.isVerifiedImageView.alpha = user.verified ? 1 : 0
             cell.user = user
             cell.delegate = self
             cell.selectionStyle = .none
-            cell.profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+
             return cell
         }
+        
         return UITableViewCell()
     }
     
@@ -110,11 +108,12 @@ extension ViewUsersViewController: UserTableViewCellDelegate {
         if user.followed {
             ApiManager.shared.unfollow(user: user.id, onSuccess: {
                 user.followed = false
+                self.tableView.reloadData()
             }) { (err) in }
         } else {
             ApiManager.shared.follow(user: user.id, onSuccess: {
                 user.followed = true
-
+                self.tableView.reloadData()
             }) { (err) in }
         }
     }

@@ -17,6 +17,21 @@ class OnboardingTeamTableViewCell: UITableViewCell {
     @IBOutlet weak var primaryColorView: UIView!
     @IBOutlet weak var secondaryColorView: UIView!
     
+    var team: Team! {
+        didSet {
+            titleLabel.text = team.name
+            homeTownLabel.text = "\(team.homeTown) | \(team.sport.abv)"
+            primaryColorView.backgroundColor = team.primaryColor
+            secondaryColorView.backgroundColor = team.secondaryColor
+            
+            if team.followed {
+                followButton.setTitle("Unfollow", for: .normal)
+            } else {
+                followButton.setTitle("+ Follow", for: .normal)
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

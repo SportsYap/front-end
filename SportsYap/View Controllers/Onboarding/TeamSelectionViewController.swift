@@ -81,38 +81,38 @@ extension TeamSelectionViewController: UITableViewDelegate, UITableViewDataSourc
         return section == 0 ? 1 : self.teams.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell"){
                 cell.selectionStyle = .none
                 return cell
             }
-        }else if indexPath.section == 1{
+        } else if indexPath.section == 1 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell") as? OnboardingTeamTableViewCell{
                 let team = teams[indexPath.row]
-                cell.titleLabel.text = team.name
-                cell.homeTownLabel.text = "\(team.homeTown) | \(team.sport.abv)"
-                cell.primaryColorView.backgroundColor = team.primaryColor
-                cell.secondaryColorView.backgroundColor = team.secondaryColor
-                if selectedTeams.contains(team){
+                cell.team = team
+                if selectedTeams.contains(team) {
                     cell.followButton.setTitle("Unfollow", for: .normal)
-                }else{
-                    cell.followButton.setTitle("Follow", for: .normal)
+                } else {
+                    cell.followButton.setTitle("+ Follow", for: .normal)
                 }
                 return cell
             }
         }
+        
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 91 : 52
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let team = teams[indexPath.row]
-        if selectedTeams.contains(team){
+        if selectedTeams.contains(team) {
             selectedTeams.remove(at: selectedTeams.index(of: team)!)
-        }else{
+        } else {
             selectedTeams.append(team)
         }
         tableView.reloadData()
