@@ -22,14 +22,14 @@ enum ViewUsersMode {
 
 class ViewUsersViewController: UIViewController {
 
-    @IBOutlet var titleLbl: UILabel!
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
-    var users = [User]()
     var rootUser: User!
-    
     var mode: ViewUsersMode!
-    
+
+    private var users: [User] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,9 +46,9 @@ class ViewUsersViewController: UIViewController {
             }, onError: voidErr)
         }
         
-        if mode == .followers{
+        if mode == .followers {
             ApiManager.shared.followers(user: rootUser.id, onSuccess: onSuccess, onError: voidErr)
-        }else if mode == .following{
+        } else if mode == .following {
             ApiManager.shared.following(user: rootUser.id, onSuccess: onSuccess, onError: voidErr)
         }
     }
@@ -57,12 +57,7 @@ class ViewUsersViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
-    
-    //MARK: IBAction
-    @IBAction func backBttnPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
     //MARK: Nav
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? OtherProfileViewController{
@@ -73,10 +68,18 @@ class ViewUsersViewController: UIViewController {
     }
 }
 
-extension ViewUsersViewController: UITableViewDataSource, UITableViewDelegate, UserTableViewCellDelegate{
+extension ViewUsersViewController {
+    //MARK: IBAction
+    @IBAction func onBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ViewUsersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell{
             let user = users[indexPath.row]
@@ -94,15 +97,24 @@ extension ViewUsersViewController: UITableViewDataSource, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
-        performSegue(withIdentifier: "showProfile", sender: user)
+        if user.id == User.me.id {
+            performSegue(withIdentifier: "showProfile", sender: user)
+        } else {
+            performSegue(withIdentifier: "showOtherProfile", sender: user)
+        }
     }
-    
-    func followBttnPressed(user: User){
-        if user.followed{
+}
+
+extension ViewUsersViewController: UserTableViewCellDelegate {
+    func didFollowUser(user: User) {
+        if user.followed {
             ApiManager.shared.unfollow(user: user.id, onSuccess: {
+                user.followed = false
             }) { (err) in }
-        }else{
+        } else {
             ApiManager.shared.follow(user: user.id, onSuccess: {
+                user.followed = true
+
             }) { (err) in }
         }
     }

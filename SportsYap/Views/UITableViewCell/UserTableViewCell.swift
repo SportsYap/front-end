@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UserTableViewCellDelegate {
-    func followBttnPressed(user: User)
+    func didFollowUser(user: User)
 }
 
 class UserTableViewCell: UITableViewCell {
@@ -38,7 +38,7 @@ class UserTableViewCell: UITableViewCell {
     
     //MARK: IBAction
     @IBAction func followBttnPressed(_ sender: Any) {
-        delegate.followBttnPressed(user: user)
+        delegate.didFollowUser(user: user)
         user.followed = !user.followed
         setFollowBttnTitle(following: user.followed)
     }
