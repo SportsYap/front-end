@@ -10,6 +10,8 @@ import UIKit
 
 class Post: DBObject {
     
+    static let newPostNotification = "didPostNotification"
+    
     var media: UserMedia!
     var user: User!
     

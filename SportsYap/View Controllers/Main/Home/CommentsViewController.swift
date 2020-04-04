@@ -36,6 +36,7 @@ class CommentsViewController: UIViewController {
             commentBottomSpacing.constant = 0
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: Notification.Name.AVPlayerItemDidPlayToEndTime,
@@ -56,8 +57,6 @@ class CommentsViewController: UIViewController {
         commentTextField.leftViewMode = .always
         
         loadComments()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         profileImageView.sd_setImage(with: User.me.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
         

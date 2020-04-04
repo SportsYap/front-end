@@ -62,8 +62,14 @@ class EnterFieldViewController: UIViewController {
         panoView = GMSPanoramaView(frame: viewFieldView.bounds)
         panoView.delegate = self
         viewFieldView.addSubview(panoView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didPost), name: NSNotification.Name(rawValue: Post.newPostNotification), object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -103,7 +109,9 @@ class EnterFieldViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+}
+
+extension EnterFieldViewController {
     @IBAction func onBack(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -215,6 +223,19 @@ extension EnterFieldViewController {
         }
 
         collectionView.reloadData()
+    }
+    
+    @objc func didPost(_ notification: Notification) {
+        if let post = notification.object as? Post,
+            let game = game {
+            if !game.fans.contains(post.user) {
+                game.fans.append(post.user)
+            }
+            if !game.posts.contains(post) {
+                game.posts.append(post)
+                filterData()
+            }
+        }
     }
 }
 

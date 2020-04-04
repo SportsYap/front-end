@@ -55,7 +55,18 @@ extension TagGameViewController {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    private func uploadSuccess() {
+    private func uploadSuccess(_ post: Post) {
+        if let game = post.game {
+            if !game.fans.contains(post.user) {
+                game.fans.append(post.user)
+            }
+            if !game.posts.contains(post) {
+                game.posts.append(post)
+            }
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Post.newPostNotification), object: post)
+        
         if let team = selectedTeam {
             addedSuccessLabel.text = "Added to \(team.name)'s Game Day"
         }
@@ -118,8 +129,8 @@ extension TagGameViewController {
             uploadCanceled = false
             
             if let photo = media.photo {
-                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, photo: photo, onSuccess: {
-                    self.uploadSuccess()
+                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, photo: photo, onSuccess: { post in
+                    self.uploadSuccess(post)
                 }) { (err) in
                     if !self.uploadCanceled{
                         self.uploadError()
@@ -127,8 +138,8 @@ extension TagGameViewController {
                 }
             } else if let url = media.videoUrl {
                 let thumb = MediaMerger.thumbnail(for: media)
-                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, video: url, thumbnail: thumb, onSuccess: {
-                    self.uploadSuccess()
+                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, video: url, thumbnail: thumb, onSuccess: { post in
+                    self.uploadSuccess(post)
                 }) { (err) in
                     if !self.uploadCanceled{
                         self.uploadError()

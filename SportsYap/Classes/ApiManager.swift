@@ -806,7 +806,7 @@ class ApiManager: NSObject {
     }
 
     //MARK: Upload
-    func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, photo: UIImage, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
+    func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, photo: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         
         //let imgData = UIImageJPEGRepresentation(photo, 0.2)!
         let imgData = photo.jpegData(compressionQuality: 0.2)!
@@ -834,20 +834,27 @@ class ApiManager: NSObject {
                     })
                     
                     upload.responseJSON { response in
+                        print(response.result.value)
+                        
                         let code = response.response?.statusCode ?? 0
-                        if code == 200{
-                            onSuccess()
-                        }else{
+                        if code == 200,
+                        let postJson = (response.result.value as? [String: Any])?["post"] as? [String: AnyObject] {
+                            let post = Post(dict: postJson)
+                            post.game = game
+                            post.team = team
+                            post.user = User.me
+                            onSuccess(post)
+                        } else {
                             onError(NSError(domain: "api.error", code: code, userInfo: ["message":"invalid response code"]))
                         }
-                        }
+                    }
                 
                 case .failure(let encodingError):
                     print(encodingError)
             }
         }
     }
-    func uploadVideo(contentHeight: CGFloat? = nil, game: Game, team: Team, video: URL, thumbnail: UIImage, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
+    func uploadVideo(contentHeight: CGFloat? = nil, game: Game, team: Team, video: URL, thumbnail: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         
         let videoData = try! Data.init(contentsOf: video)
         let imageData = thumbnail.pngData() ?? Data()
@@ -876,10 +883,17 @@ class ApiManager: NSObject {
                 })
                 
                 upload.responseJSON { response in
+                    print(response.result.value)
+
                     let code = response.response?.statusCode ?? 0
-                    if code == 200{
-                        onSuccess()
-                    }else{
+                    if code == 200,
+                        let postJson = (response.result.value as? [String: Any])?["post"] as? [String: AnyObject] {
+                        let post = Post(dict: postJson)
+                        post.game = game
+                        post.team = team
+                        post.user = User.me
+                        onSuccess(post)
+                    } else {
                         onError(NSError(domain: "api.error", code: code, userInfo: ["message":"invalid response code"]))
                     }
                 }

@@ -59,6 +59,8 @@ class GameDayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didPost), name: NSNotification.Name(rawValue: Post.newPostNotification), object: nil)
+        
         ApiManager.shared.news(for: self.game, onSuccess: { (news) in
             self.game.news = news
             if self.selectedTabItem == .News {
@@ -105,6 +107,10 @@ class GameDayViewController: UIViewController {
             vc.challenge = challenge
             vc.game = game
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -155,6 +161,21 @@ extension GameDayViewController {
         enterFieldButton.layer.cornerRadius = 5
         enterFieldButton.layer.masksToBounds = true
         enterFieldButton.layer.maskedCorners = [.layerMinXMaxYCorner]
+    }
+    
+    @objc func didPost(_ notification: Notification) {
+        if let post = notification.object as? Post {
+            if !game.fans.contains(post.user) {
+                game.fans.append(post.user)
+                
+                if selectedTabItem == .Fans {
+                    tableView.reloadData()
+                }
+            }
+            if !game.posts.contains(post) {
+                game.posts.append(post)
+            }
+        }
     }
 }
 
