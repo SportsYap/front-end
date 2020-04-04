@@ -513,13 +513,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="b7e-JZ-pJ3">
                                                             <rect key="frame" x="62" y="5" width="65" height="36.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="snoopdog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-kK-ydY">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="snoopdog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-kK-ydY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="5min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-7f-a7O">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="5min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-7f-a7O">
                                                                     <rect key="frame" x="0.0" y="22" width="65" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
@@ -922,7 +922,7 @@
                                         <rect key="frame" x="0.0" y="148" width="414" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlq-6j-qRT">
-                                                <rect key="frame" x="0.0" y="0.0" width="435" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Filter By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcd-ge-LhB">
                                                         <rect key="frame" x="13" y="16.5" width="53" height="17"/>
@@ -931,7 +931,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WGe-fO-DU0">
-                                                        <rect key="frame" x="83" y="11.5" width="342" height="27"/>
+                                                        <rect key="frame" x="83" y="11.5" width="266" height="27"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-Jx-LDF">
                                                                 <rect key="frame" x="0.0" y="0.0" width="77" height="27"/>
@@ -956,11 +956,12 @@
                                                                     <action selector="onFilter:" destination="W9n-1K-c6e" eventType="touchUpInside" id="Yr5-WD-q0X"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clc-zs-MSX">
-                                                                <rect key="frame" x="87" y="0.0" width="81" height="27"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clc-zs-MSX">
+                                                                <rect key="frame" x="87" y="0.0" width="95" height="27"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="14" maxY="0.0"/>
-                                                                <state key="normal" title="Officials">
+                                                                <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="20" maxY="0.0"/>
+                                                                <inset key="imageEdgeInsets" minX="68" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Officials" image="ic_triangle">
                                                                     <color key="titleColor" red="0.1215686275" green="0.14901960780000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -978,33 +979,12 @@
                                                                     <action selector="onFilter:" destination="W9n-1K-c6e" eventType="touchUpInside" id="S2d-M5-Y4P"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-Pt-Du8">
-                                                                <rect key="frame" x="178" y="0.0" width="94" height="27"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbU-zI-4gX">
+                                                                <rect key="frame" x="192" y="0.0" width="74" height="27"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="14" maxY="0.0"/>
-                                                                <state key="normal" title="Highlights">
-                                                                    <color key="titleColor" red="0.1215686275" green="0.14901960780000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="2"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                        <real key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="onFilter:" destination="W9n-1K-c6e" eventType="touchUpInside" id="4KZ-ak-KBi"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbU-zI-4gX">
-                                                                <rect key="frame" x="282" y="0.0" width="60" height="27"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="14" maxY="0.0"/>
-                                                                <state key="normal" title="Time">
+                                                                <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="20" maxY="0.0"/>
+                                                                <inset key="imageEdgeInsets" minX="47" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Time" image="ic_triangle">
                                                                     <color key="titleColor" red="0.1215686275" green="0.14901960780000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>

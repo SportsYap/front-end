@@ -52,6 +52,8 @@ class OtherProfileViewController: UIViewController {
         } else if let vc = segue.destination as? ViewUsersViewController, let m = sender as? ViewUsersMode {
             vc.mode = m
             vc.rootUser = user
+        } else if let vc = segue.destination as? ViewTeamsViewController {
+            vc.teams = user.teams
         }
     }
 }

@@ -54,6 +54,8 @@ class ProfileViewController: UIViewController {
         } else if let vc = segue.destination as? ViewUsersViewController, let m = sender as? ViewUsersMode {
             vc.mode = m
             vc.rootUser = User.me
+        } else if let vc = segue.destination as? ViewTeamsViewController {
+            vc.teams = User.me.teams
         }
     }
 }

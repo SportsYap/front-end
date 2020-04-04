@@ -16,6 +16,7 @@
 		AF3DD7B92435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DD7B82435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift */; };
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
+		AF4541262439008700F001F0 /* ViewTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4541252439008700F001F0 /* ViewTeamsViewController.swift */; };
 		AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */; };
 		AF47F0A62430EC9A00E48E50 /* TeamBadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */; };
 		AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */; };
@@ -196,6 +197,7 @@
 		AF3DD7B82435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayEventHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
+		AF4541252439008700F001F0 /* ViewTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTeamsViewController.swift; sourceTree = "<group>"; };
 		AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBadgeView.swift; sourceTree = "<group>"; };
 		AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamBadgeView.xib; sourceTree = "<group>"; };
 		AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				AFE9B8192432F2E0006AA5D6 /* OtherProfileViewController.swift */,
 				CD63D5A420A18351008B8D5E /* SettingsViewController.swift */,
 				CD0A655A20B5197500E17FC7 /* ViewUsersViewController.swift */,
+				AF4541252439008700F001F0 /* ViewTeamsViewController.swift */,
 				AF96D5472433D8C300EB08AB /* FollowTeamsViewController.swift */,
 				AFDAFF68242FC4B0008DFF3E /* Profile.storyboard */,
 			);
@@ -1153,6 +1156,7 @@
 				D71F972A22508B330051E715 /* MediaFilter.swift in Sources */,
 				CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */,
 				AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */,
+				AF4541262439008700F001F0 /* ViewTeamsViewController.swift in Sources */,
 				CD0A655920B5184500E17FC7 /* News.swift in Sources */,
 				AF6CF86424287ADF0035CC6F /* EnterFieldViewController.swift in Sources */,
 				CDDA0CAF201FAAA000BA0568 /* NSData.swift in Sources */,
@@ -1378,13 +1382,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SportsYap/Support\\ Files/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.14;
+				MARKETING_VERSION = 1.5.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1407,13 +1412,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SportsYap/Support\\ Files/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.14;
+				MARKETING_VERSION = 1.5.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1437,7 +1443,7 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.14;
+				MARKETING_VERSION = 1.5.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
@@ -1462,7 +1468,7 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.14;
+				MARKETING_VERSION = 1.5.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
