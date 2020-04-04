@@ -60,8 +60,6 @@ class OtherProfileViewController: UIViewController {
 
 extension OtherProfileViewController {
     private func displayUser() {
-        let user = User.me
-        
         profileImageView.sd_setImage(with: user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
         nameLabel.text = user.name
         locationLabel.text = user.location
