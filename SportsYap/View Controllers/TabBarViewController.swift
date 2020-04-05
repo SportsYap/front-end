@@ -18,8 +18,8 @@ class TabBarViewController: UITabBarController {
 
         TabBarViewController.sharedInstance = self
         
-        self.tabBar.tintColor = UIColor(hex: "262626")
-        self.tabBar.unselectedItemTintColor = UIColor(hex: "BBBABA")
+        self.tabBar.tintColor = UIColor(hex: "009BFF")
+        self.tabBar.unselectedItemTintColor = UIColor.black
         
         let cameraViewController = storyboard?.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
         cameraViewController?.presentingViewControllerUseSnapshot = true
