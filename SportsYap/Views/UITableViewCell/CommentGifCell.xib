@@ -90,6 +90,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="gifImageView" destination="5ig-6J-E9l" id="QZI-ZJ-BSf"/>
+                <outlet property="profileImageView" destination="pog-Cp-lIl" id="Qbz-e8-AML"/>
+                <outlet property="timeAgoLabel" destination="03p-08-Yqe" id="uak-3S-hBC"/>
+                <outlet property="usernameLabel" destination="7OO-ug-GGU" id="w5D-Gk-7zv"/>
             </connections>
             <point key="canvasLocation" x="136.875" y="202.28873239436621"/>
         </tableViewCell>
