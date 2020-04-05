@@ -18,10 +18,6 @@ public func resizeVideo(videoAsset:AVURLAsset,
         throw YGCVideoError.videoTrackNotFind
     }
     
-    //guard let audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first else {
-     //   throw YGCVideoError.audioTrackNotFind
-    //}
-    
     var audioTrack: AVAssetTrack?
     var compostiionAudioTrack: AVMutableCompositionTrack?
     
@@ -40,10 +36,6 @@ public func resizeVideo(videoAsset:AVURLAsset,
             compostiionAudioTrack = audioComposition
         }
     }
-    
-    //guard let compostiionAudioTrack = resizeComposition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: kCMPersistentTrackID_Invalid) else {
-    //    throw YGCVideoError.compositionTrackInitFailed
-   // }
     
     try compositionVideoTrack.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: videoAsset.duration), of: videoTrack, at: CMTime.zero)
     

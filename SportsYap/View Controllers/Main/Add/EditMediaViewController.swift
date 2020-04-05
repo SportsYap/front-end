@@ -15,12 +15,12 @@ import AVFoundation
 class EditMediaViewController: UIViewController {
 
     @IBOutlet weak var imageContainerView: UIView!
-    @IBOutlet var imageBackgroundView: UIImageView!
-    @IBOutlet var videoContainerView: UIView!
+    @IBOutlet weak var imageBackgroundView: UIImageView!
+    @IBOutlet weak var videoContainerView: UIView!
     
-    @IBOutlet weak var textBttn: UIButton!
-    @IBOutlet var commentTextField: UITextField!
-    @IBOutlet var commentContainerView: UIView!
+    @IBOutlet weak var textButton: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentContainerView: UIView!
     @IBOutlet weak var commentSuperView: UIView!
     @IBOutlet weak var resizeButton: UIButton!
     
@@ -28,23 +28,24 @@ class EditMediaViewController: UIViewController {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var fontButton: UIButton!
 
-    var fonts: [UIFont] = []
-    
-    var fontIndex = 0
-    var selectedFontColor: UIColor = UIColor.white
-    
     var media: UserMedia!
-    var player: AVPlayer?
+
+    private var fonts: [UIFont] = []
     
-    var isOriginal = true
+    private var fontIndex = 0
+    private var selectedFontColor: UIColor = UIColor.white
     
-    var playerController: AVPlayerViewController!
-    var resizedVideoUrl: URL?
+    private var player: AVPlayer?
     
-    var indexHeight = 0
+    private var isOriginal = true
     
-    var loadingIndicator: UIActivityIndicatorView!
-    var colorSlider: ColorSlider!
+    private var playerController: AVPlayerViewController!
+    private var resizedVideoUrl: URL?
+    
+    private var indexHeight = 0
+    
+    private var loadingIndicator: UIActivityIndicatorView!
+    private var colorSlider: ColorSlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,31 +69,19 @@ class EditMediaViewController: UIViewController {
         placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white.withAlphaComponent(0.5), range:NSRange(location:0,length:Name.length))
         commentTextField.attributedPlaceholder = placeHolder
         
-        // DELETE
-        //commentTextField.backgroundColor = .orange
-        //commentSuperView.backgroundColor = .clear
-        //commentContainerView.backgroundColor = .clear
-        //view.backgroundColor = .clear
-                
         commentTextView.delegate = self
         
-        if media.photo != nil{
+        if media.photo != nil {
             addColorSlider()
             
             imageBackgroundView.image = media.photo
-            
-            print("image size is: \(media.photo!.size)")
             
             commentContainerView.enableDragging()
             commentContainerView.draggingStartedBlock = {
                 (view) in
                 self.commentTextField.resignFirstResponder()
             }
-            //setTextFieldFromMedia()
-            
-        }else if let url = media.videoUrl{
-            //commentContainerView.alpha = 0
-            //textBttn.alpha = 0
+         } else if let url = media.videoUrl {
             do {
                 try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
             } catch {
@@ -105,7 +94,6 @@ class EditMediaViewController: UIViewController {
             playerController = AVPlayerViewController()
             playerController.player = player
             playerController.showsPlaybackControls = false
-            //playerController.videoGravity = AVLayerVideoGravity(rawValue: AVLayerVideoGravity.resizeAspect.rawValue)
             playerController.videoGravity = AVLayerVideoGravity(rawValue: AVLayerVideoGravity.resizeAspectFill.rawValue)
             self.addChild(playerController)
             playerController.view.frame = videoContainerView.bounds
@@ -113,11 +101,11 @@ class EditMediaViewController: UIViewController {
             
             player?.play()
             
-            let transition = CATransition()
-            transition.duration = 1
-            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            transition.type = CATransitionType.fade
-            playerController.view.layer.add(transition, forKey: nil)
+//            let transition = CATransition()
+//            transition.duration = 1
+//            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//            transition.type = CATransitionType.fade
+//            playerController.view.layer.add(transition, forKey: nil)
             
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(playerItemDidReachEnd(notification:)),
@@ -149,7 +137,6 @@ class EditMediaViewController: UIViewController {
                 targetSize = view.bounds.size
                 
                 result = try! resizeVideo(videoAsset: videoAsset, targetSize: targetSize, isKeepAspectRatio: true, isCutBlackEdge: false)
-                
             } else {
                 let calculatedWidth = view.bounds.height * 0.490625
                 targetSize = CGSize(width: calculatedWidth, height: view.bounds.height)
@@ -183,32 +170,20 @@ class EditMediaViewController: UIViewController {
         commentContainerView.alpha = 1
         colorSlider.alpha = 1
         fontButton.alpha = 1
-        textBttn.alpha = 1
-        textBttn.isEnabled = true
+        textButton.alpha = 1
+        textButton.isEnabled = true
         
         setTextFieldFromMedia()
-        
-        /*
-        if User.me.didSelectFromGallery {
-            commentContainerView.alpha = 0
-            colorSlider.alpha = 0
-            fontButton.alpha = 0
-            textBttn.alpha = 0
-            textBttn.isEnabled = false
-        } else {
-            commentContainerView.alpha = 1
-            colorSlider.alpha = 1
-            fontButton.alpha = 1
-            textBttn.alpha = 1
-            textBttn.isEnabled = true
-            
-            setTextFieldFromMedia()
-        }
-        */
-        
     }
-    
-    @IBAction func fontPressed(_ sender: Any) {
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player?.pause()
+    }
+}
+
+extension EditMediaViewController {
+    @IBAction func onChangeFont(_ sender: Any) {
         if fontIndex < fonts.count - 1 {
             fontIndex += 1
         } else {
@@ -220,40 +195,25 @@ class EditMediaViewController: UIViewController {
         fontButton.setTitleColor(selectedFontColor, for: .normal)
     }
     
-    @IBAction func resizePressed(_ sender: Any) {
+    @IBAction func onResize(_ sender: Any) {
         if media.videoUrl != nil {
             // video
             if isOriginal {
                 guard let resizedVideoUrl = self.resizedVideoUrl else { return }
-                self.playVideo(url: resizedVideoUrl)
-                
-                //playerController.view.layer
-                UIView.animate(withDuration: 1.5, animations: {
-                    //self.playerController.view.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-                })
- 
+                playVideo(url: resizedVideoUrl)
             } else {
                 playVideo(url: media.videoUrl!)
-                
-                UIView.animate(withDuration: 1.5, animations: {
-                    //self.playerController.view.transform = CGAffineTransform(scaleX: 1, y: 1)
-                })
             }
-            
         } else {
             // image
             if isOriginal {
-                
                 var scaleX: CGFloat
                 var scaleY: CGFloat
-                
-                // 667 / 2316 = 0.2879965 * 1.5 = 0.43199
                 
                 if media.photo!.size.width > media.photo!.size.height {
                     // landscape
                     scaleX = view.bounds.width / media.photo!.size.width
                     scaleY = view.bounds.width / media.photo!.size.width
-                    
                 } else {
                     scaleX = view.bounds.height / media.photo!.size.height
                     scaleY = view.bounds.height / media.photo!.size.height
@@ -265,9 +225,7 @@ class EditMediaViewController: UIViewController {
                 UIView.animate(withDuration: 1.5, animations: {
                     self.imageBackgroundView.transform = CGAffineTransform(scaleX: scaleX * 1.5, y: scaleY * 1.5) //0.6
                 })
-                
             } else {
-                
                 UIView.animate(withDuration: 1.5, animations: {
                     self.imageBackgroundView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 })
@@ -276,15 +234,103 @@ class EditMediaViewController: UIViewController {
         
         isOriginal = !isOriginal
     }
+
+   //MARK: IBAction
+   @IBAction func onTapText(_ sender: Any) {
+       media.commentMode = media.commentMode.next()
+       setTextFieldFromMedia()
+   }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        player?.pause()
-    }
+   @IBAction func onBack(_ sender: Any) {
+       player?.pause()
+       navigationController?.popViewController(animated: true)
+   }
     
-    func setTextFieldFromMedia(){
-        if let f = commentTextField.font{
-            let center = commentContainerView.center
+   @IBAction func onNext(_ sender: Any) {
+       media.comment = commentTextView.text ?? ""
+       media.commentColor = commentTextView.textColor
+       
+       if let _ = media.photo {
+           let point = self.view.convert(commentContainerView.frame.origin, to: self.view)
+        
+           media.commentPos = CGPoint(x: point.x, y: point.y)
+           media.photo = imageContainerView.takeScreenshot()
+           
+           if let image = MediaMerger.merge(photo: media, imageHeight: 200, font: commentTextView.font) {
+               let processedMedia = UserMedia(video: nil, image: image)
+               if !isOriginal {
+                   processedMedia.contentHeight = self.imageBackgroundView.frame.height
+               }
+               performSegue(withIdentifier: "tagGame", sender: processedMedia)
+           }
+       } else if let url = media.videoUrl {
+           if !isOriginal {
+               if let resizedUrl = resizedVideoUrl {
+                   if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                       self.loadingIndicator.startAnimating()
+                       
+                       addTextToVideo(url: resizedUrl, resized: true) { (newUrl) in
+                           guard let newUrl = newUrl else {
+                               self.alert(message: "Error adding text to video.")
+                               self.loadingIndicator.stopAnimating()
+                               return
+                           }
+                           
+                           DispatchQueue.main.async {
+                               self.loadingIndicator.stopAnimating()
+                               
+                               let processedMedia = UserMedia(video: newUrl, image: nil)
+                               processedMedia.contentHeight = self.getHeightOfContent(url: newUrl)
+                               self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
+                           }
+                       }
+      
+                   } else {
+                       let processedMedia = UserMedia(video: resizedUrl, image: nil)
+                       processedMedia.contentHeight = self.getHeightOfContent(url: resizedUrl)
+                       performSegue(withIdentifier: "tagGame", sender: processedMedia)
+                    }
+               } else {
+                   if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                       loadingIndicator.startAnimating()
+
+                       addTextToVideo(url: url) { (newUrl) in
+                           let processedMedia = UserMedia(video: newUrl, image: nil)
+                           DispatchQueue.main.async {
+                               self.loadingIndicator.stopAnimating()
+                               self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
+                           }
+                       }
+                       
+                   } else {
+                       let processedMedia = UserMedia(video: url, image: nil)
+                       performSegue(withIdentifier: "tagGame", sender: processedMedia)
+                   }
+               }
+           } else {
+               if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                   loadingIndicator.startAnimating()
+                   
+                   addTextToVideo(url: url) { (newUrl) in
+                       let processedMedia = UserMedia(video: newUrl, image: nil)
+                       DispatchQueue.main.async {
+                           self.loadingIndicator.stopAnimating()
+                           self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
+                       }
+                   }
+               } else {
+                   let processedMedia = UserMedia(video: url, image: nil)
+                   performSegue(withIdentifier: "tagGame", sender: processedMedia)
+               }
+           }
+       }
+   }
+}
+ 
+extension EditMediaViewController {
+    
+    private func setTextFieldFromMedia() {
+        if let f = commentTextField.font {
             commentTextField.font = f.withSize(media.commentMode.fontSize())
             
             //commentTextView.font = commentTextField.font
@@ -307,15 +353,15 @@ class EditMediaViewController: UIViewController {
         }
     }
     
-    func addColorSlider() {
+    private func addColorSlider() {
         colorSlider = ColorSlider(orientation: .vertical, previewSide: .left)
-        colorSlider.frame = CGRect(x: 24, y: textBttn.frame.origin.y, width: 12, height: 150)
+        colorSlider.frame = CGRect(x: 24, y: textButton.frame.origin.y, width: 12, height: 150)
         view.addSubview(colorSlider)
         
         colorSlider.addTarget(self, action: #selector(changedColor(_:)), for: .valueChanged)
     }
     
-    func playVideo(url: URL) {
+    private func playVideo(url: URL) {
         player = AVPlayer(url: url)
         playerController.player = player
         player?.play()
@@ -329,135 +375,16 @@ class EditMediaViewController: UIViewController {
                                                object: player?.currentItem)
     }
     
-    @objc func changedColor(_ slider: ColorSlider) {
+    @objc private func changedColor(_ slider: ColorSlider) {
         //commentTextField.textColor = slider.color
         commentTextView.textColor = slider.color
         selectedFontColor = slider.color
     }
     
-    @objc func playerItemDidReachEnd(notification: Notification) {
+    @objc private func playerItemDidReachEnd(notification: Notification) {
         if let playerItem: AVPlayerItem = player?.currentItem {
             playerItem.seek(to: CMTime.zero, completionHandler: nil)
             player?.play()
-        }
-    }
-    
-    //MARK: IBAction
-    @IBAction func textBttnPressed(_ sender: Any) {
-        media.commentMode = media.commentMode.next()
-        setTextFieldFromMedia()
-    }
-    @IBAction func backBttnPressed(_ sender: Any) {
-        player?.pause()
-        self.navigationController?.popViewController(animated: false)
-    }
-    @IBAction func nextBttnPressed(_ sender: Any) {
-        //media.comment = commentTextField.text ?? ""
-        //media.commentColor = commentTextField.textColor
-        media.comment = commentTextView.text ?? ""
-        media.commentColor = commentTextView.textColor
-        
-        if let pre = media.photo{
-            let point = self.view.convert(commentContainerView.frame.origin, to: self.view)
-            //media.commentPos = CGPoint(x: point.x + 10, y: point.y + 15)
-            media.commentPos = CGPoint(x: point.x, y: point.y)
- 
-            media.photo = imageContainerView.takeScreenshot()
-            
-            if let image = MediaMerger.merge(photo: media, imageHeight: 200, font: commentTextView.font) {
-                let processedMedia = UserMedia(video: nil, image: image)
-                
-                if !isOriginal {
-                    processedMedia.contentHeight = self.imageBackgroundView.frame.height
-                }
-                
-                self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-            }
-            
-        } else if let url = media.videoUrl {
- 
-            if !isOriginal {
-                
-                if let resizedUrl = resizedVideoUrl {
-                    
-                    if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                        
-                        self.loadingIndicator.startAnimating()
-                        
-                        addTextToVideo(url: resizedUrl, resized: true) { (newUrl) in
-                            
-                            guard let newUrl = newUrl else {
-                                self.alert(message: "Error adding text to video.")
-                                self.loadingIndicator.stopAnimating()
-                                return
-                            }
-                            
-                            DispatchQueue.main.async {
-                                self.loadingIndicator.stopAnimating()
-                                
-                                let processedMedia = UserMedia(video: newUrl, image: nil)
-                                processedMedia.contentHeight = self.getHeightOfContent(url: newUrl)
-                                self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-                                
-                                // FOR TESTING
-                                //self.playVideo(url: newUrl)
-                            }
-                        }
-       
-                    } else {
-                        let processedMedia = UserMedia(video: resizedUrl, image: nil)
-                        processedMedia.contentHeight = self.getHeightOfContent(url: resizedUrl)
-                        self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-                        
-                        // FOR TESTING
-                        //self.playVideo(url: resizedUrl)
-                    }
-                    
-                } else {
-                    
-                    if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                        
-                        self.loadingIndicator.startAnimating()
-
-                        addTextToVideo(url: url) { (newUrl) in
-                            let processedMedia = UserMedia(video: newUrl, image: nil)
-                            DispatchQueue.main.async {
-                                self.loadingIndicator.stopAnimating()
-                                self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-                                
-                                // FOR TESTING
-                                //self.playVideo(url: newUrl!)
-                            }
-                        }
-                        
-                    } else {
-                        let processedMedia = UserMedia(video: url, image: nil)
-                        self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-                    }
-                }
-                
-            } else {
-                
-                if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                    
-                    self.loadingIndicator.startAnimating()
-                    
-                    addTextToVideo(url: url) { (newUrl) in
-                        let processedMedia = UserMedia(video: newUrl, image: nil)
-                        DispatchQueue.main.async {
-                            self.loadingIndicator.stopAnimating()
-                            self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-                            
-                            // FOR TESTING
-                            //self.playVideo(url: newUrl!)
-                        }
-                    }
-                    
-                } else {
-                    let processedMedia = UserMedia(video: url, image: nil)
-                    self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
-                }
-            }
         }
     }
     
@@ -522,7 +449,7 @@ class EditMediaViewController: UIViewController {
             item.add(element: firstElement)
  
             let mediaProcessor = MediaProcessor()
-            mediaProcessor.processElements(item: item) { [weak self] (result, error) in
+            mediaProcessor.processElements(item: item) { (result, error) in
                 
                 do {
                     let resourceValues = try result.processedUrl!.resourceValues(forKeys: [.fileSizeKey])
@@ -534,12 +461,7 @@ class EditMediaViewController: UIViewController {
                 
                 completion(result.processedUrl)
             }
-            
-            
-            
-            
         }
-        
     }
         
     private func getHeightOfContent(url: URL) -> CGFloat {
@@ -552,12 +474,11 @@ class EditMediaViewController: UIViewController {
         let orientation = orientationFromTransform(transform: videoTrack.preferredTransform)
         
         if orientation.isPortrait {
-            return fabs(videoTrack.naturalSize.height)
+            return abs(videoTrack.naturalSize.height)
         } else {
-            return fabs(videoTrack.naturalSize.width)
+            return abs(videoTrack.naturalSize.width)
         }
     }
-    
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -661,19 +582,10 @@ class EditMediaViewController: UIViewController {
             fonts.append(font)
         }
     }
-  
 }
 
 
 extension EditMediaViewController: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.frame.width >= view.frame.width {
-            //commentTextView.frame.size.height = heightOfTextView * 2
-        } else {
-            //commentTextView.frame.size.height = heightOfTextView
-        }
-    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
@@ -690,7 +602,7 @@ extension EditMediaViewController: UITextViewDelegate {
     }
     
     func sizeOfString (string: String, constrainedToWidth width: Double, font: UIFont) -> CGSize {
-        return (string as NSString).boundingRect(with: CGSize(width: width, height: DBL_MAX),
+        return (string as NSString).boundingRect(with: CGSize(width: width, height: Double.greatestFiniteMagnitude),
                                                  options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                                          attributes: [NSAttributedString.Key.font: font],
                                                          context: nil).size
@@ -711,84 +623,3 @@ extension EditMediaViewController: UITextViewDelegate {
     }
     
 }
-
-
-/*
- let newWidth = videoTrack.naturalSize.width / 1.7
- let newHeight = videoTrack.naturalSize.height / 1.7
- 
- let targetSize: CGSize
- 
- if newWidth < newHeight {
- targetSize = CGSize(width: newHeight, height: newHeight)
- } else {
- targetSize = CGSize(width: newWidth, height: newWidth)
- }
- 
- let result = try! resizeVideo(videoAsset: videoAsset, targetSize: targetSize, isKeepAspectRatio: true, isCutBlackEdge: false)
- */
-
-
-/*
- THIS STUFF IS FOR ADDING TEXT TO VIDEO
- do {
- let resourceValues = try url.resourceValues(forKeys: [.fileSizeKey])
- let fileSize = resourceValues.fileSize!
- 
- let resourceValues2 = try resizedVideoUrl!.resourceValues(forKeys: [.fileSizeKey])
- let fileSize2 = resourceValues2.fileSize!
- 
- print("File size: \(fileSize)")
- print("File size 2: \(fileSize2)")
- 
- } catch { print(error) }
- */
-
-
-/*
- let videoAsset = AVURLAsset(url: newUrl)
- 
- let videoTracks = videoAsset.tracks(withMediaType: AVMediaType.video)
- guard !videoTracks.isEmpty else {
- self.alert(message: "No video found.")
- self.loadingIndicator.stopAnimating()
- return
- }
- let videoTrack = videoTracks[0]
- 
- let targetSize: CGSize
- 
- var result: (AVMutableComposition, AVMutableVideoComposition)
- 
- if !self.media.recordedVideo && videoTrack.naturalSize.width > videoTrack.naturalSize.height {
- // landscape video
- targetSize = boundsSize
- 
- result = try! resizeVideo(videoAsset: videoAsset, targetSize: targetSize, isKeepAspectRatio: true, isCutBlackEdge: false)
- 
- } else {
- let calculatedWidth = boundsHeight * 0.490625
- targetSize = CGSize(width: calculatedWidth, height: boundsHeight)
- 
- result = try! resizeVideo(videoAsset: videoAsset, targetSize: targetSize, isKeepAspectRatio: true, isCutBlackEdge: false)
- }
- 
- 
- let filePath = NSTemporaryDirectory() + "resizedVideo.mp4"
- exportVideo(recordedVideo: self.media.recordedVideo, outputPath: filePath, asset: result.0, videoComposition: result.1, fileType: AVFileType.mp4) { (success) in
- DispatchQueue.main.async {
- 
- self.loadingIndicator.stopAnimating()
- 
- if success {
- let resizedTextUrl = URL(fileURLWithPath: filePath)
- let processedMedia = UserMedia(video: resizedTextUrl, image: nil)
- processedMedia.contentHeight = self.getHeightOfContent(url: resizedTextUrl)
- self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
- 
- } else {
- self.alert(message: "Error exporting video.")
- }
- }
- }
- */

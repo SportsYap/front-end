@@ -46,6 +46,7 @@ extension TabBarViewController {
         presentationStyle.presentingScaleFactor = 1
 
         var settings = SideMenuSettings()
+        settings.pushStyle = .subMenu
         settings.presentingViewControllerUseSnapshot = true
         settings.presentationStyle = presentationStyle
         settings.animationOptions = .curveLinear

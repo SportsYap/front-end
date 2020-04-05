@@ -26,7 +26,7 @@ class GameDayEventTableViewCell: UITableViewCell {
 
                 if let date = event.date {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH aa"
+                    dateFormatter.dateFormat = "hh aa"
                     timeLabel.text = dateFormatter.string(from: date)
                 } else {
                     timeLabel.text = "None"

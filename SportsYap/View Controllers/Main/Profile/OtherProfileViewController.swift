@@ -179,6 +179,6 @@ extension OtherProfileViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        performSegue(withIdentifier: "showComments", sender: user.games[indexPath.row])
+        performSegue(withIdentifier: "showComments", sender: user.posts[indexPath.row])
     }
 }

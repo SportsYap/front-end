@@ -284,5 +284,4 @@ extension RecordViewController: SwiftyCamViewControllerDelegate{
         let media = UserMedia(video: nil, image: photo)
         self.performSegue(withIdentifier: "showEdit", sender: media)
     }
-    
 }

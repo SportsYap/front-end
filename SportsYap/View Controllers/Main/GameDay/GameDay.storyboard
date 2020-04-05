@@ -513,13 +513,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="b7e-JZ-pJ3">
                                                             <rect key="frame" x="62" y="5" width="65" height="36.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="snoopdog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-kK-ydY">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="snoopdog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-kK-ydY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="5min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-7f-a7O">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="5min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-7f-a7O">
                                                                     <rect key="frame" x="0.0" y="22" width="65" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
@@ -1748,7 +1748,7 @@
                         <outlet property="flashStateImageView" destination="r7C-IP-Gba" id="pzk-fQ-bUf"/>
                         <outlet property="previewView" destination="Kz2-rA-jmB" id="IMM-wT-TKj"/>
                         <outlet property="recordingOvalImageView" destination="dwZ-Zi-s81" id="0vj-Dq-N2c"/>
-                        <segue destination="wwJ-6f-sxh" kind="show" identifier="showEdit" animates="NO" id="ykV-ge-ygP"/>
+                        <segue destination="wwJ-6f-sxh" kind="show" identifier="showEdit" id="ykV-ge-ygP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eO2-fF-JqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1850,7 +1850,7 @@
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="nextBttnPressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="MCw-vK-xT1"/>
+                                                    <action selector="onNext:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="MCw-vK-xT1"/>
                                                     <action selector="recordBttnPressedDown:" destination="aLH-dl-NGs" eventType="touchDragInside" id="QW6-Sd-uJi"/>
                                                     <action selector="recordBttnReleased:" destination="aLH-dl-NGs" eventType="touchUpInside" id="dTI-q9-3JA"/>
                                                     <action selector="recordBttnReleasedOutside:" destination="aLH-dl-NGs" eventType="touchUpOutside" id="VuX-fZ-fip"/>
@@ -1877,7 +1877,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backBttnPressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="cjB-XL-Lyf"/>
+                                            <action selector="onBack:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="cjB-XL-Lyf"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcr-Wi-Ofo">
@@ -1892,7 +1892,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="resizePressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="4Mc-Qz-gpa"/>
+                                            <action selector="onResize:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="4Mc-Qz-gpa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1918,7 +1918,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="fontPressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="WxA-qL-3Jm"/>
+                                    <action selector="onChangeFont:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="WxA-qL-3Jm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kly-Xg-DVm">
@@ -1928,7 +1928,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="textBttnPressed:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="iV1-ah-ZG7"/>
+                                    <action selector="onTapText:" destination="wwJ-6f-sxh" eventType="touchUpInside" id="iV1-ah-ZG7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1967,7 +1967,7 @@
                         <outlet property="imageBackgroundView" destination="QdD-Cb-dsl" id="oJ9-i3-I22"/>
                         <outlet property="imageContainerView" destination="D4A-DK-XGC" id="kOP-7N-lWX"/>
                         <outlet property="resizeButton" destination="Mcr-Wi-Ofo" id="PfY-hF-kNu"/>
-                        <outlet property="textBttn" destination="Kly-Xg-DVm" id="Te6-Am-uIY"/>
+                        <outlet property="textButton" destination="Kly-Xg-DVm" id="Te6-Am-uIY"/>
                         <outlet property="videoContainerView" destination="nqp-cw-BN1" id="s5F-rx-tqb"/>
                         <segue destination="Amd-YK-bdk" kind="show" identifier="tagGame" id="5cp-xL-fu4"/>
                     </connections>

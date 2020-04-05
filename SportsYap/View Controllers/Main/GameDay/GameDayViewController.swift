@@ -447,6 +447,7 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             titleLabel.font = UIFont.systemFont(ofSize: 12)
             
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 42))
+            headerView.backgroundColor = UIColor.white
             headerView.addSubview(titleLabel)
             
             return headerView

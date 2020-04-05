@@ -54,7 +54,9 @@ class TagGameViewController: UIViewController {
 extension TagGameViewController {
     private func transitionToClose() {
         if let vc = navigationController as? SideMenuNavigationController {
-            vc.dismiss(animated: true, completion: nil)
+            vc.dismiss(animated: true) {
+                vc.popToRootViewController(animated: true)
+            }
         } else if let nav = navigationController,
             nav.viewControllers.count > 2 {
             let vc = nav.viewControllers[nav.viewControllers.count - 3]
