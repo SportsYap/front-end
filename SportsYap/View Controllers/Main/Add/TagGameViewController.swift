@@ -13,6 +13,8 @@ import SideMenu
 class TagGameViewController: UIViewController {
     
     @IBOutlet weak var addShotView: UIView!
+    @IBOutlet weak var atGameButton: UIButton!
+    @IBOutlet weak var watchingGameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var uploadingIndicator: UIActivityIndicatorView!
@@ -32,6 +34,9 @@ class TagGameViewController: UIViewController {
     
     private var selectedGame: Game?
     private var selectedTeam: Team?
+    
+    private var isAtGame: Bool = false
+    private var isWatchingGame: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,10 +123,21 @@ extension TagGameViewController {
     }
 
     private func toggleGameButton() {
-        if selectedGame != nil {
+        if selectedGame != nil && (isAtGame || isWatchingGame) {
             addShotView.backgroundColor = UIColor(hex: "009BFF")
         } else {
             addShotView.backgroundColor = UIColor.lightGray
+        }
+        
+        if isAtGame {
+            atGameButton.backgroundColor = UIColor(hex: "009BFF")
+        } else {
+            atGameButton.backgroundColor = UIColor.lightGray
+        }
+        if isWatchingGame {
+            watchingGameButton.backgroundColor = UIColor(hex: "009BFF")
+        } else {
+            watchingGameButton.backgroundColor = UIColor.lightGray
         }
     }
 }
@@ -138,19 +154,19 @@ extension TagGameViewController {
             uploadCanceled = false
             
             if let photo = media.photo {
-                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, photo: photo, onSuccess: { post in
+                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, atGame: isAtGame, photo: photo, onSuccess: { post in
                     self.uploadSuccess(post)
                 }) { (err) in
-                    if !self.uploadCanceled{
+                    if !self.uploadCanceled {
                         self.uploadError()
                     }
                 }
             } else if let url = media.videoUrl {
                 let thumb = MediaMerger.thumbnail(for: media)
-                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, video: url, thumbnail: thumb, onSuccess: { post in
+                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, atGame: isAtGame, video: url, thumbnail: thumb, onSuccess: { post in
                     self.uploadSuccess(post)
                 }) { (err) in
-                    if !self.uploadCanceled{
+                    if !self.uploadCanceled {
                         self.uploadError()
                     }
                 }
@@ -163,6 +179,20 @@ extension TagGameViewController {
     
     @IBAction func onCancel(_ sender: Any) {
         uploadStopped()
+    }
+    
+    @IBAction func onAtGame(_ sender: Any) {
+        isAtGame = true
+        isWatchingGame = false
+        
+        toggleGameButton()
+    }
+    
+    @IBAction func onWatchingGame(_ sender: Any) {
+        isAtGame = false
+        isWatchingGame = true
+        
+        toggleGameButton()
     }
 }
 
@@ -177,11 +207,7 @@ extension TagGameViewController: TagGameTableViewCellDelegate {
         }
         tableView.reloadData()
         
-        if selectedGame != nil {
-            addShotView.backgroundColor = UIColor(hex: "009BFF")
-        } else {
-            addShotView.backgroundColor = UIColor.lightGray
-        }
+        toggleGameButton()
     }
 }
 

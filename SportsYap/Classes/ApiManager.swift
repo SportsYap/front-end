@@ -806,12 +806,17 @@ class ApiManager: NSObject {
     }
 
     //MARK: Upload
-    func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, photo: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
+    func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, atGame: Bool?, photo: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         
         //let imgData = UIImageJPEGRepresentation(photo, 0.2)!
         let imgData = photo.jpegData(compressionQuality: 0.2)!
         var params = ["game_id": "\(game.id)", "team_id": "\(team.id)"]
         
+        if let atGame = atGame {
+            params["at_game"] = "\(atGame ? 1 : 0)"
+        }
+        
+
         if let contentHeight = contentHeight {
             params["content_height"] = "\(contentHeight)"
         }
@@ -841,6 +846,8 @@ class ApiManager: NSObject {
                             post.game = game
                             post.team = team
                             post.user = User.me
+                            User.me.atGame = atGame
+
                             onSuccess(post)
                         } else {
                             onError(NSError(domain: "api.error", code: code, userInfo: ["message":"invalid response code"]))
@@ -852,12 +859,17 @@ class ApiManager: NSObject {
             }
         }
     }
-    func uploadVideo(contentHeight: CGFloat? = nil, game: Game, team: Team, video: URL, thumbnail: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
+    func uploadVideo(contentHeight: CGFloat? = nil, game: Game, team: Team, atGame: Bool?, video: URL, thumbnail: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         
         let videoData = try! Data.init(contentsOf: video)
         let imageData = thumbnail.pngData() ?? Data()
         var params = ["game_id": "\(game.id)", "team_id": "\(team.id)"]
         
+        if let atGame = atGame {
+            params["at_game"] = "\(atGame ? 1 : 0)"
+        }
+        
+
         if let contentHeight = contentHeight {
             params["content_height"] = "\(contentHeight)"
         }
@@ -888,6 +900,8 @@ class ApiManager: NSObject {
                         post.game = game
                         post.team = team
                         post.user = User.me
+                        User.me.atGame = atGame
+
                         onSuccess(post)
                     } else {
                         onError(NSError(domain: "api.error", code: code, userInfo: ["message":"invalid response code"]))

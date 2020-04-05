@@ -52,6 +52,7 @@ extension TabBarViewController {
         settings.animationOptions = .curveLinear
         settings.menuWidth = min(view.frame.width, view.frame.height)
         settings.statusBarEndAlpha = 0.0
+        settings.enableSwipeToDismissGesture = false
 
         return settings
     }
