@@ -354,8 +354,11 @@ extension ShotViewController {
         ApiManager.shared.like(post: post.id, onSuccess: {
             post.liked = true
             post.myLikes += 1
+            post.likeCnt += 1
 
-            User.me.likedPosts.append(post.id)
+            if !User.me.likedPosts.contains(post.id) {
+                User.me.likedPosts.append(post.id)
+            }
 
             self.fistbumpButton.setImage(UIImage(named: "fist bubble"), for: .normal)
             self.fistbumpLabel.text = "+\(post.myLikes)"

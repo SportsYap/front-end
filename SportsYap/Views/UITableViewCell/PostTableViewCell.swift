@@ -137,11 +137,16 @@ class PostTableViewCell: UITableViewCell {
         } else {
             // didn't like yet
             ApiManager.shared.like(post: post.id, onSuccess: {
+                self.post.liked = true
+                self.post.myLikes += 1
+                self.post.likeCnt += 1
+
+                if !User.me.likedPosts.contains(self.post.id) {
+                    User.me.likedPosts.append(self.post.id)
+                }
+
                 self.likeBttn.setImage(#imageLiteral(resourceName: "like_bttn_selected"), for: .normal)
-                let currentCnt = self.post.likeCnt ?? 0
-                self.setLikeCnt(cnt: currentCnt + 1)
-                
-                User.me.likedPosts.append(self.post.id)
+                self.setLikeCnt(cnt: self.post.likeCnt)
                 
             }, onError: voidErr)
         }

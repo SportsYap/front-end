@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfilePostTableViewCellDelegate {
     func didTapOption(post: Post)
+    func didFistBump(post: Post)
 }
 
 class ProfilePostTableViewCell: UITableViewCell {
@@ -87,6 +88,13 @@ class ProfilePostTableViewCell: UITableViewCell {
         if let delegate = delegate,
             let post = post {
             delegate.didTapOption(post: post)
+        }
+    }
+    
+    @IBAction func onFistBump(_ sender: Any) {
+        if let delegate = delegate,
+            let post = post {
+            delegate.didFistBump(post: post)
         }
     }
 }

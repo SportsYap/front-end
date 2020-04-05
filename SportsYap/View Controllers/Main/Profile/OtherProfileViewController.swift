@@ -169,6 +169,7 @@ extension OtherProfileViewController: UITableViewDelegate, UITableViewDataSource
         if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? ProfilePostTableViewCell {
             let post = user.posts[indexPath.row]
             cell.post = post
+            cell.delegate = self
             cell.selectionStyle = .none
             return cell
         }
@@ -180,5 +181,32 @@ extension OtherProfileViewController: UITableViewDelegate, UITableViewDataSource
         tableView.deselectRow(at: indexPath, animated: true)
 
         performSegue(withIdentifier: "showComments", sender: user.posts[indexPath.row])
+    }
+}
+
+extension OtherProfileViewController: ProfilePostTableViewCellDelegate {
+    
+    func didTapOption(post: Post) {
+        
+    }
+    
+    func didFistBump(post: Post) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        ApiManager.shared.like(post: post.id, onSuccess: {
+            post.liked = true
+            post.myLikes += 1
+            post.likeCnt += 1
+
+            if !User.me.likedPosts.contains(post.id) {
+                User.me.likedPosts.append(post.id)
+            }
+            
+            self.tableView.reloadData()
+
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }, onError: {_ in
+            UIApplication.shared.endIgnoringInteractionEvents()
+        })
     }
 }
