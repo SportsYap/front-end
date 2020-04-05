@@ -227,14 +227,19 @@ extension EnterFieldViewController {
     
     @objc func didPost(_ notification: Notification) {
         if let post = notification.object as? Post,
-            let game = game {
+            let game = game,
+            post.gameId == game.id {
             if !game.fans.contains(post.user) {
                 game.fans.append(post.user)
             }
             if !game.posts.contains(post) {
                 game.posts.append(post)
-                filterData()
             }
+            
+            if !posts.contains(post) {
+                posts.append(post)
+            }
+            filterData()
         }
     }
 }

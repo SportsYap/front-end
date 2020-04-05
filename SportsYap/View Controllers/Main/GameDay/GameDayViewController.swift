@@ -164,16 +164,17 @@ extension GameDayViewController {
     }
     
     @objc func didPost(_ notification: Notification) {
-        if let post = notification.object as? Post {
+        if let post = notification.object as? Post,
+            post.game?.id == game.id {
             if !game.fans.contains(post.user) {
                 game.fans.append(post.user)
-                
-                if selectedTabItem == .Fans {
-                    tableView.reloadData()
-                }
             }
             if !game.posts.contains(post) {
                 game.posts.append(post)
+            }
+
+            if selectedTabItem == .Fans {
+                tableView.reloadData()
             }
         }
     }

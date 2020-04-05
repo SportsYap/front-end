@@ -34,6 +34,10 @@ class Post: DBObject {
         
         if let ti = dict["team_id"] as? Int{
             teamId = ti
+        } else if let ti = dict["team_id"] as? NSNumber {
+            teamId = ti.intValue
+        } else if let ti = dict["team_id"] as? String {
+           teamId = Int(ti) ?? 0
         }
         
         if let tJson = dict["team"] as? [String: AnyObject]{
@@ -42,6 +46,10 @@ class Post: DBObject {
         
         if let gi = dict["game_id"] as? Int{
             gameId = gi
+        } else if let gi = dict["game_id"] as? NSNumber {
+            gameId = gi.intValue
+        } else if let gi = dict["game_id"] as? String {
+            gameId = Int(gi) ?? 0
         }
         
         if let uJson = dict["user"] as? [String: AnyObject]{

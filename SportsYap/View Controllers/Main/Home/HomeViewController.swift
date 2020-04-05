@@ -307,6 +307,10 @@ extension HomeViewController: iCarouselDataSource, iCarouselDelegate {
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         if let sportIndex = gameSports.firstIndex(of: selectedSport) {
             let games = groupedGames[sportIndex]
+            if games.count <= index {
+                return UIView()
+            }
+            
             let game = games[index]
             
             if let gameView = view as? GameListItemView {

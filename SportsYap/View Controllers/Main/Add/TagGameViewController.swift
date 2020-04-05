@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SideMenu
 
 class TagGameViewController: UIViewController {
     
@@ -52,7 +53,13 @@ class TagGameViewController: UIViewController {
 
 extension TagGameViewController {
     private func transitionToClose() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        if let vc = navigationController as? SideMenuNavigationController {
+            vc.dismiss(animated: true, completion: nil)
+        } else if let nav = navigationController,
+            nav.viewControllers.count > 2 {
+            let vc = nav.viewControllers[nav.viewControllers.count - 3]
+            nav.popToViewController(vc, animated: true)
+        }
     }
     
     private func uploadSuccess(_ post: Post) {

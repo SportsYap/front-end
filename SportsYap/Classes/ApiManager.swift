@@ -834,8 +834,6 @@ class ApiManager: NSObject {
                     })
                     
                     upload.responseJSON { response in
-                        print(response.result.value)
-                        
                         let code = response.response?.statusCode ?? 0
                         if code == 200,
                         let postJson = (response.result.value as? [String: Any])?["post"] as? [String: AnyObject] {
@@ -883,8 +881,6 @@ class ApiManager: NSObject {
                 })
                 
                 upload.responseJSON { response in
-                    print(response.result.value)
-
                     let code = response.response?.statusCode ?? 0
                     if code == 200,
                         let postJson = (response.result.value as? [String: Any])?["post"] as? [String: AnyObject] {
