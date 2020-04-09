@@ -150,7 +150,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-NZ-U5V">
                                                 <rect key="frame" x="341" y="10" width="70" height="34"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="25" maxY="0.0"/>
                                                 <state key="normal" title="12/15">
@@ -197,11 +197,11 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="YFv-Vs-vZu" kind="presentation" modalPresentationStyle="fullScreen" id="3Wb-Sr-wBy"/>
+                                                    <segue destination="YFv-Vs-vZu" kind="presentation" id="3Wb-Sr-wBy"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="yCn-a4-OjA" firstAttribute="top" secondItem="GOa-YX-I4D" secondAttribute="top" constant="-10" id="0ed-nX-V9Z"/>
                                             <constraint firstItem="yCn-a4-OjA" firstAttribute="leading" secondItem="GOa-YX-I4D" secondAttribute="leading" constant="-10" id="45Q-zY-kya"/>
@@ -222,7 +222,7 @@
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jmv-At-m5M">
                                         <rect key="frame" x="0.0" y="169" width="414" height="649"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="9" id="9pY-ft-OlQ">
                                             <size key="itemSize" width="368" height="180"/>
                                             <size key="headerReferenceSize" width="300" height="56"/>
@@ -239,7 +239,7 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lk3-Wu-oK8" customClass="GameCard" customModule="SportsYap" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="10" width="368" height="160"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="160" id="tCq-lp-20N"/>
                                                             </constraints>
@@ -397,11 +397,11 @@
                             </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hdo-pZ-8Kz" customClass="TPKeyboardAvoidingTableView">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="cQm-pD-VMr">
                                     <rect key="frame" x="0.0" y="221" width="414" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="62" id="Im4-J1-8VK" customClass="DiscoverTeamTableViewCell" customModule="SportsYap" customModuleProvider="target">
@@ -680,7 +680,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xdo-4C-rtG" firstAttribute="trailing" secondItem="Hdo-pZ-8Kz" secondAttribute="trailing" id="0SI-gL-d3c"/>
                             <constraint firstItem="0aT-D1-IYx" firstAttribute="leading" secondItem="xdo-4C-rtG" secondAttribute="leading" id="2GH-G5-yzg"/>
@@ -741,13 +741,13 @@
         <!--Ib Calendar Data Source-->
         <scene sceneID="MRd-0A-Qhb">
             <objects>
-                <viewController id="YFv-Vs-vZu" customClass="CalendarViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarViewController" id="YFv-Vs-vZu" customClass="CalendarViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ABm-gI-Bji">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-Az-VmA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJU-fS-wie">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
@@ -781,7 +781,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="pgi-uR-Mh1" firstAttribute="centerY" secondItem="SJU-fS-wie" secondAttribute="centerY" id="GSG-eW-Atc"/>
                                             <constraint firstAttribute="height" constant="52" id="IYO-r5-zxU"/>
@@ -844,7 +844,7 @@
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tex-Zt-OJu" customClass="JTACMonthView" customModule="JTAppleCalendar">
                                         <rect key="frame" x="0.0" y="92" width="414" height="265"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="265" id="tL1-XL-InA"/>
                                         </constraints>
@@ -904,13 +904,13 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4W-KG-L6r">
-                                        <rect key="frame" x="0.0" y="357" width="414" height="461"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="0.0" y="357" width="414" height="451"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Th5-Az-VmA" firstAttribute="trailing" secondItem="Gac-ib-qdv" secondAttribute="trailing" id="8qn-tB-ssD"/>
                             <constraint firstItem="Th5-Az-VmA" firstAttribute="leading" secondItem="Gac-ib-qdv" secondAttribute="leading" id="HmR-L5-yBW"/>

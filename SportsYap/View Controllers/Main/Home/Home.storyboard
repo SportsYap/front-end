@@ -21,7 +21,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBO-RJ-J2z">
                                         <rect key="frame" x="341" y="10" width="70" height="34"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="25" maxY="0.0"/>
                                         <state key="normal" title="12/15">
@@ -67,9 +67,12 @@
                                         <state key="normal" title="Today" image="ic_calendar">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="uFa-9h-HpP" kind="presentation" id="GGe-VI-97v"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="sBO-RJ-J2z" firstAttribute="bottom" secondItem="dD5-eM-WMC" secondAttribute="bottom" constant="10" id="9BV-Iy-fFj"/>
                                     <constraint firstAttribute="bottom" secondItem="4yj-FO-7Tk" secondAttribute="bottom" id="EdS-BE-pgu"/>
@@ -93,7 +96,7 @@
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFf-cU-0lH" customClass="iCarousel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="674"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Sbk-JZ-7SB" id="8HW-bU-77A"/>
                                             <outlet property="delegate" destination="Sbk-JZ-7SB" id="noa-1G-SWp"/>
@@ -109,7 +112,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="GS1-zI-DZj" firstAttribute="leading" secondItem="liS-Cn-ZHL" secondAttribute="leading" id="E6T-fk-pBl"/>
                                             <constraint firstAttribute="trailing" secondItem="GS1-zI-DZj" secondAttribute="trailing" id="TXh-oj-oa7"/>
@@ -130,7 +133,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Egm-1G-iTj" firstAttribute="centerY" secondItem="vYZ-9D-qTh" secondAttribute="centerY" constant="-40" id="7mQ-9F-nS3"/>
                                             <constraint firstItem="Egm-1G-iTj" firstAttribute="centerX" secondItem="vYZ-9D-qTh" secondAttribute="centerX" id="Hhy-px-f3V"/>
@@ -139,7 +142,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FFf-cU-0lH" secondAttribute="trailing" id="3rL-dL-uGu"/>
                                     <constraint firstAttribute="bottom" secondItem="liS-Cn-ZHL" secondAttribute="bottom" id="AEB-bF-XUn"/>
@@ -240,7 +243,7 @@
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BzR-WW-OoJ" firstAttribute="trailing" secondItem="ryR-f6-IpM" secondAttribute="trailing" id="Ku8-14-LYu"/>
                             <constraint firstItem="msW-sh-ZSF" firstAttribute="leading" secondItem="bD0-9q-ncC" secondAttribute="leading" id="M6t-8f-Bjt"/>
@@ -283,6 +286,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfp-0T-n9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="1020.5397301349326"/>
+        </scene>
+        <!--CalendarViewController-->
+        <scene sceneID="NcE-ze-mKL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover" referencedIdentifier="CalendarViewController" id="uFa-9h-HpP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8i-e1-alD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886" y="926"/>
         </scene>
         <!--Onboarding-->
         <scene sceneID="oNi-ex-glD">

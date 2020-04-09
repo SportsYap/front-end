@@ -28,9 +28,10 @@ class ChallengeViewController: UIViewController {
     }
     
     @IBAction func addShotBttnPressed(_ sender: Any) {
+        let vc = self.presentingViewController
         dismiss(animated: true) {
             TagGameViewController.preselectedGame = self.game
-            self.present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
+            vc?.present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
         }
     }
 }

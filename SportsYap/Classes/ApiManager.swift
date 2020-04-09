@@ -575,7 +575,7 @@ class ApiManager: NSObject {
 
     //MARK: Posts
     func story(for game: Game, page: Int, onSuccess: @escaping (_ posts: [Post])->Void, onError: @escaping (_ error: NSError)->Void){
-        let path = "/games/\(game.id)/story/all?sort=created_at"
+        let path = "/games/\(game.id)/story?sort=created_at"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
             guard let data = json["data"] as? [String: AnyObject] else {
                 return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))

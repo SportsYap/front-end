@@ -61,33 +61,7 @@ class GameDayViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didPost), name: NSNotification.Name(rawValue: Post.newPostNotification), object: nil)
         
-        ApiManager.shared.news(for: self.game, onSuccess: { (news) in
-            self.game.news = news
-            if self.selectedTabItem == .News {
-                self.tableView.reloadData()
-            }
-        }, onError: voidErr)
-        
-        ApiManager.shared.events(for: self.game, onSuccess: { (events1, events2) in
-            self.game.events1 = events1
-            self.game.events2 = events2
-            if self.selectedTabItem == .Events {
-                self.tableView.reloadData()
-            }
-        }, onError: voidErr)
-        
-        ApiManager.shared.games(for: self.game.id, onSuccess: { (game) in
-            self.game.challenge = game.challenge
-            if self.selectedTabItem == .Fans {
-                self.tableView.reloadData()
-            }
-        }, onError: voidErr)
-        
-        ApiManager.shared.fanMeter(for: self.game, onSuccess: { (val) in
-            self.game.fanMeter = val
-            self.displayGameInfo()
-        }) { (err) in }
-        
+        reloadData()
         singlePost = false
     }
 
@@ -115,6 +89,35 @@ class GameDayViewController: UIViewController {
 }
 
 extension GameDayViewController {
+    private func reloadData() {
+        ApiManager.shared.news(for: self.game, onSuccess: { (news) in
+            self.game.news = news
+            if self.selectedTabItem == .News {
+                self.tableView.reloadData()
+            }
+        }, onError: voidErr)
+        
+        ApiManager.shared.events(for: self.game, onSuccess: { (events1, events2) in
+            self.game.events1 = events1
+            self.game.events2 = events2
+            if self.selectedTabItem == .Events {
+                self.tableView.reloadData()
+            }
+        }, onError: voidErr)
+        
+        ApiManager.shared.games(for: self.game.id, onSuccess: { (game) in
+            self.game.challenge = game.challenge
+            if self.selectedTabItem == .Fans {
+                self.tableView.reloadData()
+            }
+        }, onError: voidErr)
+        
+        ApiManager.shared.fanMeter(for: self.game, onSuccess: { (val) in
+            self.game.fanMeter = val
+            self.displayGameInfo()
+        }) { (err) in }
+    }
+    
     private func displayGameInfo() {
         if (game.challenge != nil) {
             challengeView.isHidden = false
@@ -166,16 +169,7 @@ extension GameDayViewController {
     @objc func didPost(_ notification: Notification) {
         if let post = notification.object as? Post,
             post.game?.id == game.id {
-            if !game.fans.contains(post.user) {
-                game.fans.append(post.user)
-            }
-            if !game.posts.contains(post) {
-                game.posts.append(post)
-            }
-
-            if selectedTabItem == .Fans {
-                tableView.reloadData()
-            }
+            reloadData()
         }
     }
 }

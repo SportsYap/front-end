@@ -73,12 +73,8 @@ class EnterFieldViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let game = game,
-            posts.count == 0 {
-            ApiManager.shared.story(for: game, page: 1, onSuccess: { (posts) in
-                self.posts = posts
-                self.filterData()
-            }) { (err) in }
+        if posts.count == 0 {
+            reloadData()
         }
     }
     
@@ -197,6 +193,15 @@ extension EnterFieldViewController: UICollectionViewDataSource, UICollectionView
 }
 
 extension EnterFieldViewController {
+    private func reloadData() {
+        if let game = game {
+            ApiManager.shared.story(for: game, page: 1, onSuccess: { (posts) in
+                self.posts = posts
+                self.filterData()
+            }) { (err) in }
+        }
+    }
+    
     private func filterData() {
         filteredPosts.removeAll()
         
@@ -229,17 +234,7 @@ extension EnterFieldViewController {
         if let post = notification.object as? Post,
             let game = game,
             post.gameId == game.id {
-            if !game.fans.contains(post.user) {
-                game.fans.append(post.user)
-            }
-            if !game.posts.contains(post) {
-                game.posts.append(post)
-            }
-            
-            if !posts.contains(post) {
-                posts.append(post)
-            }
-            filterData()
+            reloadData()
         }
     }
 }

@@ -133,6 +133,9 @@ class HomeViewController: UIViewController {
         } else if let vc = segue.destination as? SinglePostViewController, let postId = sender as? Int {
             vc.postId = postId
             vc.hidesBottomBarWhenPushed = true
+        } else if let vc = segue.destination as? CalendarViewController {
+            vc.delegate = self
+            vc.selectedDate = date
         }
     }
 }
@@ -342,5 +345,12 @@ extension HomeViewController: iCarouselDataSource, iCarouselDelegate {
         default:
             return value
         }
+    }
+}
+
+extension HomeViewController: CalendarViewControllerDelegate {
+    func didSelectDate(date: Date) {
+        self.date = date
+        dismiss(animated: true, completion: nil)
     }
 }
