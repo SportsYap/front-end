@@ -270,6 +270,7 @@ extension GifsViewController: UICollectionViewDataSource, UICollectionViewDelega
                 let text = self.resultsArray[indexPath.row].media?.first?.tinyGIF?.url?.absoluteString ?? ""
                 
                 ApiManager.shared.postComment(for: User.me.currentPost, text: text, onSuccess: {
+                    User.me.currentPost.commentsCount += 1
                     self.dismiss(animated: true, completion: nil)
                 }, onError: voidErr)
             }

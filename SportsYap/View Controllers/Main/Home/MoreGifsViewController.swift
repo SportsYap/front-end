@@ -232,6 +232,7 @@ extension MoreGifsViewController: UICollectionViewDataSource, UICollectionViewDe
             }
             
             ApiManager.shared.postComment(for: User.me.currentPost, text: text, onSuccess: {
+                User.me.currentPost.commentsCount += 1
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
                 //self.dismiss(animated: true, completion: nil)
             }, onError: voidErr)

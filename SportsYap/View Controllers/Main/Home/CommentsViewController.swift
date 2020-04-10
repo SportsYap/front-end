@@ -180,6 +180,7 @@ extension CommentsViewController {
         
         ApiManager.shared.postComment(for: post, text: text, onSuccess: {
             self.post.commentsCount += 1
+            self.tableView.reloadData()
             
             self.commentTextField.text = ""
             self.commentTextField.resignFirstResponder()
