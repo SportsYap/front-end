@@ -1081,7 +1081,7 @@ class ApiManager: NSObject {
                     onSuccess(nj)
                 }
             }else{
-                onError(NSError(domain: "api.error", code: 500, userInfo: ["message":"invalud json"]))
+                onError(NSError(domain: "api.error", code: 500, userInfo: ["message":"invalud json", "data": json.result.value]))
             }
         }.responseString { (data) in
 //            print(data.result.value ?? "")

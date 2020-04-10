@@ -563,6 +563,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="pt8-cI-i7f" firstAttribute="leading" secondItem="H6Q-g5-Xzf" secondAttribute="leading" constant="16" id="0kn-nn-7Rq"/>
                                                 <constraint firstAttribute="trailing" secondItem="pt8-cI-i7f" secondAttribute="trailing" constant="25" id="mxB-Rh-zsY"/>
@@ -625,6 +626,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="5lu-GY-94d" secondAttribute="bottom" constant="8" id="17U-hM-nAS"/>
                                                 <constraint firstItem="5lu-GY-94d" firstAttribute="top" secondItem="TYt-hh-KN0" secondAttribute="top" constant="8" id="PVF-Do-eiW"/>
@@ -652,6 +654,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="AdX-v4-AB7" secondAttribute="bottom" constant="7" id="rHN-aQ-fOd"/>
                                                 <constraint firstAttribute="trailing" secondItem="AdX-v4-AB7" secondAttribute="trailing" constant="22" id="tgP-A8-4Uu"/>
@@ -757,6 +760,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="7q4-4p-SI1" firstAttribute="top" secondItem="KGb-Tr-P0d" secondAttribute="top" constant="8" id="EqL-7g-2Ur"/>
                                                 <constraint firstItem="7q4-4p-SI1" firstAttribute="leading" secondItem="KGb-Tr-P0d" secondAttribute="leading" constant="22" id="Iwx-2k-yAe"/>
@@ -787,6 +791,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -1109,6 +1114,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="kkc-gE-ek5" secondAttribute="bottom" id="rYx-An-J2s"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <size key="customSize" width="100" height="100"/>
                                                 <connections>
                                                     <outlet property="imageView" destination="kkc-gE-ek5" id="IU8-VT-mYt"/>
@@ -1145,6 +1151,7 @@
                                                         <constraint firstItem="Rro-Z9-27E" firstAttribute="centerX" secondItem="T0d-C9-PrR" secondAttribute="centerX" id="KdO-hh-kcb"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <size key="customSize" width="100" height="100"/>
                                             </collectionViewCell>
                                         </cells>

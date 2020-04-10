@@ -1437,6 +1437,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="BPH-lh-1YH" firstAttribute="leading" secondItem="pQ1-y2-qv2" secondAttribute="trailing" constant="18" id="4jk-LJ-cbr"/>
                                                 <constraint firstItem="pQ1-y2-qv2" firstAttribute="leading" secondItem="JiC-gv-Nni" secondAttribute="leading" constant="15" id="Lh5-YY-u6W"/>
