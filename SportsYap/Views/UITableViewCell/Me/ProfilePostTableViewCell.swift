@@ -37,7 +37,7 @@ class ProfilePostTableViewCell: UITableViewCell {
                 profileImageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 usernameLabel.text = post.user.name
                 timeLabel.text = post.createdAt.timeAgoSince() + " @ " + (post.game?.venue.name ?? "")
-                
+                	
                 optionButton?.isHidden = (post.user.id != User.me.id)
                 optionButtonWidth?.constant = (post.user.id != User.me.id) ? 0 : 50
                 

@@ -646,12 +646,20 @@ class ApiManager: NSObject {
     func friendsPosts(onSuccess: @escaping (_ posts: [Post])->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/post/friends/"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (data) in
-            guard let postsData = data["data"] as? [[String: AnyObject]] else {
+            guard let json = data["data"] as? [String: AnyObject] else {
+                return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))
+            }
+
+            guard let postsData = json["posts"] as? [String: AnyObject] else {
+                return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))
+            }
+
+            guard let data = postsData["data"] as? [[String: AnyObject]] else {
                 return onError(NSError(domain: "api.error", code: 403, userInfo: ["message":"invalid json"]))
             }
 
             var posts: [Post] = []
-            for postData in postsData {
+            for postData in data {
                 let post = Post(dict: postData)
                 posts.append(post)
             }
