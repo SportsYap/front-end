@@ -39,7 +39,8 @@ class AuthViewController: UIViewController {
         }
         
         let fbManager = LoginManager()
-        fbManager.logIn(permissions: ["public_profile", "email", "user_friends"], from: self) { (result, err) in
+        fbManager.logOut()
+        fbManager.logIn(permissions: ["email"], from: self) { (result, err) in
             if err == nil && result?.token != nil{
                 let token = result?.token?.tokenString ?? "<err>"
                 GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
