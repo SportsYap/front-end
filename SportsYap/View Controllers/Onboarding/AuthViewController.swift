@@ -16,7 +16,7 @@ class AuthViewController: UIViewController {
 
     @IBOutlet weak var checkboxImageView: UIImageView!
     
-    var termsAccepted = false
+    var termsAccepted = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,12 @@ class AuthViewController: UIViewController {
     }
 
     //MARK: IBActions
-    @IBAction func signupBttnPressed(_ sender: Any) {
+    @IBAction func onLogin(_ sender: Any) {
         guard termsAccepted else{
             alert(message: "Please accept the Terms of Service")
             return
         }
-        performSegue(withIdentifier: "signup", sender: nil)
+        performSegue(withIdentifier: "login", sender: nil)
     }
     @IBAction func fbLoginBttnPressed(_ sender: Any) {
         guard termsAccepted else{
