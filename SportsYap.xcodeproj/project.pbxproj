@@ -14,6 +14,7 @@
 		AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C08BB24204A05001F63EF /* GameListItemView.swift */; };
 		AF3C08BE24204A14001F63EF /* GameListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3C08BD24204A14001F63EF /* GameListItemView.xib */; };
 		AF3DD7B92435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DD7B82435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift */; };
+		AF3F268F24429DBD00DD9790 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F268E24429DBD00DD9790 /* SplashViewController.swift */; };
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
 		AF4541262439008700F001F0 /* ViewTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4541252439008700F001F0 /* ViewTeamsViewController.swift */; };
@@ -195,6 +196,7 @@
 		AF3C08BB24204A05001F63EF /* GameListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemView.swift; sourceTree = "<group>"; };
 		AF3C08BD24204A14001F63EF /* GameListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListItemView.xib; sourceTree = "<group>"; };
 		AF3DD7B82435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayEventHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		AF3F268E24429DBD00DD9790 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
 		AF4541252439008700F001F0 /* ViewTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTeamsViewController.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 		CD39CA0D203154720079D033 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				AF3F268E24429DBD00DD9790 /* SplashViewController.swift */,
 				CDE83A4E203155420056C77D /* AuthViewController.swift */,
 				CDE83A502031555B0056C77D /* LoginViewController.swift */,
 				CDE83A52203155630056C77D /* SignupViewController.swift */,
@@ -1139,6 +1142,7 @@
 				AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */,
 				D71F972C22508B330051E715 /* ColorFilter.swift in Sources */,
 				D7A19995231DFDFE007E7D86 /* AnimatedImageCell.swift in Sources */,
+				AF3F268F24429DBD00DD9790 /* SplashViewController.swift in Sources */,
 				CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */,
 				CDE83A5D203155A80056C77D /* ProfileViewController.swift in Sources */,
 				CDDA0CB7201FAAA000BA0568 /* UIViewController.swift in Sources */,
@@ -1381,7 +1385,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1412,7 +1416,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1441,7 +1445,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
@@ -1467,7 +1471,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;

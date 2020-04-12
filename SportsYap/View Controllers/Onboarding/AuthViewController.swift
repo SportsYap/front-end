@@ -58,7 +58,7 @@ class AuthViewController: UIViewController {
                                 }else{
                                     ApiManager.shared.me(onSuccess: { (user) in
                                     }, onError: voidErr)
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.navigationController?.dismiss(animated: true, completion: nil)
                                 }
                             }, onError: { (err) in
                                 self.alert(message: "Internal Server Error")
@@ -88,6 +88,7 @@ class AuthViewController: UIViewController {
             alert(message: "Please accept the Terms of Service")
             return
         }
+        
         performSegue(withIdentifier: "showPhoneAuth", sender: nil)
     }
     

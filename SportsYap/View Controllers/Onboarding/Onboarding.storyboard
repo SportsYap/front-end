@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yYB-EG-nes">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UDh-6s-wFt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -2313,6 +2313,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snX-vl-LVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3869.5999999999999" y="-554.18719211822668"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="JbV-WZ-rNP">
+            <objects>
+                <viewController id="UDh-6s-wFt" customClass="SplashViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Isb-vF-LR4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field_bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="zvX-Ft-hat">
+                                <rect key="frame" x="0.0" y="-6" width="414" height="918"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AWb-Yb-YLN" firstAttribute="bottom" secondItem="zvX-Ft-hat" secondAttribute="bottom" constant="-50" id="8oR-U9-CtV"/>
+                            <constraint firstItem="zvX-Ft-hat" firstAttribute="leading" secondItem="AWb-Yb-YLN" secondAttribute="leading" id="Vvg-le-vMx"/>
+                            <constraint firstItem="zvX-Ft-hat" firstAttribute="top" secondItem="AWb-Yb-YLN" secondAttribute="top" constant="-50" id="Y7n-7c-1tI"/>
+                            <constraint firstItem="AWb-Yb-YLN" firstAttribute="trailing" secondItem="zvX-Ft-hat" secondAttribute="trailing" id="Y8r-pc-9cz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AWb-Yb-YLN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="469-LV-6Sr"/>
+                    <connections>
+                        <segue destination="yYB-EG-nes" kind="presentation" identifier="showAuth" animates="NO" modalPresentationStyle="fullScreen" id="F9n-Ua-nc7"/>
+                        <segue destination="auL-6E-ldw" kind="presentation" identifier="showMain" modalPresentationStyle="fullScreen" id="H4w-Ou-XIG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjq-LO-SU5" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-877" y="137"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="8q5-HQ-VDY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="auL-6E-ldw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBx-5r-hj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-878" y="530"/>
         </scene>
     </scenes>
     <resources>

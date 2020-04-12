@@ -42,7 +42,8 @@ class TeamSelectionViewController: UIViewController, UISearchBarDelegate {
                 }
             }, onError: { (err) in })
         }
-        self.dismiss(animated: true, completion: nil)
+        
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func backBttnPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

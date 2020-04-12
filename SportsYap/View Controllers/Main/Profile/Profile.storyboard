@@ -52,7 +52,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4bZ-4x-vQ9">
-                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="luE-PO-81X">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="286"/>
@@ -431,13 +431,13 @@
                                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qZ-ae-C8y">
                                                                                             <rect key="frame" x="69.5" y="0.0" width="40.5" height="17"/>
                                                                                             <subviews>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="83" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEb-0K-MBq">
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="83" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEb-0K-MBq">
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="17.5" height="17"/>
                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                     <color key="textColor" red="0.1215686275" green="0.14901960780000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dark_comment" translatesAutoresizingMaskIntoConstraints="NO" id="P2V-89-X8h">
+                                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dark_comment" translatesAutoresizingMaskIntoConstraints="NO" id="P2V-89-X8h">
                                                                                                     <rect key="frame" x="25.5" y="0.0" width="15" height="17"/>
                                                                                                 </imageView>
                                                                                             </subviews>
@@ -529,6 +529,10 @@
                                     <outlet property="delegate" destination="tht-cr-ZkS" id="oQt-sY-Lwi"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sFU-UC-PhW">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -537,7 +541,9 @@
                             <constraint firstItem="4bZ-4x-vQ9" firstAttribute="leading" secondItem="9Pn-68-D8S" secondAttribute="leading" id="49c-W0-Ik0"/>
                             <constraint firstItem="4bZ-4x-vQ9" firstAttribute="top" secondItem="7Yj-W2-H3w" secondAttribute="bottom" id="4gI-OP-6fT"/>
                             <constraint firstItem="7Yj-W2-H3w" firstAttribute="leading" secondItem="9Pn-68-D8S" secondAttribute="leading" id="FXx-Xh-cWr"/>
+                            <constraint firstItem="sFU-UC-PhW" firstAttribute="centerY" secondItem="qwD-HD-V7g" secondAttribute="centerY" id="Knt-fF-1IS"/>
                             <constraint firstItem="9Pn-68-D8S" firstAttribute="bottom" secondItem="4bZ-4x-vQ9" secondAttribute="bottom" id="j45-mJ-6Wb"/>
+                            <constraint firstItem="sFU-UC-PhW" firstAttribute="centerX" secondItem="qwD-HD-V7g" secondAttribute="centerX" id="rMu-PK-s7l"/>
                             <constraint firstItem="7Yj-W2-H3w" firstAttribute="top" secondItem="9Pn-68-D8S" secondAttribute="top" id="z9R-zr-Cae"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Pn-68-D8S"/>
@@ -556,6 +562,7 @@
                         <outlet property="tabView" destination="hyi-MV-9G4" id="suZ-j6-ck3"/>
                         <outlet property="tableView" destination="4bZ-4x-vQ9" id="DAT-NG-LWO"/>
                         <outlet property="teamsLabel" destination="7jY-D1-6yT" id="V5l-9K-NaC"/>
+                        <outlet property="waitingActivityIndicator" destination="sFU-UC-PhW" id="ZDq-Gj-Em2"/>
                         <segue destination="j3e-Ut-bwu" kind="show" identifier="viewUsers" id="4cs-YM-dAW"/>
                         <segue destination="zTG-zr-pGy" kind="presentation" identifier="settings" modalPresentationStyle="fullScreen" id="pBR-yH-ZeT"/>
                         <segue destination="c3k-1v-gvP" kind="show" identifier="showComments" id="LxN-Mh-ss1"/>
@@ -2891,7 +2898,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j5r-Od-dAg" customClass="TPKeyboardAvoidingTableView">
-                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="m6M-Xo-Qgq">
                                     <rect key="frame" x="0.0" y="120" width="414" height="0.0"/>
@@ -3050,8 +3057,8 @@
         <image name="shot_added_icon" width="33" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w7a-G5-wi4"/>
-        <segue reference="b3y-oL-rJS"/>
-        <segue reference="hbk-R8-wgA"/>
+        <segue reference="oFC-ue-LOg"/>
+        <segue reference="LxN-Mh-ss1"/>
+        <segue reference="4cs-YM-dAW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -276,7 +276,6 @@
                         <outletCollection property="typeButtons" destination="D66-os-41d" collectionClass="NSMutableArray" id="RsJ-Rm-kkL"/>
                         <outletCollection property="typeButtons" destination="nGw-05-auB" collectionClass="NSMutableArray" id="Ehh-D2-ire"/>
                         <segue destination="Oj1-q8-eGA" kind="show" identifier="showGame" id="jQx-3v-Vur"/>
-                        <segue destination="KCV-pz-QWP" kind="presentation" identifier="auth" modalPresentationStyle="fullScreen" id="yNx-pW-bsQ"/>
                         <segue destination="F3l-cb-wvj" kind="presentation" identifier="showPost" modalPresentationStyle="fullScreen" id="OeT-Kw-F3K"/>
                         <segue destination="6IM-qo-VB1" kind="show" identifier="showComment" id="uEB-iV-JdY"/>
                         <segue destination="9dQ-3v-f3E" kind="presentation" identifier="showLive" modalPresentationStyle="fullScreen" id="mqY-i5-Ga2"/>
@@ -294,14 +293,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8i-e1-alD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1886" y="926"/>
-        </scene>
-        <!--Onboarding-->
-        <scene sceneID="oNi-ex-glD">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Onboarding" id="KCV-pz-QWP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7UJ-pb-plY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1834" y="814"/>
         </scene>
         <!--GameDay-->
         <scene sceneID="Kgn-Ie-qM2">

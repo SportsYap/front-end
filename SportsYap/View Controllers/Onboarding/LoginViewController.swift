@@ -44,7 +44,7 @@ class LoginViewController: UIViewController{
         ApiManager.shared.login(email: usernameTextField.text!, password: passwordTextField.text!, {
             ApiManager.shared.me(onSuccess: { (user) in
             }, onError: voidErr)
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.dismiss(animated: true, completion: nil)
         }) { (err) in
             self.alert(message: "Invalid username of password")
         }

@@ -52,16 +52,7 @@ class PhoneVerificationViewController: UIViewController {
                         }else{
                             ApiManager.shared.me(onSuccess: { (user) in
                                 if user.name != "-"{
-
-                                    self.dismiss(animated: true) {
-                                        if let selected = TabBarViewController.sharedInstance.selectedViewController as? UINavigationController{
-                                            if let currentVC = selected.viewControllers.last{
-                                                currentVC.viewWillAppear(true)
-                                            }
-                                        }
-                                    }
-                                    //self.dismiss(animated: true, completion: nil)
-                                    
+                                    self.navigationController?.dismiss(animated: true, completion: nil)
                                 }else{
                                     self.performSegue(withIdentifier: "showSetup", sender: nil)
                                 }

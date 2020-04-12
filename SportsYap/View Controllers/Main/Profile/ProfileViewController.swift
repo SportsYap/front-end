@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var myActivityButton: UIButton!
     @IBOutlet weak var friendsActivityButton: UIButton!
     @IBOutlet weak var myTabIndicatorLeading: NSLayoutConstraint!
+    
+    @IBOutlet weak var waitingActivityIndicator: UIActivityIndicatorView!
 
     private var refreshControl: UIRefreshControl!
     
@@ -100,12 +102,23 @@ extension ProfileViewController {
     }
     
     private func deletePost(post: Post) {
+        waitingActivityIndicator.startAnimating()
+        tabBarController?.view.isUserInteractionEnabled = false
+        
         ApiManager.shared.deletePost(post: post.id, onSuccess: {
+            self.waitingActivityIndicator.stopAnimating()
+            self.tabBarController?.view.isUserInteractionEnabled = true
+
             if let index = User.me.posts.index(of: post) {
                 User.me.posts.remove(at: index)
                 self.tableView.reloadData()
             }
-        }, onError: voidErr)
+        }, onError: { error in
+            self.waitingActivityIndicator.stopAnimating()
+            self.tabBarController?.view.isUserInteractionEnabled = true
+            
+            self.alert(message: "Failed to delete the post. Please try again later.")
+        })
     }
 }
 

@@ -21,52 +21,50 @@ class ApiManager: NSObject {
     static var shared = ApiManager()
     
     let BASE_URL = "https://api.sportsyap.com/api"
-//    let BASE_URL = "http://192.168.0.180/api"
     let BASE_IMAGE_URL = "https://api.sportsyap.com"
-//    let BASE_IMAGE_URL = "http://192.168.0.180"
-    var accessToken = ""{
-        didSet{
+
+    var accessToken = "" {
+        didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "api-token-changed"), object: nil)
         }
     }
     var refreshToken = ""
-    
-    var loggedIn = false{
-        didSet{
+    var loggedIn = false {
+        didSet {
             UserDefaults.standard.set(loggedIn, forKey: "logged_in")
         }
     }
     
-    override init(){
+    override init() {
         super.init()
         
-        if let at = UserDefaults.standard.string(forKey: "USER_ACCESS_TOKEN"){
+        if let at = UserDefaults.standard.string(forKey: "USER_ACCESS_TOKEN") {
             accessToken = at
         }
-        if let rt = UserDefaults.standard.string(forKey: "USER_REFRESH_TOKEN"){
+        if let rt = UserDefaults.standard.string(forKey: "USER_REFRESH_TOKEN") {
             refreshToken = rt
         }
-        
-        if accessToken != ""{
-            loggedIn = true
-            self.me(onSuccess: { (user) in
-                self.games(for: Date(), onSuccess: { (games) in
-                    self.prefetch()
-                }) { (err) in }
-            }) { (err) in
-                self.loggedIn = false
-            }
-        }else{
-            prefetch()
-        }
-        
-        
     }
     
-    func prefetch(){
-        // Nothing to prefetch
+    func validateAccessToken(onSuccess: @escaping () -> Void, onError: @escaping (_ error: NSError?) -> Void) {
+        if accessToken != "" {
+            self.me(onSuccess: { (user) in
+                self.loggedIn = true
+                onSuccess()
+            }) { (err) in
+                self.loggedIn = false
+                onError(err)
+            }
+        } else {
+            self.loggedIn = false
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    onError(nil)
+                }
+            }
+        }
     }
-
+    
     //MARK: Auth
     func login(email: String, password: String, _ onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){ //Wire Up
         let param:[String: String] = [
@@ -1089,7 +1087,7 @@ class ApiManager: NSObject {
                     onSuccess(nj)
                 }
             }else{
-                onError(NSError(domain: "api.error", code: 500, userInfo: ["message":"invalud json", "data": json.result.value]))
+                onError(NSError(domain: "api.error", code: 500, userInfo: ["message":"invalud json"]))
             }
         }.responseString { (data) in
 //            print(data.result.value ?? "")

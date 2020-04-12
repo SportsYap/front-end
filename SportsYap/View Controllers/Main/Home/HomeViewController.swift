@@ -75,10 +75,6 @@ class HomeViewController: UIViewController {
 
         date = Date()
         
-        guard ApiManager.shared.loggedIn else{
-            return self.performSegue(withIdentifier: "auth", sender: nil)
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(loadGames), name: NSNotification.Name(rawValue: "api-token-changed"), object: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -94,10 +90,6 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard !(!ApiManager.shared.loggedIn && self.presentedViewController == nil) else{
-            return self.performSegue(withIdentifier: "auth", sender: nil)
-        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.loadGames()
