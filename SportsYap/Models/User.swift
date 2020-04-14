@@ -112,12 +112,21 @@ class User: DBObject {
         }
         
         if let postsJson = dict["posts"] as? [[String: AnyObject]]{
-            for postJson in postsJson{
+            for postJson in postsJson {
                 let post = Post(dict: postJson)
                 post.user = self
                 posts.append(post)
             }
+        } else if let postsJson = dict["posts"] as? [String: AnyObject] {
+            if let data = postsJson["data"] as? [[String: AnyObject]] {
+                for postJson in data {
+                    let post = Post(dict: postJson)
+                    post.user = self
+                    posts.append(post)
+                }
+            }
         }
+        
         var postGames = [Int: Game]()
         for p in posts{
             guard let g = p.game else { continue }
