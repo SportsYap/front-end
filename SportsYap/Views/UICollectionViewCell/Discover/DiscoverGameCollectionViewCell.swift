@@ -20,6 +20,9 @@ class DiscoverGameCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sportBgImageView: UIImageView!
     
+    @IBOutlet weak var shotsView: UIView!
+    @IBOutlet weak var shotsStackView: UIStackView!
+
     var game: Game? {
         didSet {
             if let game = game {
@@ -39,6 +42,36 @@ class DiscoverGameCollectionViewCell: UICollectionViewCell {
                 // if start time is past 5 hours the current date add 'final' instead of start time
                 if let startFiveHours = Calendar.current.date(byAdding: .hour, value: 5, to: game.start) {
                     timeLabel.text = startFiveHours < Date() ? "Final" : game.startTime
+                }
+                
+                
+                shotsView.isHidden = game.posts.isEmpty
+                for shotView in shotsStackView.arrangedSubviews {
+                    shotsStackView.removeArrangedSubview(shotView)
+                    shotView.removeFromSuperview()
+                }
+
+                var index = 0
+                for post in game.posts {
+                    if index >= 3 {
+                        break
+                    }
+                    
+                    let imageView = UIImageView()
+                    imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+                    imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+                    imageView.contentMode = .scaleAspectFill
+                    imageView.cornerRadius = 10
+                    imageView.clipsToBounds = true
+                    
+                    if index < 2 || (index == 2 && index == game.posts.count - 1) {
+                        imageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
+                    } else {
+                        imageView.image = UIImage(named: "more_shots")
+                    }
+                    shotsStackView.addArrangedSubview(imageView)
+                    
+                    index += 1
                 }
             }
         }

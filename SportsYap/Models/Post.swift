@@ -13,6 +13,7 @@ class Post: DBObject {
     static let newPostNotification = "didPostNotification"
     
     var media: UserMedia!
+    var userId = 0
     var user: User!
     
     var gameId = 0
@@ -52,6 +53,13 @@ class Post: DBObject {
             gameId = Int(gi) ?? 0
         }
         
+        if let ui = dict["user_id"] as? Int{
+            userId = ui
+        } else if let ui = dict["user_id"] as? NSNumber {
+            userId = ui.intValue
+        } else if let ui = dict["user_id"] as? String {
+           userId = Int(ui) ?? 0
+        }
         if let uJson = dict["user"] as? [String: AnyObject]{
             user = User(dict: uJson)
         }

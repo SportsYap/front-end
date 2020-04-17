@@ -123,6 +123,22 @@ class Game: DBObject {
                 fans.append(u)
             }
         }
+        
+        posts = [Post]()
+        if let postsJson = dict["posts"] as? [[String: AnyObject]] {
+            for postJson in postsJson {
+                let post = Post(dict: postJson)
+                post.game = self
+                post.team = (post.teamId == self.homeTeam.id) ? self.homeTeam : self.awayTeam
+                for fan in fans {
+                    if fan.id == post.userId {
+                        post.user = fan
+                        break
+                    }
+                }
+                posts.append(post)
+            }
+        }
     }
 }
 
