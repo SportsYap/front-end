@@ -812,11 +812,11 @@ class ApiManager: NSObject {
     }
 
     //MARK: Upload
-    func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, atGame: Bool?, photo: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
+    func uploadPhoto(contentHeight: CGFloat? = nil, game: Game, team: Team, atGame: Bool?, photo: UIImage, comment: String, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         
         //let imgData = UIImageJPEGRepresentation(photo, 0.2)!
         let imgData = photo.jpegData(compressionQuality: 0.2)!
-        var params = ["game_id": "\(game.id)", "team_id": "\(team.id)"]
+        var params = ["game_id": "\(game.id)", "team_id": "\(team.id)", "comment": comment]
         
         if let atGame = atGame {
             params["at_game"] = "\(atGame ? 1 : 0)"
@@ -865,11 +865,11 @@ class ApiManager: NSObject {
             }
         }
     }
-    func uploadVideo(contentHeight: CGFloat? = nil, game: Game, team: Team, atGame: Bool?, video: URL, thumbnail: UIImage, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
+    func uploadVideo(contentHeight: CGFloat? = nil, game: Game, team: Team, atGame: Bool?, video: URL, thumbnail: UIImage, comment: String, onSuccess: @escaping (_ post: Post)->Void, onError: @escaping (_ error: NSError)->Void){
         
         let videoData = try! Data.init(contentsOf: video)
         let imageData = thumbnail.pngData() ?? Data()
-        var params = ["game_id": "\(game.id)", "team_id": "\(team.id)"]
+        var params = ["game_id": "\(game.id)", "team_id": "\(team.id)", "comment": comment]
         
         if let atGame = atGame {
             params["at_game"] = "\(atGame ? 1 : 0)"

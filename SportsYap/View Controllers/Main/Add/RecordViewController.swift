@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import SwiftyCam
+import SideMenu
 
 class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
@@ -26,6 +27,8 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
         }
     }
     var wasAccidentalVideo = false
+    
+    private var window: UIWindow?
     
     override func viewDidLoad() {
         videoGravity = .resizeAspectFill
@@ -62,13 +65,16 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
     @IBAction func backBttnPressed(_ sender: Any) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func flashBttnPressed(_ sender: UIButton) {
         flashEnabled = !flashEnabled
         flashStateImageView.image = flashEnabled ? #imageLiteral(resourceName: "FlashOn") : #imageLiteral(resourceName: "FlashOff")
     }
+    
     @IBAction func switchCameraBttnPressed(_ sender: Any) {
         switchCamera()
     }
+    
     @IBAction func recordBttnPressedDown(_ sender: UIButton) {
         if !isRecording{
             wasAccidentalVideo = false
@@ -81,6 +87,7 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             })
         }
     }
+    
     @IBAction func recordBttnReleased(_ sender: Any) {
         maxTimeTimer?.invalidate()
         if isRecording{
@@ -99,6 +106,7 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             takePhoto()
         }
     }
+    
     @IBAction func recordBttnReleasedOutside(_ sender: Any) {
         maxTimeTimer?.invalidate()
         if isRecording{
@@ -107,15 +115,21 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             isRecording = false
         }
     }
+    
     @IBAction func cameraRollBttnPressed(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
+            
             imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary;
+            imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
             imagePicker.modalPresentationStyle = .fullScreen
-            self.present(imagePicker, animated: true, completion: nil)
+            
+            window = UIWindow(frame: self.view.bounds)
+            window?.backgroundColor = UIColor.clear
+            window?.rootViewController = imagePicker
+            window?.makeKeyAndVisible()
         }
     }
     
@@ -130,7 +144,8 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             User.me.didSelectFromGallery = true
 
             let media = UserMedia(video: nil, image: image)
-            dismiss(animated:false, completion: nil)
+            window?.resignKey()
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
             self.performSegue(withIdentifier: "showEdit", sender: media)
             
         }else if let video = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL{
@@ -141,15 +156,23 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
                     User.me.didSelectFromGallery = true
                     
                     let media = UserMedia(video: url, image: nil)
-                    self.dismiss(animated:false, completion: nil)
+                    self.window?.resignKey()
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
                     self.performSegue(withIdentifier: "showEdit", sender: media)
                 }
             }
-            
+    
         } else {
-            dismiss(animated:false, completion: nil)
+            window?.resignKey()
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
         }
     }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        window?.resignKey()
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
+    
 
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

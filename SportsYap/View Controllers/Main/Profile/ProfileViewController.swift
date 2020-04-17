@@ -233,8 +233,6 @@ extension ProfileViewController: ProfilePostTableViewCellDelegate {
     }
     
     func didFistBump(post: Post) {
-        UIApplication.shared.beginIgnoringInteractionEvents()
-
         ApiManager.shared.like(post: post.id, onSuccess: {
             post.liked = true
             post.myLikes += 1
@@ -245,10 +243,8 @@ extension ProfileViewController: ProfilePostTableViewCellDelegate {
             }
             
             self.tableView.reloadData()
-
-            UIApplication.shared.endIgnoringInteractionEvents()
         }, onError: {_ in
-            UIApplication.shared.endIgnoringInteractionEvents()
+
         })
     }
 }

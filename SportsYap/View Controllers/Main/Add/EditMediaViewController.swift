@@ -258,6 +258,7 @@ extension EditMediaViewController {
            
            if let image = MediaMerger.merge(photo: media, imageHeight: 200, font: commentTextView.font) {
                let processedMedia = UserMedia(video: nil, image: image)
+                processedMedia.comment = media.comment
                if !isOriginal {
                    processedMedia.contentHeight = self.imageBackgroundView.frame.height
                }
@@ -280,6 +281,7 @@ extension EditMediaViewController {
                                self.loadingIndicator.stopAnimating()
                                
                                let processedMedia = UserMedia(video: newUrl, image: nil)
+                            processedMedia.comment = self.media.comment
                                processedMedia.contentHeight = self.getHeightOfContent(url: newUrl)
                                self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
                            }
@@ -287,6 +289,7 @@ extension EditMediaViewController {
       
                    } else {
                        let processedMedia = UserMedia(video: resizedUrl, image: nil)
+                       processedMedia.comment = media.comment
                        processedMedia.contentHeight = self.getHeightOfContent(url: resizedUrl)
                        performSegue(withIdentifier: "tagGame", sender: processedMedia)
                     }
@@ -296,6 +299,7 @@ extension EditMediaViewController {
 
                        addTextToVideo(url: url) { (newUrl) in
                            let processedMedia = UserMedia(video: newUrl, image: nil)
+                        processedMedia.comment = self.media.comment
                            DispatchQueue.main.async {
                                self.loadingIndicator.stopAnimating()
                                self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
@@ -304,6 +308,7 @@ extension EditMediaViewController {
                        
                    } else {
                        let processedMedia = UserMedia(video: url, image: nil)
+                       processedMedia.comment = media.comment
                        performSegue(withIdentifier: "tagGame", sender: processedMedia)
                    }
                }
@@ -313,6 +318,7 @@ extension EditMediaViewController {
                    
                    addTextToVideo(url: url) { (newUrl) in
                        let processedMedia = UserMedia(video: newUrl, image: nil)
+                    processedMedia.comment = self.media.comment
                        DispatchQueue.main.async {
                            self.loadingIndicator.stopAnimating()
                            self.performSegue(withIdentifier: "tagGame", sender: processedMedia)
@@ -320,6 +326,7 @@ extension EditMediaViewController {
                    }
                } else {
                    let processedMedia = UserMedia(video: url, image: nil)
+                   processedMedia.comment = media.comment
                    performSegue(withIdentifier: "tagGame", sender: processedMedia)
                }
            }

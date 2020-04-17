@@ -154,7 +154,7 @@ extension TagGameViewController {
             uploadCanceled = false
             
             if let photo = media.photo {
-                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, atGame: isAtGame, photo: photo, onSuccess: { post in
+                ApiManager.shared.uploadPhoto(contentHeight: media!.contentHeight, game: game, team: team, atGame: isAtGame, photo: photo, comment: media.comment, onSuccess: { post in
                     self.uploadSuccess(post)
                 }) { (err) in
                     if !self.uploadCanceled {
@@ -163,7 +163,7 @@ extension TagGameViewController {
                 }
             } else if let url = media.videoUrl {
                 let thumb = MediaMerger.thumbnail(for: media)
-                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, atGame: isAtGame, video: url, thumbnail: thumb, onSuccess: { post in
+                ApiManager.shared.uploadVideo(contentHeight: media!.contentHeight, game: game, team: team, atGame: isAtGame, video: url, thumbnail: thumb, comment: media.comment, onSuccess: { post in
                     self.uploadSuccess(post)
                 }) { (err) in
                     if !self.uploadCanceled {

@@ -54,6 +54,8 @@ class ShotViewController: UIViewController {
     private var isAnimatingProgressBar = false
     private var isFanMeterExpanded: Bool = true
     
+    private var myLikes = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -181,6 +183,7 @@ extension ShotViewController {
         }
         
         let post = posts[activePost]
+        myLikes = post.myLikes
         
         titleLabel.text = post.user.name
         teamNameLabel.text = post.team?.name ?? ""
@@ -347,9 +350,13 @@ extension ShotViewController {
     }
     
     @IBAction func onFistBump(_ sender: Any) {
-        UIApplication.shared.beginIgnoringInteractionEvents()
-
+        myLikes += 1
+        
         let post = posts[activePost]
+
+        self.fistbumpButton.setImage(UIImage(named: "fist bubble"), for: .normal)
+        self.fistbumpLabel.text = "+\(myLikes)"
+        self.fistbumpLabel.textColor = UIColor(hex: "009BFF")
 
         ApiManager.shared.like(post: post.id, onSuccess: {
             post.liked = true
@@ -359,14 +366,8 @@ extension ShotViewController {
             if !User.me.likedPosts.contains(post.id) {
                 User.me.likedPosts.append(post.id)
             }
-
-            self.fistbumpButton.setImage(UIImage(named: "fist bubble"), for: .normal)
-            self.fistbumpLabel.text = "+\(post.myLikes)"
-            self.fistbumpLabel.textColor = UIColor(hex: "009BFF")
-
-            UIApplication.shared.endIgnoringInteractionEvents()
         }, onError: {_ in
-            UIApplication.shared.endIgnoringInteractionEvents()
+
         })
     }
     

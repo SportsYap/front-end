@@ -88,6 +88,7 @@ class Post: DBObject {
             }else if t == "jpg"{
                 media.photoUrl = URL(string: "\(ApiManager.shared.BASE_IMAGE_URL)/uploads/\(fn).jpg")!
             }
+            media.comment = (dict["comment"] as? String) ?? ""
         }
         
         liked = (dict["liked"] as? Bool) ?? false

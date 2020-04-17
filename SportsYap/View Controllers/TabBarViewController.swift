@@ -23,11 +23,9 @@ class TabBarViewController: UITabBarController {
         
         let cameraViewController = storyboard?.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
         cameraViewController?.presentingViewControllerUseSnapshot = true
+        cameraViewController?.settings = makeSettings()
+
         SideMenuManager.default.leftMenuNavigationController = cameraViewController
-
-        let settings = makeSettings()
-        SideMenuManager.default.leftMenuNavigationController?.settings = settings
-
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
@@ -53,6 +51,7 @@ extension TabBarViewController {
         settings.menuWidth = min(view.frame.width, view.frame.height)
         settings.statusBarEndAlpha = 0.0
         settings.enableSwipeToDismissGesture = false
+        settings.dismissOnPush = false
 
         return settings
     }
