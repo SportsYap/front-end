@@ -1615,7 +1615,7 @@
                                             <action selector="backBttnPressed:" destination="aLH-dl-NGs" eventType="touchUpInside" id="jvh-7n-Upq"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSM-BG-sFp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSM-BG-sFp">
                                         <rect key="frame" x="361" y="67" width="36" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="CVu-gp-uHE"/>

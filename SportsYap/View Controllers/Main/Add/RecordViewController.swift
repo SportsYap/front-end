@@ -114,6 +114,7 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             imagePicker.sourceType = .photoLibrary;
             imagePicker.allowsEditing = false
             imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            imagePicker.modalPresentationStyle = .fullScreen
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
