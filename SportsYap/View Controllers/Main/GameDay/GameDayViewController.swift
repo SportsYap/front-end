@@ -310,7 +310,7 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
 
                 row -= 1
                 if row < game.events1.count {
-                    return 166
+                    return 116
                 }
                 
                 row -= game.events1.count
@@ -323,7 +323,7 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
 
                 row -= 1
                 if row < game.events2.count {
-                    return 166
+                    return 116
                 }
             }
             return 0

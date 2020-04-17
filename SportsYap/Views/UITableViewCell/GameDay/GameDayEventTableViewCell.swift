@@ -22,7 +22,7 @@ class GameDayEventTableViewCell: UITableViewCell {
             if let event = event {
                 thumbImageView.sd_setImage(with: event.thumbnail)
                 descriptionLabel.text = event.name
-                costLabel.text = (event.minCost == event.maxCost) ? event.minCost.formattedString() : "\(event.minCost.formattedString()) - \(event.maxCost.formattedString())"
+                costLabel.text = "$" + ((event.minCost == event.maxCost) ? event.minCost.formattedString() : "\(event.minCost.formattedString()) - \(event.maxCost.formattedString())")
 
                 if let date = event.date {
                     let dateFormatter = DateFormatter()
