@@ -22,6 +22,9 @@ class DiscoverGameCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var shotsView: UIView!
     @IBOutlet weak var shotsStackView: UIStackView!
+    
+    @IBOutlet weak var startingTimeView: UIView!
+    @IBOutlet weak var startingTimeLabel: UILabel!
 
     var game: Game? {
         didSet {
@@ -72,6 +75,21 @@ class DiscoverGameCollectionViewCell: UICollectionViewCell {
                     shotsStackView.addArrangedSubview(imageView)
                     
                     index += 1
+                }
+                
+                if game.start.compare(Date()) == .orderedDescending {
+                    startingTimeLabel.text = NSLocalizedString("Starting", comment: "") + " " + game.startTime
+                    startingTimeView.isHidden = false
+                    
+                    awayScoreLabel.alpha = 0
+                    homeScoreLabel.alpha = 0
+                    timeLabel.alpha = 0
+                } else {
+                    startingTimeView.isHidden = true
+                    
+                    awayScoreLabel.alpha = 1
+                    homeScoreLabel.alpha = 1
+                    timeLabel.alpha = 1
                 }
             }
         }
