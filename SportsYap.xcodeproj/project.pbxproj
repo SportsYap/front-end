@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2ED769C2B8D0E0F37DC40A09 /* Pods_SportsYap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */; };
 		6131278EB795A58DC821379A /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE7C7B679F4422737A716A0 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		AF18C685244B4617005CEB1E /* MyCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18C684244B4617005CEB1E /* MyCommentTableViewCell.swift */; };
 		AF374820242C4514003D6933 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF37481F242C4514003D6933 /* Discover.storyboard */; };
 		AF3B8DBE242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B8DBD242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift */; };
 		AF3C08BC24204A05001F63EF /* GameListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C08BB24204A05001F63EF /* GameListItemView.swift */; };
@@ -191,6 +192,7 @@
 		5148735234EABCE76474FF85 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsYap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EA6F3487E1A226170BE79 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AF18C684244B4617005CEB1E /* MyCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentTableViewCell.swift; sourceTree = "<group>"; };
 		AF37481F242C4514003D6933 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AF3B8DBD242D38CE0010856A /* DiscoverSuggestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		AF3C08BB24204A05001F63EF /* GameListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListItemView.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				CD63D5A620A1883B008B8D5E /* SettingsHeaderTableViewCell.swift */,
 				CD63D5A820A1885A008B8D5E /* SettingsGameTableViewCell.swift */,
 				CD04100920B7EF70000E1D66 /* CommentTableViewCell.swift */,
+				AF18C684244B4617005CEB1E /* MyCommentTableViewCell.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				CDE83A4F203155420056C77D /* AuthViewController.swift in Sources */,
 				CDE83A5B2031559E0056C77D /* DiscoverViewController.swift in Sources */,
 				D71F9708224DF9370051E715 /* YGCAddTextOnVideo.swift in Sources */,
+				AF18C685244B4617005CEB1E /* MyCommentTableViewCell.swift in Sources */,
 				CDDA0CB1201FAAA000BA0568 /* UILabel.swift in Sources */,
 				D71F972A22508B330051E715 /* MediaFilter.swift in Sources */,
 				CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */,
@@ -1385,7 +1389,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1416,7 +1420,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

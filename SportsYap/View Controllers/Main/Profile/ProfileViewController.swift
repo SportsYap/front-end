@@ -111,6 +111,33 @@ extension ProfileViewController {
 
             if let index = User.me.posts.index(of: post) {
                 User.me.posts.remove(at: index)
+                if let index = User.me.activities.index(of: post) {
+                    User.me.activities.remove(at: index)
+                }
+                self.tableView.reloadData()
+            }
+        }, onError: { error in
+            self.waitingActivityIndicator.stopAnimating()
+            self.tabBarController?.view.isUserInteractionEnabled = true
+            
+            self.alert(message: "Failed to delete the post. Please try again later.")
+        })
+    }
+    
+    private func deleteComment(comment: Comment) {
+        waitingActivityIndicator.startAnimating()
+        tabBarController?.view.isUserInteractionEnabled = false
+        
+        ApiManager.shared.deleteComment(for: comment.post!, comment: comment, onSuccess: {
+            self.waitingActivityIndicator.stopAnimating()
+            self.tabBarController?.view.isUserInteractionEnabled = true
+
+            if let index = User.me.comments.index(of: comment) {
+                User.me.comments.remove(at: index)
+                if let index = User.me.activities.index(of: comment) {
+                    User.me.activities.remove(at: index)
+                }
+
                 self.tableView.reloadData()
             }
         }, onError: { error in
@@ -175,11 +202,11 @@ extension ProfileViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return max(showingMyPosts ? User.me.posts.count : friendsActivities.count, 1)
+        return max(showingMyPosts ? User.me.activities.count : friendsActivities.count, 1)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let posts = showingMyPosts ? User.me.posts : friendsActivities
+        let posts = showingMyPosts ? User.me.activities : friendsActivities
         if posts.isEmpty {
             return 180
         }
@@ -187,17 +214,26 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let posts = showingMyPosts ? User.me.posts : friendsActivities
-
+        let posts = showingMyPosts ? User.me.activities : friendsActivities
         if posts.isEmpty {
             return tableView.dequeueReusableCell(withIdentifier: "noCell")!
         }
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? ProfilePostTableViewCell {
-            cell.post = posts[indexPath.row]
-            cell.delegate = self
-            cell.selectionStyle = .none
-            return cell
+        let post = posts[indexPath.row]
+        if let post = post as? Post {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "gameCard") as? ProfilePostTableViewCell {
+                cell.post = post
+                cell.delegate = self
+                cell.selectionStyle = .none
+                return cell
+            }
+        } else if let comment = post as? Comment {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as? MyCommentTableViewCell {
+                cell.comment = comment
+                cell.delegate = self
+                cell.selectionStyle = .none
+                return cell
+            }
         }
         
         return UITableViewCell()
@@ -217,19 +253,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ProfileViewController: ProfilePostTableViewCellDelegate {
     func didTapOption(post: Post) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (_) in
-            let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Are you sure you want to delete this post?", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (_) in
-                self.deletePost(post: post)
-            }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Are you sure you want to delete this post?", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (_) in
+            self.deletePost(post: post)
         }))
-        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-        
-        present(actionSheet, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func didFistBump(post: Post) {
@@ -246,5 +275,16 @@ extension ProfileViewController: ProfilePostTableViewCellDelegate {
         }, onError: {_ in
 
         })
+    }
+}
+
+extension ProfileViewController: MyCommentTableViewCellDelegate {
+    func didDeleteComment(comment: Comment) {
+        let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Are you sure you want to delete this comment?", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (_) in
+            self.deleteComment(comment: comment)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

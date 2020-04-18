@@ -12,6 +12,7 @@ class Comment: DBObject {
     
     var user: User!
     var text = ""
+    var post: Post?
     
     override init(dict: [String: AnyObject]){
         super.init(dict: dict)
@@ -22,6 +23,10 @@ class Comment: DBObject {
         
         if let userDict = dict["user"] as? [String: AnyObject]{
             self.user = User(dict: userDict)
+        }
+        
+        if let postDict = dict["post"] as? [String: AnyObject] {
+            self.post = Post(dict: postDict)
         }
     }
 }

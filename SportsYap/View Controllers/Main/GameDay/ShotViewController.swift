@@ -282,7 +282,7 @@ extension ShotViewController {
         progressBar.layer.removeAllAnimations()
         photoTimer?.invalidate()
         
-        let alertController = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         
         if posts[activePost].media.thumbnailUrl == nil {
             // its a picture so add option to save photo
@@ -290,7 +290,7 @@ extension ShotViewController {
                 let data = NSData(contentsOf: imageUrl)
                 let image = UIImage(data: data! as Data)
                 
-                let saveAction = UIAlertAction(title: "Save Photo", style: .default) { (action) in
+                let saveAction = UIAlertAction(title: "Save Image", style: .default) { (action) in
                     UIImageWriteToSavedPhotosAlbum(image!, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
                 }
                 
@@ -309,7 +309,7 @@ extension ShotViewController {
             
             alertController.addAction(deleteButton)
         } else {
-            let reportButton = UIAlertAction(title: "Report for abuse", style: .default) { (action) in
+            let reportButton = UIAlertAction(title: "Report Abuse", style: .default) { (action) in
                 let post = self.posts[self.activePost]
                 
                 let reports = UserDefaults.standard.object(forKey:"reports") as? [Int] ?? [Int]()

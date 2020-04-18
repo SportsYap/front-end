@@ -35,6 +35,7 @@ class User: DBObject {
     var games = [Game]()
     var followers = [User]()
     var followings = [User]()
+    var comments = [Comment]()
     
     var followed = false
     
@@ -54,6 +55,8 @@ class User: DBObject {
     var likedPosts = [Int]()
     var currentPost: Post!
     var didSelectFromGallery = false
+    
+    var activities: [DBObject] = []
     
     override init() {
         super.init()
@@ -127,6 +130,12 @@ class User: DBObject {
             }
         }
         
+        if let commentsJson = dict["user_comments"] as? [[String: AnyObject]]{
+            for commentJson in commentsJson{
+                comments.append(Comment(dict: commentJson))
+            }
+        }
+
         var postGames = [Int: Game]()
         for p in posts{
             guard let g = p.game else { continue }
@@ -167,6 +176,13 @@ class User: DBObject {
         
         if let pt = dict["push_token"] as? String {
             pushToken = pt
+        }
+        
+        
+        activities.append(contentsOf: posts)
+        activities.append(contentsOf: comments)
+        activities.sort { (obj1, obj2) -> Bool in
+            return obj1.createdAt.compare(obj2.createdAt) == .orderedDescending
         }
     }
 }
