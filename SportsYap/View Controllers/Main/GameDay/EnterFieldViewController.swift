@@ -64,6 +64,7 @@ class EnterFieldViewController: UIViewController {
         viewFieldView.addSubview(panoView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didPost), name: NSNotification.Name(rawValue: Post.newPostNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDeletePost), name: NSNotification.Name(rawValue: Post.deletePostNotification), object: nil)
     }
     
     deinit {
@@ -234,6 +235,17 @@ extension EnterFieldViewController {
         if let post = notification.object as? Post,
             let game = game,
             post.gameId == game.id {
+            reloadData()
+        }
+    }
+    
+    @objc func didDeletePost(_ notification: Notification) {
+        if let post = notification.object as? Post {
+            if let game = game,
+                post.gameId == game.id {
+                reloadData()
+            }
+        } else {
             reloadData()
         }
     }

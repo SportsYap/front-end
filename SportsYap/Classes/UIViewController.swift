@@ -44,12 +44,14 @@ extension UIViewController {
         
         let  deleteButton = UIAlertAction(title: "Report for Abuse", style: .destructive, handler: { (action) -> Void in
             guard let postId = postId else { return }
-            ApiManager.shared.report(post: postId, onSuccess: {}, onError: voidErr)
+            ApiManager.shared.report(post: postId, onSuccess: { deleted in
+                if deleted {
+                    NotificationCenter.default.post(name: NSNotification.Name(Post.deletePostNotification), object: postId)
+                }
+            }, onError: voidErr)
         })
         
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-            
-        })
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)

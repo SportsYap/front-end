@@ -11,6 +11,7 @@ import UIKit
 class Post: DBObject {
     
     static let newPostNotification = "didPostNotification"
+    static let deletePostNotification = "didDeleteNotification"
     
     var media: UserMedia!
     var userId = 0

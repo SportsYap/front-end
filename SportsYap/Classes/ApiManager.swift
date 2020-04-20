@@ -612,7 +612,7 @@ class ApiManager: NSObject {
         })
     }
     
-    func report(post id: Int, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
+    func report(post id: Int, onSuccess: @escaping (Bool)->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/post/\(id)/report"
         processRequestTo(path: path, httpMethod: "PATCH", parameters: nil, onSuccess: { (json) in
             
@@ -620,7 +620,7 @@ class ApiManager: NSObject {
             reports.append(id)
             UserDefaults.standard.set(reports, forKey: "reports")
             
-            onSuccess()
+            onSuccess(json["deleted"] as? Bool ?? false)
         }, onError: { (err) in
             onError(err)
         })

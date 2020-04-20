@@ -174,9 +174,12 @@ extension SinglePostViewController: UITableViewDataSource, UITableViewDelegate, 
                 
             } else {
                 //report post
-                ApiManager.shared.report(post: post.id, onSuccess: {
+                ApiManager.shared.report(post: post.id, onSuccess: { deleted in
                     //self.handlePostsRefresh(self.postsRefreshControl)
-                    
+                    if deleted {
+                        NotificationCenter.default.post(name: NSNotification.Name(Post.deletePostNotification), object: post)
+                    }
+
                     self.alert(message: "Post has been reported.", title: "Reported")
                 }, onError: voidErr)
             }

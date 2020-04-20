@@ -282,7 +282,7 @@ extension ShotViewController {
         progressBar.layer.removeAllAnimations()
         photoTimer?.invalidate()
         
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if posts[activePost].media.thumbnailUrl == nil {
             // its a picture so add option to save photo
@@ -316,7 +316,11 @@ extension ShotViewController {
                 
                 if !reports.contains(post.id) {
                     // report post
-                    ApiManager.shared.report(post: post.id, onSuccess: {}, onError: voidErr)
+                    ApiManager.shared.report(post: post.id, onSuccess: { deleted in
+                        if deleted {
+                            NotificationCenter.default.post(name: NSNotification.Name(Post.deletePostNotification), object: post)
+                        }
+                    }, onError: voidErr)
                     self.nextPost()
                 }
             }
