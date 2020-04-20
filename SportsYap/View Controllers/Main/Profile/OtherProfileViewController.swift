@@ -187,7 +187,9 @@ extension OtherProfileViewController: UITableViewDelegate, UITableViewDataSource
 extension OtherProfileViewController: ProfilePostTableViewCellDelegate {
     
     func didTapOption(post: Post) {
-        
+        if post.user.id != User.me.id {
+            showAbuseAlert(postId: post.id)
+        }
     }
     
     func didFistBump(post: Post) {

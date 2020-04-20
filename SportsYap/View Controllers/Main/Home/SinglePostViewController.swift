@@ -146,7 +146,7 @@ extension SinglePostViewController: UITableViewDataSource, UITableViewDelegate, 
         }
     }
     func optionsBttnPressed(post: Post){
-        let alertController = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if post.media.thumbnailUrl == nil {
             // its a picture so add option to save photo

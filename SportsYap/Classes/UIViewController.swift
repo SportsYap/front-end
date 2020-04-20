@@ -40,7 +40,7 @@ extension UIViewController {
     }
     
     func showAbuseAlert(postId: Int? = nil){
-        let alertController = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let  deleteButton = UIAlertAction(title: "Report for Abuse", style: .destructive, handler: { (action) -> Void in
             guard let postId = postId else { return }

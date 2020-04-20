@@ -16,16 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="s2v-Nq-dtY">
-                                <rect key="frame" x="0.0" y="-40" width="375" height="747"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen" translatesAutoresizingMaskIntoConstraints="NO" id="s2v-Nq-dtY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="s2v-Nq-dtY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gil-yz-Ie1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s2v-Nq-dtY" secondAttribute="bottom" constant="-40" id="SEn-W6-W5I"/>
+                            <constraint firstAttribute="bottom" secondItem="s2v-Nq-dtY" secondAttribute="bottom" id="SEn-W6-W5I"/>
                             <constraint firstItem="s2v-Nq-dtY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eBV-i1-jsI"/>
-                            <constraint firstItem="s2v-Nq-dtY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-40" id="lS6-hf-jvB"/>
+                            <constraint firstItem="s2v-Nq-dtY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="lS6-hf-jvB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch_logo" width="257" height="55"/>
+        <image name="splash_screen" width="750" height="1334"/>
     </resources>
 </document>

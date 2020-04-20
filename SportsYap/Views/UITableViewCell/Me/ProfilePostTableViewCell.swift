@@ -38,8 +38,7 @@ class ProfilePostTableViewCell: UITableViewCell {
                 usernameLabel.text = post.user.name
                 timeLabel.text = post.createdAt.timeAgoSince() + " @ " + (post.game?.venue.name ?? "")
                 	
-                optionButton?.isHidden = (post.user.id != User.me.id)
-                optionButtonWidth?.constant = (post.user.id != User.me.id) ? 0 : 50
+                optionButton?.setImage(UIImage(named: (post.user.id != User.me.id) ? "option_bot_icon" : "close_x_grey"), for: .normal)
                 
                 postLabel.text = post.media.comment
                 if let url = post.media.photoUrl { // Render Photo
