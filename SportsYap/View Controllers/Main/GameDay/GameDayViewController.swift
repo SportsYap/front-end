@@ -136,8 +136,7 @@ extension GameDayViewController {
         tableView.tableHeaderView = headerView
         
         tableView.layoutIfNeeded()
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        tableView.reloadData()
         
         titleLabel.text = game.venue.name
         timeLabel.text = game.startTime

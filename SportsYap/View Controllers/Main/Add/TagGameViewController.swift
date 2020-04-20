@@ -73,6 +73,7 @@ extension TagGameViewController {
         if let game = post.game {
             if !game.fans.contains(post.user) {
                 game.fans.append(post.user)
+                post.user.pivot?.itemAId = post.teamId
             }
             if !game.posts.contains(post) {
                 game.posts.append(post)

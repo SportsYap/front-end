@@ -128,7 +128,7 @@ extension ProfileViewController {
         waitingActivityIndicator.startAnimating()
         tabBarController?.view.isUserInteractionEnabled = false
         
-        ApiManager.shared.deleteComment(for: comment.post!, comment: comment, onSuccess: {
+        ApiManager.shared.deleteComment(postId: comment.postId, comment: comment, onSuccess: {
             self.waitingActivityIndicator.stopAnimating()
             self.tabBarController?.view.isUserInteractionEnabled = true
 

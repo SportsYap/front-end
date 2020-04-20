@@ -96,6 +96,8 @@ class DiscoverViewController: UIViewController {
         super.viewWillAppear(animated)
         
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.white
+        
+        loadGames()
     }
 }
 

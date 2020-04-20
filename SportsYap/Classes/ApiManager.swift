@@ -991,6 +991,16 @@ class ApiManager: NSObject {
         })
     }
     
+    func deleteComment(postId: Int, comment: Comment, onSuccess: @escaping ()->Void, onError: @escaping (_ error: NSError)->Void){
+        let path = "/post/\(postId)/comment/\(comment.id)"
+        
+        processRequestTo(path: path, httpMethod: "DELETE", parameters: nil, onSuccess: { (json) in
+            onSuccess()
+        }, onError: { (err) in
+            onError(err)
+        })
+    }
+
     //MARK: Streaming
     func streamInfo(onSuccess: @escaping (_ info: [String: AnyObject], _ status: String)->Void, onError: @escaping (_ error: NSError)->Void){
         let path = "/post/live"
