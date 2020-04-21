@@ -143,8 +143,15 @@ extension ProfileViewController {
         }, onError: { error in
             self.waitingActivityIndicator.stopAnimating()
             self.tabBarController?.view.isUserInteractionEnabled = true
-            
-            self.alert(message: "Failed to delete the post. Please try again later.")
+
+            if let index = User.me.comments.index(of: comment) {
+                User.me.comments.remove(at: index)
+                if let index = User.me.activities.index(of: comment) {
+                    User.me.activities.remove(at: index)
+                }
+
+                self.tableView.reloadData()
+            }
         })
     }
 }
