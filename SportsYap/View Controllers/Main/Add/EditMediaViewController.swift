@@ -246,9 +246,13 @@ extension EditMediaViewController {
        navigationController?.popViewController(animated: true)
    }
     
-   @IBAction func onNext(_ sender: Any) {
-       media.comment = commentTextView.text ?? ""
-       media.commentColor = commentTextView.textColor
+    @IBAction func onNext(_ sender: Any) {
+        var comment = commentTextView.text ?? ""
+        if comment == "Your Text" {
+            comment = ""
+        }
+        media.comment = comment
+        media.commentColor = commentTextView.textColor
        
        if let _ = media.photo {
            let point = self.view.convert(commentContainerView.frame.origin, to: self.view)
@@ -267,7 +271,7 @@ extension EditMediaViewController {
        } else if let url = media.videoUrl {
            if !isOriginal {
                if let resizedUrl = resizedVideoUrl {
-                   if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                   if comment.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                        self.loadingIndicator.startAnimating()
                        
                        addTextToVideo(url: resizedUrl, resized: true) { (newUrl) in
@@ -294,7 +298,7 @@ extension EditMediaViewController {
                        performSegue(withIdentifier: "tagGame", sender: processedMedia)
                     }
                } else {
-                   if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                   if comment.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                        loadingIndicator.startAnimating()
 
                        addTextToVideo(url: url) { (newUrl) in
@@ -313,7 +317,7 @@ extension EditMediaViewController {
                    }
                }
            } else {
-               if commentTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+               if comment.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                    loadingIndicator.startAnimating()
                    
                    addTextToVideo(url: url) { (newUrl) in

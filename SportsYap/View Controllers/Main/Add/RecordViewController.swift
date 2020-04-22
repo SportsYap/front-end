@@ -82,7 +82,7 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             isRecording = true
             print("Pressed")
             
-            maxTimeTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer) in
+            maxTimeTimer = Timer.scheduledTimer(withTimeInterval: User.me.verified ? 120 : 20, repeats: false, block: { (timer) in
                 self.recordBttnReleased(self)
             })
         }
@@ -150,7 +150,7 @@ class RecordViewController: SwiftyCamViewController, UIImagePickerControllerDele
             
         }else if let video = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL{
             isRecording = false
-            let maxTime: Double = User.me.verified ? 90 : 20
+            let maxTime: Double = User.me.verified ? 120 : 20
             cropVideo(sourceURL: video as URL, startTime: 0, endTime: maxTime) { (url) in
                 DispatchQueue.main.async {
                     User.me.didSelectFromGallery = true
@@ -292,7 +292,7 @@ extension RecordViewController: SwiftyCamViewControllerDelegate{
     }
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
         guard !wasAccidentalVideo else { return }
-        let maxTime: Double = User.me.verified ? 90 : 20
+        let maxTime: Double = User.me.verified ? 120 : 20
         cropVideo(sourceURL: url, startTime: 0, endTime: maxTime) { (url) in
             DispatchQueue.main.async {
                 User.me.didSelectFromGallery = false
