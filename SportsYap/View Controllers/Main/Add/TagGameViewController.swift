@@ -52,6 +52,8 @@ class TagGameViewController: UIViewController {
         
         if media.photo != nil {
             previewImageView.image = media.photo
+        } else if let _ = media.videoUrl {
+            previewImageView.image = MediaMerger.thumbnail(for: media)
         }
     }
 }

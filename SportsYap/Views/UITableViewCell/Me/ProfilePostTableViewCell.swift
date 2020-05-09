@@ -36,9 +36,9 @@ class ProfilePostTableViewCell: UITableViewCell {
             if let post = post {
                 profileImageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 usernameLabel.text = post.user.name
-                timeLabel.text = post.createdAt.timeAgoSince() + " @ " + (post.game?.venue.name ?? "")
+                timeLabel.text = post.createdAt.timeAgoSince() + " @" + (post.game?.venue.name ?? "").split(separator: " ").first!
                 	
-                optionButton?.setImage(UIImage(named: (post.user.id != User.me.id) ? "option_bot_icon" : "close_x_grey"), for: .normal)
+                optionButton?.setImage(UIImage(named: (post.user.id != User.me.id) ? "option_bot_icon" : "ic_delete"), for: .normal)
                 
                 postLabel.text = post.media.comment
                 if let url = post.media.photoUrl { // Render Photo

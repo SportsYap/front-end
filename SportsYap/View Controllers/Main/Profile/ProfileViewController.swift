@@ -249,7 +249,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let posts = showingMyPosts ? User.me.posts : friendsActivities
+        let posts = showingMyPosts ? User.me.activities : friendsActivities
         if posts.isEmpty {
             return
         }

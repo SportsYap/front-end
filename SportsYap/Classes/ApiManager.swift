@@ -702,7 +702,7 @@ class ApiManager: NSObject {
         })
     }
     
-    func searchGames(for date: Date, sport: Sport, onSuccess: @escaping (_ games: [Game])->Void, onError: @escaping (_ error: NSError)->Void){
+    func searchGames(for date: Date, sport: Sport, onSuccess: @escaping (_ nearby: [Game], _ following: [Game]) -> Void, onError: @escaping (_ error: NSError)->Void){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMddyyyy"
         
@@ -710,15 +710,26 @@ class ApiManager: NSObject {
         
         let path = "/discover/games/\(dateFormatter.string(from: date))?sport_id=\(sport.rawValue)"
         processRequestTo(path: path, httpMethod: "GET", parameters: nil, onSuccess: { (json) in
-            if let gamesJson = json["data"] as? [[String: AnyObject]]{
-                var games = [Game]()
-                for gameJson in gamesJson{
-                    games.append(Game(dict: gameJson))
+            if let data = json["data"] as? [String: AnyObject] {
+                var nearbyGames = [Game]()
+                if let nearby = data["nearby"] as? [[String: AnyObject]] {
+                    for gameJson in nearby {
+                        nearbyGames.append(Game(dict: gameJson))
+                    }
+                    nearbyGames = nearbyGames.removeDuds
                 }
-                games = games.removeDuds
-                onSuccess(games)
+                
+                var followingGames = [Game]()
+                if let following = data["following"] as? [[String: AnyObject]] {
+                    for gameJson in following {
+                        followingGames.append(Game(dict: gameJson))
+                    }
+                    followingGames = followingGames.removeDuds
+                }
+                
+                onSuccess(nearbyGames, followingGames)
             }else{
-                onSuccess([Game]())
+                onSuccess([Game](), [Game]())
             }
         }, onError: { (err) in
             onError(err)

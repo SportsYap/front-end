@@ -599,15 +599,15 @@ extension EditMediaViewController {
 extension EditMediaViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.text == "" || textView.text == "Your Text" {
             textView.text = nil
-            textView.textColor = .white
+            textView.textColor = selectedFontColor
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Your Text"
+            textView.text = ""
             textView.textColor = UIColor.lightGray
         }
     }

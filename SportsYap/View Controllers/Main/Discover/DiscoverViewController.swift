@@ -35,7 +35,8 @@ class DiscoverViewController: UIViewController {
     private var nearbyObjects = [DBObject]()
     private var trendingObjects = [DBObject]()
     
-    private var games = [Game]()
+    private var nearby = [Game]()
+    private var following = [Game]()
 
     private var date = Date() {
         didSet {
@@ -331,10 +332,14 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return max(games.count, 1)
+        if section == 0 {
+            return max(nearby.count, 1)
+        }
+        return max(following.count, 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let games = (indexPath.section == 0) ? nearby : following
         if games.isEmpty {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "noGamesCell", for: indexPath)
         }
@@ -356,6 +361,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let games = (indexPath.section == 0) ? nearby : following
         if games.isEmpty {
             return CGSize(width: collectionView.frame.width - 16, height: 80)
         }
@@ -369,6 +375,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
 
+        let games = (indexPath.section == 0) ? nearby : following
         if games.isEmpty {
             return
         }
@@ -430,25 +437,25 @@ extension DiscoverViewController: UISearchBarDelegate {
 
 extension DiscoverViewController {
     private func loadGames() {
-        ApiManager.shared.searchGames(for: date, sport: selectedSport, onSuccess: { (games) in
-            self.games = games
-            
+        ApiManager.shared.searchGames(for: date, sport: selectedSport, onSuccess: { (nearby, following)  in
+            self.nearby = nearby
+            self.following = following
+
             var index = 0
-            
             // doing my best to get rid of duplicate games
-            for game in self.games {
+            for game in self.nearby {
                 if game.winningTeamId == 0 {
                     // most likely a duplicate game since no winningTeamId is 0
                     //self.games.remove(at: index)
                     index += 1
                     
                 } else if game.awayScore == 0 && game.homeScore == 0 {
-                    if self.games.contains(where: {$0.homeTeam.id == game.homeTeam.id
+                    if self.nearby.contains(where: {$0.homeTeam.id == game.homeTeam.id
                         && $0.awayTeam.id == game.awayTeam.id
                         && $0.id != game.id}) {
                         
                         if game.start < Date() {
-                            self.games.remove(at: index)
+                            self.nearby.remove(at: index)
                         }
                     }
                 } else {
@@ -458,23 +465,65 @@ extension DiscoverViewController {
             
             // filter out duplicate games with different start times
             var duplicateIndex = 0
-            for game in self.games {
+            for game in self.nearby {
                 guard game.awayScore == 0 && game.homeScore == 0 else {
                     duplicateIndex += 1
                     continue
                 }
                 
-                if self.games.contains(where: {$0.homeTeam.id == game.homeTeam.id
+                if self.nearby.contains(where: {$0.homeTeam.id == game.homeTeam.id
                     && $0.awayTeam.id == game.awayTeam.id
                     && $0.id != game.id
                     && $0.id > game.id}) {
                     
-                    self.games.remove(at: duplicateIndex)
+                    self.nearby.remove(at: duplicateIndex)
                 } else {
                     duplicateIndex += 1
                 }
             }
             
+            
+            index = 0
+            // doing my best to get rid of duplicate games
+            for game in self.following {
+                if game.winningTeamId == 0 {
+                    // most likely a duplicate game since no winningTeamId is 0
+                    //self.games.remove(at: index)
+                    index += 1
+                    
+                } else if game.awayScore == 0 && game.homeScore == 0 {
+                    if self.following.contains(where: {$0.homeTeam.id == game.homeTeam.id
+                        && $0.awayTeam.id == game.awayTeam.id
+                        && $0.id != game.id}) {
+                        
+                        if game.start < Date() {
+                            self.following.remove(at: index)
+                        }
+                    }
+                } else {
+                    index += 1
+                }
+            }
+            
+            // filter out duplicate games with different start times
+            duplicateIndex = 0
+            for game in self.following {
+                guard game.awayScore == 0 && game.homeScore == 0 else {
+                    duplicateIndex += 1
+                    continue
+                }
+                
+                if self.following.contains(where: {$0.homeTeam.id == game.homeTeam.id
+                    && $0.awayTeam.id == game.awayTeam.id
+                    && $0.id != game.id
+                    && $0.id > game.id}) {
+                    
+                    self.following.remove(at: duplicateIndex)
+                } else {
+                    duplicateIndex += 1
+                }
+            }
+
             self.didReloadGames()
         }) { (err) in }
     }

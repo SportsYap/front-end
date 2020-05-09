@@ -139,11 +139,11 @@ extension ShotViewController {
         
         awayHomeTownLabel.text = game.awayTeam.homeTown
         awayTeamNameLabel.text = game.awayTeam.name
-        awayScoreLabel.text = "\(game.awayScore)"
+        awayScoreLabel.text = "\(game.awayScore) Shots"
         
         homeHomeTownLabel.text = game.homeTeam.homeTown
         homeTeamNameLabel.text = game.homeTeam.name
-        homeScoreLabel.text = "\(game.homeScore)"
+        homeScoreLabel.text = "\(game.homeScore) Shots"
         
         timeLabel.text = game.startTime
         
