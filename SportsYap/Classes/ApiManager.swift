@@ -588,6 +588,7 @@ class ApiManager: NSObject {
             var posts = [Post]()
             for postJson in postsJson{
                 posts.append(Post(dict: postJson))
+                posts.last?.game = game
             }
             onSuccess(posts)
         }, onError: { (err) in

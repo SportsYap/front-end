@@ -36,7 +36,7 @@ class ProfilePostTableViewCell: UITableViewCell {
             if let post = post {
                 profileImageView.sd_setImage(with: post.user.profileImage, placeholderImage: #imageLiteral(resourceName: "default-profile"))
                 usernameLabel.text = post.user.name
-                timeLabel.text = post.createdAt.timeAgoSince() + " @" + (post.game?.venue.name ?? "").split(separator: " ").first!
+                timeLabel.text = post.createdAt.timeAgoSince() + " @" + ((post.game?.venue.name ?? "").split(separator: " ").first ?? "")
                 	
                 optionButton?.setImage(UIImage(named: (post.user.id != User.me.id) ? "option_bot_icon" : "ic_delete"), for: .normal)
                 

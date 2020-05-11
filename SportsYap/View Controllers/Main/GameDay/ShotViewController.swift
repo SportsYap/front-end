@@ -139,11 +139,11 @@ extension ShotViewController {
         
         awayHomeTownLabel.text = game.awayTeam.homeTown
         awayTeamNameLabel.text = game.awayTeam.name
-        awayScoreLabel.text = "\(game.awayScore) Shots"
+        awayScoreLabel.text = "\(game.awayScore)"
         
         homeHomeTownLabel.text = game.homeTeam.homeTown
         homeTeamNameLabel.text = game.homeTeam.name
-        homeScoreLabel.text = "\(game.homeScore) Shots"
+        homeScoreLabel.text = "\(game.homeScore)"
         
         timeLabel.text = game.startTime
         
@@ -217,7 +217,7 @@ extension ShotViewController {
             let playerController = AVPlayerViewController()
             playerController.player = player
             playerController.showsPlaybackControls = false
-            playerController.videoGravity = AVLayerVideoGravity(rawValue: AVLayerVideoGravity.resizeAspectFill.rawValue)
+            playerController.videoGravity = AVLayerVideoGravity(rawValue: AVLayerVideoGravity.resizeAspect.rawValue)
             self.addChild(playerController)
             playerController.view.frame = videoContainerView.bounds
             videoContainerView.addSubview(playerController.view)
