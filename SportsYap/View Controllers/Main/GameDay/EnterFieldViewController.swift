@@ -241,6 +241,11 @@ extension EnterFieldViewController {
     
     @objc func didDeletePost(_ notification: Notification) {
         if let post = notification.object as? Post {
+            if let index = posts.firstIndex(of: post) {
+                posts.remove(at: index)
+                collectionView.reloadData()
+            }
+            
             if let game = game,
                 post.gameId == game.id {
                 reloadData()

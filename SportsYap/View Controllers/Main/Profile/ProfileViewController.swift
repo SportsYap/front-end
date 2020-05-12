@@ -51,8 +51,15 @@ class ProfileViewController: UIViewController {
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CommentsViewController, let post = sender as? Post {
-            vc.post = post
+        if let vc = segue.destination as? CommentsViewController {
+            if let post = sender as? Post {
+                vc.post = post
+                post.user = User.me
+            } else if let comment = sender as? Comment,
+                let post = comment.post {
+                vc.post = post
+                post.user = User.me
+            }
         } else if let vc = segue.destination as? ViewUsersViewController, let m = sender as? ViewUsersMode {
             vc.mode = m
             vc.rootUser = User.me
@@ -116,6 +123,8 @@ extension ProfileViewController {
                 }
                 self.tableView.reloadData()
             }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(Post.deletePostNotification), object: post)
         }, onError: { error in
             self.waitingActivityIndicator.stopAnimating()
             self.tabBarController?.view.isUserInteractionEnabled = true

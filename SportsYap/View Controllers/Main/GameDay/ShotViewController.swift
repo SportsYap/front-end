@@ -171,14 +171,7 @@ extension ShotViewController {
         player = nil
         
         if activePost >= posts.count{
-            let alert = UIAlertController(title: "Oh No!", message: "No one has posted to this game yet. Start the excitement- add to the field!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (a) in
-                alert.dismiss(animated: true, completion: nil)
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
-                    self.dismiss(animated: true, completion: nil)
-                })
-            }))
-            self.present(alert, animated: true) { }
+            self.dismiss(animated: true, completion: nil)
             return
         }
         
@@ -304,7 +297,9 @@ extension ShotViewController {
                 self.posts = self.posts.filter({ $0.id != post.id })
                 self.activePost = max(self.activePost-1, 0)
                 self.showPost()
-                ApiManager.shared.deletePost(post: post.id, onSuccess: { }, onError: voidErr)
+                ApiManager.shared.deletePost(post: post.id, onSuccess: {
+                    NotificationCenter.default.post(name: NSNotification.Name(Post.deletePostNotification), object: post)
+                }, onError: voidErr)
             })
             
             alertController.addAction(deleteButton)
