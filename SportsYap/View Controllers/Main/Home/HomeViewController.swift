@@ -156,6 +156,12 @@ extension HomeViewController {
             alert.addAction(okAction)
             
             present(alert, animated: true, completion: nil)
+        } else if let playerId = OneSignal.getPermissionSubscriptionState()?.subscriptionStatus.userId {
+            ApiManager.shared.updatePushToken(token: playerId, onSuccess: {
+                print("success")
+            }, onError: { (error) in
+                print("error notification: \(error.localizedDescription)")
+            })
         }
     }
     
