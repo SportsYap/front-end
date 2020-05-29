@@ -83,7 +83,6 @@
 	<string>SportsYap will use this so you can save pictures to your photo library</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
