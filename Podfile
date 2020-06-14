@@ -19,6 +19,7 @@ target 'SportsYap' do
   pod 'UIView+draggable'
   pod 'Firebase/Core', :modular_headers => true
   pod 'Firebase/Auth', :modular_headers => true
+  pod 'Firebase/Firestore', :modular_headers => true
   pod 'OneSignal', '>= 2.6.2', '< 3.0'  
   pod 'ColorSlider', '~> 4.3'
   pod 'Giphy'
@@ -33,6 +34,7 @@ target 'SportsYap' do
   pod 'TPKeyboardAvoiding'
   pod 'JTAppleCalendar'
   pod 'SideMenu'
+  pod 'GrowingTextView'
 end
 
 

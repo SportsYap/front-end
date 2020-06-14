@@ -19,6 +19,8 @@
 		AF3FC82B241F31AB00DB85B2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FC82A241F31AB00DB85B2 /* Home.storyboard */; };
 		AF3FD3B62424FC5900795DB0 /* GameDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */; };
 		AF4541262439008700F001F0 /* ViewTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4541252439008700F001F0 /* ViewTeamsViewController.swift */; };
+		AF478179249475A90074EAD3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF478178249475A90074EAD3 /* Message.swift */; };
+		AF47817B2495A0E50074EAD3 /* GameDayChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47817A2495A0E50074EAD3 /* GameDayChatTableViewCell.swift */; };
 		AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */; };
 		AF47F0A62430EC9A00E48E50 /* TeamBadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */; };
 		AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */; };
@@ -202,6 +204,8 @@
 		AF3FC82A241F31AB00DB85B2 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		AF3FD3B52424FC5900795DB0 /* GameDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameDay.storyboard; sourceTree = "<group>"; };
 		AF4541252439008700F001F0 /* ViewTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTeamsViewController.swift; sourceTree = "<group>"; };
+		AF478178249475A90074EAD3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AF47817A2495A0E50074EAD3 /* GameDayChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDayChatTableViewCell.swift; sourceTree = "<group>"; };
 		AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBadgeView.swift; sourceTree = "<group>"; };
 		AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamBadgeView.xib; sourceTree = "<group>"; };
 		AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 				CD0A655620B5106900E17FC7 /* GameDayNewsTableViewCell.swift */,
 				AF6CF85E242619550035CC6F /* GameDayEventTableViewCell.swift */,
 				AF3DD7B82435A85E00F8E701 /* GameDayEventHeaderTableViewCell.swift */,
+				AF47817A2495A0E50074EAD3 /* GameDayChatTableViewCell.swift */,
 			);
 			path = GameDay;
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 				CD04100520B7EC6D000E1D66 /* Comment.swift */,
 				CDF92B2820BB7A630068A50C /* Challenge.swift */,
 				CD3F0BE920CCE7C100BDC68A /* Venue.swift */,
+				AF478178249475A90074EAD3 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1011,6 +1017,7 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/ColorSlider/ColorSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/DeepDiff/DeepDiff.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -1018,6 +1025,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
@@ -1032,7 +1040,11 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/UIView+draggable/UIView_draggable.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -1041,6 +1053,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepDiff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -1048,6 +1061,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
@@ -1062,7 +1076,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_draggable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -1148,6 +1166,7 @@
 				AF3F268F24429DBD00DD9790 /* SplashViewController.swift in Sources */,
 				CD04100620B7EC6D000E1D66 /* Comment.swift in Sources */,
 				CDE83A5D203155A80056C77D /* ProfileViewController.swift in Sources */,
+				AF47817B2495A0E50074EAD3 /* GameDayChatTableViewCell.swift in Sources */,
 				CDDA0CB7201FAAA000BA0568 /* UIViewController.swift in Sources */,
 				CDA8EB4A2060B69500ED3EBC /* DiscoverUserTableViewCell.swift in Sources */,
 				CD47EC2C2053120C00FC3A5F /* GameCard.swift in Sources */,
@@ -1160,6 +1179,7 @@
 				CDE83A5B2031559E0056C77D /* DiscoverViewController.swift in Sources */,
 				D71F9708224DF9370051E715 /* YGCAddTextOnVideo.swift in Sources */,
 				AF18C685244B4617005CEB1E /* MyCommentTableViewCell.swift in Sources */,
+				AF478179249475A90074EAD3 /* Message.swift in Sources */,
 				CDDA0CB1201FAAA000BA0568 /* UILabel.swift in Sources */,
 				D71F972A22508B330051E715 /* MediaFilter.swift in Sources */,
 				CDDA0CB0201FAAA000BA0568 /* UIImageView.swift in Sources */,
@@ -1389,7 +1409,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1398,7 +1418,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.18;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1420,7 +1440,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1429,7 +1449,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.18;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1449,12 +1469,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.18;
+				MARKETING_VERSION = 2.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
@@ -1475,12 +1495,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.5.18;
+				MARKETING_VERSION = 2.1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

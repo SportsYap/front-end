@@ -15,7 +15,7 @@ class GameDayEventHeaderTableViewCell: UITableViewCell {
     var team: Team? {
         didSet {
             if let team = team {
-                titleLabel.text = team.name + " " + NSLocalizedString("Tailgate Party", comment: "")
+                titleLabel.text = team.name + " " + NSLocalizedString("Game Day", comment: "")
             }
         }
     }
