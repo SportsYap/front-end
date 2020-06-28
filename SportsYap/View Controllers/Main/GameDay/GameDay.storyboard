@@ -401,7 +401,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUp-a6-h70">
-                                                            <rect key="frame" x="0.0" y="0.0" width="77.5" height="41"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="114.5" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <state key="normal" title="Fans">
                                                                 <color key="titleColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -411,7 +411,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWq-sU-eAg">
-                                                            <rect key="frame" x="112.5" y="0.0" width="77" height="41"/>
+                                                            <rect key="frame" x="149.5" y="0.0" width="115" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <state key="normal" title="Events">
                                                                 <color key="titleColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -421,7 +421,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-rn-X3D">
-                                                            <rect key="frame" x="224.5" y="0.0" width="77.5" height="41"/>
+                                                            <rect key="frame" x="299.5" y="0.0" width="114.5" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <state key="normal" title="News">
                                                                 <color key="titleColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -430,23 +430,13 @@
                                                                 <action selector="onNews:" destination="pBa-MS-aTg" eventType="touchUpInside" id="fam-KO-Y5V"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLm-eC-FjK">
-                                                            <rect key="frame" x="337" y="0.0" width="77" height="41"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <state key="normal" title="Chat">
-                                                                <color key="titleColor" red="0.1215686275" green="0.14901960780000001" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="onChat:" destination="pBa-MS-aTg" eventType="touchUpInside" id="cpd-XX-uVC"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="gMi-CH-CEe"/>
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvz-qh-vev">
-                                                    <rect key="frame" x="0.0" y="38" width="77.5" height="3"/>
+                                                    <rect key="frame" x="0.0" y="38" width="114.5" height="3"/>
                                                     <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="3" id="eMa-qa-2UU"/>
@@ -887,76 +877,25 @@
                                     <outlet property="delegate" destination="pBa-MS-aTg" id="DMI-ua-6fB"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHD-lU-efu">
-                                <rect key="frame" x="0.0" y="862" width="414" height="44"/>
-                                <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeT-BE-SZz">
-                                        <rect key="frame" x="344" y="8" width="64" height="28"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="1k6-ni-mZg"/>
-                                            <constraint firstAttribute="height" constant="28" id="NUF-mX-tyd"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="6" maxX="16" maxY="6"/>
-                                        <state key="normal" title="Send">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="onSendChat:" destination="pBa-MS-aTg" eventType="touchUpInside" id="BuG-LO-ohK"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="751" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YP4-ak-KlU" customClass="GrowingTextView" customModule="GrowingTextView">
-                                        <rect key="frame" x="8" y="6" width="330" height="32"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Say something..."/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
-                                                <real key="value" value="32"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="maxHeight">
-                                                <real key="value" value="150"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="xeT-BE-SZz" secondAttribute="bottom" constant="8" id="CMj-6x-K5Q"/>
-                                    <constraint firstAttribute="trailing" secondItem="xeT-BE-SZz" secondAttribute="trailing" constant="6" id="Cnz-8b-p1Q"/>
-                                    <constraint firstItem="YP4-ak-KlU" firstAttribute="leading" secondItem="OHD-lU-efu" secondAttribute="leading" constant="8" id="N38-uk-5Sy"/>
-                                    <constraint firstItem="YP4-ak-KlU" firstAttribute="top" secondItem="OHD-lU-efu" secondAttribute="top" constant="6" id="Xco-zL-sy7"/>
-                                    <constraint firstItem="xeT-BE-SZz" firstAttribute="leading" secondItem="YP4-ak-KlU" secondAttribute="trailing" constant="6" id="mBa-6n-41n"/>
-                                    <constraint firstAttribute="bottom" secondItem="YP4-ak-KlU" secondAttribute="bottom" constant="6" id="s1U-eT-UcS"/>
-                                </constraints>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nJ-Cs-XRB">
+                                <rect key="frame" x="332" y="780" width="58" height="58"/>
+                                <state key="normal" image="ic_chat"/>
+                                <connections>
+                                    <action selector="onChat:" destination="pBa-MS-aTg" eventType="touchUpInside" id="dY4-Ge-Etw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fOV-ab-dZq" firstAttribute="leading" secondItem="oog-3o-5NE" secondAttribute="leading" id="9Ct-u5-t4s"/>
-                            <constraint firstItem="OHD-lU-efu" firstAttribute="leading" secondItem="7n6-4V-xyv" secondAttribute="leading" id="HIS-CC-sRl"/>
-                            <constraint firstItem="oog-3o-5NE" firstAttribute="bottom" secondItem="OHD-lU-efu" secondAttribute="bottom" constant="-44" id="IVQ-0X-0Uq"/>
                             <constraint firstItem="WSo-iF-jqC" firstAttribute="leading" secondItem="7n6-4V-xyv" secondAttribute="leading" id="Ie8-i8-SyX"/>
-                            <constraint firstAttribute="trailing" secondItem="OHD-lU-efu" secondAttribute="trailing" id="ZVu-g2-g3F"/>
+                            <constraint firstItem="oog-3o-5NE" firstAttribute="bottom" secondItem="6nJ-Cs-XRB" secondAttribute="bottom" constant="24" id="Wda-Yx-Ggb"/>
                             <constraint firstItem="WSo-iF-jqC" firstAttribute="top" secondItem="oog-3o-5NE" secondAttribute="top" id="fDg-X7-G0R"/>
-                            <constraint firstItem="OHD-lU-efu" firstAttribute="top" secondItem="fOV-ab-dZq" secondAttribute="bottom" id="iTq-nc-YeT"/>
                             <constraint firstItem="oog-3o-5NE" firstAttribute="trailing" secondItem="fOV-ab-dZq" secondAttribute="trailing" id="oKF-d8-PRI"/>
                             <constraint firstItem="fOV-ab-dZq" firstAttribute="top" secondItem="WSo-iF-jqC" secondAttribute="bottom" id="rHN-WD-RJH"/>
                             <constraint firstItem="oog-3o-5NE" firstAttribute="trailing" secondItem="WSo-iF-jqC" secondAttribute="trailing" id="sZO-z7-gBe"/>
+                            <constraint firstItem="fOV-ab-dZq" firstAttribute="bottom" secondItem="oog-3o-5NE" secondAttribute="bottom" id="xVY-me-u7e"/>
+                            <constraint firstItem="oog-3o-5NE" firstAttribute="trailing" secondItem="6nJ-Cs-XRB" secondAttribute="trailing" constant="24" id="xaR-1M-igD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oog-3o-5NE"/>
                     </view>
@@ -969,10 +908,6 @@
                         <outlet property="awayTownLabel" destination="O9H-7r-QfO" id="h4u-z8-aJW"/>
                         <outlet property="challengeView" destination="Yob-dZ-UWx" id="xyH-e1-9rP"/>
                         <outlet property="challengeViewHeight" destination="Ihn-cz-cTq" id="9Rq-YO-MSf"/>
-                        <outlet property="chatButton" destination="wLm-eC-FjK" id="jkK-8P-DNC"/>
-                        <outlet property="chatInputView" destination="OHD-lU-efu" id="5Lr-L0-9vM"/>
-                        <outlet property="chatInputViewBottom" destination="IVQ-0X-0Uq" id="FxI-4g-M9d"/>
-                        <outlet property="chatTextView" destination="YP4-ak-KlU" id="ixr-3H-IEe"/>
                         <outlet property="enterFieldButton" destination="VHx-Yg-PLf" id="sc1-eg-ZMu"/>
                         <outlet property="eventsButton" destination="vWq-sU-eAg" id="7Xj-Vg-SUh"/>
                         <outlet property="fanMeterContainerView" destination="OJR-QB-xdz" id="daY-tO-neT"/>
@@ -2710,6 +2645,7 @@
         <image name="fist_bubble" width="34" height="34"/>
         <image name="ic_add" width="31" height="31"/>
         <image name="ic_back" width="26" height="21"/>
+        <image name="ic_chat" width="58" height="58"/>
         <image name="ic_flip" width="38" height="32"/>
         <image name="ic_play" width="42" height="42"/>
         <image name="ic_post" width="76" height="76"/>

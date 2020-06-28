@@ -11,8 +11,6 @@ import SVWebViewController
 import SafariServices
 import SideMenu
 import SDWebImage
-import Photos
-import Firebase
 
 class GameDayViewController: UIViewController {
     
@@ -47,13 +45,8 @@ class GameDayViewController: UIViewController {
     @IBOutlet weak var fansButton: UIButton!
     @IBOutlet weak var eventsButton: UIButton!
     @IBOutlet weak var newsButton : UIButton!
-    @IBOutlet weak var chatButton: UIButton!
     
     @IBOutlet weak var indicatorViewLeading: NSLayoutConstraint!
-    
-    @IBOutlet weak var chatInputView: UIView!
-    @IBOutlet weak var chatTextView: UITextView!
-    @IBOutlet var chatInputViewBottom: NSLayoutConstraint!
 
     var game: Game!
     
@@ -61,35 +54,13 @@ class GameDayViewController: UIViewController {
         case Fans = 0
         case Events
         case News
-        case Chat
     }
     private var selectedTabItem: TabItems = .Fans
-
-    private var docReference: DocumentReference?
-    private var messages: [Message] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(didPost), name: NSNotification.Name(rawValue: Post.newPostNotification), object: nil)
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification,
-                                               object: nil,
-                                               queue: OperationQueue.main) { (notification) in
-                                                UIView.animate(withDuration: 0.2) {
-                                                    if self.selectedTabItem == .Chat {
-                                                        if let frame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                                                            if frame.origin.y >= self.tableView.bounds.height {
-                                                                self.chatInputViewBottom.constant = 0
-                                                            } else {
-                                                                self.chatInputViewBottom.constant = frame.size.height - self.view.safeAreaInsets.bottom
-                                                            }
-                                                        }
-                                                    } else {
-                                                        self.chatInputViewBottom.constant = -44
-                                                    }
-                                                    self.view.layoutIfNeeded()
-                                                }
-        }
 
         reloadData()
         singlePost = false
@@ -98,6 +69,7 @@ class GameDayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.setNavigationBarHidden(true, animated: true)
         displayGameInfo()
     }
     
@@ -146,8 +118,6 @@ extension GameDayViewController {
             self.game.fanMeter = val
             self.displayGameInfo()
         }) { (err) in }
-        
-        loadChat()
     }
     
     private func displayGameInfo() {
@@ -214,8 +184,6 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             return 1
         case .News:
             return 1
-        case .Chat:
-            return 1
         }
     }
     
@@ -242,8 +210,6 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             return max(count, 1)
         case .News:
             return max(game.news.count, 1)
-        case .Chat:
-            return messages.count
         }
     }
     
@@ -324,16 +290,8 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
             break
-            
-        case .Chat:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as? GameDayChatTableViewCell {
-                let message = messages[indexPath.row]
-                cell.message = message
-                return cell
-            }
-            break
         }
-    
+                
         return UITableViewCell()
     }
     
@@ -373,8 +331,6 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             return 0
         case .News:
             return game.news.isEmpty ? 180 : 79
-        case .Chat:
-            return UITableView.automaticDimension
         }
     }
     
@@ -464,8 +420,6 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
             return (game.events1.isEmpty && game.events2.isEmpty) ? 0 : 42
         case .News:
             return 0
-        case .Chat:
-            return 0
         }
     }
     
@@ -479,8 +433,6 @@ extension GameDayViewController: UITableViewDataSource, UITableViewDelegate {
         case .Events:
             title = NSLocalizedString("PRE-GAME", comment: "")
         case .News:
-            break
-        case .Chat:
             break
         }
         
@@ -528,25 +480,16 @@ extension GameDayViewController {
             return
         }
         
-        chatTextView.text = ""
-        chatTextView.resignFirstResponder()
-
         UIView.animate(withDuration: 0.1, animations: {
             self.indicatorViewLeading.constant = self.fansButton.frame.origin.x
-            self.chatInputViewBottom.constant = -44
             self.tabView.layoutIfNeeded()
         }) { (_) in
             self.fansButton.setTitleColor(UIColor(hex: "009BFF"), for: .normal)
             self.eventsButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
             self.newsButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
-            self.chatButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
 
             self.selectedTabItem = .Fans
             self.tableView.reloadData()
-            
-            self.reloadInputViews()
-            
-            self.chatInputView.isHidden = true
         }
     }
     
@@ -555,25 +498,16 @@ extension GameDayViewController {
             return
         }
 
-        chatTextView.text = ""
-        chatTextView.resignFirstResponder()
-
         UIView.animate(withDuration: 0.1, animations: {
             self.indicatorViewLeading.constant = self.eventsButton.frame.origin.x
-            self.chatInputViewBottom.constant = -44
             self.tabView.layoutIfNeeded()
         }) { (_) in
             self.fansButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
             self.eventsButton.setTitleColor(UIColor(hex: "009BFF"), for: .normal)
             self.newsButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
-            self.chatButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
 
             self.selectedTabItem = .Events
             self.tableView.reloadData()
-            
-            self.reloadInputViews()
-            
-            self.chatInputView.isHidden = true
         }
     }
     
@@ -581,138 +515,23 @@ extension GameDayViewController {
         if selectedTabItem == .News {
             return
         }
-        
-        chatTextView.text = ""
-        chatTextView.resignFirstResponder()
 
         UIView.animate(withDuration: 0.1, animations: {
             self.indicatorViewLeading.constant = self.newsButton.frame.origin.x
-            self.chatInputViewBottom.constant = -44
             self.tabView.layoutIfNeeded()
         }) { (_) in
             self.fansButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
             self.eventsButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
             self.newsButton.setTitleColor(UIColor(hex: "009BFF"), for: .normal)
-            self.chatButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
 
             self.selectedTabItem = .News
             self.tableView.reloadData()
-            
-            self.reloadInputViews()
-            
-            self.chatInputView.isHidden = true
         }
     }
     
     @IBAction func onChat(_ sender: Any) {
-        if selectedTabItem == .Chat {
-            return
-        }
-        
-        self.chatInputView.isHidden = false
-
-        UIView.animate(withDuration: 0.1, animations: {
-            self.indicatorViewLeading.constant = self.chatButton.frame.origin.x
-            self.chatInputViewBottom.constant = 0
-            self.tabView.layoutIfNeeded()
-        }) { (_) in
-            self.fansButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
-            self.eventsButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
-            self.newsButton.setTitleColor(UIColor(hex: "1F263A"), for: .normal)
-            self.chatButton.setTitleColor(UIColor(hex: "009BFF"), for: .normal)
-
-            self.selectedTabItem = .Chat
-            self.tableView.reloadData()
-            
-            self.reloadInputViews()
-        }
-    }
-    
-    @IBAction func onSendChat(_ sender: Any) {
-        let content = chatTextView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        if content.isEmpty {
-            return
-        }
-        
-        let message = Message(id: UUID().uuidString,
-                              content: content,
-                              created: Timestamp(),
-                              senderID: "\(User.me.id)",
-                              senderName: User.me.name,
-                              avatar: User.me.profileImage?.absoluteString ?? "")
-        
-        insertNewMessage(message)
-        save(message)
-        
-        chatTextView.text = ""
-        tableView.reloadData()
-        tableView.setContentOffset(CGPoint.zero, animated: true)
-    }
-    
-    
-    func createNewChat() {
-        let data: [String: Any] = ["gameId": game.id]
-        let db = Firestore.firestore().collection("Chats")
-        db.addDocument(data: data) { (error) in
-            if let error = error {
-                print(error)
-                return
-            } else {
-                self.loadChat()
-            }
-        }
-    }
-    
-    func loadChat() {
-        let db = Firestore.firestore().collection("Chats").whereField("gameId", isEqualTo: game.id)
-        db.getDocuments { (chatQuerySnap, error) in
-            if let error = error {
-                print(error)
-                return
-            } else {
-                if let doc = chatQuerySnap!.documents.first {
-                    self.docReference = doc.reference
-                    doc.reference.collection("thread")
-                        .order(by: "created", descending: false)
-                        .addSnapshotListener(includeMetadataChanges: true) { (threadQuery, error) in
-                            if let error = error {
-                                print(error)
-                                return
-                            } else {
-                                self.messages.removeAll()
-                                for message in threadQuery!.documents {
-                                    if let msg = Message(dictionary: message.data()) {
-                                        self.messages.insert(msg, at: 0)
-                                    }
-                                }
-                                self.tableView.reloadData()
-                                self.tableView.setContentOffset(CGPoint.zero, animated: true)
-                            }
-                    }
-                } else {
-                    self.createNewChat()
-                }
-            }
-        }
-    }
-    
-    private func insertNewMessage(_ message: Message) {
-        messages.insert(message, at: 0)
-        tableView.reloadData()
-        
-        DispatchQueue.main.async {
-            self.tableView.setContentOffset(CGPoint.zero, animated: true)
-        }
-    }
-    
-    private func save(_ message: Message) {
-        docReference?.collection("thread").addDocument(data: message.dictionary, completion: { (error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            self.tableView.setContentOffset(CGPoint.zero, animated: true)
-        })
+        let chatVC = ChatViewController()
+        chatVC.game = game
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 }

@@ -419,7 +419,7 @@ extension EditMediaViewController {
 
         let overlayImage = commentSuperView.takeScreenshot(size: CGSize(width: abs(size.width), height: size.height))
 
-        if let item = MediaItem(url: url) {
+        if let item = SportsYapMediaItem(url: url) {
             let firstElement = MediaElement(image: overlayImage)
 
             if resized {

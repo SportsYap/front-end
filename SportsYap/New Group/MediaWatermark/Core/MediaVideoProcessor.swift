@@ -15,7 +15,7 @@ let kMediaContentTimeValue: Int64 = 1
 let kMediaContentTimeScale: Int32 = 30
 
 extension MediaProcessor {
-    func processVideoWithElements(item: MediaItem, completion: @escaping ProcessCompletionHandler) {
+    func processVideoWithElements(item: SportsYapMediaItem, completion: @escaping ProcessCompletionHandler) {
         let mixComposition = AVMutableComposition()
         let compositionVideoTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.video, preferredTrackID: kCMPersistentTrackID_Invalid)
         let clipVideoTrack = item.sourceAsset.tracks(withMediaType: AVMediaType.video).first
@@ -88,7 +88,7 @@ extension MediaProcessor {
     }
     
     // MARK: - private
-    private func processAndAddElements(item: MediaItem, layer: CALayer) {
+    private func processAndAddElements(item: SportsYapMediaItem, layer: CALayer) {
         for element in item.mediaElements {
             var elementLayer: CALayer! = nil
     

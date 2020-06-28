@@ -34,7 +34,7 @@ target 'SportsYap' do
   pod 'TPKeyboardAvoiding'
   pod 'JTAppleCalendar'
   pod 'SideMenu'
-  pod 'GrowingTextView'
+  pod 'MessageKit'
 end
 
 
