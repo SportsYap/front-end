@@ -11,7 +11,7 @@ import FirebaseFirestore
 import MessageKit
 import AVFoundation
 
-struct Message {
+class Message {
     var id: String
     var created: Timestamp
     var senderID: String
@@ -41,10 +41,18 @@ struct Message {
     var kind: MessageKind
     
     var localImage: UIImage?
-}
 
-extension Message {
-    init?(dictionary: [String: Any]) {
+    
+    init(id: String, created: Timestamp, senderID: String, senderName: String, avatar: String, kind: MessageKind) {
+        self.id = id
+        self.created = created
+        self.senderID = senderID
+        self.senderName = senderName
+        self.avatar = avatar
+        self.kind = kind
+    }
+    
+    convenience init?(dictionary: [String: Any]) {
         guard let id = dictionary["id"] as? String,
         let content = dictionary["content"] as? String,
         let created = dictionary["created"] as? Timestamp,
@@ -66,29 +74,29 @@ extension Message {
         self.created = Timestamp(date: date)
     }
     
-    init(custom: Any?, user: ChatUser, messageId: String, date: Date) {
+    convenience init(custom: Any?, user: ChatUser, messageId: String, date: Date) {
         self.init(kind: .custom(custom), user: user, messageId: messageId, date: date)
     }
 
-    init(text: String, user: ChatUser, messageId: String, date: Date) {
+    convenience init(text: String, user: ChatUser, messageId: String, date: Date) {
         self.init(kind: .text(text), user: user, messageId: messageId, date: date)
     }
 
-    init(attributedText: NSAttributedString, user: ChatUser, messageId: String, date: Date) {
+    convenience init(attributedText: NSAttributedString, user: ChatUser, messageId: String, date: Date) {
         self.init(kind: .attributedText(attributedText), user: user, messageId: messageId, date: date)
     }
 
-    init(image: UIImage, user: ChatUser, messageId: String, date: Date) {
+    convenience init(image: UIImage, user: ChatUser, messageId: String, date: Date) {
         let mediaItem = ImageMediaItem(image: image)
         self.init(kind: .photo(mediaItem), user: user, messageId: messageId, date: date)
     }
 
-    init(thumbnail: UIImage, user: ChatUser, messageId: String, date: Date) {
+    convenience init(thumbnail: UIImage, user: ChatUser, messageId: String, date: Date) {
         let mediaItem = ImageMediaItem(image: thumbnail)
         self.init(kind: .video(mediaItem), user: user, messageId: messageId, date: date)
     }
 
-    init(emoji: String, user: ChatUser, messageId: String, date: Date) {
+    convenience init(emoji: String, user: ChatUser, messageId: String, date: Date) {
         self.init(kind: .emoji(emoji), user: user, messageId: messageId, date: date)
     }
 }

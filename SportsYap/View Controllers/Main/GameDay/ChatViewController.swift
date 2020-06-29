@@ -23,6 +23,8 @@ class ChatViewController: MessagesViewController {
 
     private let sender = ChatUser(user: User.me)
     
+    private var nothingLabel: UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +51,7 @@ class ChatViewController: MessagesViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(hex: "1F263A"),
                                                                    NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]
         navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(UIColor.white, size: CGSize(width: 1, height: 1))
-        navigationItem.title = "Chatroom"
+        navigationItem.title = "Chat"
         
         IQKeyboardManager.shared.enable = false
 
@@ -68,6 +70,18 @@ extension ChatViewController {
         configureNavigationBar()
         configureCollectionView()
         configureInputBar()
+        
+        nothingLabel.text = NSLocalizedString("Nothing here yet\nLet's get the conversation going!", comment: "")
+        nothingLabel.textColor = UIColor(hex: "7f7f7f")
+        nothingLabel.font = UIFont.systemFont(ofSize: 14)
+        nothingLabel.textAlignment = .center
+        nothingLabel.numberOfLines = 0
+        nothingLabel.isHidden = true
+        nothingLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(nothingLabel)
+        nothingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        nothingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     private func configureNavigationBar() {
@@ -85,8 +99,8 @@ extension ChatViewController {
 
         messagesCollectionView.messagesCollectionViewFlowLayout.textMessageSizeCalculator.messageLabelFont = UIFont.systemFont(ofSize: 15)
 
-        messagesCollectionView.messagesCollectionViewFlowLayout.textMessageSizeCalculator.incomingMessageLabelInsets = UIEdgeInsets(top: 6, left: 16, bottom: 6, right: 12)
-        messagesCollectionView.messagesCollectionViewFlowLayout.textMessageSizeCalculator.outgoingMessageLabelInsets = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 16)
+        messagesCollectionView.messagesCollectionViewFlowLayout.textMessageSizeCalculator.incomingMessageLabelInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        messagesCollectionView.messagesCollectionViewFlowLayout.textMessageSizeCalculator.outgoingMessageLabelInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         
         scrollsToBottomOnKeyboardBeginsEditing = true // default false
         maintainPositionOnKeyboardFrameChanged = true // default false
@@ -105,7 +119,12 @@ extension ChatViewController {
 //        messageInputBar.setStackViewItems([imageItem], forStack: .left, animated: false)
         
         messageInputBar.backgroundView.backgroundColor = UIColor.white
-        messageInputBar.inputTextView.cornerRadius = 22
+        
+        var inset = messageInputBar.inputTextView.textContainerInset
+        inset.left = 10
+        inset.right = 10
+        messageInputBar.inputTextView.textContainerInset = inset
+        messageInputBar.inputTextView.cornerRadius = 20
         messageInputBar.inputTextView.clipsToBounds = true
         messageInputBar.inputTextView.backgroundColor = UIColor(hex: "F1F2F2")
         
@@ -315,16 +334,20 @@ extension ChatViewController: MessagesDisplayDelegate {
         avatarView.borderColor = UIColor(hex: "009BFF")
         avatarView.borderWidth = 2
         avatarView.set(avatar: Avatar(image: #imageLiteral(resourceName: "default-profile")))
+        
         if message.avatar.isEmpty {
             return
         }
-        
+
         if let localImage = message.localImage {
             avatarView.set(avatar: Avatar(image: localImage))
         } else {
             SDWebImageManager.shared.loadImage(with: URL(string: message.avatar), options: SDWebImageOptions(), progress: nil) { (image, _, error, _, _, _) in
                 if let image = image {
-                    avatarView.set(avatar: Avatar(image: image))
+                    DispatchQueue.main.async {
+                        message.localImage = image
+                        messagesCollectionView.reloadItems(at: [indexPath])
+                    }
                 }
             }
         }
@@ -424,6 +447,8 @@ extension ChatViewController {
                                 }
                                 self.messagesCollectionView.reloadData()
                                 self.messagesCollectionView.scrollToBottom()
+                                
+                                self.nothingLabel.isHidden = !self.messages.isEmpty
                             }
                     }
                 } else {
