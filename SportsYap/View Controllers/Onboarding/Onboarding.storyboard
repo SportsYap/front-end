@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UDh-6s-wFt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UDh-6s-wFt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -94,7 +94,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="NA5-LQ-F98"/>
                                                         </constraints>
-                                                        <state key="normal" title="Sign In with Facebook">
+                                                        <state key="normal" title="Sign up with Phone">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -103,7 +103,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="fbLoginBttnPressed:" destination="CRB-rk-eSX" eventType="touchUpInside" id="Sad-vn-LqW"/>
+                                                            <action selector="phoneSignupBttnPressed:" destination="CRB-rk-eSX" eventType="touchUpInside" id="cY7-9H-YCK"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -154,7 +154,7 @@
                                     <constraint firstItem="eax-aK-kin" firstAttribute="height" secondItem="8t3-5o-8eL" secondAttribute="height" id="YMr-XP-C33"/>
                                 </constraints>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEV-7l-Bc7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEV-7l-Bc7">
                                 <rect key="frame" x="68" y="738" width="278" height="24"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked_box" translatesAutoresizingMaskIntoConstraints="NO" id="2My-Cs-67s">
@@ -300,12 +300,12 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="john@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TtU-FV-vIj">
-                                                <rect key="frame" x="0.0" y="27" width="354" height="17"/>
+                                                <rect key="frame" x="0.0" y="25.5" width="354" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_check_green" translatesAutoresizingMaskIntoConstraints="NO" id="c68-c3-iU8">
-                                                <rect key="frame" x="336" y="26.5" width="18" height="18"/>
+                                                <rect key="frame" x="336" y="26" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="cGD-wn-tAO"/>
                                                     <constraint firstAttribute="width" constant="18" id="jVx-w8-5oR"/>
@@ -587,7 +587,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="John Doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQp-jf-eO5">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -625,7 +625,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Los Angeles, CA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XGD-I2-wJO">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -663,7 +663,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="john@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Anu-4k-a6l">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -1837,7 +1837,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="123456" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g2C-QG-Dqx">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                             </textField>
@@ -2075,7 +2075,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="john_doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9cK-dQ-DUM">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                             </textField>
@@ -2110,7 +2110,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="John Doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cxJ-Tr-84D">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                             </textField>
@@ -2145,7 +2145,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Los Angeles, CA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BW4-dq-6k7">
-                                                                <rect key="frame" x="0.0" y="27" width="374" height="17"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="18.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -2354,6 +2354,9 @@
             <point key="canvasLocation" x="-878" y="530"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8Ks-x1-lNs"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="NCAAF" width="200" height="200"/>
         <image name="NCAAM" width="190" height="190"/>
@@ -2372,7 +2375,4 @@
         <image name="soccer_icon" width="20" height="20"/>
         <image name="splash_screen" width="750" height="1334"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8Ks-x1-lNs"/>
-    </inferredMetricsTieBreakers>
 </document>
