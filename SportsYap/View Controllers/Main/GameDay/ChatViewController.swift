@@ -51,7 +51,7 @@ class ChatViewController: MessagesViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(hex: "1F263A"),
                                                                    NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]
         navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(UIColor.white, size: CGSize(width: 1, height: 1))
-        navigationItem.title = "Chat"
+        navigationItem.title = "Game Day Chat"
         
         IQKeyboardManager.shared.enable = false
 
