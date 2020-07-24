@@ -44,6 +44,29 @@ class Game: DBObject {
     var startString: String?
     var startString2: String?
     
+    var homeShots: Int {
+        get {
+            var count = 0
+            for post in posts {
+                if post.teamId == homeTeam.id {
+                    count += 1
+                }
+            }
+            return count
+        }
+    }
+    var awayShots: Int {
+        get {
+            var count = 0
+            for post in posts {
+                if post.teamId == awayTeam.id {
+                    count += 1
+                }
+            }
+            return count
+        }
+    }
+    
     override var description: String{
         get{ return "`\(type(of: self))`  id: \(id) on \(start)"  }
     }

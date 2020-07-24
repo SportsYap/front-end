@@ -36,7 +36,7 @@ class TagGameTableViewCell: UITableViewCell {
             if game.awayTeam != nil {
                 awayHomeTownLabel.text = game.awayTeam.homeTown
                 awayTeamNameLabel.text = game.awayTeam.name
-                awayScoreLabel.text = "\(game.awayScore) Shots"
+                awayScoreLabel.text = "\(game.awayShots) Shots"
                 awayTeamPrimaryColorView.backgroundColor = game.awayTeam.primaryColor
                 awayTeamSecondaryColorView.backgroundColor = game.awayTeam.secondaryColor
             }
@@ -44,7 +44,7 @@ class TagGameTableViewCell: UITableViewCell {
             if game.homeTeam != nil {
                 homeHomeTownLabel.text = game.homeTeam.homeTown
                 homeTeamNameLabel.text = game.homeTeam.name
-                homeScoreLabel.text = "\(game.homeScore) Shots"
+                homeScoreLabel.text = "\(game.homeShots) Shots"
                 homeTeamPrimaryColorView.backgroundColor = game.homeTeam.primaryColor
                 homeTeamSecondaryColorView.backgroundColor = game.homeTeam.secondaryColor
             }
