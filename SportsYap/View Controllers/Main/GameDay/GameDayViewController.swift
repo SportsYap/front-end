@@ -165,6 +165,23 @@ extension GameDayViewController {
         enterFieldButton.layer.cornerRadius = 5
         enterFieldButton.layer.masksToBounds = true
         enterFieldButton.layer.maskedCorners = [.layerMinXMaxYCorner]
+        
+        switch game.sport {
+        case .basketball:
+            enterFieldButton.setTitle("  " + NSLocalizedString("Enter Court", comment: ""), for: .normal)
+        case .hockey:
+                enterFieldButton.setTitle("  " + NSLocalizedString("Enter Ice", comment: ""), for: .normal)
+        case .football:
+            enterFieldButton.setTitle("  " + NSLocalizedString("Enter Field", comment: ""), for: .normal)
+        case .collegeBasketball:
+            enterFieldButton.setTitle("  " + NSLocalizedString("Enter Court", comment: ""), for: .normal)
+        case .soccer:
+            enterFieldButton.setTitle("  " + NSLocalizedString("Enter Field", comment: ""), for: .normal)
+        case .collegeFootball:
+            enterFieldButton.setTitle("  " + NSLocalizedString("Enter Field", comment: ""), for: .normal)
+        case .baseball:
+            enterFieldButton.setTitle("  " + NSLocalizedString("Enter Field", comment: ""), for: .normal)
+        }
     }
     
     @objc func didPost(_ notification: Notification) {
