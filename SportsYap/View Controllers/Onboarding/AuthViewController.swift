@@ -11,10 +11,12 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import SVWebViewController
 import FirebaseAuth
+import AuthenticationServices
 
 class AuthViewController: UIViewController {
 
     @IBOutlet weak var checkboxImageView: UIImageView!
+    @IBOutlet weak var appleButton: UIButton!
     
     var termsAccepted = true
     
@@ -22,6 +24,26 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if #available(iOS 13.0, *) {
+            appleButton.isHidden = false
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
+    @IBAction func handleLogInWithAppleID() {
+        if #available(iOS 13.0, *) {
+            let request = ASAuthorizationAppleIDProvider().createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let controller = ASAuthorizationController(authorizationRequests: [request])
+            
+            controller.delegate = self
+            controller.presentationContextProvider = self
+            
+            controller.performRequests()
+        }
     }
 
     //MARK: IBActions
@@ -91,5 +113,43 @@ class AuthViewController: UIViewController {
         
         performSegue(withIdentifier: "showPhoneAuth", sender: nil)
     }
-    
+}
+
+extension AuthViewController: ASAuthorizationControllerDelegate {
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            if let token = appleIDCredential.identityToken {
+                if let tokenString = String(data: token, encoding: .utf8) {
+
+                    let firstName = appleIDCredential.fullName?.givenName ?? ""
+                    let lastName = appleIDCredential.fullName?.familyName ?? ""
+                    ApiManager.shared.appleSignin(email: appleIDCredential.email ?? "-", name: firstName + " " + lastName, token: tokenString, { (created) in
+                        if created{
+                            ApiManager.shared.me(onSuccess: { (user) in
+                                self.performSegue(withIdentifier: "selectTeams", sender: nil)
+                            }, onError: { (err) in })
+                        }else{
+                            ApiManager.shared.me(onSuccess: { (user) in
+                            }, onError: voidErr)
+                            self.navigationController?.dismiss(animated: true, completion: nil)
+                        }
+                    }, onError: { (err) in
+                        self.alert(message: "Internal Server Error")
+                    })
+                }
+            }
+            break
+        default:
+            break
+        }
+    }
+}
+
+extension AuthViewController: ASAuthorizationControllerPresentationContextProviding {
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+           return self.view.window!
+    }
 }

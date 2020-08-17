@@ -106,18 +106,14 @@ class ApiManager: NSObject {
         
         let path = "/user/login"
         processRequestTo(path: path, httpMethod: "POST", parameters: param, onSuccess: { (json) in
-            if let data = json["data"] as? [String: AnyObject]{
-                if let at = data["access_token"] as? String{
-                    self.accessToken = at
-                    self.refreshToken = ""
-                    self.loggedIn = true
+            if let at = json["access_token"] as? String{
+                self.accessToken = at
+                self.refreshToken = ""
+                self.loggedIn = true
 
-                    UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
-                    let code = json["status_code"]  as? String ?? "200"
-                    onSuccess(code != "200")
-                }else{
-                    onError(NSError(domain: "api.response_error", code: 500, userInfo: ["message":"signup missing access or refresh token"]))
-                }
+                UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
+                let code = json["status_code"]  as? String ?? "200"
+                onSuccess(code != "200")
             }else{
                 onError(NSError(domain: "api.response_error", code: 500, userInfo: ["message":"signup missing access or refresh token"]))
             }
@@ -179,6 +175,34 @@ class ApiManager: NSObject {
             onError(err)
         })
     }
+    func appleSignin(email: String, name: String, token: String, _ onSuccess: @escaping (_ created: Bool)->Void, onError: @escaping (_ error: NSError)->Void){ //Wire Up
+        let param:[String: String] = [
+            "email": email.lowercased(),
+            "password": "-",
+            "name": name,
+            "apple_id": token,
+            "type": "apple"
+        ]
+        
+        let path = "/user/login"
+        processRequestTo(path: path, httpMethod: "POST", parameters: param, onSuccess: { (json) in
+            if let at = json["access_token"] as? String{
+                self.accessToken = at
+                self.refreshToken = ""
+                self.loggedIn = true
+
+                UserDefaults.standard.setValue(at, forKey: "USER_ACCESS_TOKEN")
+                let code = json["status_code"]  as? String ?? "200"
+                onSuccess(code != "200")
+            }else{
+                onError(NSError(domain: "api.response_error", code: 500, userInfo: ["message":"signup missing access or refresh token"]))
+            }
+        }, onError: { (err) in
+            self.loggedIn = false
+            onError(err)
+        })
+    }
+
     
     //MARK: User
     func me(onSuccess: @escaping (_ user: User)->Void, onError: @escaping (_ error: NSError)->Void){

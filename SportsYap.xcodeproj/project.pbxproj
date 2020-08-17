@@ -24,6 +24,7 @@
 		AF47CCB424A7BCC20048BC79 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47CCB324A7BCC20048BC79 /* ChatViewController.swift */; };
 		AF47F0A42430EAE500E48E50 /* TeamBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */; };
 		AF47F0A62430EC9A00E48E50 /* TeamBadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */; };
+		AF50338A24E0EF880059D078 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF50338924E0EF880059D078 /* AuthenticationServices.framework */; };
 		AF52D1E5242E5F350090101F /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */; };
 		AF612BBC2434FA8F008232B6 /* AutoresizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF612BBB2434FA8F008232B6 /* AutoresizeView.swift */; };
 		AF6CF85B2425B3450035CC6F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */; };
@@ -210,6 +211,7 @@
 		AF47CCB324A7BCC20048BC79 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AF47F0A32430EAE500E48E50 /* TeamBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBadgeView.swift; sourceTree = "<group>"; };
 		AF47F0A52430EC9A00E48E50 /* TeamBadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamBadgeView.xib; sourceTree = "<group>"; };
+		AF50338924E0EF880059D078 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		AF52D1E4242E5F350090101F /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		AF612BBB2434FA8F008232B6 /* AutoresizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoresizeView.swift; sourceTree = "<group>"; };
 		AF6CF85A2425B3450035CC6F /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF50338A24E0EF880059D078 /* AuthenticationServices.framework in Frameworks */,
 				CDB5301F204DF6440074341E /* AVKit.framework in Frameworks */,
 				CDB53020204DF6440074341E /* AVFoundation.framework in Frameworks */,
 				2ED769C2B8D0E0F37DC40A09 /* Pods_SportsYap.framework in Frameworks */,
@@ -382,6 +385,7 @@
 		399A2020DA121A6D6010D7FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF50338924E0EF880059D078 /* AuthenticationServices.framework */,
 				CDB5301E204DF6440074341E /* AVFoundation.framework */,
 				CDB5301D204DF6440074341E /* AVKit.framework */,
 				7A287A2B4980C18A63FBBA25 /* Pods_SportsYap.framework */,
@@ -1415,7 +1419,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1424,7 +1428,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1446,7 +1450,7 @@
 				CODE_SIGN_ENTITLEMENTS = SportsYap/SportsYap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1455,7 +1459,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SportsYap/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1475,12 +1479,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
@@ -1501,12 +1505,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6NCD3R96G3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SportsYap.com.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
