@@ -38,10 +38,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8t3-5o-8eL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="355"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="324"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="x9V-E7-1OA">
-                                                <rect key="frame" x="81" y="146" width="252.5" height="63.5"/>
+                                                <rect key="frame" x="81" y="130.5" width="252.5" height="63.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S P O R T S Y A P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFV-if-nuk">
                                                         <rect key="frame" x="0.0" y="0.0" width="252.5" height="36"/>
@@ -65,10 +65,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6Y-HT-LlV">
-                                        <rect key="frame" x="0.0" y="355" width="414" height="108"/>
+                                        <rect key="frame" x="0.0" y="324" width="414" height="170"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9gN-Lk-h93">
-                                                <rect key="frame" x="31" y="0.0" width="352" height="108"/>
+                                                <rect key="frame" x="31" y="0.0" width="352" height="170"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udb-1k-1hw">
                                                         <rect key="frame" x="0.0" y="0.0" width="352" height="46"/>
@@ -106,14 +106,16 @@
                                                             <action selector="fbLoginBttnPressed:" destination="CRB-rk-eSX" eventType="touchUpInside" id="Sad-vn-LqW"/>
                                                         </connections>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RV9-72-Wwo">
-                                                        <rect key="frame" x="0.0" y="108" width="352" height="46"/>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RV9-72-Wwo">
+                                                        <rect key="frame" x="0.0" y="124" width="352" height="46"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="th7-5a-cQN"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Sign In with Apple">
+                                                        <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Sign In with Apple" image="ic_apple">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -137,10 +139,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eax-aK-kin">
-                                        <rect key="frame" x="0.0" y="463" width="414" height="355"/>
+                                        <rect key="frame" x="0.0" y="494" width="414" height="324"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqC-qk-ba9">
-                                                <rect key="frame" x="84.5" y="279" width="245" height="46"/>
+                                                <rect key="frame" x="84.5" y="248" width="245" height="46"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="tl9-Xb-rSj"/>
@@ -2389,6 +2391,7 @@
         <image name="field_bg_image" width="750" height="1334"/>
         <image name="football_icon" width="20" height="20"/>
         <image name="hockey_icom" width="20" height="14"/>
+        <image name="ic_apple" width="40" height="40"/>
         <image name="left_arrow_black" width="22" height="19"/>
         <image name="right_arrow_white" width="21" height="17"/>
         <image name="signin_arrow" width="21" height="17"/>
