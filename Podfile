@@ -13,7 +13,6 @@ target 'SportsYap' do
   pod 'KMPlaceholderTextView', '~> 1.4.0'
   pod 'Alamofire', '~> 4.0'
   pod 'AFNetworking', '~> 3.0'
-  pod 'NextLevel', '~> 0.9.0'
   pod 'SwiftyCam'
   pod 'FBSDKLoginKit'
   pod 'UIView+draggable'

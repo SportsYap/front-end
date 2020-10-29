@@ -19,11 +19,13 @@ class EnterFieldViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
+    let token: GMSAutocompleteSessionToken = GMSAutocompleteSessionToken()
+    
     var game: Game? {
         didSet {
             if let game = game {
-                placesClient.autocompleteQuery(game.venue.name + ", " + game.venue.city + ", " + game.venue.state, bounds: nil, boundsMode: .bias, filter: nil) { (list, error) in
-                    if let place = list?.first {
+                placesClient.findAutocompletePredictions(fromQuery: game.venue.name + ", " + game.venue.city + ", " + game.venue.state, filter: nil, sessionToken: token) { (predications, error) in
+                    if let place = predications?.first {
                         self.placesClient.fetchPlace(fromPlaceID: place.placeID, placeFields: .coordinate, sessionToken: nil) { (place, error) in
                             if let place = place {
                                 self.coordinate = place.coordinate

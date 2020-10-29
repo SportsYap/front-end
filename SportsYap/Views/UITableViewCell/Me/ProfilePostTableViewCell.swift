@@ -47,7 +47,9 @@ class ProfilePostTableViewCell: UITableViewCell {
                             self.postImageViewHeight?.constant = self.postImageView.bounds.size.width / image.size.width * image.size.height
                         }
                     }
+                    postImageView.isPinchable = true
                     videoIconView.isHidden = true
+                    videoPlayView?.isHidden = true
                 } else if let url = post.media.thumbnailUrl { // Render Video Thumbnail
                     postImageView.sd_setImage(with: url) { (image, _, _, _) in
                         if let image = image {
@@ -56,6 +58,7 @@ class ProfilePostTableViewCell: UITableViewCell {
                     }
                     postImageView.isPinchable = true
                     videoIconView.isHidden = false
+                    videoPlayView?.isHidden = false
                 } else {
                     postImageViewHeight?.constant = 0
 
