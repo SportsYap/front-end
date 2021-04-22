@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sbk-JZ-7SB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sbk-JZ-7SB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Data Source-->
+        <!--Home View Controller-->
         <scene sceneID="UPh-Ph-7Ac">
             <objects>
                 <viewController id="Sbk-JZ-7SB" customClass="HomeViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,8 +19,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzR-WW-OoJ">
                                 <rect key="frame" x="0.0" y="48" width="414" height="54"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBO-RJ-J2z">
-                                        <rect key="frame" x="341" y="10" width="70" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBO-RJ-J2z">
+                                        <rect key="frame" x="342" y="10" width="69" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="25" maxY="0.0"/>
@@ -31,8 +31,8 @@
                                             <action selector="onNextDay:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="ZT8-V1-jHN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRe-OA-o1Z">
-                                        <rect key="frame" x="4" y="10" width="70" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRe-OA-o1Z">
+                                        <rect key="frame" x="4" y="10" width="69" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="10" maxY="0.0"/>
@@ -127,7 +127,7 @@
                                                 <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egm-1G-iTj">
-                                                <rect key="frame" x="147.5" y="272" width="119" height="20.5"/>
+                                                <rect key="frame" x="148" y="272" width="118.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="iHs-sW-Ibq">
                                         <rect key="frame" x="24" y="6" width="512" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXB-gg-jtI">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXB-gg-jtI">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dXB-gg-jtI" secondAttribute="height" id="MUB-Fi-nKC"/>
@@ -175,7 +175,7 @@
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="klf-9e-lOi"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZC9-qv-EDZ">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZC9-qv-EDZ">
                                                 <rect key="frame" x="77" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="basketball_icon"/>
@@ -183,7 +183,7 @@
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="SJz-Bx-EJH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-KZ-aQf">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-KZ-aQf">
                                                 <rect key="frame" x="154" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="baseball_icon"/>
@@ -191,7 +191,7 @@
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="vVJ-3b-KWw"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjF-rH-hA3">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjF-rH-hA3">
                                                 <rect key="frame" x="231" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="soccer_icon"/>
@@ -199,7 +199,7 @@
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="Lh9-JU-5i2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdS-df-Q2b">
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdS-df-Q2b">
                                                 <rect key="frame" x="308" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="hockey_icom"/>
@@ -207,7 +207,7 @@
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="KWU-iI-Frj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D66-os-41d">
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D66-os-41d">
                                                 <rect key="frame" x="385" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="11" minY="11" maxX="11" maxY="11"/>
@@ -216,7 +216,7 @@
                                                     <action selector="onTypeButtons:" destination="Sbk-JZ-7SB" eventType="touchUpInside" id="vwj-eb-woi"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGw-05-auB">
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGw-05-auB">
                                                 <rect key="frame" x="462" y="0.0" width="50" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="11" minY="11" maxX="11" maxY="11"/>
@@ -243,6 +243,7 @@
                                 </connections>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ryR-f6-IpM"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BzR-WW-OoJ" firstAttribute="trailing" secondItem="ryR-f6-IpM" secondAttribute="trailing" id="Ku8-14-LYu"/>
@@ -256,7 +257,6 @@
                             <constraint firstAttribute="trailing" secondItem="msW-sh-ZSF" secondAttribute="trailing" id="kht-P3-qUW"/>
                             <constraint firstItem="YYc-3f-HDY" firstAttribute="leading" secondItem="ryR-f6-IpM" secondAttribute="leading" id="u6t-l9-wq3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ryR-f6-IpM"/>
                     </view>
                     <navigationItem key="navigationItem" id="eWx-Bh-O35"/>
                     <connections>

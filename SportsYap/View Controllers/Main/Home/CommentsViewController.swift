@@ -203,6 +203,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             if let videoUrl = post.media.videoUrl,
                 player == nil,
                 let view = cell.videoPlayView {
+                cell.postImageView.isHidden = true
                 playVideo(url: videoUrl, containerView: view)
             }
             return cell

@@ -47,7 +47,6 @@ class ProfilePostTableViewCell: UITableViewCell {
                             self.postImageViewHeight?.constant = self.postImageView.bounds.size.width / image.size.width * image.size.height
                         }
                     }
-                    postImageView.isPinchable = true
                     videoIconView.isHidden = true
                     videoPlayView?.isHidden = true
                 } else if let url = post.media.thumbnailUrl { // Render Video Thumbnail
@@ -56,7 +55,6 @@ class ProfilePostTableViewCell: UITableViewCell {
                             self.postImageViewHeight?.constant = self.postImageView.bounds.size.width / image.size.width * image.size.height
                         }
                     }
-                    postImageView.isPinchable = true
                     videoIconView.isHidden = false
                     videoPlayView?.isHidden = false
                 } else {
@@ -84,6 +82,9 @@ class ProfilePostTableViewCell: UITableViewCell {
         postImageView.image = nil
         
         postImageViewHeight?.constant = postImageView.bounds.size.width / 317 * 238
+        
+        postImageView.isPinchable = true
+        videoPlayView?.isPinchable = true
     }
     
     @IBAction func onOption(_ sender: Any) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LXg-0s-jyw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LXg-0s-jyw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +38,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="KWO-Z9-XCN">
                                                 <rect key="frame" x="7" y="11" width="624" height="37"/>
                                                 <subviews>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-re-YdB">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-re-YdB">
                                                         <rect key="frame" x="0.0" y="0.0" width="66" height="37"/>
                                                         <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -56,7 +56,7 @@
                                                             <action selector="onTypeButtons:" destination="LXg-0s-jyw" eventType="touchUpInside" id="hbn-E0-5aD"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHG-ke-Fjy">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHG-ke-Fjy">
                                                         <rect key="frame" x="93" y="0.0" width="66" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="basketball_icon"/>
@@ -69,7 +69,7 @@
                                                             <action selector="onTypeButtons:" destination="LXg-0s-jyw" eventType="touchUpInside" id="veL-qZ-16m"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmm-z5-nsw">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmm-z5-nsw">
                                                         <rect key="frame" x="186" y="0.0" width="66" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="baseball_icon"/>
@@ -82,7 +82,7 @@
                                                             <action selector="onTypeButtons:" destination="LXg-0s-jyw" eventType="touchUpInside" id="DDu-ND-U5b"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="God-25-xSu">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="God-25-xSu">
                                                         <rect key="frame" x="279" y="0.0" width="66" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="soccer_icon"/>
@@ -95,7 +95,7 @@
                                                             <action selector="onTypeButtons:" destination="LXg-0s-jyw" eventType="touchUpInside" id="16h-QD-Wtl"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3J-YY-5bs">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3J-YY-5bs">
                                                         <rect key="frame" x="372" y="0.0" width="66" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="hockey_icom"/>
@@ -108,7 +108,7 @@
                                                             <action selector="onTypeButtons:" destination="LXg-0s-jyw" eventType="touchUpInside" id="OtX-e3-n52"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yte-bH-Qx1">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yte-bH-Qx1">
                                                         <rect key="frame" x="465" y="0.0" width="66" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="college_basketball_icon"/>
@@ -121,7 +121,7 @@
                                                             <action selector="onTypeButtons:" destination="LXg-0s-jyw" eventType="touchUpInside" id="VVd-p3-6N4"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-fA-u7P">
+                                                    <button opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-fA-u7P">
                                                         <rect key="frame" x="558" y="0.0" width="66" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="college_football_icon"/>
@@ -148,8 +148,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0b-jnI">
                                         <rect key="frame" x="0.0" y="115" width="414" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-NZ-U5V">
-                                                <rect key="frame" x="341" y="10" width="70" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-NZ-U5V">
+                                                <rect key="frame" x="342" y="10" width="69" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="25" maxY="0.0"/>
@@ -160,8 +160,8 @@
                                                     <action selector="onNextDay:" destination="LXg-0s-jyw" eventType="touchUpInside" id="P3A-ki-QCY"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCn-a4-OjA">
-                                                <rect key="frame" x="4" y="10" width="70" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCn-a4-OjA">
+                                                <rect key="frame" x="4" y="10" width="69" height="34"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="10" maxY="0.0"/>
@@ -370,7 +370,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-ed-lYa">
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-ed-lYa">
                                                             <rect key="frame" x="16" y="38" width="112" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting 10:00 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="PPO-jx-LXK">
@@ -464,7 +464,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games in Los Angeles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uo-ji-WCo">
-                                                    <rect key="frame" x="16" y="16" width="192.5" height="24"/>
+                                                    <rect key="frame" x="16" y="16" width="193.5" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -560,7 +560,7 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRK-s8-mrY">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRK-s8-mrY">
                                                     <rect key="frame" x="322" y="18" width="80" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="f6k-tv-J8g"/>
@@ -657,7 +657,7 @@
                                                     <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8a-7y-ILU">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8a-7y-ILU">
                                                     <rect key="frame" x="322" y="18" width="80" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Hz9-jK-uUD"/>
@@ -724,7 +724,7 @@
                                                     <color key="textColor" red="0.1215686275" green="0.14901960780000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwb-9T-LvZ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwb-9T-LvZ">
                                                     <rect key="frame" x="322" y="7.5" width="80" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="gze-IQ-Pyn"/>
@@ -773,6 +773,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="xdo-4C-rtG"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xdo-4C-rtG" firstAttribute="trailing" secondItem="Hdo-pZ-8Kz" secondAttribute="trailing" id="0SI-gL-d3c"/>
@@ -784,7 +785,6 @@
                             <constraint firstItem="0aT-D1-IYx" firstAttribute="top" secondItem="xdo-4C-rtG" secondAttribute="top" id="OIc-hW-1OF"/>
                             <constraint firstItem="Hdo-pZ-8Kz" firstAttribute="leading" secondItem="xdo-4C-rtG" secondAttribute="leading" id="U6v-IH-UrL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xdo-4C-rtG"/>
                     </view>
                     <navigationItem key="navigationItem" id="fJ8-Lr-Pvw"/>
                     <connections>
@@ -831,7 +831,7 @@
             </objects>
             <point key="canvasLocation" x="2016" y="1958"/>
         </scene>
-        <!--Ib Calendar Data Source-->
+        <!--Calendar View Controller-->
         <scene sceneID="MRd-0A-Qhb">
             <objects>
                 <viewController storyboardIdentifier="CalendarViewController" id="YFv-Vs-vZu" customClass="CalendarViewController" customModule="SportsYap" customModuleProvider="target" sceneMemberID="viewController">
@@ -1003,6 +1003,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gac-ib-qdv"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Th5-Az-VmA" firstAttribute="trailing" secondItem="Gac-ib-qdv" secondAttribute="trailing" id="8qn-tB-ssD"/>
@@ -1010,7 +1011,6 @@
                             <constraint firstItem="Th5-Az-VmA" firstAttribute="bottom" secondItem="Gac-ib-qdv" secondAttribute="bottom" id="MaS-tu-Ygx"/>
                             <constraint firstItem="Th5-Az-VmA" firstAttribute="top" secondItem="Gac-ib-qdv" secondAttribute="top" id="fR5-G2-4bF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Gac-ib-qdv"/>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="Tex-Zt-OJu" id="VHS-ZC-BON"/>

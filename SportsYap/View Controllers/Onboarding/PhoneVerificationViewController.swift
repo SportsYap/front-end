@@ -27,7 +27,7 @@ class PhoneVerificationViewController: UIViewController {
         bttn.isEnabled = false
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: codeTextField.text!)
-        Auth.auth().signInAndRetrieveData(with: credential) { authData, error in
+        Auth.auth().signIn(with: credential) { authData, error in
             if let error = error {
                 bttn.isEnabled = true
                 self.alert(message: error.localizedDescription)
